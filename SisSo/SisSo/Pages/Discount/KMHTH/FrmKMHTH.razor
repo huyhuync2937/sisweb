@@ -1,0 +1,761 @@
+﻿@inject IWebHostEnvironment _hostingEnvironment
+@inject NavigationManager navigation
+@inject IJSRuntime JavacriptS
+@inject IStringLocalizer<FrmKMHTH> Lap
+@inject IDbManager myDb
+@inject Statemanagerment myStatemanagerment
+@inject IOptionsManager myOption
+@inject ICommandManager Commands
+@inject IWebHostEnvironment _hostingEnvironment
+@using System.Text.RegularExpressions
+<DxWindow @ref="@windowRef"
+          onkeydown="ModifyEnterKeyPressAsTab(event);"
+          ShowFooter="true"
+          Visible="true"
+          Width="max(800px, 600px)"
+          Height="max(620px, 620px)"
+          CloseOnEscape="true"
+          Closed="OnformClose"
+          ShowCloseButton="false"
+          AllowResize="false"
+          Context="windowContext"
+          HeaderText="@Pagetitle">
+    <BodyTemplate>
+        <div class="row m-2">
+            <DxFormLayout>
+                <DxFormLayoutGroup ColSpanMd="12" Decoration="FormLayoutGroupDecoration.None">
+                    <DxFormLayoutGroup ColSpanMd="12" Decoration="FormLayoutGroupDecoration.None">
+
+                        <DxFormLayoutItem Caption="" ColSpanMd="12">
+                            <Template>
+                                <div class="row">
+                                    <label class="col-4">@Lap["Code"].ToString()</label>
+                                    <DxTextBox CssClass="col" @bind-Text="CurPh98web.Stt_rec" ReadOnly="true" />
+                                </div>
+                            </Template>
+                        </DxFormLayoutItem>
+
+                        <DxFormLayoutItem Caption="" ColSpanMd="12">
+                            <Template>
+                                <div class="row">
+                                    <label class="col-4">@Lap["Name"].ToString()</label>
+                                    <DxTextBox CssClass="col" @bind-Text="CurPh98web.Ten_km" Enabled="@AllowEditMode" maxlength="@MaxlengthTen_km" />
+                                </div>
+                            </Template>
+                        </DxFormLayoutItem>
+
+                        <DxFormLayoutItem Caption="" ColSpanMd="12">
+                            <Template>
+                                <div class="row">
+                                    <label class="col-4">@Lap["Group"].ToString()</label>
+                                    <AutocompleteComponent Ma_dm="dmnhkh4" @bind-Value="@CurPh98web.Ma_nh" IsEnable="@AllowEditMode" IsLangEn="@LangEn"></AutocompleteComponent>
+                                </div>
+                            </Template>
+                        </DxFormLayoutItem>
+
+                        <DxFormLayoutItem Caption="" ColSpanMd="12">
+                            <Template>
+                                <div class="row">
+                                    <label class="col-4">@Lap["From date"].ToString()</label>
+                                    <DxDateEdit CssClass="col" @bind-Date="CurPh98web.Ngay_bd" Format="dd-MM-yyyy" DisplayFormat="dd-MM-yyyy" Enabled="@AllowEditMode" />
+                                </div>
+                            </Template>
+                        </DxFormLayoutItem>
+
+                        <DxFormLayoutItem Caption="" ColSpanMd="12">
+                            <Template>
+                                <div class="row">
+                                    <label class="col-4">@Lap["To date"].ToString()</label>
+                                    <DxDateEdit CssClass="col" @bind-Date="CurPh98web.Ngay_kt" Format="dd-MM-yyyy" DisplayFormat="dd-MM-yyyy" Enabled="@AllowEditMode" />
+                                </div>
+                            </Template>
+                        </DxFormLayoutItem>
+
+                        <DxFormLayoutItem Caption="" ColSpanMd="12">
+                            <Template>
+                                <div class="row">
+                                    <label class="col-4">@Lap["Dvcs"].ToString()</label>
+                                    <AutocompleteComponent Ma_dm="dmdvcs" @bind-Value="@CurPh98web.Ma_dvcs" IsEnable="@AllowEditMode" IsLangEn="@LangEn"></AutocompleteComponent>
+                                </div>
+                            </Template>
+                        </DxFormLayoutItem>
+
+                        <DxFormLayoutItem ColSpanMd="12">
+                            <Template>
+                                <div class="row">
+                                    <label class="col-4">@Lap["Details"].ToString()</label>
+                                    <DxMemo CssClass="col" @bind-Text="@CurPh98web.Dien_giai" Rows="1" Id="Dien_giai" Enabled="@AllowEditMode" maxlength="@MaxlengthDien_giai"></DxMemo>
+                                </div>
+                            </Template>
+                        </DxFormLayoutItem>
+
+                        <DxFormLayoutItem ColSpanMd="12">
+                            <Template>
+                                <div class="row">
+                                    <label class="col-4">@Lap["Boi so"].ToString()</label>
+                                    <DxCheckBox CssClass="col" @bind-Checked="@CurPh98web.Boi_so" Id="Boi_so" Enabled="@AllowEditMode"></DxCheckBox>
+                                </div>
+                            </Template>
+                        </DxFormLayoutItem>
+
+                        <DxFormLayoutItem ColSpanMd="12">
+                            <Template>
+                                <div class="row">
+                                    <label class="col-4">Chỉ tiêu</label>
+                                    <DxButton CssClass="col" RenderStyle="ButtonRenderStyle.Success" Text="Thêm" Click="Themchitieu"></DxButton>
+                                    <DxButton CssClass="col" RenderStyle="ButtonRenderStyle.Success" Text="Sửa" Click="Suachitieu"></DxButton>
+                                    <DxButton CssClass="col" RenderStyle="ButtonRenderStyle.Success" Text="Xem" Click="Xemchitieu"></DxButton>
+                                    <DxButton CssClass="col" RenderStyle="ButtonRenderStyle.Success" Text="Xóa" Click="Xoachitieu"></DxButton>
+                                </div>
+                            </Template>
+                        </DxFormLayoutItem>
+
+                    </DxFormLayoutGroup>
+                    <DxFormLayoutItem ColSpanMd="12">
+                        <Template>
+                            <DxGrid Data="@LSData"
+                                    CssClass="pb-4"
+                                    AllowSelectRowByClick=true
+                                    RowDoubleClick="@StartEditDataItemByClickCT"                                  
+                                    SelectionMode="GridSelectionMode.Single"
+                                    @bind-SelectedDataItem="@SelectedDataItemCT"
+                                    CustomizeEditModel="Grid_CustomizeEditModelCT"
+                                    EditCanceling="Grid_EditCancelCT"
+                                    EditModelSaving="Grid_EditModelSavingCT"
+                                    DataItemDeleting="Grid_DataItemDeletingCT"
+                                    EditMode="GridEditMode.EditRow"
+                                    @ref="GridCT">
+                                <Columns>
+                                    <DxGridCommandColumn MinWidth="150" Width="150" Visible="false">
+                                        <HeaderTemplate Context="GrdContext">
+                                            <DxButton Click="()=>  AddNewCT()" Text="Thêm" RenderStyle="ButtonRenderStyle.Light" />
+                                        </HeaderTemplate>
+                                        <CellDisplayTemplate Context="GrdContext">
+                                            @{
+                                                var keyField = GrdContext.DataItem;
+                                                <DxButton Click="()=> GridCT.StartEditDataItemAsync(GrdContext.DataItem)" Text="Sửa" RenderStyle="ButtonRenderStyle.Link" />
+                                                <DxButton Click="()=> GridCT.ShowDataItemDeleteConfirmation(GrdContext.DataItem)" Text="Xóa" RenderStyle="ButtonRenderStyle.Link" />
+                                            }
+                                        </CellDisplayTemplate>
+                                        <CellEditTemplate Context="GrdContext">
+                                            <DxButton Click="@(() => GridCT.SaveChangesAsync())" Text="@Lap["Save"].ToString()" />
+                                            <DxButton Click="@(() => GridCT.CancelEditAsync())" Text="@Lap["Cancel"].ToString()" />
+                                        </CellEditTemplate>
+                                    </DxGridCommandColumn>
+
+                                    <DxGridDataColumn FieldName="Stt" Caption="Stt" MinWidth="50" Width="50pt">
+                                        <CellEditTemplate Context="GrdContext">
+                                            @{
+                                                var _Mg_kbdcct = (Ct98web)GrdContext.EditModel;
+                                            }
+                                            <DxSpinEdit @bind-Value="@_Mg_kbdcct.Stt" Enabled="false" Id="Stt"></DxSpinEdit>
+                                        </CellEditTemplate>
+                                    </DxGridDataColumn>
+
+                                    <DxGridDataColumn FieldName="Nhom_km" Caption="Nhóm k.mãi" MinWidth="120" Width="120pt">
+                                        <CellEditTemplate Context="GrdContext">
+                                            @{
+                                                var _Mg_kbdcct = (Ct98web)GrdContext.EditModel;
+                                            }
+                                            <DxTextBox @bind-Text="@_Mg_kbdcct.Nhom_km" Id="Nhom_km"></DxTextBox>
+                                        </CellEditTemplate>
+
+                                    </DxGridDataColumn>
+
+                                    <DxGridDataColumn FieldName="Ma_vt" Caption="Mã vật tư" MinWidth="120">
+                                        <CellEditTemplate Context="GrdContext">
+                                            @{
+                                                var _Mg_kbdcct = (Ct98web)GrdContext.EditModel;
+                                            }
+                                            <AutocompleteComponent Ma_dm="dmvt" @bind-Value="@_Mg_kbdcct.Ma_vt" SelectChanged="OnAutoCompleteDMVTChanged" IsEnable="@AllowEditMode" IsLangEn="@LangEn"></AutocompleteComponent>
+                                        </CellEditTemplate>
+                                    </DxGridDataColumn>
+
+                                    <DxGridDataColumn FieldName="Dvt" Caption="Đvt" MinWidth="80" Width="80pt">
+                                        <CellEditTemplate Context="GrdContext">
+                                            @{
+                                                var _Mg_kbdcct = (Ct98web)GrdContext.EditModel;
+                                            }
+                                            <DxTextBox @bind-Text="@_Mg_kbdcct.Dvt" Id="Dvt"></DxTextBox>
+                                        </CellEditTemplate>
+                                    </DxGridDataColumn>
+
+                                    <DxGridDataColumn FieldName="So_luong" Caption="Số lượng" MinWidth="110" Width="110pt">
+                                        <CellEditTemplate Context="GrdContext">
+                                            @{
+                                                var _Mg_kbdcct = (Ct98web)GrdContext.EditModel;
+                                            }
+                                            <DxSpinEdit @bind-Value="@_Mg_kbdcct.So_luong" Mask="@NumericMask.WholeNumber" Id="So_luong"></DxSpinEdit>
+                                        </CellEditTemplate>
+                                    </DxGridDataColumn>
+
+                                    <DxGridDataColumn FieldName="Khuyen_mai" Caption="Vật tư k.mãi" MinWidth="120" Width="120pt">
+                                        <CellEditTemplate Context="GrdContext">
+                                            @{
+                                                var _Mg_kbdcct = (Ct98web)GrdContext.EditModel;
+                                            }
+                                            <DxCheckBox @bind-Checked="@_Mg_kbdcct.Khuyen_mai" Id="@end_GridCt"></DxCheckBox>
+                                        </CellEditTemplate>
+                                    </DxGridDataColumn>                                  
+
+                                </Columns>
+                            </DxGrid>
+                        </Template>
+                    </DxFormLayoutItem>
+                </DxFormLayoutGroup>
+            </DxFormLayout>
+        </div>
+
+    </BodyTemplate>
+    <FooterTemplate>
+        <div class="row m-2 justify-content-end">
+            <div class="row col-4 justify-content-end">
+                @if (curActionTask == ActionTask.New || curActionTask == ActionTask.Edit)
+                {
+                    <DxButton CssClass="btnokcancel col" RenderStyle="ButtonRenderStyle.Primary" Text="@Lap["Save"].ToString()" Click="@btnNhan_click" />
+                }
+                <DxButton CssClass="btnokcancel col" RenderStyle="ButtonRenderStyle.Danger" Text="@Lap["Cancel"].ToString()" Click="@HideForm" />
+            </div>
+        </div>
+    </FooterTemplate>
+</DxWindow>
+
+@if (frmChitieu)
+{
+    <CascadingValue Name="Ma_dvcs" Value="@Ma_dvcs">
+        <CascadingValue Name="Stt_rec" Value="@Stt_rec">
+            <CascadingValue Name="Edit_nhom_km" Value="@Edit_nhom_km">
+                <CascadingValue Name="Ngay_bd" Value="@CurPh98web.Ngay_bd">
+                <CascadingValue Name="ActionTask" Value="@curTask">
+                    <CascadingValue Name="Lang" Value="@IsLangEn">
+                        <FrmChitieu Closeform="CloseFormChitieu" sqlTablePh="@sqlTablePh" sqlTableCt="@sqlTableCt" SqlTableKey="@SqlTableKey"></FrmChitieu>
+                    </CascadingValue>
+                    </CascadingValue>
+                </CascadingValue>
+            </CascadingValue>
+        </CascadingValue>
+    </CascadingValue>
+}
+<XacnhanComponent Content="@Deletechitieu" Xacnhanxoa="Dongyxoa"></XacnhanComponent>
+
+@code {
+    IGrid GridCT { get; set; }
+    object SelectedDataItemCT { get; set; }
+    private bool AllowEditMode = true;
+    DxWindow windowRef;
+    [CascadingParameter(Name = "Ma_dvcs")]
+    public string Ma_dvcs { get; set; }
+    [CascadingParameter(Name = "Stt_rec")]
+    public string Stt_rec { get; set; }
+    [CascadingParameter(Name = "Store_proc")]
+    public string Store_proc { get; set; }
+    [CascadingParameter(Name = "ActionTask")]
+    private ActionTask curActionTask { get; set; }
+    [CascadingParameter(Name = "Lang")]
+    private bool LangEn { get; set; }
+    [Parameter]
+    public EventCallback<bool> Closeform { get; set; }
+    private string Pagetitle;
+    [Parameter]
+    public string sqlTablePh { get; set; }
+    [Parameter]
+    public string sqlTableCt { get; set; }
+    [Parameter]
+    public string SqlTableKey { get; set; }
+    [Parameter]
+    public Command curCommand { get; set; }
+    Ph98web CurPh98web;
+    Ct98web CurCt98web;
+    Ct98web CurrentEditModel;
+    List<Ct98web> LSData;
+    private bool IsLangEn = false;
+    string Edit_nhom_km = "";
+    string Deletechitieu = "";
+    private ActionTask curTask { get; set; }
+    DataTable TblCT = null;
+    private Users _curUser;
+    private DotNetObjectReference<FrmKMHTH> Pageobj;
+    string end_GridCt = "end_input_GridCt00";
+    bool frmChitieu { get; set; } = false;
+    IReadOnlyList<object> SelectedUserItems { get; set; }
+    private int MaxlengthTen_km = 0;
+    private int MaxlengthDien_giai = 0;
+
+    [JSInvokable]
+    public async void GridCTEditMode(string value)
+    {
+        if (!string.IsNullOrEmpty(value) && AllowEditMode)
+        {
+
+        }
+    }
+
+    [JSInvokable]
+    public async void CallGridEditMode(string value)
+    {
+        if (!string.IsNullOrEmpty(value) && AllowEditMode)
+        {
+            if (value.Equals(end_GridCt))
+            {
+                await GridCT.SaveChangesAsync();
+                AddNewCT();
+            }
+        }
+    }
+    [JSInvokable]
+    public async void GridFMode(string value)
+    {
+        if (!string.IsNullOrEmpty(value) && AllowEditMode)
+        {
+            if (value.Equals("F4"))
+            {
+                AddNewCT();
+            }
+            else if (value.Equals("F8"))
+            {
+                if (SelectedDataItemCT != null)
+                    GridCT.ShowDataItemDeleteConfirmation(SelectedDataItemCT);
+                else
+                {
+                    myStatemanagerment.SetNewAlertMessage("Chưa chọn chi tiết muốn xóa");
+                    return;
+                }
+            }
+            else if (value.ToUpper().Equals("ESCAPE"))
+            {
+                await GridCT.CancelEditAsync();
+                if (LSData.Count > 0)
+                    LSData.Remove(LSData[LSData.Count - 1]);
+            }
+        }
+    }
+    private void Dongyxoa(bool status)
+    {
+        if (status)
+        {
+            Ct98web[] _ctdel = LSData.Where(a => !string.IsNullOrEmpty(a.Nhom_km) && a.Nhom_km.Trim().Equals(Edit_nhom_km)).ToArray();
+            if (_ctdel != null && _ctdel.Length > 0)
+            {
+                for (int x = 0; x < _ctdel.Length; x++)
+                    LSData.Remove(_ctdel[x]);
+            }
+        }
+        Deletechitieu = "";
+    }
+    void CloseFormChitieu(List<Ct98web> lsData)
+    {
+        if (lsData != null && lsData.Count > 0)
+        {
+            if (curTask == ActionTask.None || curTask == ActionTask.View || curTask == ActionTask.Delete)
+                return;
+
+            if (curTask == ActionTask.Edit)
+            {
+                Ct98web[] _ctdel = LSData.Where(a => !string.IsNullOrEmpty(a.Nhom_km) && a.Nhom_km.Trim().Equals(Edit_nhom_km)).ToArray();
+                if (_ctdel != null && _ctdel.Length > 0)
+                {
+                    for (int x = 0; x < _ctdel.Length; x++)
+                        LSData.Remove(_ctdel[x]);
+                }
+            }
+
+            foreach (Ct98web _ct in lsData)
+            {
+                Ct98web _Ct98web = new Ct98web();
+                if (LSData.Count > 0)
+                {
+                    _Ct98web.Stt = LSData.Max(a => a.Stt) + 1;
+                }
+                else
+                {
+                    _Ct98web.Stt = 1;
+                }
+                _Ct98web.Stt_rec = CurPh98web.Stt_rec;
+                _Ct98web.Ngay_ct = CurPh98web.Ngay_ct;
+                _Ct98web.Ma_ct = CurPh98web.Ma_ct;
+                _Ct98web.Ghi_chu = "";
+                _Ct98web.So_ct = "";
+                _Ct98web.Ma_vt = _ct.Ma_vt;
+                _Ct98web.Dvt = _ct.Dvt;
+                _Ct98web.Khuyen_mai = _ct.Khuyen_mai;
+                _Ct98web.Nhom_km = _ct.Nhom_km;
+                _Ct98web.Stt_rec0 = string.Format("{0:000}", _Ct98web.Stt);
+                _Ct98web.So_luong = _ct.So_luong;
+                LSData.Add(_Ct98web);
+            }
+        }
+        frmChitieu = false;
+        curTask = ActionTask.None;
+        StateHasChanged();
+    }
+    void Themchitieu()
+    {
+        curTask = ActionTask.New;
+        frmChitieu = true;
+        StateHasChanged();
+    }
+    void Suachitieu()
+    {
+        if(SelectedDataItemCT != null)
+        {
+            Ct98web _curCt98 = (Ct98web)SelectedDataItemCT;
+            Edit_nhom_km = string.IsNullOrEmpty(_curCt98.Nhom_km) ? "" : _curCt98.Nhom_km.Trim();
+            curTask = ActionTask.Edit;
+            frmChitieu = true;
+            StateHasChanged();
+        }   
+        else
+        {
+            myStatemanagerment.SetNewAlertMessage("Chưa chọn chi tiết muốn sửa");
+        }       
+    }
+    void Xemchitieu()
+    {
+        if (SelectedDataItemCT != null)
+        {
+            Ct98web _curCt98 = (Ct98web)SelectedDataItemCT;
+            Edit_nhom_km = string.IsNullOrEmpty(_curCt98.Nhom_km) ? "" : _curCt98.Nhom_km.Trim();
+            curTask = ActionTask.View;
+            frmChitieu = true;
+            StateHasChanged();
+        }
+        else
+        {
+            myStatemanagerment.SetNewAlertMessage("Chưa chọn chi tiết muốn xem");
+        }
+    }
+    void Xoachitieu()
+    {
+        if (SelectedDataItemCT != null)
+        {
+            Ct98web _curCt98 = (Ct98web)SelectedDataItemCT;
+            Edit_nhom_km = string.IsNullOrEmpty(_curCt98.Nhom_km) ? "" : _curCt98.Nhom_km.Trim();
+            Deletechitieu = string.Format("Có phải bạn muốn xóa chi tiết có mã: {0}", Edit_nhom_km);
+            StateHasChanged();
+        }
+        else
+        {
+            myStatemanagerment.SetNewAlertMessage("Chưa chọn chi tiết muốn xóa");
+        }      
+    }
+    void OnAutoCompleteDMVTChanged(ExpandoObject value)
+    {
+        CurrentEditModel.Dvt = value.Where(a => a.Key.Equals("dvt")).FirstOrDefault().Value.ToString();
+    }
+
+    void CurrenSelectItem(IReadOnlyList<object> obj)
+    {
+        SelectedUserItems = obj;
+    }
+
+    async void StartEditDataItemByClickCT()
+    {
+        if (SelectedDataItemCT != null)
+            await GridCT.StartEditDataItemAsync(SelectedDataItemCT);
+    }
+
+    async void AddNewCT()
+    {
+        await GridCT.SaveChangesAsync();
+        Ct98web _Ct98web = new Ct98web();
+        if (LSData.Count > 0)
+        {
+            _Ct98web.Stt = LSData.Max(a => a.Stt) + 1;
+        }
+        else
+        {
+            _Ct98web.Stt = 1;
+        }
+        _Ct98web.Stt_rec = CurPh98web.Stt_rec;
+        _Ct98web.Ngay_ct = CurPh98web.Ngay_ct;
+        _Ct98web.Ma_ct = CurPh98web.Ma_ct;
+        _Ct98web.Ghi_chu = "";
+        _Ct98web.So_ct = "";
+        _Ct98web.Nhom_km = "";
+        _Ct98web.Stt_rec0 = string.Format("{0:000}", _Ct98web.Stt);
+        _Ct98web.So_luong = 0;
+        LSData.Add(_Ct98web);
+        await GridCT.StartEditDataItemAsync(_Ct98web);
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Pageobj = DotNetObjectReference.Create(this);
+            await JavacriptS.InvokeVoidAsync("SetPageObj", Pageobj);
+            string sql = string.Format("Select * from {0} where 1=0", sqlTableCt);
+            DataSet ds = myDb.LoadDataSet(sql);
+            TblCT = ds.Tables[0];
+            ColumnLength columnLength = await myDb.GetColumnLength("ten_km", sqlTablePh);
+            MaxlengthTen_km = columnLength.max_length;
+            columnLength = await myDb.GetColumnLength("dien_giai", sqlTablePh);
+            MaxlengthDien_giai = columnLength.max_length;
+        }
+    }
+
+    void Grid_CustomizeEditModelCT(GridCustomizeEditModelEventArgs e)
+    {
+        CurrentEditModel = (Ct98web)e.EditModel;
+        if (e.IsNew)
+        {
+            if (LSData.Count > 0)
+            {
+                CurrentEditModel.Stt = LSData.Max(a => a.Stt) + 1;
+            }
+            else
+            {
+                CurrentEditModel.Stt = 1;
+            }
+            CurrentEditModel.Stt_rec0 = string.Format("{0:000}", CurrentEditModel.Stt);
+        }
+    }
+
+    async Task Grid_EditCancelCT(GridEditCancelingEventArgs e)
+    {
+        //var editCt98web = (Ct98web)e.EditModel;
+        //Ct98web cts = LSData.Where(a => a.Stt_rec.Equals(editCt98web.Stt_rec) && a.Stt == editCt98web.Stt).FirstOrDefault();
+        //if (cts != null)
+        //{
+        //      LSData.Remove(cts);
+        //}
+    }
+    async Task Grid_EditModelSavingCT(GridEditModelSavingEventArgs e)
+    {
+        CurrentEditModel = (Ct98web)e.EditModel;
+        Ct98web cts = null;
+        if (!string.IsNullOrEmpty(CurrentEditModel.Stt_rec))
+        {
+            cts = LSData.Where(a => a.Stt_rec.Equals(CurrentEditModel.Stt_rec) && a.Stt == CurrentEditModel.Stt).FirstOrDefault();
+        }
+        if (cts != null)
+        {
+            cts.Ma_vt = CurrentEditModel.Ma_vt;
+            cts.Dvt = CurrentEditModel.Dvt;
+            cts.So_luong = CurrentEditModel.So_luong;
+            cts.Nhom_km = CurrentEditModel.Nhom_km;
+            cts.Ghi_chu = CurrentEditModel.Ghi_chu;
+            cts.Khuyen_mai = CurrentEditModel.Khuyen_mai;
+        }
+        else
+        {
+            LSData.Add(CurrentEditModel);
+        }
+    }
+    async Task Grid_DataItemDeletingCT(GridDataItemDeletingEventArgs e)
+    {
+        var editCt98web = (Ct98web)e.DataItem;
+        LSData.Remove(editCt98web);
+        int _stt = 1;
+        LSData.ForEach((Ct98web qtdbct) =>
+        {
+            qtdbct.Stt = _stt;
+            qtdbct.Stt_rec0 = string.Format("{0:000}", qtdbct.Stt);
+            _stt++;
+        });
+    }
+    void OnformClose()
+    {
+        windowRef.CloseAsync();
+        Closeform.InvokeAsync(true);
+    }
+    private async void btnNhan_click()
+    {
+        if (curActionTask == ActionTask.New || curActionTask == ActionTask.Edit)
+            await Save();
+
+    }
+    void SaveDoneHideForm()
+    {
+        windowRef.CloseAsync();
+        Closeform.InvokeAsync(true);
+    }
+    void HideForm()
+    {
+        windowRef.CloseAsync();
+        Closeform.InvokeAsync(false);
+    }
+    protected override void OnInitialized()
+    {
+        CurPh98web = new Ph98web();
+        CurCt98web = new Ct98web();
+        LSData = new List<Ct98web>();
+        _curUser = myStatemanagerment.GetCurUser();
+        switch (curActionTask)
+        {
+            case ActionTask.View:
+                {
+                    Pagetitle = Lap["View"];
+                    V_Xem();
+                    break;
+                }
+            case ActionTask.Edit:
+                {
+                    Pagetitle = Lap["Edit"];
+                    V_Sua();
+                    break;
+                }
+            case ActionTask.New:
+                {
+                    Pagetitle = Lap["New"];
+                    V_Moi();
+                    break;
+                }
+            default:
+                {
+                    Pagetitle = Lap["View"];
+                    V_Xem();
+                    break;
+                }
+        }
+    }
+
+    void V_Moi()
+    {
+        CurPh98web.Ngay_ct = CurPh98web.Ngay_lct = CurPh98web.Ngay_bd = CurPh98web.Ngay_kt = DateTime.Now.Date;
+        CurPh98web.Ma_dvcs = Ma_dvcs;
+        CurPh98web.Ma_ct = "KMT";
+        CurPh98web.So_ct = "";
+        CurPh98web.Status = "1";
+        CurPh98web.Ctkm_status = "";
+        CurPh98web.Ma_nh = "";
+        CurPh98web.Ma_kh = "";
+        CurPh98web.Doi_tuong = "";
+        CurPh98web.Dien_giai = "";
+        CurPh98web.Loai_km = "Khuyến mãi hàng tặng hàng";
+        CurPh98web.Ket_thuc = false;
+        CurPh98web.Stt_rec = Guid.NewGuid().ToString();
+        Stt_rec = CurPh98web.Stt_rec;
+        AllowEditMode = true;
+        StateHasChanged();
+    }
+
+    void V_Xem()
+    {
+        AllowEditMode = false;
+        if (!string.IsNullOrEmpty(Stt_rec))
+            Loaddata(Stt_rec);
+    }
+    void V_Sua()
+    {
+        AllowEditMode = true;
+        if (!string.IsNullOrEmpty(Stt_rec))
+            Loaddata(Stt_rec);
+    }
+
+    void Loaddata(string stt_rec)
+    {
+        string sql = string.Format("EXEC {0} '{1}'", Store_proc, stt_rec);
+        DataSet ds = myDb.LoadDataSet(sql);
+        if (ds != null && ds.Tables.Count > 0)
+        {
+            List<Ph98web> ls41 = myDb.ConvertDataTable<Ph98web>(ds.Tables[0]);
+            if (ls41 != null && ls41.Count > 0)
+            {
+                CurPh98web = ls41[0];
+            }
+            if (ds != null && ds.Tables.Count > 1)
+            {
+                LSData = myDb.ConvertDataTable<Ct98web>(ds.Tables[1]);
+            }
+            StateHasChanged();
+        }
+    }
+
+    private async Task Save()
+    {
+        if (!CheckValid())
+            return;
+
+        await GridCT.SaveChangesAsync();
+
+        if (LSData.Count <= 0)
+        {
+            myStatemanagerment.SetNewAlertMessage("Chưa vào chi tiết.");
+            return;
+        }
+
+        if (curActionTask == ActionTask.New)
+        {
+            CurPh98web.Date = DateTime.Now.Date;
+            CurPh98web.Date0 = DateTime.Now.Date;
+            CurPh98web.Time = DateTime.Now.ToString("HH:mm:ss");
+            CurPh98web.Time0 = DateTime.Now.ToString("HH:mm:ss");
+            if (_curUser != null)
+            {
+                CurPh98web.User_id = _curUser.User_id;
+                CurPh98web.User_id0 = _curUser.User_id;
+            }
+            await myDb.InsertOneRow<Ph98web>(CurPh98web, sqlTablePh);
+            if (LSData.Count > 0)
+            {
+                string sql_del = string.Format("Delete from {0} where {1} = '{2}'", sqlTableCt, SqlTableKey, CurPh98web.Stt_rec);
+                await myDb.ExecuteSqlQueryAsync(sql_del);
+                foreach (Ct98web ct in LSData)
+                {
+                    DataRow row = TblCT.NewRow();
+                    row["stt_rec"] = (object)ct.Stt_rec;
+                    row["stt_rec0"] = (object)ct.Stt_rec0;
+                    row["ma_ct"] = (object)ct.Ma_ct;
+                    row["so_ct"] = (object)ct.So_ct;
+                    row["ngay_ct"] = (object)ct.Ngay_ct;
+                    row["ma_vt"] = (object)ct.Ma_vt;
+                    row["dvt"] = (object)ct.Dvt;
+                    row["so_luong"] = (object)ct.So_luong;
+                    row["nhom_km"] = (object)ct.Nhom_km;
+                    row["khuyen_mai"] = (object)ct.Khuyen_mai;
+                    row["ghi_chu"] = (object)ct.Ghi_chu;
+                    await myDb.InsertData(sqlTableCt, row, "");
+                };
+                // await myDb.InsertManyRow<Ct98web>(LSData, sqlTableCt, SqlTableKey, CurPh98web.Stt_rec);
+            }
+            myStatemanagerment.SetNewThongbao("Tạo CTKM : " + CurPh98web.Ten_km + " thành công.");
+        }
+        else if (curActionTask == ActionTask.Edit)
+        {
+            CurPh98web.Date = DateTime.Now.Date;
+            CurPh98web.Time = DateTime.Now.ToString("HH:mm:ss");
+            if (_curUser != null)
+                CurPh98web.User_id = _curUser.User_id;
+
+            await myDb.UpdateOneRow<Ph98web>(CurPh98web, sqlTablePh, SqlTableKey, CurPh98web.Stt_rec);
+            if (LSData.Count > 0)
+            {
+                string sql_del = string.Format("Delete from {0} where {1} = '{2}'", sqlTableCt, SqlTableKey, CurPh98web.Stt_rec);
+                await myDb.ExecuteSqlQueryAsync(sql_del);
+                foreach (Ct98web ct in LSData)
+                {
+                    DataRow row = TblCT.NewRow();
+                    row["stt_rec"] = (object)ct.Stt_rec;
+                    row["stt_rec0"] = (object)ct.Stt_rec0;
+                    row["ma_ct"] = (object)ct.Ma_ct;
+                    row["ngay_ct"] = (object)ct.Ngay_ct;
+                    row["ma_vt"] = (object)ct.Ma_vt;
+                    row["dvt"] = (object)ct.Dvt;
+                    row["so_luong"] = (object)ct.So_luong;
+                    row["nhom_km"] = (object)ct.Nhom_km;
+                    row["khuyen_mai"] = (object)ct.Khuyen_mai;
+                    row["ghi_chu"] = (object)ct.Ghi_chu;
+                    await myDb.InsertData(sqlTableCt, row, "");
+                };
+                // await myDb.InsertManyRow<Ct98web>(LSData, sqlTableCt, SqlTableKey, CurPh98web.Stt_rec);
+            }
+            myStatemanagerment.SetNewThongbao("Sửa CTKM: " + CurPh98web.Ten_km + " thành công.");
+        }
+        SaveDoneHideForm();
+    }
+
+    bool CheckValid()
+    {
+        if (string.IsNullOrEmpty(CurPh98web.Ten_km))
+        {
+            myStatemanagerment.SetNewAlertMessage("Chưa nhập tên CTKM");
+            return false;
+        }
+        if (CurPh98web.Ngay_bd > CurPh98web.Ngay_kt)
+        {
+            myStatemanagerment.SetNewAlertMessage("Ngày bắt đầu phải <= ngày kết thúc");
+            return false;
+        }
+        return true;
+    }
+}

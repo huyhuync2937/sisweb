@@ -1,0 +1,16 @@
+﻿<Project>
+  <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/SisSo/SisSo.bundle.scp.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\SisSo.nwvuv44q4q.bundle.scp.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-\u002BTMqoEkBLdTtMzTJZ1hFD1coOfp\u002BSA3jObadlDe5Uh0="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"8119"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022\u002BTMqoEkBLdTtMzTJZ1hFD1coOfp\u002BSA3jObadlDe5Uh0=\u0022"},{"Name":"Last-Modified","Value":"Thu, 03 Jul 2025 04:23:37 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/SisSo/SisSo.nwvuv44q4q.bundle.scp.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\SisSo.nwvuv44q4q.bundle.scp.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"nwvuv44q4q"},{"Name":"integrity","Value":"sha256-\u002BTMqoEkBLdTtMzTJZ1hFD1coOfp\u002BSA3jObadlDe5Uh0="},{"Name":"label","Value":"_content/SisSo/SisSo.bundle.scp.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"8119"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022\u002BTMqoEkBLdTtMzTJZ1hFD1coOfp\u002BSA3jObadlDe5Uh0=\u0022"},{"Name":"Last-Modified","Value":"Thu, 03 Jul 2025 04:23:37 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+  </ItemGroup>
+</Project>

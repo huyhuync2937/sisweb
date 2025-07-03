@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{04BD6B08-35A3-4892-B729-F793CAA5C482}|SisSo\\SisSo.csproj|d:\\sis\\sisweberp2025_dev\\sisso\\sisso\\pages\\input\\cactpt1\\frmcactpt1.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{04BD6B08-35A3-4892-B729-F793CAA5C482}|SisSo\\SisSo.csproj|solutionrelative:sisso\\pages\\input\\cactpt1\\frmcactpt1.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04BD6B08-35A3-4892-B729-F793CAA5C482}|SisSo\\SisSo.csproj|d:\\sis\\sisweberp2025_dev\\sisso\\sisso\\pages\\input\\sodmhdb\\frmsodmhdb.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{04BD6B08-35A3-4892-B729-F793CAA5C482}|SisSo\\SisSo.csproj|solutionrelative:sisso\\pages\\input\\sodmhdb\\frmsodmhdb.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04BD6B08-35A3-4892-B729-F793CAA5C482}|SisSo\\SisSo.csproj|d:\\sis\\sisweberp2025_dev\\sisso\\sisso\\pages\\input\\sodmhdb\\dmhdct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04BD6B08-35A3-4892-B729-F793CAA5C482}|SisSo\\SisSo.csproj|solutionrelative:sisso\\pages\\input\\sodmhdb\\dmhdct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{04BD6B08-35A3-4892-B729-F793CAA5C482}|SisSo\\SisSo.csproj|d:\\sis\\sisweberp2025_dev\\sisso\\sisso\\pages\\input\\sodmhdb\\dmhd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{04BD6B08-35A3-4892-B729-F793CAA5C482}|SisSo\\SisSo.csproj|solutionrelative:sisso\\pages\\input\\sodmhdb\\dmhd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Dmhdct.cs",
+              "DocumentMoniker": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\SisSo\\Pages\\Input\\Sodmhdb\\Dmhdct.cs",
+              "RelativeDocumentMoniker": "SisSo\\Pages\\Input\\Sodmhdb\\Dmhdct.cs",
+              "ToolTip": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\SisSo\\Pages\\Input\\Sodmhdb\\Dmhdct.cs",
+              "RelativeToolTip": "SisSo\\Pages\\Input\\Sodmhdb\\Dmhdct.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T07:54:13.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Dmhd.cs",
+              "DocumentMoniker": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\SisSo\\Pages\\Input\\Sodmhdb\\Dmhd.cs",
+              "RelativeDocumentMoniker": "SisSo\\Pages\\Input\\Sodmhdb\\Dmhd.cs",
+              "ToolTip": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\SisSo\\Pages\\Input\\Sodmhdb\\Dmhd.cs",
+              "RelativeToolTip": "SisSo\\Pages\\Input\\Sodmhdb\\Dmhd.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T07:54:11.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmSodmhdb.razor",
+              "DocumentMoniker": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\SisSo\\Pages\\Input\\Sodmhdb\\FrmSodmhdb.razor",
+              "RelativeDocumentMoniker": "SisSo\\Pages\\Input\\Sodmhdb\\FrmSodmhdb.razor",
+              "ToolTip": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\SisSo\\Pages\\Input\\Sodmhdb\\FrmSodmhdb.razor",
+              "RelativeToolTip": "SisSo\\Pages\\Input\\Sodmhdb\\FrmSodmhdb.razor",
+              "ViewState": "AgIAAJQAAAAAAAAAAAAAABAEAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-17T09:38:15.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FrmCactpt1.razor",
+              "DocumentMoniker": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\SisSo\\Pages\\Input\\Cactpt1\\FrmCactpt1.razor",
+              "RelativeDocumentMoniker": "SisSo\\Pages\\Input\\Cactpt1\\FrmCactpt1.razor",
+              "ToolTip": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\SisSo\\Pages\\Input\\Cactpt1\\FrmCactpt1.razor",
+              "RelativeToolTip": "SisSo\\Pages\\Input\\Cactpt1\\FrmCactpt1.razor",
+              "ViewState": "AgIAAJEAAAAAAAAAAAAAAK4AAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-17T08:49:34.71Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

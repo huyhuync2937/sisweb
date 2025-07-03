@@ -1,0 +1,80 @@
+﻿@page "/frmarkh"
+@page "/frmarkh/{menu_id}"
+@page "/frmarkh/{menu_id}/{ma_kh}"
+@inject Statemanagerment myStatemanagerment
+@inject NavigationManager navigation
+@inject IDbManager myDb
+@inject IJSRuntime JavacriptS
+@inject IStringLocalizer<App> Lap
+@inject IStringLocalizer<ArkhComponent> Lat
+
+<DxPopup @bind-Visible="@PopVisible"
+         ShowFooter="false" ShowHeader="false"
+         CloseOnEscape="false"
+         CloseOnOutsideClick="false"
+         ShowCloseButton="false"
+         Width="auto"
+         MinWidth="650px"
+         MinHeight="200px"
+         MaxHeight="98vh"
+         AllowResize="true"
+         AllowDrag="true"
+         AllowDragByHeaderOnly="true">
+    <BodyTemplate>
+        <div class="row">
+            <EditArkh Ma_ma="@ma_kh" Menu_id="@menu_id" curActionTask="@curActionTask" ShowAdd="@ShowAdd" OnClose="ClickHandler"></EditArkh>
+        </div>
+    </BodyTemplate>
+</DxPopup>
+
+@code {
+    [Parameter] public EventCallback OnClose { get; set; }
+    [Parameter]
+    public string menu_id { get; set; }
+    [Parameter]
+    public string ma_kh { get; set; }
+    [Parameter]
+    public ActionTask curActionTask { get; set; } = ActionTask.None;
+    [Parameter]
+    public bool ShowAdd { get; set; }
+
+    public bool PopVisible { get; set; } = true;
+    private string Pagetitle = "Danh mục khách hàng";    
+
+    protected override void OnInitialized()
+    {        
+        if (curActionTask == ActionTask.None)
+        {
+            curActionTask = myStatemanagerment.GetCurrentActionTask();
+        }
+
+        switch (curActionTask)
+        {
+            case ActionTask.View:
+                {
+                    Pagetitle = Lat["View customer information"];
+                    break;
+                }
+            case ActionTask.Edit:
+                {
+                    Pagetitle = Lat["Edit customer information"];
+                    break;
+                }
+            case ActionTask.New:
+                {
+                    Pagetitle = Lat["Add a new customer"];
+                    break;
+                }
+            default:
+                {
+                    Pagetitle = Lat["View customer information"];
+                    break;
+                }
+        }
+    }
+    private void ClickHandler()
+    {
+        PopVisible = false;
+        OnClose.InvokeAsync();
+    }
+}

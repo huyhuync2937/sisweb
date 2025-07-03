@@ -1,0 +1,38 @@
+﻿@using System.Reflection
+@inject IOptionsManager Options
+
+@if (Target != null && !string.IsNullOrEmpty(FieldName))
+{
+    <DxSpinEdit @bind-Value="@CurrentValue" CssClass="w-100" Enabled="@IsEnable"              
+    ShowSpinButtons="true" Mask="@M_IP_SL"/>
+}
+
+@code {
+    [Parameter] public object Target { get; set; } // Model
+    [Parameter] public string FieldName { get; set; } // Tên field cần binding
+    [Parameter] public bool IsEnable { get; set; }
+    [Parameter] public EventCallback<Decimal> ValueChanged { get; set; }
+
+    private PropertyInfo Property => Target?.GetType().GetProperty(FieldName);
+    string M_IP_SL = "";
+
+    private Decimal CurrentValue
+    {
+        get => Convert.ToDecimal(Property?.GetValue(Target) ?? 0);
+        set
+        {
+            if (Property?.CanWrite == true)
+            {
+                Property.SetValue(Target, Convert.ChangeType(value, Property.PropertyType));
+                if (ValueChanged.HasDelegate)
+                {
+                    ValueChanged.InvokeAsync(Convert.ToDecimal(Convert.ChangeType(value, Property.PropertyType)));
+                }   
+            }
+        }
+    }
+    protected async override Task OnInitializedAsync()
+    {
+		M_IP_SL = Options.GetOptionsValue("M_IP_SL");
+    }
+}

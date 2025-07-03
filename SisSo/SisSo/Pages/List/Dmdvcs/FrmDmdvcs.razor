@@ -1,0 +1,60 @@
+﻿@page "/frmdmdvcs"
+@page "/frmdmdvcs/{menu_id}/{ma_dvcs}"
+@using System.Data
+@inject Statemanagerment myStatemanagerment
+@inject NavigationManager navigation
+@inject IDbManager myDb
+<DxPopup @bind-Visible="@PopupVisible"
+         ShowFooter="true"
+         CloseOnEscape="false"
+         CloseOnOutsideClick="false"
+         ShowCloseButton="false"
+         Width="500px"
+         HeaderText="@Pagetitle">
+    <BodyContentTemplate>
+        <CascadingValue Name="Menu_id" Value="@menu_id">
+            <CascadingValue Name="Ma_dvcs" Value="@ma_dvcs">
+                <EditFormDmdvcs></EditFormDmdvcs>
+            </CascadingValue>             
+        </CascadingValue>
+     
+    </BodyContentTemplate>
+
+</DxPopup>
+
+@code {
+    [Parameter]
+    public string menu_id { get; set; }
+    [Parameter]
+    public string ma_dvcs { get; set; }
+    public bool PopupVisible { get; set; } = true;
+    private ActionTask curActionTask { get; set; }
+    private string Pagetitle = "Danh mục đơn vị cơ sở";
+    protected override void OnInitialized()
+    {
+        curActionTask = myStatemanagerment.GetCurrentActionTask();
+        switch (curActionTask)
+        {
+            case ActionTask.View:
+                {
+                    Pagetitle = "Xem thông tin đơn vị cơ sở";
+                    break;
+                }
+            case ActionTask.Edit:
+                {
+                    Pagetitle = "Sửa thông tin đơn vị cơ sở";
+                    break;
+                }
+            case ActionTask.New:
+                {
+                    Pagetitle = "Thêm mới đơn vị cơ sở";
+                    break;
+                }
+            default:
+                {
+                    Pagetitle = "Xem thông tin đơn vị cơ sở";
+                    break;
+                }
+        }
+    }
+}

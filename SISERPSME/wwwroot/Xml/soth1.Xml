@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfSoth1Model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Soth1Model>
+    <Ngay_ct1>2020-01-21T00:00:00</Ngay_ct1>
+    <Ngay_ct2>2025-01-21T00:00:00+07:00</Ngay_ct2>
+    <LoaiBoCT>0</LoaiBoCT>
+    <LsData>
+      <Soth1>
+        <Stt>1</Stt>
+        <Ma_vt>006             </Ma_vt>
+        <Ma_vt_ten_vt>Máy tính xách tay Dell Inspiron 7306/ Core i5-1135G7/13.3" FHD/8G/512GB SSD NVMe/ Touch + Active Pen/ 4 Cell/ Black - N3I5202W-Black</Ma_vt_ten_vt>
+        <Ma_vt_dvt>Bộ</Ma_vt_dvt>
+        <So_luong>144.000</So_luong>
+        <Gia2>5694444.4444</Gia2>
+        <Tien2>820000000.00</Tien2>
+        <Ck>34900000.00</Ck>
+        <Tien_sau_ck>785100000.00</Tien_sau_ck>
+        <Thue>78510000.00</Thue>
+        <Pt>863610000.00</Pt>
+        <Gia>10152.8958</Gia>
+        <Tien>1462017.00</Tien>
+        <Sl_hbtl>40.000</Sl_hbtl>
+        <Tien_hbtl>20000000.00</Tien_hbtl>
+        <Tien_ck_tl>0.00</Tien_ck_tl>
+        <Tien_thue_tl>2000000.00</Tien_thue_tl>
+        <Tien_von_tl>16000000.00</Tien_von_tl>
+        <Tien_giam_gia>0.00</Tien_giam_gia>
+        <Tien_thue_giam_gia>0.00</Tien_thue_giam_gia>
+        <Sl_thuan>104.000</Sl_thuan>
+        <Dt_thuan>765100000.00</Dt_thuan>
+        <Tien_thue_thuan>76510000.00</Tien_thue_thuan>
+        <Tien_von_thuan>-14537983.00</Tien_von_thuan>
+        <Lai>779637983.00</Lai>
+        <Ty_le2>95.08</Ty_le2>
+        <Ty_le>53326.19</Ty_le>
+        <Ma_vt_nh_vt1>                </Ma_vt_nh_vt1>
+        <Ma_vt_nh_vt2>                </Ma_vt_nh_vt2>
+        <Ma_vt_nh_vt3>                </Ma_vt_nh_vt3>
+        <Ten_vt>Máy tính xách tay Dell Inspiron 7306/ Core i5-1135G7/13.3" FHD/8G/512GB SSD NVMe/ Touch + Active Pen/ 4 Cell/ Black - N3I5202W-Black</Ten_vt>
+        <Dvt>Bộ</Dvt>
+        <Tien_thue_thuan_nt>0.00</Tien_thue_thuan_nt>
+        <Pt_not_ck_nt>0.00</Pt_not_ck_nt>
+        <Dt_thuan_nt>0.00</Dt_thuan_nt>
+        <Tien_nt>0.00</Tien_nt>
+        <Lai_nt>0.00</Lai_nt>
+        <Tien_von_thuan_nt>0.00</Tien_von_thuan_nt>
+        <Tien_von_tl_nt>0.00</Tien_von_tl_nt>
+      </Soth1>
+      <Soth1>
+        <Stt>2</Stt>
+        <Ma_vt>007             </Ma_vt>
+        <Ma_vt_ten_vt>Túi máy tính xách tay</Ma_vt_ten_vt>
+        <Ma_vt_dvt>Cái</Ma_vt_dvt>
+        <So_luong>11.000</So_luong>
+        <Gia2>72727.2727</Gia2>
+        <Tien2>800000.00</Tien2>
+        <Ck>0.00</Ck>
+        <Tien_sau_ck>800000.00</Tien_sau_ck>
+        <Thue>80000.00</Thue>
+        <Pt>880000.00</Pt>
+        <Gia>3562500.0000</Gia>
+        <Tien>39187500.00</Tien>
+        <Sl_hbtl>0.000</Sl_hbtl>
+        <Tien_hbtl>0.00</Tien_hbtl>
+        <Tien_ck_tl>0.00</Tien_ck_tl>
+        <Tien_thue_tl>0.00</Tien_thue_tl>
+        <Tien_von_tl>0.00</Tien_von_tl>
+        <Tien_giam_gia>0.00</Tien_giam_gia>
+        <Tien_thue_giam_gia>0.00</Tien_thue_giam_gia>
+        <Sl_thuan>11.000</Sl_thuan>
+        <Dt_thuan>800000.00</Dt_thuan>
+        <Tien_thue_thuan>80000.00</Tien_thue_thuan>
+        <Tien_von_thuan>39187500.00</Tien_von_thuan>
+        <Lai>-38387500.00</Lai>
+        <Ty_le2>-4798.44</Ty_le2>
+        <Ty_le>-97.96</Ty_le>
+        <Ma_vt_nh_vt1>                </Ma_vt_nh_vt1>
+        <Ma_vt_nh_vt2>                </Ma_vt_nh_vt2>
+        <Ma_vt_nh_vt3>                </Ma_vt_nh_vt3>
+        <Ten_vt>Túi máy tính xách tay</Ten_vt>
+        <Dvt>Cái</Dvt>
+        <Tien_thue_thuan_nt>0.00</Tien_thue_thuan_nt>
+        <Pt_not_ck_nt>0.00</Pt_not_ck_nt>
+        <Dt_thuan_nt>0.00</Dt_thuan_nt>
+        <Tien_nt>0.00</Tien_nt>
+        <Lai_nt>0.00</Lai_nt>
+        <Tien_von_thuan_nt>0.00</Tien_von_thuan_nt>
+        <Tien_von_tl_nt>0.00</Tien_von_tl_nt>
+      </Soth1>
+      <Soth1>
+        <Stt>3</Stt>
+        <Ma_vt>010             </Ma_vt>
+        <Ma_vt_ten_vt>Phần mềm Bkav eHoadon - 2000</Ma_vt_ten_vt>
+        <Ma_vt_dvt>Gói</Ma_vt_dvt>
+        <So_luong>100.000</So_luong>
+        <Gia2>150000.0000</Gia2>
+        <Tien2>15000000.00</Tien2>
+        <Ck>0.00</Ck>
+        <Tien_sau_ck>15000000.00</Tien_sau_ck>
+        <Thue>1500000.00</Thue>
+        <Pt>16500000.00</Pt>
+        <Gia>0.0000</Gia>
+        <Tien>0.00</Tien>
+        <Sl_hbtl>0.000</Sl_hbtl>
+        <Tien_hbtl>0.00</Tien_hbtl>
+        <Tien_ck_tl>0.00</Tien_ck_tl>
+        <Tien_thue_tl>0.00</Tien_thue_tl>
+        <Tien_von_tl>0.00</Tien_von_tl>
+        <Tien_giam_gia>0.00</Tien_giam_gia>
+        <Tien_thue_giam_gia>0.00</Tien_thue_giam_gia>
+        <Sl_thuan>100.000</Sl_thuan>
+        <Dt_thuan>15000000.00</Dt_thuan>
+        <Tien_thue_thuan>1500000.00</Tien_thue_thuan>
+        <Tien_von_thuan>0.00</Tien_von_thuan>
+        <Lai>15000000.00</Lai>
+        <Ty_le2>100.00</Ty_le2>
+        <Ty_le>0.00</Ty_le>
+        <Ma_vt_nh_vt1>                </Ma_vt_nh_vt1>
+        <Ma_vt_nh_vt2>                </Ma_vt_nh_vt2>
+        <Ma_vt_nh_vt3>                </Ma_vt_nh_vt3>
+        <Ten_vt>Phần mềm Bkav eHoadon - 2000</Ten_vt>
+        <Dvt>Gói</Dvt>
+        <Tien_thue_thuan_nt>0.00</Tien_thue_thuan_nt>
+        <Pt_not_ck_nt>0.00</Pt_not_ck_nt>
+        <Dt_thuan_nt>0.00</Dt_thuan_nt>
+        <Tien_nt>0.00</Tien_nt>
+        <Lai_nt>0.00</Lai_nt>
+        <Tien_von_thuan_nt>0.00</Tien_von_thuan_nt>
+        <Tien_von_tl_nt>0.00</Tien_von_tl_nt>
+      </Soth1>
+      <Soth1>
+        <Stt>4</Stt>
+        <Ma_vt>08TP01          </Ma_vt>
+        <Ma_vt_ten_vt>Thành phẩm tháng 8-01</Ma_vt_ten_vt>
+        <Ma_vt_dvt>Kg</Ma_vt_dvt>
+        <So_luong>222.000</So_luong>
+        <Gia2>9954954.9550</Gia2>
+        <Tien2>2210000000.00</Tien2>
+        <Ck>6000000.00</Ck>
+        <Tien_sau_ck>2204000000.00</Tien_sau_ck>
+        <Thue>220400000.00</Thue>
+        <Pt>2424400000.00</Pt>
+        <Gia>15669642.8604</Gia>
+        <Tien>3478660715.00</Tien>
+        <Sl_hbtl>0.000</Sl_hbtl>
+        <Tien_hbtl>0.00</Tien_hbtl>
+        <Tien_ck_tl>0.00</Tien_ck_tl>
+        <Tien_thue_tl>0.00</Tien_thue_tl>
+        <Tien_von_tl>0.00</Tien_von_tl>
+        <Tien_giam_gia>66000000.00</Tien_giam_gia>
+        <Tien_thue_giam_gia>0.00</Tien_thue_giam_gia>
+        <Sl_thuan>222.000</Sl_thuan>
+        <Dt_thuan>2138000000.00</Dt_thuan>
+        <Tien_thue_thuan>220400000.00</Tien_thue_thuan>
+        <Tien_von_thuan>3478660715.00</Tien_von_thuan>
+        <Lai>-1340660715.00</Lai>
+        <Ty_le2>-60.66</Ty_le2>
+        <Ty_le>-38.54</Ty_le>
+        <Ma_vt_nh_vt1>                </Ma_vt_nh_vt1>
+        <Ma_vt_nh_vt2>                </Ma_vt_nh_vt2>
+        <Ma_vt_nh_vt3>                </Ma_vt_nh_vt3>
+        <Ten_vt>Thành phẩm tháng 8-01</Ten_vt>
+        <Dvt>Kg</Dvt>
+        <Tien_thue_thuan_nt>5000.00</Tien_thue_thuan_nt>
+        <Pt_not_ck_nt>55000.00</Pt_not_ck_nt>
+        <Dt_thuan_nt>50000.00</Dt_thuan_nt>
+        <Tien_nt>0.00</Tien_nt>
+        <Lai_nt>50000.00</Lai_nt>
+        <Tien_von_thuan_nt>0.00</Tien_von_thuan_nt>
+        <Tien_von_tl_nt>0.00</Tien_von_tl_nt>
+      </Soth1>
+      <Soth1>
+        <Stt>5</Stt>
+        <Ma_vt>08TP02          </Ma_vt>
+        <Ma_vt_ten_vt>Thành phẩm sản xuất tháng 8 - 02</Ma_vt_ten_vt>
+        <Ma_vt_dvt>Kg</Ma_vt_dvt>
+        <So_luong>262.000</So_luong>
+        <Gia2>39330534351.1450</Gia2>
+        <Tien2>10304600000000.00</Tien2>
+        <Ck>0.00</Ck>
+        <Tien_sau_ck>10304600000000.00</Tien_sau_ck>
+        <Thue>1030460000000.00</Thue>
+        <Pt>11335060000000.00</Pt>
+        <Gia>3039433.9618</Gia>
+        <Tien>796331698.00</Tien>
+        <Sl_hbtl>0.000</Sl_hbtl>
+        <Tien_hbtl>0.00</Tien_hbtl>
+        <Tien_ck_tl>0.00</Tien_ck_tl>
+        <Tien_thue_tl>0.00</Tien_thue_tl>
+        <Tien_von_tl>0.00</Tien_von_tl>
+        <Tien_giam_gia>120000.00</Tien_giam_gia>
+        <Tien_thue_giam_gia>0.00</Tien_thue_giam_gia>
+        <Sl_thuan>262.000</Sl_thuan>
+        <Dt_thuan>10304599880000.00</Dt_thuan>
+        <Tien_thue_thuan>1030460000000.00</Tien_thue_thuan>
+        <Tien_von_thuan>796331698.00</Tien_von_thuan>
+        <Lai>10303803548302.00</Lai>
+        <Ty_le2>99.99</Ty_le2>
+        <Ty_le>1293908.50</Ty_le>
+        <Ma_vt_nh_vt1>                </Ma_vt_nh_vt1>
+        <Ma_vt_nh_vt2>                </Ma_vt_nh_vt2>
+        <Ma_vt_nh_vt3>                </Ma_vt_nh_vt3>
+        <Ten_vt>Thành phẩm sản xuất tháng 8 - 02</Ten_vt>
+        <Dvt>Kg</Dvt>
+        <Tien_thue_thuan_nt>44800000.00</Tien_thue_thuan_nt>
+        <Pt_not_ck_nt>492800000.00</Pt_not_ck_nt>
+        <Dt_thuan_nt>448000000.00</Dt_thuan_nt>
+        <Tien_nt>0.00</Tien_nt>
+        <Lai_nt>448000000.00</Lai_nt>
+        <Tien_von_thuan_nt>0.00</Tien_von_thuan_nt>
+        <Tien_von_tl_nt>0.00</Tien_von_tl_nt>
+      </Soth1>
+      <Soth1>
+        <Stt>6</Stt>
+        <Ma_vt>AOLEN           </Ma_vt>
+        <Ma_vt_ten_vt>Áo len</Ma_vt_ten_vt>
+        <Ma_vt_dvt>Cái</Ma_vt_dvt>
+        <So_luong>6.000</So_luong>
+        <Gia2>0.0000</Gia2>
+        <Tien2>0.00</Tien2>
+        <Ck>0.00</Ck>
+        <Tien_sau_ck>0.00</Tien_sau_ck>
+        <Thue>0.00</Thue>
+        <Pt>0.00</Pt>
+        <Gia>0.0000</Gia>
+        <Tien>0.00</Tien>
+        <Sl_hbtl>25.000</Sl_hbtl>
+        <Tien_hbtl>4500000.00</Tien_hbtl>
+        <Tien_ck_tl>0.00</Tien_ck_tl>
+        <Tien_thue_tl>450000.00</Tien_thue_tl>
+        <Tien_von_tl>0.00</Tien_von_tl>
+        <Tien_giam_gia>0.00</Tien_giam_gia>
+        <Tien_thue_giam_gia>0.00</Tien_thue_giam_gia>
+        <Sl_thuan>-19.000</Sl_thuan>
+        <Dt_thuan>-4500000.00</Dt_thuan>
+        <Tien_thue_thuan>-450000.00</Tien_thue_thuan>
+        <Tien_von_thuan>0.00</Tien_von_thuan>
+        <Lai>-4500000.00</Lai>
+        <Ty_le2>0.00</Ty_le2>
+        <Ty_le>0.00</Ty_le>
+        <Ma_vt_nh_vt1>NH01            </Ma_vt_nh_vt1>
+        <Ma_vt_nh_vt2>                </Ma_vt_nh_vt2>
+        <Ma_vt_nh_vt3>                </Ma_vt_nh_vt3>
+        <Ten_vt>Áo len</Ten_vt>
+        <Dvt>Cái</Dvt>
+        <Tien_thue_thuan_nt>0.00</Tien_thue_thuan_nt>
+        <Pt_not_ck_nt>0.00</Pt_not_ck_nt>
+        <Dt_thuan_nt>0.00</Dt_thuan_nt>
+        <Tien_nt>0.00</Tien_nt>
+        <Lai_nt>0.00</Lai_nt>
+        <Tien_von_thuan_nt>0.00</Tien_von_thuan_nt>
+        <Tien_von_tl_nt>0.00</Tien_von_tl_nt>
+      </Soth1>
+      <Soth1>
+        <Stt>7</Stt>
+        <Ma_vt>AOPHAO          </Ma_vt>
+        <Ma_vt_ten_vt>Áo phao</Ma_vt_ten_vt>
+        <Ma_vt_dvt>Cái</Ma_vt_dvt>
+        <So_luong>5.000</So_luong>
+        <Gia2>0.0000</Gia2>
+        <Tien2>0.00</Tien2>
+        <Ck>0.00</Ck>
+        <Tien_sau_ck>0.00</Tien_sau_ck>
+        <Thue>0.00</Thue>
+        <Pt>0.00</Pt>
+        <Gia>0.0000</Gia>
+        <Tien>0.00</Tien>
+        <Sl_hbtl>0.000</Sl_hbtl>
+        <Tien_hbtl>0.00</Tien_hbtl>
+        <Tien_ck_tl>0.00</Tien_ck_tl>
+        <Tien_thue_tl>0.00</Tien_thue_tl>
+        <Tien_von_tl>0.00</Tien_von_tl>
+        <Tien_giam_gia>0.00</Tien_giam_gia>
+        <Tien_thue_giam_gia>0.00</Tien_thue_giam_gia>
+        <Sl_thuan>5.000</Sl_thuan>
+        <Dt_thuan>0.00</Dt_thuan>
+        <Tien_thue_thuan>0.00</Tien_thue_thuan>
+        <Tien_von_thuan>0.00</Tien_von_thuan>
+        <Lai>0.00</Lai>
+        <Ty_le2>0.00</Ty_le2>
+        <Ty_le>0.00</Ty_le>
+        <Ma_vt_nh_vt1>NH01            </Ma_vt_nh_vt1>
+        <Ma_vt_nh_vt2>                </Ma_vt_nh_vt2>
+        <Ma_vt_nh_vt3>                </Ma_vt_nh_vt3>
+        <Ten_vt>Áo phao</Ten_vt>
+        <Dvt>Cái</Dvt>
+        <Tien_thue_thuan_nt>0.00</Tien_thue_thuan_nt>
+        <Pt_not_ck_nt>0.00</Pt_not_ck_nt>
+        <Dt_thuan_nt>0.00</Dt_thuan_nt>
+        <Tien_nt>0.00</Tien_nt>
+        <Lai_nt>0.00</Lai_nt>
+        <Tien_von_thuan_nt>0.00</Tien_von_thuan_nt>
+        <Tien_von_tl_nt>0.00</Tien_von_tl_nt>
+      </Soth1>
+      <Soth1>
+        <Stt>8</Stt>
+        <Ma_vt>AOSM            </Ma_vt>
+        <Ma_vt_ten_vt>Áo sơ mi</Ma_vt_ten_vt>
+        <Ma_vt_dvt>Cái</Ma_vt_dvt>
+        <So_luong>4.000</So_luong>
+        <Gia2>1000000.0000</Gia2>
+        <Tien2>4000000.00</Tien2>
+        <Ck>0.00</Ck>
+        <Tien_sau_ck>4000000.00</Tien_sau_ck>
+        <Thue>400000.00</Thue>
+        <Pt>4400000.00</Pt>
+        <Gia>407873.5000</Gia>
+        <Tien>1631494.00</Tien>
+        <Sl_hbtl>0.000</Sl_hbtl>
+        <Tien_hbtl>0.00</Tien_hbtl>
+        <Tien_ck_tl>0.00</Tien_ck_tl>
+        <Tien_thue_tl>0.00</Tien_thue_tl>
+        <Tien_von_tl>0.00</Tien_von_tl>
+        <Tien_giam_gia>0.00</Tien_giam_gia>
+        <Tien_thue_giam_gia>0.00</Tien_thue_giam_gia>
+        <Sl_thuan>4.000</Sl_thuan>
+        <Dt_thuan>4000000.00</Dt_thuan>
+        <Tien_thue_thuan>400000.00</Tien_thue_thuan>
+        <Tien_von_thuan>1631494.00</Tien_von_thuan>
+        <Lai>2368506.00</Lai>
+        <Ty_le2>59.21</Ty_le2>
+        <Ty_le>145.17</Ty_le>
+        <Ma_vt_nh_vt1>                </Ma_vt_nh_vt1>
+        <Ma_vt_nh_vt2>                </Ma_vt_nh_vt2>
+        <Ma_vt_nh_vt3>                </Ma_vt_nh_vt3>
+        <Ten_vt>Áo sơ mi</Ten_vt>
+        <Dvt>Cái</Dvt>
+        <Tien_thue_thuan_nt>0.00</Tien_thue_thuan_nt>
+        <Pt_not_ck_nt>0.00</Pt_not_ck_nt>
+        <Dt_thuan_nt>0.00</Dt_thuan_nt>
+        <Tien_nt>0.00</Tien_nt>
+        <Lai_nt>0.00</Lai_nt>
+        <Tien_von_thuan_nt>0.00</Tien_von_thuan_nt>
+        <Tien_von_tl_nt>0.00</Tien_von_tl_nt>
+      </Soth1>
+      <Soth1>
+        <Stt>9</Stt>
+        <Ma_vt>DMTP01          </Ma_vt>
+        <Ma_vt_ten_vt>Sản xuất DM- Thành phẩm 01</Ma_vt_ten_vt>
+        <Ma_vt_dvt>Cái</Ma_vt_dvt>
+        <So_luong>20.000</So_luong>
+        <Gia2>1442000.1000</Gia2>
+        <Tien2>28840002.00</Tien2>
+        <Ck>0.00</Ck>
+        <Tien_sau_ck>28840002.00</Tien_sau_ck>
+        <Thue>2884000.00</Thue>
+        <Pt>31724002.00</Pt>
+        <Gia>206.6500</Gia>
+        <Tien>4133.00</Tien>
+        <Sl_hbtl>0.000</Sl_hbtl>
+        <Tien_hbtl>0.00</Tien_hbtl>
+        <Tien_ck_tl>0.00</Tien_ck_tl>
+        <Tien_thue_tl>0.00</Tien_thue_tl>
+        <Tien_von_tl>0.00</Tien_von_tl>
+        <Tien_giam_gia>0.00</Tien_giam_gia>
+        <Tien_thue_giam_gia>0.00</Tien_thue_giam_gia>
+        <Sl_thuan>20.000</Sl_thuan>
+        <Dt_thuan>28840002.00</Dt_thuan>
+        <Tien_thue_thuan>2884000.00</Tien_thue_thuan>
+        <Tien_von_thuan>4133.00</Tien_von_thuan>
+        <Lai>28835869.00</Lai>
+        <Ty_le2>99.99</Ty_le2>
+        <Ty_le>697698.26</Ty_le>
+        <Ma_vt_nh_vt1>                </Ma_vt_nh_vt1>
+        <Ma_vt_nh_vt2>                </Ma_vt_nh_vt2>
+        <Ma_vt_nh_vt3>                </Ma_vt_nh_vt3>
+        <Ten_vt>Sản xuất DM- Thành phẩm 01</Ten_vt>
+        <Dvt>Cái</Dvt>
+        <Tien_thue_thuan_nt>0.00</Tien_thue_thuan_nt>
+        <Pt_not_ck_nt>0.00</Pt_not_ck_nt>
+        <Dt_thuan_nt>0.00</Dt_thuan_nt>
+        <Tien_nt>0.00</Tien_nt>
+        <Lai_nt>0.00</Lai_nt>
+        <Tien_von_thuan_nt>0.00</Tien_von_thuan_nt>
+        <Tien_von_tl_nt>0.00</Tien_von_tl_nt>
+      </Soth1>
+      <Soth1>
+        <Stt>10</Stt>
+        <Ma_vt>DMVT01          </Ma_vt>
+        <Ma_vt_ten_vt>Sản xuất DM- NVL 01</Ma_vt_ten_vt>
+        <Ma_vt_dvt>Cái</Ma_vt_dvt>
+        <So_luong>0.000</So_luong>
+        <Gia2>0.0000</Gia2>
+        <Tien2>0.00</Tien2>
+        <Ck>0.00</Ck>
+        <Tien_sau_ck>0.00</Tien_sau_ck>
+        <Thue>0.00</Thue>
+        <Pt>0.00</Pt>
+        <Gia>0.0000</Gia>
+        <Tien>0.00</Tien>
+        <Sl_hbtl>10.000</Sl_hbtl>
+        <Tien_hbtl>5000000.00</Tien_hbtl>
+        <Tien_ck_tl>0.00</Tien_ck_tl>
+        <Tien_thue_tl>500000.00</Tien_thue_tl>
+        <Tien_von_tl>0.00</Tien_von_tl>
+        <Tien_giam_gia>0.00</Tien_giam_gia>
+        <Tien_thue_giam_gia>0.00</Tien_thue_giam_gia>
+        <Sl_thuan>-10.000</Sl_thuan>
+        <Dt_thuan>-5000000.00</Dt_thuan>
+        <Tien_thue_thuan>-500000.00</Tien_thue_thuan>
+        <Tien_von_thuan>0.00</Tien_von_thuan>
+        <Lai>-5000000.00</Lai>
+        <Ty_le2>0.00</Ty_le2>
+        <Ty_le>0.00</Ty_le>
+        <Ma_vt_nh_vt1>                </Ma_vt_nh_vt1>
+        <Ma_vt_nh_vt2>                </Ma_vt_nh_vt2>
+        <Ma_vt_nh_vt3>                </Ma_vt_nh_vt3>
+        <Ten_vt>Sản xuất DM- NVL 01</Ten_vt>
+        <Dvt>Cái</Dvt>
+        <Tien_thue_thuan_nt>0.00</Tien_thue_thuan_nt>
+        <Pt_not_ck_nt>0.00</Pt_not_ck_nt>
+        <Dt_thuan_nt>0.00</Dt_thuan_nt>
+        <Tien_nt>0.00</Tien_nt>
+        <Lai_nt>0.00</Lai_nt>
+        <Tien_von_thuan_nt>0.00</Tien_von_thuan_nt>
+        <Tien_von_tl_nt>0.00</Tien_von_tl_nt>
+      </Soth1>
+      <Soth1>
+        <Stt>11</Stt>
+        <Ma_vt>DMVT02          </Ma_vt>
+        <Ma_vt_ten_vt>Sản xuất DM- NVL 02</Ma_vt_ten_vt>
+        <Ma_vt_dvt>Cái</Ma_vt_dvt>
+        <So_luong>0.000</So_luong>
+        <Gia2>0.0000</Gia2>
+        <Tien2>0.00</Tien2>
+        <Ck>0.00</Ck>
+        <Tien_sau_ck>0.00</Tien_sau_ck>
+        <Thue>0.00</Thue>
+        <Pt>0.00</Pt>
+        <Gia>0.0000</Gia>
+        <Tien>0.00</Tien>
+        <Sl_hbtl>150.000</Sl_hbtl>
+        <Tien_hbtl>40000000.00</Tien_hbtl>
+        <Tien_ck_tl>0.00</Tien_ck_tl>
+        <Tien_thue_tl>4000000.00</Tien_thue_tl>
+        <Tien_von_tl>0.00</Tien_von_tl>
+        <Tien_giam_gia>0.00</Tien_giam_gia>
+        <Tien_thue_giam_gia>0.00</Tien_thue_giam_gia>
+        <Sl_thuan>-150.000</Sl_thuan>
+        <Dt_thuan>-40000000.00</Dt_thuan>
+        <Tien_thue_thuan>-4000000.00</Tien_thue_thuan>
+        <Tien_von_thuan>0.00</Tien_von_thuan>
+        <Lai>-40000000.00</Lai>
+        <Ty_le2>0.00</Ty_le2>
+        <Ty_le>0.00</Ty_le>
+        <Ma_vt_nh_vt1>                </Ma_vt_nh_vt1>
+        <Ma_vt_nh_vt2>                </Ma_vt_nh_vt2>
+        <Ma_vt_nh_vt3>                </Ma_vt_nh_vt3>
+        <Ten_vt>Sản xuất DM- NVL 02</Ten_vt>
+        <Dvt>Cái</Dvt>
+        <Tien_thue_thuan_nt>0.00</Tien_thue_thuan_nt>
+        <Pt_not_ck_nt>0.00</Pt_not_ck_nt>
+        <Dt_thuan_nt>0.00</Dt_thuan_nt>
+        <Tien_nt>0.00</Tien_nt>
+        <Lai_nt>0.00</Lai_nt>
+        <Tien_von_thuan_nt>0.00</Tien_von_thuan_nt>
+        <Tien_von_tl_nt>0.00</Tien_von_tl_nt>
+      </Soth1>
+      <Soth1>
+        <Stt>12</Stt>
+        <Ma_vt>LOGO            </Ma_vt>
+        <Ma_vt_ten_vt>Logo áo sơ mi</Ma_vt_ten_vt>
+        <Ma_vt_dvt>Cái</Ma_vt_dvt>
+        <So_luong>10.000</So_luong>
+        <Gia2>128800000.0000</Gia2>
+        <Tien2>1288000000.00</Tien2>
+        <Ck>0.00</Ck>
+        <Tien_sau_ck>1288000000.00</Tien_sau_ck>
+        <Thue>128800000.00</Thue>
+        <Pt>1416800000.00</Pt>
+        <Gia>0.0000</Gia>
+        <Tien>0.00</Tien>
+        <Sl_hbtl>0.000</Sl_hbtl>
+        <Tien_hbtl>0.00</Tien_hbtl>
+        <Tien_ck_tl>0.00</Tien_ck_tl>
+        <Tien_thue_tl>0.00</Tien_thue_tl>
+        <Tien_von_tl>0.00</Tien_von_tl>
+        <Tien_giam_gia>0.00</Tien_giam_gia>
+        <Tien_thue_giam_gia>0.00</Tien_thue_giam_gia>
+        <Sl_thuan>10.000</Sl_thuan>
+        <Dt_thuan>1288000000.00</Dt_thuan>
+        <Tien_thue_thuan>128800000.00</Tien_thue_thuan>
+        <Tien_von_thuan>0.00</Tien_von_thuan>
+        <Lai>1288000000.00</Lai>
+        <Ty_le2>100.00</Ty_le2>
+        <Ty_le>0.00</Ty_le>
+        <Ma_vt_nh_vt1>                </Ma_vt_nh_vt1>
+        <Ma_vt_nh_vt2>                </Ma_vt_nh_vt2>
+        <Ma_vt_nh_vt3>                </Ma_vt_nh_vt3>
+        <Ten_vt>Logo áo sơ mi</Ten_vt>
+        <Dvt>Cái</Dvt>
+        <Tien_thue_thuan_nt>5600.00</Tien_thue_thuan_nt>
+        <Pt_not_ck_nt>61600.00</Pt_not_ck_nt>
+        <Dt_thuan_nt>56000.00</Dt_thuan_nt>
+        <Tien_nt>0.00</Tien_nt>
+        <Lai_nt>56000.00</Lai_nt>
+        <Tien_von_thuan_nt>0.00</Tien_von_thuan_nt>
+        <Tien_von_tl_nt>0.00</Tien_von_tl_nt>
+      </Soth1>
+      <Soth1>
+        <Stt>13</Stt>
+        <Ma_vt>TP001           </Ma_vt>
+        <Ma_vt_ten_vt>Thành phẩm 001</Ma_vt_ten_vt>
+        <Ma_vt_dvt>cái</Ma_vt_dvt>
+        <So_luong>630.000</So_luong>
+        <Gia2>1103206.3492</Gia2>
+        <Tien2>695020000.00</Tien2>
+        <Ck>1985000.00</Ck>
+        <Tien_sau_ck>693035000.00</Tien_sau_ck>
+        <Thue>62500000.00</Thue>
+        <Pt>755535000.00</Pt>
+        <Gia>108333.3333</Gia>
+        <Tien>68250000.00</Tien>
+        <Sl_hbtl>0.000</Sl_hbtl>
+        <Tien_hbtl>0.00</Tien_hbtl>
+        <Tien_ck_tl>0.00</Tien_ck_tl>
+        <Tien_thue_tl>0.00</Tien_thue_tl>
+        <Tien_von_tl>0.00</Tien_von_tl>
+        <Tien_giam_gia>6000000.00</Tien_giam_gia>
+        <Tien_thue_giam_gia>0.00</Tien_thue_giam_gia>
+        <Sl_thuan>630.000</Sl_thuan>
+        <Dt_thuan>687035000.00</Dt_thuan>
+        <Tien_thue_thuan>62500000.00</Tien_thue_thuan>
+        <Tien_von_thuan>68250000.00</Tien_von_thuan>
+        <Lai>618785000.00</Lai>
+        <Ty_le2>89.03</Ty_le2>
+        <Ty_le>906.64</Ty_le>
+        <Ma_vt_nh_vt1>                </Ma_vt_nh_vt1>
+        <Ma_vt_nh_vt2>                </Ma_vt_nh_vt2>
+        <Ma_vt_nh_vt3>                </Ma_vt_nh_vt3>
+        <Ten_vt>Thành phẩm 001</Ten_vt>
+        <Dvt>cái</Dvt>
+        <Tien_thue_thuan_nt>0.00</Tien_thue_thuan_nt>
+        <Pt_not_ck_nt>0.00</Pt_not_ck_nt>
+        <Dt_thuan_nt>0.00</Dt_thuan_nt>
+        <Tien_nt>0.00</Tien_nt>
+        <Lai_nt>0.00</Lai_nt>
+        <Tien_von_thuan_nt>0.00</Tien_von_thuan_nt>
+        <Tien_von_tl_nt>0.00</Tien_von_tl_nt>
+      </Soth1>
+      <Soth1>
+        <Stt>14</Stt>
+        <Ma_vt>TP002           </Ma_vt>
+        <Ma_vt_ten_vt>Thành phẩm 002</Ma_vt_ten_vt>
+        <Ma_vt_dvt>Cái</Ma_vt_dvt>
+        <So_luong>1045.000</So_luong>
+        <Gia2>209186.6029</Gia2>
+        <Tien2>218600000.00</Tien2>
+        <Ck>1760000.00</Ck>
+        <Tien_sau_ck>216840000.00</Tien_sau_ck>
+        <Thue>13340000.00</Thue>
+        <Pt>230180000.00</Pt>
+        <Gia>136563.7531</Gia>
+        <Tien>142709122.00</Tien>
+        <Sl_hbtl>0.000</Sl_hbtl>
+        <Tien_hbtl>0.00</Tien_hbtl>
+        <Tien_ck_tl>0.00</Tien_ck_tl>
+        <Tien_thue_tl>0.00</Tien_thue_tl>
+        <Tien_von_tl>0.00</Tien_von_tl>
+        <Tien_giam_gia>5980000.00</Tien_giam_gia>
+        <Tien_thue_giam_gia>0.00</Tien_thue_giam_gia>
+        <Sl_thuan>1045.000</Sl_thuan>
+        <Dt_thuan>210860000.00</Dt_thuan>
+        <Tien_thue_thuan>13340000.00</Tien_thue_thuan>
+        <Tien_von_thuan>142709122.00</Tien_von_thuan>
+        <Lai>68150878.00</Lai>
+        <Ty_le2>31.18</Ty_le2>
+        <Ty_le>47.76</Ty_le>
+        <Ma_vt_nh_vt1>                </Ma_vt_nh_vt1>
+        <Ma_vt_nh_vt2>                </Ma_vt_nh_vt2>
+        <Ma_vt_nh_vt3>                </Ma_vt_nh_vt3>
+        <Ten_vt>Thành phẩm 002</Ten_vt>
+        <Dvt>Cái</Dvt>
+        <Tien_thue_thuan_nt>0.00</Tien_thue_thuan_nt>
+        <Pt_not_ck_nt>0.00</Pt_not_ck_nt>
+        <Dt_thuan_nt>0.00</Dt_thuan_nt>
+        <Tien_nt>0.00</Tien_nt>
+        <Lai_nt>0.00</Lai_nt>
+        <Tien_von_thuan_nt>0.00</Tien_von_thuan_nt>
+        <Tien_von_tl_nt>0.00</Tien_von_tl_nt>
+      </Soth1>
+      <Soth1>
+        <Stt>15</Stt>
+        <Ma_vt>VT001           </Ma_vt>
+        <Ma_vt_ten_vt>Vật tư 001</Ma_vt_ten_vt>
+        <Ma_vt_dvt>kg</Ma_vt_dvt>
+        <So_luong>40.000</So_luong>
+        <Gia2>200000.0000</Gia2>
+        <Tien2>8000000.00</Tien2>
+        <Ck>0.00</Ck>
+        <Tien_sau_ck>8000000.00</Tien_sau_ck>
+        <Thue>800000.00</Thue>
+        <Pt>8800000.00</Pt>
+        <Gia>3015373.6000</Gia>
+        <Tien>120614944.00</Tien>
+        <Sl_hbtl>0.000</Sl_hbtl>
+        <Tien_hbtl>0.00</Tien_hbtl>
+        <Tien_ck_tl>0.00</Tien_ck_tl>
+        <Tien_thue_tl>0.00</Tien_thue_tl>
+        <Tien_von_tl>0.00</Tien_von_tl>
+        <Tien_giam_gia>0.00</Tien_giam_gia>
+        <Tien_thue_giam_gia>0.00</Tien_thue_giam_gia>
+        <Sl_thuan>40.000</Sl_thuan>
+        <Dt_thuan>8000000.00</Dt_thuan>
+        <Tien_thue_thuan>800000.00</Tien_thue_thuan>
+        <Tien_von_thuan>120614944.00</Tien_von_thuan>
+        <Lai>-112614944.00</Lai>
+        <Ty_le2>-1407.69</Ty_le2>
+        <Ty_le>-93.37</Ty_le>
+        <Ma_vt_nh_vt1>                </Ma_vt_nh_vt1>
+        <Ma_vt_nh_vt2>                </Ma_vt_nh_vt2>
+        <Ma_vt_nh_vt3>                </Ma_vt_nh_vt3>
+        <Ten_vt>Vật tư 001</Ten_vt>
+        <Dvt>kg</Dvt>
+        <Tien_thue_thuan_nt>0.00</Tien_thue_thuan_nt>
+        <Pt_not_ck_nt>0.00</Pt_not_ck_nt>
+        <Dt_thuan_nt>0.00</Dt_thuan_nt>
+        <Tien_nt>0.00</Tien_nt>
+        <Lai_nt>0.00</Lai_nt>
+        <Tien_von_thuan_nt>0.00</Tien_von_thuan_nt>
+        <Tien_von_tl_nt>0.00</Tien_von_tl_nt>
+      </Soth1>
+      <Soth1>
+        <Stt>16</Stt>
+        <Ma_vt>VT002           </Ma_vt>
+        <Ma_vt_ten_vt>Vật tư 002</Ma_vt_ten_vt>
+        <Ma_vt_dvt>kg</Ma_vt_dvt>
+        <So_luong>40.000</So_luong>
+        <Gia2>120000.0000</Gia2>
+        <Tien2>4800000.00</Tien2>
+        <Ck>0.00</Ck>
+        <Tien_sau_ck>4800000.00</Tien_sau_ck>
+        <Thue>480000.00</Thue>
+        <Pt>5280000.00</Pt>
+        <Gia>0.0000</Gia>
+        <Tien>0.00</Tien>
+        <Sl_hbtl>0.000</Sl_hbtl>
+        <Tien_hbtl>0.00</Tien_hbtl>
+        <Tien_ck_tl>0.00</Tien_ck_tl>
+        <Tien_thue_tl>0.00</Tien_thue_tl>
+        <Tien_von_tl>0.00</Tien_von_tl>
+        <Tien_giam_gia>0.00</Tien_giam_gia>
+        <Tien_thue_giam_gia>0.00</Tien_thue_giam_gia>
+        <Sl_thuan>40.000</Sl_thuan>
+        <Dt_thuan>4800000.00</Dt_thuan>
+        <Tien_thue_thuan>480000.00</Tien_thue_thuan>
+        <Tien_von_thuan>0.00</Tien_von_thuan>
+        <Lai>4800000.00</Lai>
+        <Ty_le2>100.00</Ty_le2>
+        <Ty_le>0.00</Ty_le>
+        <Ma_vt_nh_vt1>                </Ma_vt_nh_vt1>
+        <Ma_vt_nh_vt2>                </Ma_vt_nh_vt2>
+        <Ma_vt_nh_vt3>                </Ma_vt_nh_vt3>
+        <Ten_vt>Vật tư 002</Ten_vt>
+        <Dvt>kg</Dvt>
+        <Tien_thue_thuan_nt>0.00</Tien_thue_thuan_nt>
+        <Pt_not_ck_nt>0.00</Pt_not_ck_nt>
+        <Dt_thuan_nt>0.00</Dt_thuan_nt>
+        <Tien_nt>0.00</Tien_nt>
+        <Lai_nt>0.00</Lai_nt>
+        <Tien_von_thuan_nt>0.00</Tien_von_thuan_nt>
+        <Tien_von_tl_nt>0.00</Tien_von_tl_nt>
+      </Soth1>
+      <Soth1>
+        <Stt>17</Stt>
+        <Ma_vt>VT004           </Ma_vt>
+        <Ma_vt_ten_vt>Vật tư 004</Ma_vt_ten_vt>
+        <Ma_vt_dvt>kg</Ma_vt_dvt>
+        <So_luong>300.000</So_luong>
+        <Gia2>40000.0000</Gia2>
+        <Tien2>12000000.00</Tien2>
+        <Ck>0.00</Ck>
+        <Tien_sau_ck>12000000.00</Tien_sau_ck>
+        <Thue>1200000.00</Thue>
+        <Pt>13200000.00</Pt>
+        <Gia>20000.0000</Gia>
+        <Tien>6000000.00</Tien>
+        <Sl_hbtl>0.000</Sl_hbtl>
+        <Tien_hbtl>0.00</Tien_hbtl>
+        <Tien_ck_tl>0.00</Tien_ck_tl>
+        <Tien_thue_tl>0.00</Tien_thue_tl>
+        <Tien_von_tl>0.00</Tien_von_tl>
+        <Tien_giam_gia>0.00</Tien_giam_gia>
+        <Tien_thue_giam_gia>0.00</Tien_thue_giam_gia>
+        <Sl_thuan>300.000</Sl_thuan>
+        <Dt_thuan>12000000.00</Dt_thuan>
+        <Tien_thue_thuan>1200000.00</Tien_thue_thuan>
+        <Tien_von_thuan>6000000.00</Tien_von_thuan>
+        <Lai>6000000.00</Lai>
+        <Ty_le2>50.00</Ty_le2>
+        <Ty_le>100.00</Ty_le>
+        <Ma_vt_nh_vt1>                </Ma_vt_nh_vt1>
+        <Ma_vt_nh_vt2>                </Ma_vt_nh_vt2>
+        <Ma_vt_nh_vt3>                </Ma_vt_nh_vt3>
+        <Ten_vt>Vật tư 004</Ten_vt>
+        <Dvt>kg</Dvt>
+        <Tien_thue_thuan_nt>0.00</Tien_thue_thuan_nt>
+        <Pt_not_ck_nt>0.00</Pt_not_ck_nt>
+        <Dt_thuan_nt>0.00</Dt_thuan_nt>
+        <Tien_nt>0.00</Tien_nt>
+        <Lai_nt>0.00</Lai_nt>
+        <Tien_von_thuan_nt>0.00</Tien_von_thuan_nt>
+        <Tien_von_tl_nt>0.00</Tien_von_tl_nt>
+      </Soth1>
+      <Soth1>
+        <Stt>18</Stt>
+        <Ma_vt>VT005           </Ma_vt>
+        <Ma_vt_ten_vt>Vật tư 005</Ma_vt_ten_vt>
+        <Ma_vt_dvt>kg</Ma_vt_dvt>
+        <So_luong>400.000</So_luong>
+        <Gia2>50000.0000</Gia2>
+        <Tien2>20000000.00</Tien2>
+        <Ck>0.00</Ck>
+        <Tien_sau_ck>20000000.00</Tien_sau_ck>
+        <Thue>2000000.00</Thue>
+        <Pt>22000000.00</Pt>
+        <Gia>29090.9100</Gia>
+        <Tien>11636364.00</Tien>
+        <Sl_hbtl>0.000</Sl_hbtl>
+        <Tien_hbtl>0.00</Tien_hbtl>
+        <Tien_ck_tl>0.00</Tien_ck_tl>
+        <Tien_thue_tl>0.00</Tien_thue_tl>
+        <Tien_von_tl>0.00</Tien_von_tl>
+        <Tien_giam_gia>0.00</Tien_giam_gia>
+        <Tien_thue_giam_gia>0.00</Tien_thue_giam_gia>
+        <Sl_thuan>400.000</Sl_thuan>
+        <Dt_thuan>20000000.00</Dt_thuan>
+        <Tien_thue_thuan>2000000.00</Tien_thue_thuan>
+        <Tien_von_thuan>11636364.00</Tien_von_thuan>
+        <Lai>8363636.00</Lai>
+        <Ty_le2>41.82</Ty_le2>
+        <Ty_le>71.87</Ty_le>
+        <Ma_vt_nh_vt1>                </Ma_vt_nh_vt1>
+        <Ma_vt_nh_vt2>                </Ma_vt_nh_vt2>
+        <Ma_vt_nh_vt3>                </Ma_vt_nh_vt3>
+        <Ten_vt>Vật tư 005</Ten_vt>
+        <Dvt>kg</Dvt>
+        <Tien_thue_thuan_nt>0.00</Tien_thue_thuan_nt>
+        <Pt_not_ck_nt>0.00</Pt_not_ck_nt>
+        <Dt_thuan_nt>0.00</Dt_thuan_nt>
+        <Tien_nt>0.00</Tien_nt>
+        <Lai_nt>0.00</Lai_nt>
+        <Tien_von_thuan_nt>0.00</Tien_von_thuan_nt>
+        <Tien_von_tl_nt>0.00</Tien_von_tl_nt>
+      </Soth1>
+    </LsData>
+  </Soth1Model>
+</ArrayOfSoth1Model>

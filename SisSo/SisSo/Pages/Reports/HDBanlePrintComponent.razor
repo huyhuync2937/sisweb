@@ -1,0 +1,55 @@
+﻿@page "/hdlprint/{menu_id}/{stt_rec}"
+@using System.Data
+@inject IDbManager myDb
+@inject NavigationManager navigation
+@inject ICommandManager Commands
+@inject Statemanagerment myStatemanagerment
+@inject IWebHostEnvironment _webhost
+
+@if (LSData != null)
+{
+    <ReportOptionComponent LSItems="LSData" Menu_id="@menu_id.Replace('_','.')" Parent_url="@mPage"></ReportOptionComponent>  
+}
+@code {
+    [Parameter]
+    public string menu_id { get; set; } 
+    [Parameter]
+    public string stt_rec { get; set; }
+  
+    public string mPage { get; set; }
+    private string store_proc = "";   
+    private Command curCommand = new Command();  
+    private List<HDBanleModel> LSData;
+    protected override async Task OnInitializedAsync()
+    {
+        if (string.IsNullOrEmpty(menu_id))        
+            menu_id = "we_bl_01";
+
+        curCommand = await Commands.GetSubMenuBymenuId(menu_id.Replace('_', '.'));       
+        if (curCommand != null)
+        {
+            string[] _store = curCommand.Store_proc.Split('|');
+            if (_store.Length > 0)
+                store_proc = _store[0];
+
+            mPage = string.IsNullOrEmpty(curCommand.Mobile_page) ? "hdbanle" : curCommand.Mobile_page;
+            await Loaddata(stt_rec);
+        }       
+    }
+    async Task Loaddata(string stt_rec)
+    {
+        string parram_name = "stt_rec";
+        string parram_value = stt_rec;
+        DataSet DataSource = await myDb.LoadStoreProcedure(store_proc, parram_name, parram_value);       
+        if (DataSource != null && DataSource.Tables.Count > 0)
+        {
+            LSData = new List<HDBanleModel>();
+            HDBanleModel _curModel = new HDBanleModel();
+            _curModel.Print_logo = await File.ReadAllBytesAsync(Path.Combine(_webhost.WebRootPath, "Images", "print_logo.png"));
+            _curModel.LSPh = myDb.ConvertDataTable<Ph83>(DataSource.Tables[0]);
+            _curModel.LSCt = myDb.ConvertDataTable<Ct83>(DataSource.Tables[1]);
+            LSData.Add(_curModel);           
+        }
+        StateHasChanged();
+    }  
+}

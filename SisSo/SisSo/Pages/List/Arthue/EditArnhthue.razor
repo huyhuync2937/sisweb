@@ -1,0 +1,225 @@
+﻿@inherits FrmListBaseComponent
+@inject IStringLocalizer<SisSo.Pages.App> Lat
+
+<div class="w-100">
+    <FormList Title="@Title" @bind-curActionTask="@curActionTask" OnSave="@SaveDM" OnEdit="@OnEdit" OnCopy="@OnCopy" OnCancel="@HideVoucher">
+        <EditForm Model="@CurDmnhthue" onkeydown="ModifyEnterKeyPressAsTab(event);" class="row m-1 me-2 rounded-1 border border-light shadow">
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+            <div class="row">
+                <div class="row pb-2">
+                    <label class="col-4" for="Ma_nh">@Lap["Group ID"] (*): </label>
+                    <DxTextBox CssClass="col" Id="Ma_nh" @bind-Text="@CurDmnhthue.Ma_nh" InputCssClass="uppercase font-bold" maxlength="@tblLength["ma_nh"]" Enabled="@AllowEditMode" />
+                </div>
+
+                <div class="row pb-2">
+                    <label class="col-4" for="Ten_nh">@Lap["Group name"] (*): </label>
+                    <DxTextBox CssClass="col" Id="Ten_nh" @bind-Text="@CurDmnhthue.Ten_nh" maxlength="@tblLength["ten_nh"]" Enabled="@AllowEditMode" />
+                </div>
+
+                <div class="row pb-2">
+                    <label class="col-4" for="Ten_nh2">@Lap["Group name 2"] : </label>
+                    <DxTextBox CssClass="col" Id="Ten_nh2" @bind-Text="@CurDmnhthue.Ten_nh2" maxlength="@tblLength["ten_nh2"]" Enabled="@AllowEditMode" />
+                </div>
+
+                <div class="row pb-2">
+                    <label class="col-4" for="Ten_nh2">@Lap["Note"] : </label>
+                    <DxTextBox CssClass="col" Id="Ten_nh2" @bind-Text="@CurDmnhthue.Ghi_chu" maxlength="@tblLength["ghi_chu"]" Enabled="@AllowEditMode" />
+                </div>
+
+
+                <hr class="col-12 m-2" />
+            </div>
+        </EditForm>
+    </FormList>
+</div>
+@code {
+    public Dmnhthue CurDmnhthue { get; set; }
+    private bool AllowEditLoai;
+    private string menu_id = "ws.dm.09";
+
+    protected override void OnInitialized()
+    {
+        PageLoad();
+        CurDmnhthue = new Dmnhthue();
+
+        if (String.IsNullOrEmpty(Menu_id))
+            Menu_id = menu_id;
+
+        base.OnInitialized();
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        myStateMN.OnLangguaChanged += OnLangguachange;
+
+        if (curActionTask == ActionTask.None)
+            curActionTask = myStateMN.GetCurrentActionTask();
+
+        curUser = myStateMN.GetCurUser();
+
+        switch (curActionTask)
+        {
+            case ActionTask.View:
+                {
+                    if (!string.IsNullOrEmpty(Ma_ma))
+                        ViewDM(Ma_ma);
+                    myStateMN.SetToolBar(new MyToolbar("save", false));
+                    break;
+                }
+            case ActionTask.Edit:
+                {
+                    if (!string.IsNullOrEmpty(Ma_ma))
+                        EditDM(Ma_ma);
+                    break;
+                }
+            case ActionTask.New:
+                {
+                    CreateNewDM();
+                    break;
+                }
+            default:
+                {
+                    if (!string.IsNullOrEmpty(Ma_ma))
+                        ViewDM(Ma_ma);
+                    break;
+                }
+        }
+    }
+    async Task OnEdit()
+    {
+        AllowEditMode = true;
+        curActionTask = ActionTask.Edit;
+        StateHasChanged();
+    }
+    async Task OnCopy()
+    {
+        CreateCopyDM(CurDmnhthue.Ma_nh);
+    }
+    void ViewDM(string SqlTableKeyValue)
+    {
+        CurDmnhthue = new Dmnhthue();
+        AllowEditMode = false;
+        AllowEditLoai = false;
+        LoadData(SqlTableKeyValue);
+    }
+    void EditDM(string SqlTableKeyValue)
+    {
+        CurDmnhthue = new Dmnhthue();
+        AllowEditMode = true;
+        AllowEditLoai = false;
+        SqlTableKeyValueOld = SqlTableKeyValue;
+        LoadData(SqlTableKeyValue);
+    }
+    public async void CreateCopyDM(string SqlTableKeyValue)
+    {
+        CurDmnhthue = new Dmnhthue();
+        await LoadData(SqlTableKeyValue);
+
+        CurDmnhthue.Status = "1";
+        CurDmnhthue.Ma_nh = GetNewSttDM();
+        AllowEditMode = true;
+        AllowEditMa = true;
+        curActionTask = ActionTask.New;
+        StateHasChanged();
+    }
+    async Task SaveDM()
+    {
+        CurDmnhthue.Ma_nh = CurDmnhthue.Ma_nh.ToUpper().Trim();
+        SqlTableKeyValue = CurDmnhthue.Ma_nh;
+        if (!CheckValidCode())
+            return;
+
+        if (!CheckValid())
+            return;
+
+        if (curActionTask == ActionTask.New)
+        {
+            CurDmnhthue.Date = DateTime.Now.Date;
+            CurDmnhthue.Date0 = DateTime.Now.Date;
+            CurDmnhthue.Time = DateTime.Now.ToString("HH:MM:ss");
+            CurDmnhthue.Time0 = DateTime.Now.ToString("HH:MM:ss");
+            if (curUser != null)
+            {
+                CurDmnhthue.User_id = curUser.User_id;
+                CurDmnhthue.User_id0 = curUser.User_id;
+                CurDmnhthue.User_name = curUser.User_name;
+                CurDmnhthue.User_name0 = curUser.User_name;
+            }
+            await myDb.InsertOneRow<Dmnhthue>(CurDmnhthue, sqlTableName);
+            myStateMN.SetNewThongbao(String.Format(Lap["Successfully added new : {0}"], SqlTableKeyValue));
+        }
+        else if (curActionTask == ActionTask.Edit)
+        {
+            CurDmnhthue.Date = DateTime.Now.Date;
+            CurDmnhthue.Time = DateTime.Now.ToString("HH:MM:ss");
+            if (curUser != null)
+            {
+                CurDmnhthue.User_id = curUser.User_id;
+                CurDmnhthue.User_name = curUser.User_name;
+            }
+            await myDb.UpdateOneRow<Dmnhthue>(CurDmnhthue, sqlTableName, SqlTableKey, SqlTableKeyValueOld, true);
+            myStateMN.SetNewThongbao(String.Format(Lap["Edit successfully : {0}"], SqlTableKeyValue));
+        }
+        // Đóng Form nhập
+        if (DxWindowmodel != null)
+        {
+            myModal.CloseModal(DxWindowmodel);
+        }
+
+        if (ShowAdd == true)
+        {
+            OnClose.InvokeAsync();
+        }
+        else
+            myNavi.NavigateTo("/" + ParentPage);
+    }
+    bool CheckValid()
+    {
+        if (string.IsNullOrEmpty(CurDmnhthue.Ma_nh))
+        {
+            myStateMN.SetNewThongbao(Lat["No customer code entered"]);
+            StateHasChanged();
+            return false;
+        }
+        if (string.IsNullOrEmpty(CurDmnhthue.Ten_nh))
+        {
+            myStateMN.SetNewThongbao(Lat["No customer name entered"]);
+            StateHasChanged();
+            return false;
+        }
+        return true;
+
+    }
+    async Task LoadData(string SqlTableKeyValue)
+    {
+        string sql = "Select * from " + sqlTableName + " where " + SqlTableKey + " = '" + SqlTableKeyValue + "'";
+        DataSet DsTrans = await myDb.LoadDataset(sql);
+        if (DsTrans != null && DsTrans.Tables[0].Rows.Count > 0)
+        {
+            List<Dmnhthue> lsdetai = myDb.ConvertDataTable<Dmnhthue>(DsTrans.Tables[0]);
+            if (lsdetai != null && lsdetai.Count > 0)
+                CurDmnhthue = lsdetai[0];
+        }
+        StateHasChanged();
+    }
+    async void CreateNewDM()
+    {
+        CurDmnhthue = new Dmnhthue();
+        CurDmnhthue.Status = "1";
+        CurDmnhthue.Ma_nh = GetNewSttDM();
+        AllowEditMode = true;
+        AllowEditLoai = true;
+
+        if (!String.IsNullOrEmpty(Ma_ma))
+        {
+            string sql = "Select ten_nh,ten_nh2 from " + sqlTableName + " where " + SqlTableKey + " = '" + Ma_ma + "'";
+            DataSet DsTrans = await myDb.LoadDataset(sql);
+            if (DsTrans != null && DsTrans.Tables[0].Rows.Count > 0)
+            {
+
+                CurDmnhthue.Ten_nh = DsTrans.Tables[0].Rows[0]["ten_nh"].ToString();
+                CurDmnhthue.Ten_nh2 = DsTrans.Tables[0].Rows[0]["ten_nh2"].ToString();
+            }
+        }
+        StateHasChanged();
+    }
+}

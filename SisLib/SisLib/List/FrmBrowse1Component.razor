@@ -1,0 +1,217 @@
+﻿@inject Statemanagerment myStatemanagerment
+@using DevExpress.Data.Filtering
+@using System.Data
+<div class="container-fluid">
+    <DxGrid Data="@TblData"          
+            PageSize="@Page_size"
+            PagerPosition="GridPagerPosition.Bottom"
+            PageSizeSelectorVisible="true" 
+            ShowFilterRow="true"           
+            AllowSelectRowByClick="true"
+            SelectionMode="GridSelectionMode.Multiple"  
+            RowClick="@OnRowClick"
+            SelectedDataItemsChanged="OnSelectedDataItemsChanged" >
+        <Columns>
+            @if (TblData != null)
+            {
+                     <DxGridSelectionColumn AllowSelectAll="true" Width="80" Caption="Chọn" />
+                if (fields != null && fields.Length > 0)
+                {
+                    foreach (string str in fields)
+                    {
+                        string dinhdang = "";
+                        string[] _data = str.Split(':');//ngay_ct:100:h=Ngày ct:D;so_luong:100:h=Số lượng:N0;
+                        string ma = _data[0].ToLower();
+                        string rong = _data[1] + "px";
+                        string ten = _data[2].Split('=')[1];
+                        if (_data.Length > 3)
+                        {
+                            for (int x = 3; x < _data.Length; x++)
+                            {
+                                string d = _data[x];
+                                dinhdang = "";
+                                if (d.ToUpper().StartsWith("D") || d.ToUpper().StartsWith("N") || d.ToUpper().StartsWith("P") || d.ToUpper().StartsWith("Q"))
+                                {
+                                    dinhdang = d.ToUpper();
+                                    break;
+                                }
+                            }
+                        }
+
+                        foreach (DataColumn col in TblData.Columns)
+                        {
+                            if (col.ColumnName.ToLower().Equals(ma))
+                            {
+                                 if (col.DataType.Name.ToLower().Equals("datetime"))
+                                {
+                                    if (dinhdang.StartsWith("D"))
+                                    {
+                                        if (IsLangEn)
+                                        {
+                                            <DxGridDataColumn FieldName="@ma" Caption="@ten" DisplayFormat="MM/dd/yyyy" Width="@rong">
+                                                <FilterRowCellTemplate>
+                                                    <DxDateEdit Date="(DateTime?)context.FilterRowValue"
+                                Format="MM/dd/yyyy"
+                                DisplayFormat="MM/dd/yyyy"
+                                DateChanged="(DateTime? v) => context.FilterRowValue = v"
+                                ClearButtonDisplayMode="DataEditorClearButtonDisplayMode.Never" />
+                                                </FilterRowCellTemplate>
+                                            </DxGridDataColumn>
+                                        }
+                                        else
+                                        {
+                                            <DxGridDataColumn FieldName="@ma" Caption="@ten" DisplayFormat="dd/MM/yyyy" Width="@rong">
+                                                <FilterRowCellTemplate>
+
+                                                    <DxDateEdit Date="(DateTime?)context.FilterRowValue"
+                                Format="dd/MM/yyyy"
+                                DisplayFormat="dd/MM/yyyy"
+                                DateChanged="(DateTime? v) => context.FilterRowValue = v"
+                                ClearButtonDisplayMode="DataEditorClearButtonDisplayMode.Never" />
+                                                </FilterRowCellTemplate>
+                                            </DxGridDataColumn>
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (string.IsNullOrEmpty(dinhdang))
+                                    {
+                                        <DxGridDataColumn FieldName="@ma" Caption="@ten" FilterRowOperatorType="GridFilterRowOperatorType.Contains" Width="@rong" />
+                                    }
+                                    else
+                                    {
+                                        if (dinhdang.ToUpper().StartsWith("N"))
+                                        {
+                                            if (dinhdang.ToUpper().Equals("N"))
+                                                dinhdang = "N0";
+                                            else
+                                                dinhdang = dinhdang;
+                                        }
+                                        else if (dinhdang.ToUpper().StartsWith("P"))
+                                        {
+                                            dinhdang = "N2";
+                                        }
+                                        else if (dinhdang.ToUpper().StartsWith("Q"))
+                                        {
+                                            dinhdang = "N3";
+                                        }
+                                        <DxGridDataColumn FieldName="@ma" Caption="@ten" DisplayFormat="@dinhdang" Width="@rong">  </DxGridDataColumn>
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (DataColumn col in TblData.Columns)
+                    {
+                        <DxGridDataColumn FieldName="@col.ColumnName" Caption="@col.ColumnName" FilterRowOperatorType="GridFilterRowOperatorType.Contains" MinWidth="100" />
+                    }
+                }
+            }
+        </Columns>
+        <TotalSummary>
+            @if (TblData != null)
+            {
+                if (fields != null && fields.Length > 0)
+                {
+                    foreach (string str in fields)
+                    {
+                        string dinhdang = "N";
+                        string[] _data = str.Split(':');
+                        string ma = _data[0];
+                        if (_data.Length > 3)
+                        {
+                            for (int x = 3; x < _data.Length; x++)
+                            {
+                                if (_data[x].ToUpper().Equals("S"))
+                                {
+                                    for (int y = 3; y < _data.Length; y++)
+                                    {
+                                        string str2 = _data[y];
+                                        if (str2.ToUpper().StartsWith("N"))
+                                        {
+                                            if (str2.ToUpper().Equals("N"))
+                                                dinhdang = "N0";
+                                            else
+                                                dinhdang = str2;
+
+                                            break;
+                                        }
+                                        else if (str2.ToUpper().StartsWith("P"))
+                                        {
+                                            dinhdang = "N2";
+                                            break;
+                                        }
+                                        else if (str2.ToUpper().StartsWith("Q"))
+                                        {
+                                            dinhdang = "N3";
+                                            break;
+                                        }
+                                    }
+                                    foreach (DataColumn col in TblData.Columns)
+                                    {
+                                        if (col.ColumnName.ToLower().Equals(ma))
+                                        {
+                                            <DxGridSummaryItem SummaryType="GridSummaryItemType.Sum" ValueDisplayFormat="@dinhdang" Name="@_data[0]" FieldName="@_data[0]" />
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+        </TotalSummary>
+    </DxGrid>
+</div>
+@code {
+    [Parameter]
+    public int Page_size { get; set; } = 20;
+    [Parameter]
+    public string Fbrowse { get; set; } = "";   
+    [Parameter]
+    public DataTable TblData { get; set; }
+    [Parameter]
+    public bool IsLangEn { get; set; }  
+    [Parameter]
+    public EventCallback<GridRowClickEventArgs> SelectItem { get; set; }
+    [Parameter]
+    public EventCallback<IReadOnlyList<object>> SelectItems { get; set; }
+    object SelectedDataItem { get; set; }
+    string[] fields;
+    bool firstLoad = false;
+    private int Pageindex = 0;
+    void OnRowClick(GridRowClickEventArgs e)
+    {
+        SelectItem.InvokeAsync(e);      
+    }
+ 
+    static readonly IReadOnlyList<QuantityFilterInterval> UnitQuantityIntervals = new QuantityFilterInterval[] {
+        new("[tong_sl] < 100", "< 100"),
+        new("[tong_sl] between (100, 1000)", "100 to 1000"),
+        new("[tong_sl] > 1000", "> 1000")
+    };
+    void OnSelectedDataItemsChanged(IReadOnlyList<object> newSelection)
+    {
+        SelectItems.InvokeAsync(newSelection);
+    }   
+
+    protected override Task OnParametersSetAsync()
+    {        
+            if (!string.IsNullOrEmpty(Fbrowse))
+                fields = Fbrowse.Split(';');
+        return base.OnParametersSetAsync();
+    }
+
+    record QuantityFilterInterval(CriteriaOperator Criteria, string DisplayText)
+    {
+        public QuantityFilterInterval(string CriteriaText, string DisplayText)
+            : this(CriteriaOperator.Parse(CriteriaText), DisplayText)
+        {
+        }
+    }  
+}

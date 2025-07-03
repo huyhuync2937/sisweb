@@ -1,0 +1,49 @@
+﻿@using System.Reflection
+@using System.Dynamic
+
+@if (Target != null && !string.IsNullOrEmpty(FieldName))
+{
+    <AutocompleteComponent Ma_dm="@Ma_dm" @bind-Value="@CurrentValue" IsEnable="@IsEnable" IsLangEn="@IsLangEn" SelectChanged="OnAutoCompleteChanged"/>
+}
+
+@code {
+    [Parameter] public object Target { get; set; }
+    [Parameter] public string FieldName { get; set; }
+    [Parameter] public string Ma_dm { get; set; }
+    [Parameter] public bool IsEnable { get; set; }
+    [Parameter] public bool IsLangEn { get; set; }
+    [Parameter] public EventCallback<ExpandoObject> SelectChanged { get; set; }
+
+    private PropertyInfo Property => Target?.GetType().GetProperty(FieldName);
+
+    private string CurrentValue
+    {
+        get => Property?.GetValue(Target)?.ToString();
+        set
+        {
+            if (Property != null && Property.CanWrite)
+            {
+                var targetType = Nullable.GetUnderlyingType(Property.PropertyType) ?? Property.PropertyType;
+                try
+                {
+                    var converted = Convert.ChangeType(value, targetType);
+                    Property.SetValue(Target, converted);
+                }
+                catch
+                {
+                    // Xử lý lỗi chuyển đổi nếu cần
+                }
+            }
+        }
+    }
+
+    private void OnValueChanged(string value)
+    {
+        CurrentValue = value;
+    }
+    async void OnAutoCompleteChanged(ExpandoObject value)
+    {        
+        if(SelectChanged.HasDelegate)
+            SelectChanged.InvokeAsync(value);
+    }
+}

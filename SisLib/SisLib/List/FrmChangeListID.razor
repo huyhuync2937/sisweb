@@ -1,0 +1,181 @@
+﻿@inject Statemanagerment myStatemanagerment
+@inject NavigationManager navigation
+@inject IDbManager myDb
+@inject IJSRuntime JavacriptS
+@inject ILocalStorageService Localstore
+@inject IChatService SisChatService
+@inject IOptionsManager myoptions
+@inject XmlStringLocalizer Lap
+
+<div class="row">
+    <div class="row align-items-center clearfix bg-light mx-2">
+        <div class="col fw-bold float-start" style="color:#005FFF;">
+            @Title
+        </div>
+        <div class="col float-end d-flex justify-content-end">
+            <DxButton CssClass="btncmdgroup m-1" IconCssClass="btn-icon-save" RenderStyleMode="ButtonRenderStyleMode.Outline"
+                      IconPosition="ButtonIconPosition.BeforeText" RenderStyle="ButtonRenderStyle.Secondary" @onclick="@SaveDM" Text="@Lap["OK"]"></DxButton>           
+            
+            <DxButton CssClass="btncmdgroup m-1 text-danger" IconCssClass="btn-icon-close" RenderStyleMode="ButtonRenderStyleMode.Outline"
+                      IconPosition="ButtonIconPosition.BeforeText" RenderStyle="ButtonRenderStyle.Secondary" @onclick="@HideVoucher" Text="@Lap["Cancel"]"></DxButton>
+                  
+        </div>
+    </div>
+    @if (ShowLoadding)
+        {
+            <div class="row m-0 p-0 justify-content-center">
+                <div class="spinner-border text-primary" role="status" style="width: 5rem; height:5rem;border-width:3px;">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        }
+        else
+        {
+            <DxFormLayout class="p-2 m-2 border border-1 rounded-1" onkeydown="ModifyEnterKeyPressAsTab(event);">        
+                <DxFormLayoutItem ColSpanMd="12" BeginRow="true">
+                    <Template>                
+                        <div class="row">
+                            <label class="col-3 fw-bold">@Lap["Old code"]</label>
+                            <DxTextBox CssClass="col-3 fw-bold" Text="@Ma_ma" ReadOnly="true" Enabled="false"></DxTextBox>
+                            <div class="col-6">@Ten_item</div>
+                        </div>
+                    </Template>
+                </DxFormLayoutItem>
+                <DxFormLayoutItem ColSpanMd="12" BeginRow="true">
+                    <Template>                
+                        <div class="row">
+                            <label class="col-3 fw-bold">@Lap["New code"]</label>
+                            <DxTextBox CssClass="col-3 fw-bold" @bind-Text="@New_id"></DxTextBox>
+                            <div class="col-6"></div>
+                        </div>
+                    </Template>
+                </DxFormLayoutItem>
+  
+                <DxFormLayoutItem ColSpanMd="12" BeginRow="true" Visible="false">
+                    <hr style="height:1px;background-color:dimgrey;margin:0px;padding:0px;">
+                </DxFormLayoutItem>
+            </DxFormLayout>
+        }
+</div>
+<XacnhanComponent Content="@QMessage" Xacnhanxoa="@QOK"></XacnhanComponent>
+@code {
+    [Parameter] public string List_ID { get; set; } = "";
+    [Parameter] public string Ma_ma { get; set; } = "";
+    [Parameter] public string Ten_item { get; set; } = "";
+    [Parameter] public string Title { get; set; } = "";
+    [Parameter] public EventCallback<string> OnClose { get; set; }
+    [Parameter] public EventCallback<string> OnOK { get; set; }
+    [Parameter] public bool Visible
+    {
+        get => _visible;
+        set
+        {
+            if (_visible == value) return;
+
+            _visible = value;
+            VisibleChanged.InvokeAsync(value);
+        }
+    }
+    public bool _visible;
+    public bool ShowLoadding { get; set; } = false;
+
+    [Parameter]
+    public EventCallback<bool> VisibleChanged { get; set; }
+
+    private string QMessage { get; set; }
+    public string New_id { get; set; } = "";
+    private string curTen = "";
+    public DataSet dsms = null;
+    public int tmCoun = 0;
+    private bool IsLangEn = false;
+    Users CurUser = new Users();    
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {            
+            New_id = Ma_ma.Trim();
+            StateHasChanged();
+        }
+    }
+    async Task SaveDM()
+    {
+        if (New_id.Trim() == Ma_ma.Trim())
+        {
+            myStatemanagerment.SetNewThongbao(Lap["New code and old code are the same"] + "!");
+            return;
+        }
+        else if (String.IsNullOrEmpty(New_id))
+        {
+            myStatemanagerment.SetNewThongbao(Lap["Empty code"] + "!");
+            return;
+        }
+        else
+        {
+            string str = CtlFunc.CheckInValidCode(myStatemanagerment, New_id.Trim());
+            if (str != "")
+            {
+                string _mes = Lap["The code cannot contain characters"] + String.Format(" [{0}]", str) + "!";
+                myStatemanagerment.SetNewThongbao(_mes);
+                return;
+            }
+            else
+            {                
+                DataSet _ds = myDb.LoadDataSet("exec dbo.CheckExistListId @ma_dm, @value", "ma_dm;value", List_ID.Trim() + ";" + New_id);
+
+                if (_ds.Tables[0].Rows.Count > 0)
+                {
+                    if (_ds.Tables[0].Rows[0][0].ToString().Trim() == "1")
+                    {
+                        QMessage = Lap["New code is the same as the code already in the list, should we continue to change"] + " ?";
+                        StateHasChanged();
+                        return;
+                    }
+                }
+                
+                DataSet _ds1 = myDb.LoadDataSet("exec dbo.CheckLong @ma_dm, @newvalue, @oldvalue", "ma_dm;newvalue;oldvalue", List_ID.Trim() + ";" + New_id + ";" + Ma_ma);
+                if (_ds1.Tables[0].Rows.Count != 0)
+                {
+                    myStatemanagerment.SetNewThongbao(Lap["Nested code"] + " !");
+                    return;
+                }
+                else
+                {
+                    ShowLoadding = true;
+                    DataSet _ds2 = await myDb.LoadStoreProcedure("dbo.ChangeListId", "ma_dm;old_value;new_value", List_ID.Trim() + ";" + Ma_ma + ";" + New_id);
+                    //DataSet _ds2 = myDb.LoadDataSet("exec dbo.ChangeListId @ma_dm, @oldvalue, @newvalue", "ma_dm;oldvalue;newvalue", List_ID.Trim() + ";" + Ma_ma + ";" + New_id);
+                }                
+            }
+        }
+
+        Visible = false;
+        ShowLoadding = false;
+        if (OnOK.HasDelegate)
+            OnOK.InvokeAsync(New_id);
+        return;
+    }
+    private async Task QOK(bool status)
+    {
+        QMessage = "";
+        if (status)
+        {
+            ShowLoadding = true;
+            DataSet _ds = await myDb.LoadStoreProcedure("dbo.ChangeListId", "ma_dm;old_value;new_value", List_ID.Trim() + ";" + Ma_ma + ";" + New_id);
+            if (OnOK.HasDelegate)
+                OnOK.InvokeAsync(New_id);
+            
+            ShowLoadding = false;
+            Visible = false;
+            StateHasChanged();            
+        }
+
+        return;
+    }
+    async Task HideVoucher()
+    {
+        Visible = false;
+        if (OnClose.HasDelegate)
+            OnClose.InvokeAsync("");
+        return;
+    }
+}

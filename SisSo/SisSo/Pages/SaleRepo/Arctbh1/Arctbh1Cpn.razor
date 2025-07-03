@@ -1,0 +1,244 @@
+﻿@page "/Arctbh1"
+@page "/Arctbh1/{menu_id}"
+@inherits RepoBaseComponent
+@inject IWebHostEnvironment webhost
+@attribute [Authorize(Roles = "admin,arctbh1")]
+
+@if (!IsDetail)
+{
+    <div class="row mt-1">
+        <FrmBrowseComponent @ref="@oBrowse" TblData="@TblData" SelectItem="@SelectedItem" Fbrowse="@FbrowsePH" IsLangEn="@IsLangEn"></FrmBrowseComponent>
+    </div>
+}
+else
+{        
+    <div class="row mt-1">
+        <FrmBrowseComponent @ref="@oBrowseCT" TblData="@TblDataCT" Fbrowse="@FbrowseCT" IsLangEn="@IsLangEn"></FrmBrowseComponent>
+    </div>
+}
+<DxPopup @ref="popFilter" CloseOnOutsideClick="false" CssClass="dxPopup"
+         @bind-Visible="@PopupVisible"
+         Width="500px"
+         ShowFooter="true" Context="windowContext"
+         HeaderText="@Lap["Filter"]">
+    <BodyTemplate>
+        @if (ShowLoadding)
+        {
+            <div class="row m-0 p-0 justify-content-center">
+                <div class="spinner-border text-primary" role="status" style="width: 5rem; height:5rem;border-width:3px;">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="container pt-1">
+                <DxFormLayout CssClass="w-100">
+                    <DxFormLayoutItem ColSpanMd="12" Caption="@Lap["Item code"]">
+                        <DxTextBox CssClass="col" @bind-Text="@Ma_vt" NullText="" ClearButtonDisplayMode="DataEditorClearButtonDisplayMode.Auto" />
+                    </DxFormLayoutItem>
+                    <DxFormLayoutItem ColSpanMd="12" Caption="@Lap["From date"]">
+                        <DxDateEdit CssClass="col" @bind-Date="@Ngay_ct1" NullText="" ClearButtonDisplayMode="DataEditorClearButtonDisplayMode.Auto"
+                                    InputId="idTu_ngay" />
+                    </DxFormLayoutItem>
+                    <DxFormLayoutItem ColSpanMd="12" Caption="@Lap["To date"]">
+                        <DxDateEdit CssClass="col" @bind-Date="@Ngay_ct2" NullText="" ClearButtonDisplayMode="DataEditorClearButtonDisplayMode.Auto"
+                                    InputId="idDen_ngay" />
+                    </DxFormLayoutItem>
+                   @*  <DxFormLayoutItem ColSpanMd="12" Caption="@Lap["Warehouse code"]">
+                        <DxTextBox CssClass="col" @bind-Text="@Ma_kho" NullText="" ClearButtonDisplayMode="DataEditorClearButtonDisplayMode.Auto"/>
+                    </DxFormLayoutItem>
+                    <DxFormLayoutItem ColSpanMd="12" Caption="@Lap["To date"]">
+                        <DxDateEdit CssClass="col" @bind-Date="@Ngay_ct2" NullText="" ClearButtonDisplayMode="DataEditorClearButtonDisplayMode.Auto"
+                                    InputId="idDen_ngay" />
+                    </DxFormLayoutItem> *@
+                </DxFormLayout>
+            </div>
+        }
+        
+    </BodyTemplate>
+
+    <FooterTemplate>
+        @if (!ShowLoadding)
+        {            
+             <div class="row justify-content-end align-content-end m-2">
+                <DxButton CssClass="col col-3 mx-4" RenderStyle="ButtonRenderStyle.Success" Text="@Lap["OK"]" Click="@BtnSave" />
+                <DxButton CssClass="col col-3" RenderStyle="ButtonRenderStyle.Danger" Text="@Lap["Cancel"]" Click="@BtnCancel" />
+            </div>            
+        }
+    </FooterTemplate>
+</DxPopup>
+@if(ShowPrint)
+{
+    <DxPopup @ref="popPrint" CloseOnOutsideClick="false" CssClass="dxPopup"
+             @bind-Visible="@ShowPrint"
+             Width="60vw" Height="90vh"
+             ShowFooter="false"
+             HeaderText="@Lap["Printer"]">
+        <BodyTemplate>
+            <ReportOptionComponent LSItems="@LsData" Menu_id="@Menu_id.Replace('_','.')" OnBack="()=>{ShowPrint=false;}"></ReportOptionComponent>
+        </BodyTemplate>    
+    </DxPopup>
+}
+
+@code {
+    public FrmBrowseComponent oBrowseCT;
+    public bool IsDetail { get; set; } = false;
+    public List<Arctbh1> LstData;
+    public List<Arctbh1Model> LsData;
+    public DataTable TblDataCT;
+    public string FbrowsePH = "";
+    public string FbrowseCT = "";
+
+    protected override void OnInitialized()
+    {
+        //Itype = typeof(Soth1);
+        base.OnInitialized();
+    }
+    public override async Task ShowToolBar()
+    {
+        myStateMN.SetToolBar(new MyToolbar("toolbar", true));
+        myStateMN.SetToolBar(new MyToolbar("Detail", true));
+        myStateMN.SetToolBar(new MyToolbar("Search", true));
+        myStateMN.SetToolBar(new MyToolbar("Print", true));
+        myStateMN.SetToolBar(new MyToolbar("Export", true));
+    }
+    public async Task ShowDetailToolBar()
+    {
+        myStateMN.SetToolBar(new MyToolbar("toolbar", true));
+        myStateMN.SetToolBar(new MyToolbar("Quit", true));       
+        myStateMN.SetToolBar(new MyToolbar("Export", true));
+    }
+    public override void OnActionTaskchanged(ActionTask ac)
+    {
+        switch (ac)
+        {
+            case ActionTask.Detail:
+                ShowDetail(null);
+                break;     
+            case ActionTask.Quit:
+                IsDetail = false;
+                ShowToolBar();
+                StateHasChanged();
+                break;
+
+        }
+        base.OnActionTaskchanged(ac);
+    }
+    public async void ShowDetail(GridRowClickEventArgs e)
+    {
+        DataRowView curRow = (DataRowView)CurItem;
+        if(curRow == null)
+        {
+            myStateMN.SetNewThongbao(Lap["Please select a row to view detail"] + " !");
+            return;
+        }
+        string CurId = curRow["ma_vt"].ToString();
+        if (!String.IsNullOrEmpty(CurId))
+        {
+            ShowLoadding = true;
+            string parram_name = "TuNg;DenNg;tk_dt;tk_gt;tk_thue;tk_thue_gt;filter";
+            string parram_value = "";
+            parram_value = ((DateTime)Ngay_ct1).ToString("yyyyMMdd");
+            parram_value += ";" + ((DateTime)Ngay_ct2).ToString("yyyyMMdd");
+            string str = "ma_vt like '" + Ma_vt.Trim() + "%'";
+            parram_value += ";"; // Thêm tk_dt = ''
+            parram_value += ";"; // Thêm tk_gt = ''
+            parram_value += ";"; // Thêm tk_thue = ''
+            parram_value += ";;"; // Thêm tk_thue_gt = ''
+            parram_value += str; // Thêm filter  
+            DataSet ds = await myDb.LoadStoreProcedure(Store_proc.Trim() + "_Detail", parram_name, parram_value);
+
+            TblDataCT = ds.Tables[1].Copy();
+            FbrowseCT = (Fbrowse.Trim()+";").Split("|")[1];
+            ShowLoadding = false;
+            IsDetail = true;
+            ShowDetailToolBar();
+            StateHasChanged();
+        }
+        else
+        {
+            myStateMN.SetNewThongbao(Lap["Please select a row to view detail"] + " !");
+        }
+    }
+    public override async void ExportData(int type)
+    {
+        if(IsDetail)
+        {
+            oBrowseCT.ExPortGrid(type);
+        }
+        else
+        {
+            oBrowse.ExPortGrid(type);
+        }       
+        
+        myStateMN.SetNewThongbao(Lap["Export successfully"]);
+        StateHasChanged();
+    }
+    #region "Tim kiem"
+    private string Ma_kh = "";
+    private string Ma_kho = "";
+    private string Ma_vt = "";
+    public string stradv = "";
+    private async void BtnSave()
+    {
+        ShowLoadding = true;
+        myStateMN.SetStartDate((DateTime)Ngay_ct1);
+        myStateMN.SetEndDate((DateTime)Ngay_ct2);
+
+        await Loaddata();
+
+        ShowLoadding = false;
+        PopupVisible = false;
+        InvokeAsync(StateHasChanged);
+    }
+    private void BtnCancel()
+    {
+        PopupVisible = false;
+        StateHasChanged();
+    }
+    public override async Task Loaddata()
+    {
+        if (Ngay_ct1 == null || Ngay_ct2 == null || Ngay_ct1 > Ngay_ct2)
+        {
+            myStateMN.SetNewThongbao(Lap["Incorrect date declaration"] + " !");
+            return;
+        }
+
+
+        ShowLoadding = true;
+        string parram_name = "TuNg;DenNg;tk_dt;tk_gt;tk_thue;tk_thue_gt;filter";
+        string parram_value = "";        
+        parram_value = ((DateTime)Ngay_ct1).ToString("yyyyMMdd");
+        parram_value += ";" + ((DateTime)Ngay_ct2).ToString("yyyyMMdd");
+        string str = "ma_vt like '" + Ma_vt.Trim() + "%'";
+        parram_value += ";"; // Thêm tk_dt = ''
+        parram_value += ";"; // Thêm tk_gt = ''
+        parram_value += ";"; // Thêm tk_thue = ''
+        parram_value += ";;"; // Thêm tk_thue_gt = ''
+        parram_value += str; // Thêm filter       
+        DataSet ds = await myDb.LoadStoreProcedure(Store_proc, parram_name, parram_value);
+
+        TblData = ds.Tables[1].Copy();      
+        // string modelstr = SisFunc.Converts.DataTable2Model(TblData, "Soth1");
+        FbrowsePH = Fbrowse.Split("|")[0];
+        ShowLoadding = false;
+        StateHasChanged();
+    }
+
+    public override void Print()            
+    {
+        LsData = new List<Arctbh1Model>();
+        Arctbh1Model Data = new Arctbh1Model();
+        // Data.Ngay_ct1 = (DateTime)Ngay_ct1;
+        // Data.Ngay_ct2 = (DateTime)Ngay_ct2;
+        LstData = myDb.ConvertDataTable<Arctbh1>(TblData);
+        Data.LsData = LstData;
+        LsData.Add(Data);
+        
+        ShowReport(LsData, typeof(Arctbh1Model));
+
+        //ShowPrint = true;        
+    }
+    #endregion
+}

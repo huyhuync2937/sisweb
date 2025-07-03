@@ -1,0 +1,745 @@
+﻿@page "/hdbanle"
+@page "/hdbanle/{Menu_id}"
+@page "/hdbanle/{Menu_id}/{Cur_stt_rec}"
+
+@inject IDbManager myDb
+@inject NavigationManager navigation
+@inject Statemanagerment myStatemanagerment
+@inject IOptionsManager myoptions
+@inject ISisTypeManager mySType
+@inject ICommandManager Commands
+@implements IDisposable
+@inject ILocalStorageService Localstore
+@inject IJSRuntime JavacriptS
+@inject IStringLocalizer<HDBanleComponent> Lap
+@inject IChatService SisChatService
+@inject IWebHostEnvironment _webhost
+@inject IDxWindowService Modal
+@using System.Reflection;
+
+@attribute [Authorize(Roles = "admin,hdbanle")]
+@if (TblPh != null)
+{ 
+        <div class="row m-0 p-0">
+        <FrmBrowseComponent @ref="@_PHFrmBrowse" TblData="@TblPh" Page_size="@pageSize" CssClass="grid-frm-height" Fbrowse="@TransBase.Phbrowse" SelectItem="CurrenSelectItem" OnRowDbClick="@OnRDBClick" IsLangEn="@IsLangEn"></FrmBrowseComponent>
+        </div>
+        <hr style="height:1px;background-color:dimgrey;margin:1px;padding:0px;">
+        <div class="row m-0 p-0">
+            <h4 style="font-size:1rem; padding:5px; margin-top:5px; background-color:cornflowerblue;border-radius:10px;"> @Lap["Details"] </h4>
+            <FrmBrowseComponent @ref="@_CTFrmBrowse" TblData="@TblCt" CssClass="grid-frmct-height" Fbrowse="@TransBase.Ctbrowse" IsLangEn="@IsLangEn" IsFilter="@isFilterct" IsPageSize="@isFilterct"></FrmBrowseComponent>
+        </div>
+}
+
+@if (frmVisible && HDtype != null)
+{
+    <DxWindow @bind-Visible="@frmVisible" CloseOnEscape="true" Width="70vw"
+    MinWidth="700px"
+    MinHeight="500px" Scrollable = "true" 
+    MaxHeight="98vh"
+    AllowResize="true"
+    AllowDrag="true"
+    AllowDragByHeaderOnly="true"          
+    ShowFooter = "false">
+        <BodyTemplate>
+            <DynamicComponent Type="@HDtype" Parameters="@Par" />
+        </BodyTemplate>
+    </DxWindow>
+}
+<XacnhanComponent Content="@Message" Xacnhanxoa="Dongyxoa"></XacnhanComponent>
+<XacnhanComponent Content="@Message_tiepnhan" Xacnhanxoa="DongYTiepnhanDon"></XacnhanComponent>
+<XacnhanComponent Content="@Message_resend" Xacnhanxoa="DongYResendZalo"></XacnhanComponent>
+<style>
+    .grid-frm-height {
+        height: 55vh;
+    }
+
+    .grid-frmct-height {
+        height: 30vh;
+    }
+</style>
+@code {
+    #region Parameter
+    FrmBrowseComponent _PHFrmBrowse;
+    FrmBrowseComponent _CTFrmBrowse;
+    [Parameter]
+    public string Menu_id { get; set; }
+    [Parameter]
+    public string Cur_stt_rec { get; set; }
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationState { get; set; }
+    string Ma_ct = "HDL";
+    string Ma_qs = "HDL";
+    string _pageTitle = "Hóa đơn bán lẻ";
+    Model.Transbase TransBase;
+    ClaimsPrincipal userCliams;
+    DataTable TblDmkh;
+    private DataTable TblPh { get; set; }
+    private DataTable TblCt { get; set; }
+    private DataTable TblCtgt { get; set; }
+    object SelectedDataItem { get; set; }
+    private string sqlTablePH = "";
+    private string sqlTableCT = "";
+    private string sqlTableCTGT = "";
+    private string store_proc = "";
+    private string sqlTableKey = "stt_rec";
+    DataRowView newData { get; set; }
+    private string mPage = "HDL";
+    private string editPage = "frmhdl";
+    private Command curCommand;
+    private Dmdm CurDmdm = new Dmdm();
+    Users _curUser;
+    string base_menu_id = "we_bl_01";
+    private string ToastMessage { get; set; } = "";
+    private string Ma_dvcs;
+    private static string SqlTableKeyValue = "";
+    private int pageSize = 15;
+    private string userLang { get; set; } = "";
+    private string Message { get; set; } = "";
+    private bool IsLangEn = false;
+    ActionTask curTask { get; set; }
+    bool isFilterct { get; set; } = false;
+    bool frmVisible { get; set; } = false;
+    string printPage = "hdlprint";
+    private string frmTitle { get; set; } = @"Thêm mới hóa đơn bán lẻ";
+    string Message_tiepnhan = "";
+    string Message_resend = "";
+    string Vmgconfig = "[vmg_config]";
+    string TempId = "";
+    string Brand_name = "";
+    string Token = "";
+    string templateData = "";
+    string USER_ID = "";
+    string customer_name = "";
+    string ID_name = "";
+    string _zalodata = "";
+    string _endpoint = "";
+
+    public bool ShowHD { get; set; } = true;
+    public Dictionary<string, object> Par { get; set; } = new Dictionary<string, object>();
+    public Type HDtype { get; set; }
+    #endregion
+    async void CloseForm(bool value)
+    {
+        if (value)
+        {
+            await PageLoad();
+        }
+        frmVisible = false;
+        StateHasChanged();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            if (string.IsNullOrEmpty(Menu_id))
+                Menu_id = base_menu_id;           
+
+            _curUser = myStatemanagerment.GetCurUser();
+            Ma_dvcs = myStatemanagerment.GetMa_Dvcs();
+            userCliams = (await authenticationState).User;
+            if (_curUser.Is_admin == 1 || _curUser.CheckRight(Menu_id.Replace("_","."),"VIEW"))
+            {
+                myStatemanagerment.SetToolBar(new MyToolbar("toolbar", true));              
+                myStatemanagerment.SetToolBar(new MyToolbar("View", true));
+                myStatemanagerment.SetToolBar(new MyToolbar("Edit", true));
+                myStatemanagerment.SetToolBar(new MyToolbar("Delete", true));
+                myStatemanagerment.SetToolBar(new MyToolbar("New", true));
+                myStatemanagerment.SetToolBar(new MyToolbar("Search", true));
+                myStatemanagerment.SetToolBar(new MyToolbar("Print", true));
+                myStatemanagerment.AddToolBarButton("button1", "Tiếp nhận đơn");
+                myStatemanagerment.AddToolBarButton("button2", "Gửi Zalo");
+                myStatemanagerment.SetToolBar(new MyToolbar("Export", true));
+            }
+            else
+            {
+                myStatemanagerment.SetToolBar(new MyToolbar("toolbar", false));
+            }
+            
+            myStatemanagerment.OnActionTaskChanged += OnActionTaskchanged;
+            myStatemanagerment.OnLangguaChanged += OnLangguachange;
+            myStatemanagerment.OnDvcsChanged += OnDvcsChanged;
+
+            await PageLoad();
+            await LoadConfig();
+            //await LoadDMKH(); 
+            await Language();
+            
+            if (!string.IsNullOrEmpty(Cur_stt_rec))
+            {
+                curTask = ActionTask.View;
+                frmVisible = true;                
+            }
+            StateHasChanged();
+        }
+    }
+
+    void CurrenSelectItem(object obj)
+    {
+        if (obj != null)
+        {
+            SelectedDataItem = obj;
+            DataRowView rview = (DataRowView)SelectedDataItem;
+            SqlTableKeyValue = rview[sqlTableKey].ToString().Trim();
+            TblCt.DefaultView.RowFilter = sqlTableKey + "='" + SqlTableKeyValue + "'";
+            if (TblCtgt != null)
+                TblCtgt.DefaultView.RowFilter = sqlTableKey + "='" + SqlTableKeyValue + "'";            
+        }
+        else
+        {
+            TblCt.DefaultView.RowFilter = sqlTableKey + "=''";
+            TblCtgt.DefaultView.RowFilter = sqlTableKey + "=''";
+        }
+    }
+    async Task LoadDMKH()
+    {
+        string _sql = "Select ma_kh, ten_kh, ten_kh2, dia_chi, dien_thoai, ma_so_thue, ong_ba, nh_kh3, tk_nh, nh_kh2,ngay_sinh from dmkh where status = '1'";
+        DataSet _ds = await myDb.LoadDataset(_sql);
+        TblDmkh = _ds.Tables[0];       
+    }
+    Task PageLoad()
+    {
+        TransBase = new Model.Transbase(Ma_ct, Menu_id.Replace('_', '.'), myStatemanagerment,myDb);
+        sqlTablePH = TransBase.DmctInfo["m_phdbf"].ToString().Trim();
+        sqlTableCT = TransBase.DmctInfo["m_ctdbf"].ToString().Trim();
+        sqlTableCTGT = TransBase.DmctInfo["m_ctgtdbf"].ToString().Trim();
+        curCommand = TransBase.CommandInfo;
+        string[] _store = curCommand.Store_proc.Split('|');
+        if (_store.Length > 0)
+            store_proc = _store[0];
+
+        TblPh = TransBase.DsTrans.Tables[0];
+        TblPh.DefaultView.Sort = "ngay_ct desc, so_ct desc";
+        TblCt = TransBase.DsTrans.Tables[1];
+        TblCtgt = (TransBase.DsTrans.Tables.Count > 2? TransBase.DsTrans.Tables[2]:(DataTable)null);
+        if (TblCt.DefaultView.Count > 0)
+        {
+            TblCt.DefaultView.RowFilter = sqlTableKey + "='" + TblPh.DefaultView[0][sqlTableKey].ToString().Trim() + "'";
+        }
+        if (TblCtgt!=null)
+        {
+            if (TblCtgt.DefaultView.Count > 0)
+            {
+                TblCtgt.DefaultView.RowFilter = sqlTableKey + "='" + TblPh.DefaultView[0][sqlTableKey].ToString().Trim() + "'";
+            }
+            TblCtgt.DefaultView.Sort = "stt_rec0 asc";
+        }
+        TblCt.DefaultView.Sort = "stt_rec0 asc";
+        
+        return Task.CompletedTask;
+    }
+
+    private void OnActionTaskchanged(ActionTask ac)
+    {
+        if (string.IsNullOrEmpty(Menu_id))
+            Menu_id = base_menu_id;
+        myStatemanagerment.SetCurrentActionTask(ac);
+        curTask = ac;
+        switch (ac)
+        {
+            case ActionTask.New:
+                NewItem();
+                break;
+            case ActionTask.Edit:
+                EditItems();
+                break;
+            case ActionTask.View:
+                ViewItems();
+                break;
+            case ActionTask.Delete:
+                Deleitems();
+                break;
+            case ActionTask.Print:
+                Printitems();
+                break;
+            case ActionTask.Export:
+                ExportData(1);
+                break;
+            case ActionTask.Export2:
+                ExportData(2);
+                break;
+            case ActionTask.Export3:
+                ExportData(3);
+                break;
+            case ActionTask.Button1:
+                TiepnhanDonhang();
+                break;
+            case ActionTask.Button2:
+                SendZalo();
+                break;
+        }
+    }
+    private List<HDBanleModel> LSData;
+    async void Printitems()
+    {
+        if (SelectedDataItem == null)
+        {
+            myStatemanagerment.SetNewAlertMessage("Chưa chọn hóa đơn chi tiết");
+            return;
+        }
+        newData = (SelectedDataItem as DataRowView);
+        SqlTableKeyValue = newData[sqlTableKey].ToString().Trim();
+
+        string parram_name = "stt_rec";
+        string parram_value = SqlTableKeyValue;
+        DataSet DataSource = await myDb.LoadStoreProcedure(store_proc, parram_name, parram_value);        
+        if (DataSource != null && DataSource.Tables.Count > 0)
+        {
+            LSData = new List<HDBanleModel>();
+            HDBanleModel _curModel = new HDBanleModel();
+            _curModel.Print_logo = await File.ReadAllBytesAsync(Path.Combine(_webhost.WebRootPath, "Images", "print_logo.png"));
+            _curModel.LSPh = myDb.ConvertDataTable<Ph83>(DataSource.Tables[0]);
+            _curModel.LSCt = myDb.ConvertDataTable<Ct83>(DataSource.Tables[1]);
+            LSData.Add(_curModel);
+        }
+
+        Par.Clear();
+        Par.Add("LSItems", (object)LSData);
+        Par.Add("Menu_id", (object)Menu_id.Replace("_","."));
+        Par.Add("Parent_url", (object)"");        
+        Par.Add("OnBack", EventCallback.Factory.Create(this, OnPrintBack));
+
+        Assembly sharedAssembly = Assembly.Load("SisCom");       
+        Type? genericType = sharedAssembly.GetType("SisCom.Shared.ReportOptionComponent`1");
+        Type? genericParameter = typeof(HDBanleModel);        
+        if (genericType != null && genericParameter != null)
+        {            
+            HDtype = genericType.MakeGenericType(genericParameter);
+        }       
+        frmVisible = true;
+        StateHasChanged();
+    }
+    private async void OnPrintBack()
+    {
+        frmVisible = false;
+        StateHasChanged();
+
+    }
+    async Task SendNotifycation(string ma_bp, string so_ct)
+    {
+        string _message = string.Format("{0} vừa vừa tiếp nhận đơn: {1}", _curUser.User_name, so_ct);
+        Notification CurNotification = new Notification();
+        CurNotification.Tieu_de = _message;
+        CurNotification.Noi_dung = _message;
+        CurNotification.No_link = string.Format("hdbanle/{0}", Menu_id);
+        CurNotification.Users_show = ma_bp;
+        CurNotification.Ngay1 = DateTime.Now.Date;
+        CurNotification.Ngay2 = DateTime.Now.Date;
+        CurNotification.NotificationID = Guid.NewGuid();
+        CurNotification.Status = "1";
+        CurNotification.No_type = "1";
+        CurNotification.Date2 = DateTime.Now.Date;
+        CurNotification.Date0 = DateTime.Now.Date;
+        CurNotification.Time2 = DateTime.Now.ToString("HH:mm:ss");
+        CurNotification.Time0 = DateTime.Now.ToString("HH:mm:ss");
+        if (_curUser != null)
+        {
+            CurNotification.User_id2 = _curUser.User_id;
+            CurNotification.User_id0 = _curUser.User_id;
+        }
+        await myDb.InsertOneRow<Notification>(CurNotification, "notification");
+        SisChatService.SendNotification(_curUser.User_name, CurNotification.Users_show, _message);
+    }
+    async Task LoadConfig()
+    {
+        string sql = string.Format("Select top(1) [endpoint], token, tempId, brand_name,templateData from {0}", Vmgconfig);
+        DataSet _ds = await myDb.LoadDataset(sql);
+        DataTable tblConfig = _ds.Tables[0];
+        if (tblConfig != null && tblConfig.Rows.Count > 0)
+        {
+            TempId = tblConfig.Rows[0]["tempId"].ToString();
+            Brand_name = tblConfig.Rows[0]["brand_name"].ToString();
+            Token = tblConfig.Rows[0]["token"].ToString();
+            templateData = tblConfig.Rows[0]["templateData"].ToString();
+            _endpoint = string.IsNullOrEmpty(tblConfig.Rows[0]["endpoint"].ToString()) ? "https://api-ott.brandsms.vn/api/ott/send" : tblConfig.Rows[0]["endpoint"].ToString().Trim();
+        }
+    }
+    void SendZalo()
+    {
+        if (string.IsNullOrEmpty(_endpoint))
+        {
+            myStatemanagerment.SetNewAlertMessage("Chưa cấu hình VMG Zalo. Vui lòng cấu hình thông tin kết nối sau đó thử lại.");
+            return;
+        }
+        if (SelectedDataItem == null)
+        {
+            myStatemanagerment.SetNewAlertMessage("Chưa chọn khách hàng");
+            return;
+        }
+
+        DataRowView rview = (DataRowView)SelectedDataItem;
+        if (string.IsNullOrEmpty(rview["dien_thoai"].ToString()))
+        {
+            myStatemanagerment.SetNewAlertMessage(string.Format("Khách hàng {0} chưa có số điện thoại", rview["ten_kh"].ToString()));
+            return;
+        }
+        if (!string.IsNullOrEmpty(rview["send_zalo"].ToString()) && rview["send_zalo"].ToString().Trim().Equals("1"))
+        {
+            Message_resend = string.Format("Khách hàng: {0} đã gửi tin Zalo rồi. có muốn gửi lại không?", rview["ten_kh"].ToString().Trim());
+            StateHasChanged();
+        }
+        else
+        {
+            SendZaloData();
+        }
+    }
+
+    void DongYResendZalo(bool status)
+    {
+        if (status)
+            SendZaloData();
+
+        Message_resend = "";
+    }
+
+    async void SendZaloData()
+    {
+        _zalodata = "";
+        DataRowView rview = (DataRowView)SelectedDataItem;
+        if (string.IsNullOrEmpty(templateData))
+        {
+            USER_ID = rview["dien_thoai"].ToString().Trim();
+            customer_name = rview["ten_kh"].ToString().Trim();
+            ID_name = rview["dien_thoai"].ToString().Trim();
+            _zalodata = @"{'USER_ID':'" + USER_ID + "', 'customer_name':'" + customer_name + "','ID_name':'" + ID_name + "'}";
+        }
+        else
+        {
+            string[] cols = templateData.Split(';');
+            string _col_key = "vmg_" + cols.FirstOrDefault().ToString();
+            foreach (string _col in cols)
+            {
+                _zalodata += "'" + _col + "':'" + rview["vmg_" + _col].ToString().Trim() + "',";
+            }
+
+            _zalodata = "{" + _zalodata.Substring(0, _zalodata.Length - 1) + "}";
+            USER_ID = rview[_col_key].ToString().Trim();
+        }
+
+        try
+        {
+            string requestId = Guid.NewGuid().ToString();
+            string _json = @"[{'to':'" + USER_ID + "', 'requestID':'" + requestId + "','scheduled':'','templateId':'" + TempId + "','useUnicode':'0','templateData':" + _zalodata + "}]";
+            JArray message = JArray.Parse(_json);
+
+            JObject payload = new JObject
+            {
+                { "from", Brand_name },
+                { "type", 1 },
+                { "serviceType", 1 },
+                { "messages", message }
+            };
+
+            Root response = await PaymentRequest.sendHttpClientRequest(_endpoint, Token, payload.ToString());
+            if (response == null)
+            {
+                myStatemanagerment.SetNewAlertMessage("Lỗi. chưa gửi được tin.");
+                return;
+            }
+            if (response.messages.Count > 0)
+            {
+                foreach (Message _mes in response.messages)
+                {
+                    if (!_mes.errorCode.Equals("000"))
+                    {
+                        myStatemanagerment.SetNewAlertMessage(string.Format("Lỗi: {0}. chưa gửi được tin.", _mes.errorCode + " - " + _mes.errorMessage));
+                        return;
+                    }
+                    else
+                    {
+                        SqlTableKeyValue = rview[sqlTableKey].ToString().Trim();
+                        DataRow _rph = TblPh.Select(string.Format("{0} = '{1}'", sqlTableKey, SqlTableKeyValue)).FirstOrDefault();
+                        if (_rph != null)
+                        {
+                            _rph["send_zalo"] = (object)"1";
+                            _rph["send_zalo_name"] = (object)"Đã gửi|green|B";
+                        }
+                        TblPh.AcceptChanges();
+                        string sql = String.Format("Update {0} set send_zalo = '1' where {1} = '{2}';", sqlTablePH, sqlTableKey, SqlTableKeyValue);
+                        await myDb.ExecuteSqlQueryAsync(sql);
+                        myStatemanagerment.SetNewThongbao(string.Format("Đã tin tới khách hàng: {0} thành công.", USER_ID));
+                        StateHasChanged();
+                        break;
+                    }
+                }
+            }            
+        }
+        catch
+        {
+            myStatemanagerment.SetNewAlertMessage("Lỗi. chưa gửi được tin.");
+            return;
+        }
+    }
+
+    void TiepnhanDonhang()
+    {
+        if (SelectedDataItem == null)
+        {
+            myStatemanagerment.SetNewThongbao("Chưa chọn hóa đơn");
+            return;
+        }
+        DataRowView rview = (DataRowView)SelectedDataItem;     
+        if (!string.IsNullOrEmpty(rview["ma_nv_tn"].ToString()))
+        {
+            myStatemanagerment.SetNewAlertMessage("Đơn hàng đã được tiếp nhận rồi.");
+            return;
+        }
+        if (!string.IsNullOrEmpty(rview["ma_gd"].ToString()) && !rview["ma_gd"].ToString().StartsWith("2"))
+        {
+            myStatemanagerment.SetNewAlertMessage("Đơn hàng trực tiếp không thể tiếp nhận.");
+            return;
+        }
+        if (!string.IsNullOrEmpty(rview["status"].ToString()) && rview["status"].ToString().StartsWith("2"))
+        {
+            myStatemanagerment.SetNewAlertMessage("Đơn hàng đã lưu không thể tiếp nhận.");
+            return;
+        }
+        if (string.IsNullOrEmpty(rview["ma_nv_cd"].ToString()))
+        {
+            myStatemanagerment.SetNewAlertMessage(string.Format("Đơn hàng không phải của: {0}.", _curUser.User_name));
+            return;
+        }
+        string ma_nv_cd = string.IsNullOrEmpty(rview["ma_nv_cd"].ToString()) ? "" : rview["ma_nv_cd"].ToString().Trim();
+        if (!ma_nv_cd.Equals(_curUser.User_name.Trim()))
+        {
+            myStatemanagerment.SetNewAlertMessage(string.Format("Đơn hàng không phải của: {0}.", _curUser.User_name));
+            return;
+        }
+
+        SqlTableKeyValue = rview[sqlTableKey].ToString().Trim();
+        Message_tiepnhan = string.Format("Xác nhận tiếp nhận đơn hàng {0}.", rview["so_ct"].ToString());
+        StateHasChanged();
+    }
+
+    private async Task DongYTiepnhanDon(bool status)
+    {
+        if (status)
+        {
+            DataRowView rview = (DataRowView)SelectedDataItem;
+            SqlTableKeyValue = rview[sqlTableKey].ToString().Trim();
+            DataRow _rph = TblPh.Select(string.Format("{0} = '{1}'", sqlTableKey, SqlTableKeyValue)).FirstOrDefault();
+            if (_rph != null)
+            {
+                _rph["ma_bp"] = (object)_curUser.User_name;
+                _rph["ma_nv_tn"] = (object)_curUser.User_name;
+            }
+            TblPh.AcceptChanges();
+
+            string sql = String.Format("Update {0} set ma_bp = '{3}', ma_nv_tn = '{3}' where {1} = '{2}';", sqlTablePH, sqlTableKey, SqlTableKeyValue, _curUser.User_name);
+            await myDb.ExecuteSqlQueryAsync(sql);
+
+            ToastMessage = string.Format("Nhân viên {0}, tiếp nhận đơn: {1} thành công.", _curUser.User_name, rview["so_ct"].ToString());
+            myStatemanagerment.SetNewThongbao(ToastMessage);
+
+            await SendNotifycation(_curUser.User_name.Trim(), rview["so_ct"].ToString());
+            SelectedDataItem = null;
+        }
+        Message_tiepnhan = "";
+    }
+    void ExportData(int type)
+    {
+        _PHFrmBrowse.ExPortGrid(type);
+        _CTFrmBrowse.ExPortGrid(type);
+        ToastMessage = Lap["Export successfully"].ToString();
+        myStatemanagerment.SetNewThongbao(ToastMessage);
+    }
+    private void NewItem()
+    {
+        Message = "";
+        frmTitle = Lap["New"];
+
+        Par.Clear();
+        Par.Add("Stt_rec", (object)"");
+        Par.Add("Ma_ct", (object)"HDL");
+        Par.Add("Menu_id", (object)Menu_id);
+        Par.Add("curActionTask", (object)ActionTask.New);
+        Par.Add("Closeform", EventCallback.Factory.Create<bool>(this, CloseForm));
+        HDtype = Type.GetType("SisSo.Pages.Input.HDBanle.FrmSOCTHDL");
+        
+        frmVisible = true;
+        StateHasChanged();
+    }
+
+    private void EditItems()
+    {
+        if (SelectedDataItem == null)
+            SelectedDataItem = TblPh.DefaultView[0];
+
+        Message = "";
+        newData = (SelectedDataItem as DataRowView);
+        Cur_stt_rec = newData[sqlTableKey].ToString().Trim();
+
+        Type? vctype = Type.GetType("FrmSOCTHDL");
+
+        Par.Clear();
+        Par.Add("Stt_rec", (object)Cur_stt_rec);
+        Par.Add("Ma_ct", (object)"HDL");
+        Par.Add("Menu_id", (object)Menu_id);
+        Par.Add("curActionTask", (object)ActionTask.Edit);
+        Par.Add("Closeform", EventCallback.Factory.Create<bool>(this, CloseForm));
+        HDtype = Type.GetType("SisSo.Pages.Input.HDBanle.FrmSOCTHDL");
+
+        frmVisible = true;
+        StateHasChanged();
+    }
+
+    private void ViewItems()
+    {
+        // if (!_curUser.CheckRight(Menu_id, "READ"))
+        // {
+        //     myStatemanagerment.SetNewAlertMessage(Lap["You do not have permission to perform this function"] + " !");
+        //     return;
+        // }
+        if (SelectedDataItem == null)
+            SelectedDataItem = TblPh.DefaultView[0];
+
+        newData = (SelectedDataItem as DataRowView);
+        Cur_stt_rec = newData[sqlTableKey].ToString().Trim();
+
+        Par.Clear();
+        Par.Add("Stt_rec", (object)Cur_stt_rec);
+        Par.Add("Ma_ct", (object)"HDL");
+        Par.Add("Menu_id", (object)Menu_id);
+        Par.Add("curActionTask", (object)ActionTask.View);
+        Par.Add("Closeform", EventCallback.Factory.Create<bool>(this, CloseForm));
+        HDtype = Type.GetType("SisSo.Pages.Input.HDBanle.FrmSOCTHDL");
+
+        frmVisible = true;
+        StateHasChanged();
+    }
+    public async void OnRDBClick(GridRowClickEventArgs e)
+    {        
+        ViewItems();
+    }
+    public async void OnRClick(GridRowClickEventArgs e)
+    {
+        if (e.VisibleIndex >= 0)
+            SelectedDataItem = TblPh.DefaultView[e.VisibleIndex];
+
+        if (e.Column != null && SelectedDataItem != null)
+        {
+            string field = ((DxGridDataColumn)e.Column).FieldName.Trim();
+            if (field == "so_ct")
+            {
+                DataTable dts = (DataTable)(e.Grid.Data);
+                if (dts != null && dts.Rows.Count > 0)
+                {
+                    if (dts.Columns.Contains("stt_rec") && dts.Columns.Contains("ma_ct"))
+                    {              
+                        Cur_stt_rec = (SelectedDataItem as DataRowView)[sqlTableKey].ToString().Trim();
+                        string _ma_ct = (SelectedDataItem as DataRowView)["ma_ct"].ToString().Trim();
+
+                        SisType sTypw = mySType.GetValue("hdbanle");                        
+                        if (sTypw != null)
+                        {
+                            Par.Clear();
+                            Par.Add("Stt_rec", (object)Cur_stt_rec);
+                            Par.Add("Ma_ct", (object)_ma_ct);
+                            Par.Add("curActionTask", (object)ActionTask.View);
+                            Par.Add("Closeform", EventCallback.Factory.Create<bool>(this, CloseForm));
+                            HDtype = Type.GetType(sTypw.Type.Namespace.Trim() + ".FrmSOCTHDL");
+                            DxWindowModel model = new DxWindowModel(HDtype, Par, true);
+                            Par.Add("DxWindowmodel", model);
+                            Modal.Show(model);
+                            // frmVisible = true;
+                            // StateHasChanged();
+                        }
+                                                
+                    }                        
+                }
+                return;
+            }
+            //myStatemanagerment.SetNewThongbao((SelectedDataItem as DataRowView)[field].ToString().Trim());
+        }
+                
+    }
+    private void Deleitems()
+    {
+        if (SelectedDataItem == null)
+            SelectedDataItem = TblPh.DefaultView[0];
+
+        newData = (SelectedDataItem as DataRowView);
+        Cur_stt_rec = newData[sqlTableKey].ToString().Trim();
+        Message = "Có phải bạn muốn xóa: " + Cur_stt_rec;
+        StateHasChanged();
+    }
+
+    private async void OnLangguachange(MyLang lang)
+    {
+        if (lang.IsnewLang)
+            await Language();
+
+    }
+    private async void OnDvcsChanged(string _ma_dvcs)
+    {
+        if (!string.IsNullOrEmpty(_ma_dvcs))
+        {
+            Ma_dvcs = _ma_dvcs;
+            await PageLoad();
+            StateHasChanged();
+        }
+    }
+    async Task Language()
+    {
+        try
+        {
+            IsLangEn = false;
+            userLang = await Localstore.GetItemAsync<string>("userlang");
+            if (!string.IsNullOrEmpty(userLang))
+            {
+                if (userLang.Equals("En"))
+                {
+                    IsLangEn = true;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+    private async Task Dongyxoa(bool status)
+    {
+        if (status)
+        {
+            string sql = String.Format("Delete {0} where {1} = '{2}'; Delete {3} where {4} = '{5}';", sqlTablePH, sqlTableKey, SqlTableKeyValue, sqlTableCT, sqlTableKey, SqlTableKeyValue);
+            await myDb.ExecuteSqlQueryAsync(sql);
+            if (!string.IsNullOrEmpty(newData["ma_kh"].ToString()))
+                DeleteDiemTonKH();
+
+            await PageLoad();
+            ToastMessage = "Xóa thành công: " + SqlTableKeyValue;
+            myStatemanagerment.SetNewThongbao(ToastMessage);
+            SelectedDataItem = null;
+        }
+        Message = "";
+    }
+    void DeleteDiemTonKH()
+    {
+        Decimal diem_ton = 0;
+        Decimal _diem_tl_sd = 0;
+        Decimal _diem_tl = 0;
+        if (!string.IsNullOrEmpty(newData["diem_tl_sd"].ToString()))
+            Decimal.TryParse(newData["diem_tl_sd"].ToString(), out _diem_tl_sd);
+
+        if (!string.IsNullOrEmpty(newData["diem_tl"].ToString()))
+            Decimal.TryParse(newData["diem_tl"].ToString(), out _diem_tl);
+
+        string check = string.Format("Select diem_ton from {0} where ma_kh = '{1}'", "[dmdtkh]", newData["ma_kh"].ToString().Trim());
+        DataSet _ds = myDb.LoadDataSet(check);
+        DataTable TblCheck = _ds.Tables[0];
+        if (TblCheck != null && TblCheck.Rows.Count != 0)
+        {
+            Decimal.TryParse(TblCheck.Rows[0]["diem_ton"].ToString(), out diem_ton);
+            diem_ton = (diem_ton + _diem_tl_sd) - _diem_tl;
+            string sql = string.Format("Update {0} set diem_ton = '{1}' where ma_kh = '{2}'", "[dmdtkh]", string.Format("{0:#}", diem_ton), newData["ma_kh"].ToString().Trim());
+            myDb.ExecuteSqlQueryAsync(sql);
+        }
+    }
+    public void Dispose()
+    {
+        myStatemanagerment.OnActionTaskChanged -= OnActionTaskchanged;
+        myStatemanagerment.OnLangguaChanged -= OnLangguachange;
+        myStatemanagerment.OnDvcsChanged -= OnDvcsChanged;
+    }
+}

@@ -1,0 +1,95 @@
+﻿@inject ICommandManager Commands
+@inject IDbManager myDb
+@inject Statemanagerment myStatemanagerment
+
+<DxWindow @ref="@windowRef"
+          ShowFooter="true"
+          Visible="true"
+          CloseOnEscape="false"
+          ShowCloseButton="false"
+          AllowResize="false"
+          Width="550px"
+          MinHeight="200px"
+          HeaderText="Kết chuyển điểm tồn sang năm sau">
+    <BodyTemplate>
+        <h3 class="my-2">Kết chuyển điểm tồn sang năm sau</h3>
+
+        <div class="row m-0">
+            <label class="col-3">Từ năm</label>
+            <DxSpinEdit CssClass="col" @bind-Value="@Tu_nam"></DxSpinEdit>
+        </div>
+        <div class="row m-0">
+            <label class="col-3">Sang năm</label>
+            <DxSpinEdit CssClass="col" @bind-Value="@Sang_nam"></DxSpinEdit>
+        </div>
+      
+        <h3 class="text-danger text-center">@message</h3>
+        @if (ShowLoadding)
+        {
+            <div class="row m-0 p-0 justify-content-center">
+                <div class="spinner-border text-primary" role="status" style="width: 5rem; height:5rem;border-width:3px;">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        }
+
+    </BodyTemplate>
+    <FooterTemplate>
+        <div class="row m-2 justify-content-end">
+            <div class="row col-8 justify-content-end">
+                <DxButton CssClass="btnokcancel col" RenderStyle="ButtonRenderStyle.Success" Enabled="@Enable_btn" Text="Kết chuyển" Click="@Repost" />
+                <DxButton CssClass="btnokcancel col" RenderStyle="ButtonRenderStyle.Danger" Text="Hủy" Click="@HideForm" />
+            </div>
+        </div>
+    </FooterTemplate>
+</DxWindow>
+
+@code {
+    DxWindow windowRef;
+    [Parameter]
+    public EventCallback<bool> Closeform { get; set; } 
+    int Tu_nam = DateTime.Now.Year;
+    int Sang_nam = DateTime.Now.Year;
+    DateTime Ngay_ks;
+    bool ShowLoadding = false;
+    bool Enable_btn = true;
+    string message = "";
+    string store_proc = "KCDiemtonKH";
+    int _count = 0;
+
+    void HideForm()
+    {
+        windowRef.CloseAsync();
+        Closeform.InvokeAsync(false);
+    }   
+    protected override void OnInitialized()
+    {
+        Sang_nam = Tu_nam + 1;
+    }
+    async void Repost()
+    {
+        if (Tu_nam > Sang_nam)
+        {
+            Enable_btn = true;
+            myStatemanagerment.SetNewAlertMessage("Từ năm phải < sang năm.");
+            return;
+        }
+       
+        Enable_btn = false;
+        ShowLoadding = true;
+        message = "Đang thực hiện";
+        StateHasChanged();
+        await Post();
+        HideForm();
+    }
+    async Task Post()
+    {
+        string _sql = string.Format("exec {0} '{1}', '{2}'", store_proc, Tu_nam, Sang_nam);
+        DataSet _ds = await myDb.LoadDataset(_sql);
+        if (_ds != null && _ds.Tables[0].Rows.Count != 0)       
+            myStatemanagerment.SetNewAlertMessage(string.Format("Thực hiện thành công số bản ghi: {0}.", _ds.Tables[0].Rows[0][0].ToString()));
+
+        Enable_btn = true;
+        ShowLoadding = false;
+    }
+}

@@ -1,0 +1,67 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <BaseIntermediateOutputPath></BaseIntermediateOutputPath>
+    <BaseOutputPath>..\..\Dll</BaseOutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Shared\**" />
+    <Content Remove="Shared\**" />
+    <EmbeddedResource Remove="Shared\**" />
+    <None Remove="Shared\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
+    <PackageReference Include="Dapper" Version="2.1.35" />
+    <PackageReference Include="DevExpress.Blazor" Version="24.2.3" />
+    <PackageReference Include="DevExpress.Blazor.Reporting.JSBasedControls" Version="24.2.3" />
+    <PackageReference Include="DevExpress.AspNetCore.Reporting" Version="24.2.3" />
+    <PackageReference Include="DevExpress.Blazor.Reporting.Viewer" Version="24.2.3" />
+    <PackageReference Include="DevExpress.Blazor.RichEdit" Version="24.2.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Data.Odbc" Version="7.0.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\Dll\Debug\net8.0\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SisCom">
+      <HintPath>..\..\Dll\Debug\net8.0\SisCom.dll</HintPath>
+    </Reference>
+    <Reference Include="SisData">
+      <HintPath>..\..\Dll\Debug\net8.0\SisData.dll</HintPath>
+    </Reference>
+    <Reference Include="SisFunc">
+      <HintPath>..\..\Dll\Debug\net8.0\SisFunc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\" />
+  </ItemGroup>
+
+
+
+</Project>

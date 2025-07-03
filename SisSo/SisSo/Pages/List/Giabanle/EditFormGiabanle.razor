@@ -1,0 +1,340 @@
+﻿@using Microsoft.AspNetCore.Components.Forms
+
+@inject IDbManager myDb
+@inject ILocalStorageService Localstore
+@inject Statemanagerment myStatemanagerment
+@inject NavigationManager navigation
+@inject ICommandManager Commands
+@inject IOptionsManager Options
+@inject IStringLocalizer<App> Lap
+@inject IStringLocalizer<EditFormGiabanle> Lat
+
+@implements IDisposable
+<div class="container pt-1">
+    <EditForm Context="ContextEdit" Model="@CurDmgia2" onkeydown="ModifyEnterKeyPressAsTab(event);">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <DxFormLayout CssClass="w-100">
+            <DxFormLayoutItem Caption="@Lat["Items"]" ColSpanMd="12">
+                <Template>
+                    <AutocompleteComponent Ma_dm="dmvt" @bind-Value="@CurDmgia2.ma_vt" SelectChanged="OnAutoCompleteDMVTChanged" Filter="@_filter_dmvt" IsEnable="@AllowEditMode" IsLangEn="@IsLangEn"></AutocompleteComponent>
+                </Template>
+            </DxFormLayoutItem>
+
+            <DxFormLayoutItem Caption="@Lat["Date"]" ColSpanMd="12">
+                <Template>
+                    <DxDateEdit CssClass="col" Id="nam" @bind-Date="@CurDmgia2.ngay_ban" Enabled="@AllowEditMode" DisplayFormat="dd-MM-yyyy" Format="dd-MM-yyyy" />
+                </Template>
+            </DxFormLayoutItem>
+            <DxFormLayoutItem Caption="@Lat["Price"]" ColSpanMd="12" >
+                <Template>                  
+                    <DxMaskedInput @bind-Value="@CurDmgia2.gia2"
+                                   CssClass="col"
+                                   Mask="@NumericMask.Currency" Enabled="@AllowEditMode" />                   
+                </Template>
+            </DxFormLayoutItem>
+            <DxFormLayoutItem Caption="@Lat["Price 2"]" ColSpanMd="12">
+                <Template>
+                    <DxMaskedInput @bind-Value="@CurDmgia2.gia_nt2"
+                                   CssClass="col"
+                                   Mask="@NumericMask.Currency" Enabled="@AllowEditMode" />
+                </Template>
+            </DxFormLayoutItem>
+            <DxFormLayoutItem Caption="@Lap["Unit"]" ColSpanMd="12">
+                <Template>
+                    <AutocompleteComponent Ma_dm="dmdvcs" @bind-Value="@CurDmgia2.ma_dvcs" SelectChanged="OnAutoCompleteDVCSChanged" Filter="@_filter_dvcs" IsEnable="@AllowEditMode" IsLangEn="@IsLangEn"></AutocompleteComponent>
+                </Template>
+            </DxFormLayoutItem>
+        </DxFormLayout>
+    </EditForm>
+    <div class="row justify-content-end align-content-end mt-2">
+        <DxButton CssClass="col-3 m-1" Click="@SaveDM" Text="@Lap["Save"].ToString()" RenderStyle="ButtonRenderStyle.Primary" />
+        <DxButton CssClass="col-3 m-1" Click="@HideVoucher" Text="@Lap["Cancel"].ToString()" RenderStyle="ButtonRenderStyle.Danger" />
+    </div>
+</div>
+@code {
+    [Parameter]
+    public string Menu_id { get; set; }
+    [Parameter]
+    public string ma_vt { get; set; }
+    [Parameter]
+    public string ma_dvcs { get; set; }
+    [Parameter]
+    public string ngay_ban { get; set; }
+    [Parameter]
+    public ActionTask curActionTask { get; set; } = ActionTask.None;
+    [Parameter]
+    public bool? ShowAdd { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }  
+    Dmgia2 CurDmgia2 { get; set; }
+    private static string sqlTableName = "Dmgia2";
+    private static string SqlTableKey = "ma_vt;ma_dvcs;ngay_ban";
+    private string OldTableKeyValue = "";
+    private static string SqlTableKeyValue = "";
+    private string ParentPage = "giabanle";
+    private bool AllowEditMode;
+    private bool AllowNewMode;
+    string _filter_dvcs = "";
+    string _filter_dmvt = "";
+    private Command curCommand = new Command();
+    private Dmdm CurDmdm = new Dmdm();
+    private string _transform = "";
+    private string UserLang = "";
+    private bool IsLangEn = false;
+    private Users _curUser;
+    private string Toastmessage = "";
+    ColumnLength columnLength = new ColumnLength();
+    private int MaxlengthTen = 0;
+    private int MaxlengthTen2 = 0;
+    void OnAutoCompleteDVCSChanged(ExpandoObject value)
+    {
+        CurDmgia2.ten_dvcs = value.Where(a => a.Key.Equals("ten_dvcs")).FirstOrDefault().Value.ToString();
+        CurDmgia2.ten_dvcs2 = value.Where(a => a.Key.Equals("ten_dvcs2")).FirstOrDefault().Value.ToString();
+        StateHasChanged();
+    }
+
+    void OnAutoCompleteDMVTChanged(ExpandoObject value)
+    {
+        CurDmgia2.ten_vt = value.Where(a => a.Key.Equals("ten_vt")).FirstOrDefault().Value.ToString();
+        CurDmgia2.ten_vt2 = value.Where(a => a.Key.Equals("ten_vt2")).FirstOrDefault().Value.ToString();
+        StateHasChanged();
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+            await Language();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (String.IsNullOrEmpty(Menu_id))
+            Menu_id = "we_bl_04";
+
+        await PageLoad();
+        myStatemanagerment.OnLangguaChanged += OnLangguachange;
+
+        if (curActionTask == ActionTask.None)
+            curActionTask = myStatemanagerment.GetCurrentActionTask();
+
+        _curUser = myStatemanagerment.GetCurUser();
+        columnLength = await myDb.GetColumnLength(SqlTableKey, sqlTableName);      
+        switch (curActionTask)
+        {
+            case ActionTask.View:
+                {
+                    if (!string.IsNullOrEmpty(ma_vt))
+                        ViewDM(ma_vt, ma_dvcs, ngay_ban);
+                    break;
+                }
+            case ActionTask.Edit:
+                {
+                    if (!string.IsNullOrEmpty(ma_vt))
+                        EditDM(ma_vt, ma_dvcs, ngay_ban);
+                    break;
+                }
+            case ActionTask.New:
+                {
+                    CreateNewDM();
+                    break;
+                }
+            default:
+                {
+                    if (!string.IsNullOrEmpty(ma_vt))
+                        ViewDM(ma_vt, ma_dvcs, ngay_ban);
+                    break;
+                }
+        }
+    }
+    void ViewDM(string ma_vt, string ma_dvcs, string ngay_ban)
+    {
+        CurDmgia2 = new Dmgia2();     
+        AllowEditMode = false;
+        LoadData(ma_vt, ma_dvcs, ngay_ban);
+    }
+    void EditDM(string ma_vt, string ma_dvcs, string ngay_ban)
+    {
+        OldTableKeyValue = ma_vt.Trim() + "-" + ma_dvcs.Trim() + "-" + ngay_ban.Trim();
+        CurDmgia2 = new Dmgia2();
+        AllowEditMode = true;     
+        LoadData(ma_vt, ma_dvcs, ngay_ban);
+    }
+    async Task SaveDM()
+    {
+        if (!CheckValid())
+            return;
+
+        
+        SqlTableKeyValue = CurDmgia2.ma_vt.Trim() + ";" + CurDmgia2.ma_dvcs.Trim() + ";" + CurDmgia2.ngay_ban.ToString("yyyyMMdd");
+        if (curActionTask == ActionTask.New)
+        {
+            CurDmgia2.Date = DateTime.Now.Date;
+            CurDmgia2.Date0 = DateTime.Now.Date;
+            CurDmgia2.Time = DateTime.Now.ToString("HH:mm:ss");
+            CurDmgia2.Time0 = DateTime.Now.ToString("HH:mm:ss");
+            if (_curUser != null)
+            {
+                CurDmgia2.User_id = _curUser.User_id;
+                CurDmgia2.User_id0 = _curUser.User_id;              
+            }          
+            string _condition = SqlJoinKeyValue(SqlTableKey, SqlTableKeyValue);
+            string check = string.Format("Select 1 from {0} where {1}", sqlTableName, _condition);
+            DataSet ds = await myDb.LoadDataset(check);
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                Toastmessage = String.Format(Lap["Code {0} already exists !"], SqlTableKeyValue);
+                myStatemanagerment.SetNewAlertMessage(Toastmessage);
+            }
+            else
+            {
+                await myDb.InsertOneRow<Dmgia2>(CurDmgia2, sqlTableName);
+                myStatemanagerment.SetNewThongbao(String.Format(Lap["Successfully added: {0}"].ToString(), SqlTableKeyValue));              
+                if (ShowAdd == true)
+                {
+                    await OnClose.InvokeAsync();
+                }
+                else
+                    navigation.NavigateTo(curCommand.Mobile_page.Trim() + @"/" + Menu_id);
+            }
+        }
+        else if (curActionTask == ActionTask.Edit)
+        {
+            CurDmgia2.Date0 = DateTime.Now.Date;
+            CurDmgia2.Time0 = DateTime.Now.ToString("HH:mm:ss");
+            if (_curUser != null)
+            {
+                CurDmgia2.User_id0 = _curUser.User_id;              
+            }
+            //string _condition = SqlJoinKeyValue(SqlTableKey, SqlTableKeyValue);
+            string _condition = "rtrim(ma_vt) + '-' + rtrim(ma_dvcs) + '-' + convert(varchar,ngay_ban,112)  = '"+ OldTableKeyValue+"'";
+            await myDb.UpdateOneRow1<Dmgia2>(CurDmgia2, sqlTableName, "", _condition);
+            myStatemanagerment.SetNewThongbao(String.Format(Lap["Edit successfully: {0}"], SqlTableKeyValue));
+            navigation.NavigateTo(curCommand.Mobile_page.Trim() + @"/" + Menu_id);
+        }
+    }
+    bool CheckValid()
+    {
+        if (string.IsNullOrEmpty(CurDmgia2.ma_vt))
+        {
+            Toastmessage = Lat["No items input"];
+            myStatemanagerment.SetNewAlertMessage(Toastmessage);
+            return false;
+        }
+        if (string.IsNullOrEmpty(CurDmgia2.ma_dvcs))
+        {
+            Toastmessage = Lat["No unit input"];
+            myStatemanagerment.SetNewAlertMessage(Toastmessage);
+            return false;
+        }
+      
+        return true;
+
+    }
+    async void LoadData(string ma_vt, string ma_dvcs, string ngay_ban)
+    {
+        SqlTableKeyValue = ma_vt + ";" + ma_dvcs + ";" + ngay_ban;
+        string _condition = SqlJoinKeyValue(SqlTableKey, SqlTableKeyValue);
+        string sql = string.Format("Select * from {0} where {1} ", sqlTableName, _condition);
+        DataSet DsTrans = await myDb.LoadDataset(sql);
+        if (DsTrans != null && DsTrans.Tables[0].Rows.Count > 0)
+        {
+            List<Dmgia2> lsdata = myDb.ConvertDataTable<Dmgia2>(DsTrans.Tables[0]);
+            if (lsdata != null && lsdata.Count > 0)           
+                CurDmgia2 = lsdata[0];            
+        }   
+        StateHasChanged();
+    }
+    string SqlJoinKeyValue(string key, string value)
+    {
+        string _sql = "";
+        string[] keys = key.Split(';');
+        string[] keyvls = value.Split(';');
+        if (keys.Length.Equals(keyvls.Length))
+        {
+            for (int x = 0; x < keys.Length; x++)
+            {
+                _sql += string.Format(" {0} = '{1}' and", keys[x], keyvls[x]);
+            }
+        }
+        return _sql.Length > 0 ? _sql.Substring(0, _sql.Length - 3) : "";
+    }
+    protected override void OnInitialized()
+    {
+        CurDmgia2 = new Dmgia2();
+    }
+    void CreateNewDM()
+    {
+        CurDmgia2 = new Dmgia2();
+        CurDmgia2.ngay_ban = DateTime.Now;
+        CurDmgia2.Status = "1";      
+        AllowEditMode = true;      
+        StateHasChanged();
+    }
+    async Task PageLoad()
+    {
+        curCommand = await Commands.GetSubMenuBymenuId(Menu_id.Replace('_', '.'));
+        if (curCommand != null)
+        {
+            string sql = "select * from dmdm where ma_dm = '" + curCommand.Store_proc + "'";
+            DataSet ds = await myDb.LoadDataset(sql);
+            List<Dmdm> lsdm = myDb.ConvertDataTable<Dmdm>(ds.Tables[0]);
+            if (lsdm != null && lsdm.Count > 0) 
+            {
+                CurDmdm = lsdm[0];
+                if (CurDmdm != null)
+                {
+                    sqlTableName = CurDmdm.Table_name.Trim();
+                    //SqlTableKey = CurDmdm.Key.Trim().Split(";").LastOrDefault();
+                    if (!string.IsNullOrEmpty(CurDmdm.Transform))
+                        _transform = CurDmdm.Transform;
+                }
+            }
+        }
+    }
+    public void Dispose()
+    {
+        myStatemanagerment.OnLangguaChanged -= OnLangguachange;
+    }
+    private async void OnLangguachange(MyLang lang)
+    {
+        if (lang.IsnewLang)
+        {
+            await Language();
+        }
+    }
+    async Task Language()
+    {
+        try
+        {
+            IsLangEn = false;
+            UserLang = await Localstore.GetItemAsync<string>("userlang");
+            if (!string.IsNullOrEmpty(UserLang))
+            {
+                if (UserLang.Equals("En"))
+                {
+                    IsLangEn = true;
+                }
+            }
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+    private void Hidemessage(bool state)
+    {
+        if (state)
+        {
+            Toastmessage = "";
+            StateHasChanged();
+        }
+    }
+    void HideVoucher()
+    {
+        if (ShowAdd == true)
+        {
+            OnClose.InvokeAsync();
+        }
+        else
+            navigation.NavigateTo(curCommand.Mobile_page.Trim() + @"/" + Menu_id);
+    }
+}

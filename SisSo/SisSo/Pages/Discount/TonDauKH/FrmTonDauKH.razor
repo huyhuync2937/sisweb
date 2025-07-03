@@ -1,0 +1,80 @@
+﻿@page "/frmtondaukh"
+@page "/frmtondaukh/{menu_id}"
+@page "/frmtondaukh/{menu_id}/{ma_kh}/{nam}"
+@using System.Data
+@using Microsoft.Extensions.Localization;
+@using SisCom;
+@using SisData.Data;
+@using SisData.Service;
+@using DevExpress.Blazor
+@inject Statemanagerment myStatemanagerment
+@inject NavigationManager navigation
+@inject IDbManager myDb
+@inject IStringLocalizer<FrmTonDauKH> Lat
+
+<DxWindow @bind-Visible="@PopVisible"
+          ShowFooter="true"
+          CloseOnEscape="false"
+          ShowCloseButton="false"
+          Width="500px"
+          HeaderText="@Pagetitle">
+    <BodyTemplate>
+        <EditFormTonDauKH ma_kh="@ma_kh" nam=@nam Menu_id="@menu_id" curActionTask="@curActionTask" ShowAdd="@ShowAdd" OnClose="ClickHandler"></EditFormTonDauKH>
+    </BodyTemplate>
+
+</DxWindow>
+
+@code {
+    [Parameter]
+    public string menu_id { get; set; }
+    [Parameter]
+    public string ma_kh { get; set; }  
+    [Parameter]
+    public string nam { get; set; }
+    [Parameter]
+    public bool PopVisible { get; set; } = true;
+    [Parameter]
+    public ActionTask curActionTask { get; set; } = ActionTask.None;
+    [Parameter]
+    public bool? ShowAdd { get; set; }
+    [Parameter]
+    public EventCallback OnClose { get; set; }
+
+    private string Pagetitle = "Cập nhật tông đầu khách hàng";
+    protected override void OnInitialized()
+    {
+        if (ShowAdd == false)
+            PopVisible = true;
+        if (curActionTask == ActionTask.None)
+            curActionTask = myStatemanagerment.GetCurrentActionTask();
+        switch (curActionTask)
+        {
+            case ActionTask.View:
+                {
+                    Pagetitle = Lat["View"];
+                    break;
+                }
+            case ActionTask.Edit:
+                {
+                    Pagetitle = Lat["Edit"];
+                    break;
+                }
+            case ActionTask.New:
+                {
+                    Pagetitle = Lat["Add"];
+                    break;
+                }
+
+            default:
+                {
+                    Pagetitle = Lat["View"];
+                    break;
+                }
+        }
+    }
+    private void ClickHandler()
+    {
+        PopVisible = false;
+        OnClose.InvokeAsync();
+    }
+}

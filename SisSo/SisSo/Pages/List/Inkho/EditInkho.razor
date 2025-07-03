@@ -1,0 +1,407 @@
+﻿@inherits FrmListBaseComponent
+
+<div class="w-100">
+    <FormList Title="@Title" @bind-curActionTask="@curActionTask" OnSave="@SaveDM" OnEdit="@OnEdit" OnCopy="@OnCopy" OnCancel="@HideVoucher">
+        <div class="row m-1 me-2 rounded-1 border border-light shadow">
+            <DxFormLayout Data="@CurDmkho" ItemSizeMode="@Itemsizemode" CssClass="frm-header sis-form" onkeydown="ModifyEnterKeyPressAsTab(event);">
+                <DxFormLayoutItem Caption="@Lap["Item code"]" ColSpanMd="6" CaptionCssClass="fw-bold">
+                    <Template>
+                        <DxTextBox @bind-Text="@CurDmkho.Ma_kho" maxlength="@tblLength["ma_kho"]" Enabled="@AllowEditMa" />
+                    </Template>
+                </DxFormLayoutItem>
+                <DxFormLayoutItem Caption="@Lap["Lookup code"]" ColSpanMd="6">
+                    <Template>
+                        <DxTextBox @bind-Text="@CurDmkho.Ma_tra_cuu" maxlength="@tblLength["ma_tra_cuu"]" Enabled="@AllowEditMode" />
+                    </Template>
+                </DxFormLayoutItem>
+
+                <DxFormLayoutItem Caption="@Lap["Item name"]" ColSpanMd="12" CaptionCssClass="fw-bold">
+                    <Template>
+                        <DxTextBox @bind-Text="@CurDmkho.Ten_kho" maxlength="@tblLength["ten_kho"]" Enabled="@AllowEditMode" />
+                    </Template>
+                </DxFormLayoutItem>
+                <DxFormLayoutItem Caption="@Lap["Item name 2"]" ColSpanMd="12">
+                    <Template>
+                        <DxTextBox @bind-Text="@CurDmkho.Ten_kho2" maxlength="@tblLength["ten_kho2"]" Enabled="@AllowEditMode" />
+                    </Template>
+                </DxFormLayoutItem>
+                <DxFormLayoutItem ColSpanMd="12" Caption="@Lap["Enable Dealer Inventory"]">
+                    <Template>
+                        <DxCheckBox @bind-Checked="@IsDealerInventoryEnabled"
+                                    Text="Enable Dealer Inventory"
+                                    Enabled="@AllowEditMode" />
+                    </Template>
+                </DxFormLayoutItem>
+                <DxFormLayoutItem ColSpanMd="12" Caption="@Lap["Dealer Inventory account"]">
+                    <Template>
+                        <AutocompleteComponent Ma_dm="dmtk1" @bind-Value="@CurDmkho.Tk_dl" IsEnable="@(AllowEditMode && IsDealerInventoryEnabled)" IsLangEn="@IsLangEn"></AutocompleteComponent>
+                    </Template>
+                </DxFormLayoutItem>
+                <DxFormLayoutItem ColSpanMd="12" Caption="@Lap["Project item"]" BeginRow="true">
+                    <div class="row m-0 p-0">
+                        <DxComboBox @bind-Value="@CurDmkho.Ton_kho_vv"
+                                    Enabled="@AllowEditMode"
+                                    CssClass="col-3 m-0 p-0"
+                                    Data="@ComboBoxItems"
+                                    TextFieldName="Text"
+                                    ValueFieldName="Value">
+                        </DxComboBox>
+                        <span class="col">@Lap["0 - No, 1 - Yes, project"]</span>
+                    </div>
+                </DxFormLayoutItem>
+
+                <DxFormLayoutItem Field="Ma_dvcs" Enabled="@AllowEditMode"
+                                  Caption="@Lap["Unit"]"
+                                  ColSpanMd="12">
+                    <DxComboBox Data="@tblDmdvcs" Enabled="@AllowEditMode"
+                                ClearButtonDisplayMode="DataEditorClearButtonDisplayMode.Auto"
+                                NullText="@Lap["Select ..."]"
+                                ListRenderMode="ListRenderMode.Virtual"
+                                FilteringMode="DataGridFilteringMode.Contains"
+                                ValueFieldName="ma_item"
+                                Value="@(Converts.ToString(((ValueEditContext)context).Value))"
+                                ValueChanged="@((string value) =>CurDmkho.Ma_dvcs = value)"
+                                EditFormat="{1} {2}">
+                        <DxListEditorColumn FieldName="@nameof(listItem.ma_item)"
+                                            Caption="@Lap["ID"]"
+                                            Width="50px" />
+                        @if (!IsLangEn)
+                        {
+                            <DxListEditorColumn FieldName="@nameof(listItem.ten_item)"
+                                                Caption="@Lap["Name"]" />
+                            <DxListEditorColumn FieldName="@nameof(listItem.ten_item2)"
+                                                Caption="@Lap["Name 2"]" />
+                        }
+                        else
+                        {
+                            <DxListEditorColumn FieldName="@nameof(listItem.ten_item2)"
+                                                Caption="@Lap["Name 2"]" />
+                            <DxListEditorColumn FieldName="@nameof(listItem.ten_item)"
+                                                Caption="@Lap["Name"]" />
+                        }
+                    </DxComboBox>
+                </DxFormLayoutItem>
+                <DxFormLayoutItem Caption="@Lap["Status"]" ColSpanMd="6">
+                    <Template>
+                        <DxComboBox Enabled="@AllowEditMode"
+                                    ClearButtonDisplayMode="DataEditorClearButtonDisplayMode.Never"
+                                    Data="LSStatus"
+                                    TextFieldName="Ten"
+                                    ValueFieldName="Ma"
+                                    @bind-Value="@CurDmkho.Status">
+                            <Columns>
+                                <DxListEditorColumn FieldName="@nameof(Dmtk.Ma)" Caption="@Lap["ID"]" Width="50px" />
+                                <DxListEditorColumn FieldName="@nameof(Dmtk.Ten)" Caption="@Lap["Name"]" />
+                            </Columns>
+                        </DxComboBox>
+                    </Template>
+                </DxFormLayoutItem>
+                <DxFormLayoutItem ColSpanMd="12">
+                    <Template>
+                        <hr />
+                    </Template>
+                </DxFormLayoutItem>
+            </DxFormLayout>
+        </div>
+    </FormList>
+</div>
+
+<style>
+    .editor-iconadd {
+        -webkit-mask: url("..\\Images\\Add.svg");
+        mask: url("..\\Images\\Add.svg");
+    }
+</style>
+
+@code {
+    public bool AddNhvtvisible { get; set; }
+    private List<listItem> tblDmdvcs;
+    private List<listItem> lstNhkh1;
+    private List<listItem> lstNhkh2;
+    private List<listItem> lstNhkh3;
+    private List<listItem> lstNhkh;
+    public IEnumerable<string> Tags { get; set; }
+    char Placeholder = '#';
+    public Dmkho CurDmkho;
+    private string menu_id = "ws.dm.07";
+    private bool _isDealerInventoryEnabled;
+
+    private bool IsDealerInventoryEnabled
+    {
+        get => _isDealerInventoryEnabled;
+        set
+        {
+            if (_isDealerInventoryEnabled != value)
+            {
+                _isDealerInventoryEnabled = value;
+                if (!value)
+                {
+                    CurDmkho.Tk_dl = string.Empty;
+                }
+                StateHasChanged();
+            }
+        }
+    }
+    public class ComboBoxItem
+    {
+        public int Value { get; set; }
+        public string Text { get; set; }
+    }
+
+    private List<ComboBoxItem> ComboBoxItems = new List<ComboBoxItem>
+{
+    new ComboBoxItem { Value = 0, Text = "Không" },
+    new ComboBoxItem { Value = 1, Text = "Có" }
+};
+    void CloseFrmNhvt()
+    {
+        AddNhvtvisible = false;
+    }
+    protected override void OnInitialized()
+    {
+        sqlTableName = "Dmkho";
+        SqlTableKey = "Ma_kho";
+        CheckSqlTableKey = "Ma_kho";
+        ParentPage = String.IsNullOrEmpty(ParentPage) ? "inkho" : ParentPage;
+        CurDmkho = new Dmkho();
+
+        if (String.IsNullOrEmpty(Menu_id))
+            Menu_id = menu_id;
+
+        base.OnInitialized();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await PageLoad();
+
+
+        IsDealerInventoryEnabled = !string.IsNullOrEmpty(CurDmkho.Tk_dl);
+        string strsql = "Select ma_dvcs as ma_item,ten_dvcs as ten_item,ten_dvcs2 as ten_item2 from v_dmdvcs where status = 1 order by ma_dvcs";
+        tblDmdvcs = await mySqldb.Loaddata<listItem, dynamic>(strsql, new { });
+
+        strsql = "Select ma_nh as ma_item,ten_nh as ten_item,ten_nh2 as ten_item2 from v_dmnhvt where status = 1 AND loai_nh = 1 order by ma_nh";
+        lstNhkh1 = await mySqldb.Loaddata<listItem, dynamic>(strsql, new { });
+
+        strsql = "Select ma_nh as ma_item,ten_nh as ten_item,ten_nh2 as ten_item2 from v_dmnhvt where status = 1 AND loai_nh = 2 order by ma_nh";
+        lstNhkh2 = await mySqldb.Loaddata<listItem, dynamic>(strsql, new { });
+        strsql = "Select ma_nh as ma_item,ten_nh as ten_item,ten_nh2 as ten_item2 from v_dmnhvt where status = 1 AND loai_nh = 3 order by ma_nh";
+        lstNhkh3 = await mySqldb.Loaddata<listItem, dynamic>(strsql, new { });
+
+        strsql = "Select ma_nh as ma_item,ten_nh as ten_item,ten_nh2 as ten_item2 from v_dmnhvt where status = 1 order by ma_nh";
+        lstNhkh = await mySqldb.Loaddata<listItem, dynamic>(strsql, new { });
+
+        strsql = "Select top 2 ma_nh as ma_item from v_dmnhvt where status = 1 order by ma_nh";
+        Tags = await mySqldb.Loaddata<string, dynamic>(strsql, new { });
+
+
+    }
+    private async Task OnCheckBoxChanged(bool isChecked)
+    {
+        if (!isChecked)
+        {
+            CurDmkho.Tk_dl = string.Empty;
+        }
+        IsDealerInventoryEnabled = isChecked;
+        StateHasChanged();
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            switch (curActionTask)
+            {
+                case ActionTask.View:
+                    {
+                        if (!string.IsNullOrEmpty(Ma_ma))
+                            ViewDM(Ma_ma);
+                        myStateMN.SetToolBar(new MyToolbar("save", false));
+                        break;
+                    }
+                case ActionTask.Edit:
+                    {
+                        if (!string.IsNullOrEmpty(Ma_ma))
+                            EditDM(Ma_ma);
+                        break;
+                    }
+                case ActionTask.New:
+                    {
+                        CreateNewDM();
+                        break;
+                    }
+                case ActionTask.Copy:
+                    {
+                        CreateCopyDM(Ma_ma);
+                        break;
+                    }
+                default:
+                    {
+                        if (!string.IsNullOrEmpty(Ma_ma))
+                            ViewDM(Ma_ma);
+                        break;
+                    }
+            }
+        }
+    }
+
+    void ViewDM(string SqlTableKeyValue)
+    {
+        CurDmkho = new Dmkho();
+        AllowEditMode = false;
+        AllowEditMa = false;
+        LoadData(SqlTableKeyValue);
+        StateHasChanged();
+    }
+    void EditDM(string SqlTableKeyValue)
+    {
+        CurDmkho = new Dmkho();
+        AllowEditMode = true;
+        AllowEditMa = false;
+        LoadData(SqlTableKeyValue);
+        StateHasChanged();
+    }
+    async Task OnEdit()
+    {
+        AllowEditMode = true;
+        curActionTask = ActionTask.Edit;
+    }
+    async Task OnCopy()
+    {
+        CreateCopyDM(CurDmkho.Ma_kho);
+    }
+    async Task SaveDM()
+    {
+        if (curActionTask == ActionTask.New)
+            if (!CheckValidCode())
+                return;
+
+        if (!CheckValid())
+            return;
+
+        CurDmkho.Ma_kho = CurDmkho.Ma_kho.ToUpper().Trim();
+        SqlTableKeyValue = CurDmkho.Ma_kho;
+        if (curActionTask == ActionTask.New)
+        {
+            CurDmkho.Date = DateTime.Now.Date;
+            CurDmkho.Date0 = DateTime.Now.Date;
+            CurDmkho.Time = DateTime.Now.ToString("HH:MM:ss");
+            CurDmkho.Time0 = DateTime.Now.ToString("HH:MM:ss");
+            if (curUser != null)
+            {
+                CurDmkho.User_id = curUser.User_id;
+                CurDmkho.User_id0 = curUser.User_id;
+                CurDmkho.User_name = curUser.User_name;
+                CurDmkho.User_name0 = curUser.User_name;
+            }
+            CheckSqlTableKeyValue = CurDmkho.Ma_kho.Trim();
+            string[] strKey = CheckSqlTableKey.Split(';');
+            string[] strKeyValue = CheckSqlTableKeyValue.Split(';');
+            string condition = "";
+            if (strKey.Length > 0)
+            {
+                for (int x = 0; x < strKey.Length; x++)
+                {
+                    condition += strKey[x] + " = '" + strKeyValue[x] + "' and ";
+                }
+                if (!string.IsNullOrEmpty(condition))
+                    condition = condition.Substring(0, condition.Length - 4);
+            }
+            string check = "Select " + SqlTableKey + " from " + sqlTableName + " where " + condition;
+            DataSet ds = await myDb.LoadDataset(check);
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                myStateMN.SetNewThongbao(String.Format(Lap["Code [{0} ] already exists !"], SqlTableKeyValue));
+                StateHasChanged();
+            }
+            else
+            {
+                await myDb.InsertOneRow<Dmkho>(CurDmkho, sqlTableName);
+                myStateMN.SetNewThongbao(String.Format(Lap["Successfully added new : {0}"], SqlTableKeyValue));
+            }
+        }
+        else if (curActionTask == ActionTask.Edit)
+        {
+            CurDmkho.Date = DateTime.Now.Date;
+            CurDmkho.Time = DateTime.Now.ToString("HH:MM:ss");
+            if (curUser != null)
+            {
+                CurDmkho.User_id = curUser.User_id;
+                CurDmkho.User_name = curUser.User_name;
+            }
+            await myDb.UpdateOneRow<Dmkho>(CurDmkho, sqlTableName, SqlTableKey, SqlTableKeyValue);
+            myStateMN.SetNewThongbao(String.Format(Lap["Edit successfully : {0}"], SqlTableKeyValue));
+        }
+        // Đóng Form nhập
+        if (DxWindowmodel != null)
+        {
+            myModal.CloseModal(DxWindowmodel);
+        }
+
+        if (ShowAdd == true)
+        {
+            OnClose.InvokeAsync();
+        }
+        else
+            myNavi.NavigateTo("/" + ParentPage);
+    }
+    bool CheckValid()
+    {
+        if (string.IsNullOrEmpty(CurDmkho.Ten_kho))
+        {
+            myStateMN.SetNewThongbao(Lap["No customer name entered"]);
+            StateHasChanged();
+            return false;
+        }
+        return true;
+
+    }
+    public async Task LoadData(string SqlTableKeyValue)
+    {
+        string sql = "Select * from " + sqlTableName + " where " + SqlTableKey + " = '" + SqlTableKeyValue + "'";
+        DataSet DsTrans = await myDb.LoadDataset(sql);
+        if (DsTrans != null && DsTrans.Tables[0].Rows.Count > 0)
+        {
+            List<Dmkho> lsdetai = myDb.ConvertDataTable<Dmkho>(DsTrans.Tables[0]);
+            if (lsdetai != null && lsdetai.Count > 0)
+                CurDmkho = lsdetai[0];
+        }
+    }
+    public async void CreateNewDM()
+    {
+        CurDmkho = new Dmkho();
+        CurDmkho.Status = "1";
+        CurDmkho.Ma_kho = GetNewSttDM();
+        AllowEditMode = true;
+        AllowEditMa = true;
+
+        if (!String.IsNullOrEmpty(Ma_ma))
+        {
+            string sql = "Select Ten_kho,Ten_kho2 from " + sqlTableName + " where " + SqlTableKey + " = '" + Ma_ma + "'";
+            DataSet DsTrans = await myDb.LoadDataset(sql);
+            if (DsTrans != null && DsTrans.Tables[0].Rows.Count > 0)
+            {
+                CurDmkho.Ten_kho = DsTrans.Tables[0].Rows[0]["Ten_kho"].ToString();
+                CurDmkho.Ten_kho2 = DsTrans.Tables[0].Rows[0]["Ten_kho2"].ToString();
+            }
+        }
+        StateHasChanged();
+    }
+    public async void CreateCopyDM(string SqlTableKeyValue)
+    {
+        CurDmkho = new Dmkho();
+        await LoadData(SqlTableKeyValue);
+
+        CurDmkho.Status = "1";
+        CurDmkho.Ma_kho = GetNewSttDM();
+        AllowEditMode = true;
+        AllowEditMa = true;
+        curActionTask = ActionTask.New;
+        StateHasChanged();
+    }
+
+    void OnAddNhkhClick()
+    {
+        AddNhvtvisible = true;
+        StateHasChanged();
+    }
+}

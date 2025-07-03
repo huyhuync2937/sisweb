@@ -1,0 +1,728 @@
+﻿@inherits TranBaseComponent
+@inject IJSRuntime JSRuntime
+@inject IWebHostEnvironment WebHostEnvironment
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@using System.Data.OleDb
+@using System.Diagnostics;
+@using System.Data.SqlClient;
+@using System.Reflection;
+
+<div class="w-100">
+    <div class=" m-1 me-2 rounded-1  bg-light">
+        <div class="d-flex justify-content-end gap-2 me-3">
+            <DxButton Text="Nhận"
+                      RenderStyle="ButtonRenderStyle.Secondary"
+                      Click="@InsertDataToDatabase"
+                      CssClass="px-4  my-1" />
+            <DxButton Text="Hủy"
+                      RenderStyle="ButtonRenderStyle.Danger"
+                      Click="@Cancel"
+                      CssClass="px-4  my-1" />
+        </div>
+    </div>
+    <div class="row m-2 rounded-1 border  border-1 ">
+        <DxFormLayout ItemSizeMode="@Itemsizemode" CssClass="frm-header sis-form my-2" onkeydown="ModifyEnterKeyPressAsTab(event);">
+            <DxFormLayoutItem Caption="@Lap["Data transferred"]" ColSpanMd="12" CaptionCssClass="fw-bold">
+                <Template>
+                    <DxTextBox Text="Phiếu báo giá" ReadOnly="true" />
+                </Template>
+            </DxFormLayoutItem>
+            <DxFormLayoutItem ColSpanMd="12" Caption="@Lap["File name"]" BeginRow="true">
+                <div class="row m-0 p-0">
+
+                    <DxTextBox @bind-Text="@FilePath" ReadOnly="true" CssClass="col-6 m-0 p-0" />
+                    <DxButton Id="overviewDemoSelectButton"
+                              CssClass="col-2 m-0 p-0"
+                              RenderStyle="ButtonRenderStyle.Primary"
+                              Text="..." />
+                    <DxButton Text="@Lap["See"]"
+                              RenderStyle="ButtonRenderStyle.Secondary"
+                              CssClass="col-2 m-0 p-0"
+                              Click="@OpenExcelFile" />
+                    <DxButton Text="@Lap["Download example"]"
+                              RenderStyle="ButtonRenderStyle.Secondary"
+                              CssClass="col-2 m-0 p-0"
+                              Click="DownloadExamle" />
+                </div>
+            </DxFormLayoutItem>
+
+        </DxFormLayout>
+
+    </div>
+
+</div>
+<DxFileInput Visible="@UploadVisible"
+             ExternalSelectButtonCssSelector="#overviewDemoSelectButton"
+             ExternalDropZoneCssSelector="#overviewDemoDropZone"
+             ExternalDropZoneDragOverCssClass="custom-drop-zone-hover"
+             MaxFileSize="15000000"
+             Multiple="false"
+             FilesUploading="OnFilesUploading"
+             SelectedFilesChanged="@SelectedFilesChanged">
+</DxFileInput>
+<DxPopup @bind-Visible="@isPopupVisible"
+         HeaderText="Dữ liệu Excel"
+         Width="80%"
+         Height="600px"
+         ShowCloseButton="true"
+         CloseOnOutsideClick="true">
+    <BodyContentTemplate>
+        @if (dataExcel == null || dataExcel.Rows.Count == 0)
+        {
+            <p>Không có dữ liệu để hiển thị.</p>
+        }
+        else
+        {
+            <DxGrid Data="@dataExcel"
+                    ShowBorders="true"
+                    ShowRowLines="true"
+                    ColumnAutoWidth="true"
+                    CssClass="p-2"
+                    HorizontalScrollMode="HorizontalScrollMode.Auto"
+                    ShowPager="true"
+                    PageSize="20">
+                <Columns>
+                    @foreach (DataColumn col in dataExcel.Columns)
+                    {
+                        <DxGridDataColumn FieldName="@col.ColumnName" Width="150px" />
+                    }
+                </Columns>
+            </DxGrid>
+            @*  <div class="mt-3">
+                <DxButton Text="Chèn dữ liệu vào cơ sở dữ liệu" Click="InsertDataToDatabase" />
+            </div> *@
+        }
+    </BodyContentTemplate>
+</DxPopup>
+
+@code {
+    private DataTable dataExcel;
+
+    bool UploadVisible { get; set; } = false;
+    bool isPopupVisible { get; set; } = false;
+    public IEnumerable<string> Tags { get; set; }
+    char Placeholder = '#';
+    private List<List<string>> data = null;
+    public static string StrBrowse = "";
+    public static string StrBrowseKhoa = "";
+    public static string StrBrowseKhoa_dac_biet = "";
+    private List<Dictionary<string, object>> excelRows = new();
+    [Parameter]
+    public bool IsImportPopupVisible { get; set; }
+    [Parameter]
+    public EventCallback<bool> IsImportPopupVisibleChanged { get; set; }
+    public string fileName { get; set; } = "";
+    public DataSet dataImport { get; set; } = new DataSet();
+    [Parameter]
+    public EventCallback OnImportCompleted { get; set; }
+    public String sqlTableNameCT { get; set; }
+    public String sqlTableName { get; set; }
+    public String Status = "2";
+    public String Ma_ct = "BG1";
+    public Decimal Ty_gia = 1;
+    Ph101 LastPh = new Ph101();
+    Ph101 CurPh;
+    public DotNetObjectReference<ImportBg1> Pageobj;
+
+    protected async override Task OnInitializedAsync()
+    {
+        Menu_id = (String.IsNullOrEmpty(Menu_id) ? "ws.ct.06" : Menu_id);
+
+        await base.OnInitializedAsync();
+        CurPh = new Ph101();
+        LoadQuyenso();
+        LoadOptions();
+        sqlTableName = "Ph101";
+        sqlTableNameCT = "Ct101";
+
+
+
+
+    }
+
+    private DxFileInput fileInput;
+    private string PhieuNhapKho { get; set; } = "";
+    private string FilePath { get; set; } = "";
+
+    protected void SelectedFilesChanged(IEnumerable<UploadFileInfo> files)
+    {
+        var fileList = files.ToList();
+        UploadVisible = fileList.Count > 0;
+
+        if (fileList.Count > 0)
+        {
+            FilePath = fileList[0].Name; // Chỉ hiển thị tên file
+        }
+
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void ConvertDataTableToList(DataTable table)
+    {
+        excelRows = new List<Dictionary<string, object>>();
+        foreach (DataRow row in table.Rows)
+        {
+            var dict = new Dictionary<string, object>();
+            foreach (DataColumn col in table.Columns)
+            {
+                dict[col.ColumnName] = row[col];
+            }
+            excelRows.Add(dict);
+        }
+
+
+    }
+
+    private async Task Cancel()
+    {
+        await IsImportPopupVisibleChanged.InvokeAsync(false);
+    }
+
+
+    private async Task OpenExcelFile()
+    {
+
+        if (!string.IsNullOrEmpty(FilePath))
+        {
+
+            dataExcel = GetDataFromExcel(fileName);
+            if (dataExcel == null || dataExcel.Rows.Count == 0)
+            {
+                myStateMN.SetNewThongbao(Lap["Không có dữ liệu trong file Excel"]);
+                return;
+            }
+
+            ConvertDataTableToList(dataExcel);
+            CleanDataTable(dataExcel);
+            isPopupVisible = true;
+            await InvokeAsync(StateHasChanged);
+        }
+        else
+        {
+            myStateMN.SetNewThongbao(Lap["Vui lòng chọn tệp trước khi xem"]);
+        }
+    }
+
+    protected async Task OnFilesUploading(FilesUploadingEventArgs args)
+    {
+        var baseUrl = NavigationManager.BaseUri;
+
+        var file = args.Files[0];
+        if (!file.Name.EndsWith(".xls", StringComparison.OrdinalIgnoreCase))
+        {
+            myStateMN.SetNewThongbao(Lap["Vui lòng chọn file Excel (.xls)"]);
+            return;
+        }
+
+        try
+        {
+
+            var fileContent = new StreamContent(file.OpenReadStream(file.Size));
+            var content = new MultipartFormDataContent();
+            content.Add(fileContent, "myFile", file.Name);
+            using var stream = new System.IO.MemoryStream();
+            await file.OpenReadStream(file.Size).CopyToAsync(stream);
+
+            var response = await Http.PostAsync($"{baseUrl}api/Upload/UploadFile", content);
+            response.EnsureSuccessStatusCode();
+
+
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\upload_tmp", file.Name);
+            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+
+            var dtImport = GetData(filePath);
+            fileName = filePath;
+            dataImport = dtImport;
+
+            await InvokeAsync(StateHasChanged);
+
+
+        }
+        catch (Exception ex)
+        {
+            myStateMN.SetNewThongbao(Lap[$"Lỗi khi import dữ liệu: {ex.Message}"]);
+        }
+    }
+
+
+    public DataSet GetData(String info)
+    {
+        DataSet dtImport = new DataSet();
+        try
+        {
+            DataTable dataFromExcel = GetDataFromExcel(info);
+            string tableName = sqlTableName;
+            if (tableName == null || tableName == "")
+            {
+                return null;
+            }
+
+            string sqlDmhd = $"SELECT * FROM information_schema.columns WHERE table_name = '{sqlTableName.Trim()}'";
+            DataSet dataSetDmhd = myDb.LoadDataSet(sqlDmhd);
+            if (dataSetDmhd == null || dataSetDmhd.Tables.Count == 0)
+            {
+                return null;
+            }
+            dataSetDmhd.Tables[0].TableName = "StrucDmhd";
+
+            string sqlDmhdct = $"SELECT * FROM information_schema.columns WHERE table_name = '{sqlTableNameCT.Trim()}'";
+            DataSet dataSetDmhdct = myDb.LoadDataSet(sqlDmhdct);
+            if (dataSetDmhdct == null || dataSetDmhdct.Tables.Count == 0)
+            {
+                return null;
+            }
+            dataSetDmhdct.Tables[0].TableName = "StrucDmhdct";
+
+            // DataTable structTable = dataSet.Tables[0];
+            DataTable structTableDmhd = dataSetDmhd.Tables[0];
+            DataTable structTableDmhdct = dataSetDmhdct.Tables[0];
+            if (dataFromExcel == null || structTableDmhd == null || structTableDmhdct == null)
+            {
+                return null;
+            }
+            dtImport.Tables.Add(dataFromExcel.Copy());
+            dtImport.Tables.Add(structTableDmhd.Copy());
+            dtImport.Tables.Add(structTableDmhdct.Copy());
+            dtImport.Tables[0].TableName = "DataExcel";
+            dtImport.Tables[1].TableName = "StrucDmhd";
+            dtImport.Tables[2].TableName = "StrucDmhdct";
+            ConverDateTime(ref dtImport);
+
+        }
+        catch (Exception ex)
+        {
+
+            return null;
+        }
+        return dtImport;
+    }
+
+    public static DataTable XoaDongTrang(DataTable tbExcel)
+    {
+        bool flag = false;
+        DataTable dataTable = tbExcel.Clone();
+        for (int i = 0; i < tbExcel.Rows.Count; i++)
+        {
+            flag = false;
+            for (int j = 1; j < tbExcel.Columns.Count; j++)
+            {
+                if (tbExcel.Rows[i][j].ToString().Trim() != "")
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag)
+            {
+                dataTable.ImportRow(tbExcel.Rows[i]);
+            }
+        }
+        return dataTable;
+    }
+
+    public static void XoaCotTrang(ref DataTable tbExcel)
+    {
+        string text = "";
+        int result = 0;
+        for (int i = 0; i < tbExcel.Columns.Count; i++)
+        {
+            text = tbExcel.Columns[i].ColumnName.Trim();
+            if (text.IndexOf("F") == 0 && int.TryParse(text.Substring(1, text.Length - 1), out result))
+            {
+                tbExcel.Columns.Remove(text);
+                i = -1;
+            }
+        }
+    }
+    // Làm sạch DataTable để xử lý giá trị rỗng
+    private void CleanDataTable(DataTable table)
+    {
+        foreach (DataRow row in table.Rows)
+        {
+            foreach (DataColumn col in table.Columns)
+            {
+                if (row[col] == null || row[col] == DBNull.Value || string.IsNullOrWhiteSpace(row[col]?.ToString()))
+                {
+                    row[col] = DBNull.Value;
+                }
+            }
+        }
+    }
+    public static DataTable GetDataFromExcel(string _fileName)
+    {
+        string text = "Yes";
+        string text2 = "";
+        text2 = ((!_fileName.Contains(".xls")) ? ("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=" + _fileName + ";Extended Properties=\"Excel 8.0;HDR=" + text + ";IMEX=1\"") : ("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=" + _fileName + ";Extended Properties=\"Excel 12.0;HDR=" + text + ";IMEX=1\""));
+        DataSet dataSet = new DataSet();
+        using (OleDbConnection oleDbConnection = new OleDbConnection(text2))
+        {
+            bool flag = false;
+            try
+            {
+                oleDbConnection.Open();
+                flag = true;
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("OLEDB"))
+                {
+                    try
+                    {
+                        oleDbConnection.Open();
+                        flag = true;
+                    }
+                    catch (Exception ex2)
+                    {
+                        return null;
+                    }
+                }
+            }
+            if (flag)
+            {
+                try
+                {
+
+                    DataTable dtSchema = oleDbConnection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                    string sheetName = null;
+                    foreach (DataRow row in dtSchema.Rows)
+                    {
+                        string tableName = row["TABLE_NAME"].ToString();
+                        if (!tableName.ToLower().Contains("hướng dẫn")) // Bỏ qua sheet có tên chứa "Hướng dẫn"
+                        {
+                            sheetName = tableName;
+                            break; // Lấy sheet đầu tiên không phải "Hướng dẫn"
+                        }
+                    }
+
+                    if (string.IsNullOrEmpty(sheetName))
+                    {
+                        oleDbConnection.Close();
+                        return null; // Không tìm thấy sheet phù hợp
+                    }
+
+
+                    OleDbCommand oleDbCommand = new OleDbCommand("SELECT * FROM [" + sheetName + "]", oleDbConnection);
+                    oleDbCommand.CommandType = CommandType.Text;
+                    DataTable dataTable = new DataTable(sheetName);
+                    dataSet.Tables.Add(dataTable);
+                    new OleDbDataAdapter(oleDbCommand).Fill(dataTable);
+
+                }
+                catch (Exception ex)
+                {
+
+                    oleDbConnection.Close();
+                    return null;
+                }
+                oleDbConnection.Close();
+            }
+        }
+        if (dataSet.Tables.Count == 0)
+        {
+            return null;
+        }
+        DataTable tbExcel = XoaDongTrang(dataSet.Tables[0]);
+        XoaCotTrang(ref tbExcel);
+        tbExcel.TableName = "DataExcel";
+        return SetColumnName(tbExcel);
+    }
+
+    private static DataTable SetColumnName(DataTable tb)
+    {
+        try
+        {
+            // string[] source = text.Split(';');
+            // string[] source2 = key.Split(';');
+            string text2 = "";
+            string text3 = "";
+            string text4 = "";
+            for (int i = 0; i < tb.Columns.Count; i++)
+            {
+                string text5 = tb.Columns[i].ColumnName.ToString();
+                int num = text5.LastIndexOf('(');
+                int num2 = text5.LastIndexOf(')');
+                if (num == -1 || num2 == -1 || num >= num2)
+                {
+
+                    tb.Columns[i].ColumnName = text5;
+                    continue;
+                }
+                string text6 = text5.Substring(num + 1, num2 - num - 1).Trim();
+                string str = text6 + ":H=" + text5.Substring(0, num - 1).Trim().Replace('_', ' ') + text5.Substring(num2 + 1, text5.Length - num2 - 1).Trim();
+                text2 = text2 + str + ";";
+                // if (source2.Contains(text6))
+                // {
+                text3 = text3 + str + ";";
+                // }
+                // if (source.Contains(text6))
+                // {
+                text4 = text4 + str + ";";
+                // }
+                tb.Columns[i].ColumnName = text6;
+            }
+            StrBrowse = text2.Substring(0, text2.Length - 1);
+            if (text3.Length > 1)
+            {
+                StrBrowseKhoa = text3.Substring(0, text3.Length - 1);
+            }
+            if (text4.Length > 1)
+            {
+                StrBrowseKhoa_dac_biet = text4.Substring(0, text4.Length - 1);
+            }
+            StrBrowse = StrBrowse.Replace("#", ".");
+            StrBrowseKhoa = StrBrowseKhoa.Replace("#", ".");
+            StrBrowseKhoa_dac_biet = StrBrowseKhoa_dac_biet.Replace("#", ".");
+        }
+        catch (Exception ex)
+        {
+            return null;
+        }
+        return tb;
+    }
+
+
+
+
+    private static void ConverDateTime(ref DataSet dtImport)
+    {
+        foreach (DataRow row in dtImport.Tables["DataExcel"].Rows)
+        {
+            foreach (DataColumn col in dtImport.Tables["DataExcel"].Columns)
+            {
+                // Kiểm tra cột có trong StrucDmhd hoặc StrucDmhdct
+                DataRow[] arrayDmhd = dtImport.Tables["StrucDmhd"].Select($"column_name = '{col.ColumnName}'");
+                DataRow[] arrayDmhdct = dtImport.Tables["StrucDmhdct"].Select($"column_name = '{col.ColumnName}'");
+
+                if ((arrayDmhd.Length > 0 && arrayDmhd[0]["data_type"].ToString().Trim() == "smalldatetime") ||
+                    (arrayDmhdct.Length > 0 && arrayDmhdct[0]["data_type"].ToString().Trim() == "smalldatetime"))
+                {
+                    if (!row[col].GetType().FullName.Equals("System.DateTime"))
+                    {
+                        string value = row[col].ToString().Replace(" ", "").Replace("/", "-");
+                        string[] array2 = value.Split('-');
+                        if (array2.Length == 3)
+                        {
+                            row[col] = $"{array2[2].Substring(0, 4)}{(array2[1].Length > 1 ? array2[1] : "0" + array2[1])}{(array2[0].Length > 1 ? array2[0] : "0" + array2[0])}";
+                        }
+                        else
+                        {
+                            row[col] = DBNull.Value;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public async void DownloadExamle()
+    {
+        try
+        {
+            var baseUrl = NavigationManager.BaseUri;
+            var FilePath = $"/EX_mau/IMEXBG1.xls";
+            NavigationManager.NavigateTo(FilePath, forceLoad: true);
+            myStateMN.SetNewThongbao("Tải file thành công");
+        }
+        catch (Exception ex)
+        {
+            myStateMN.SetNewThongbao(Lap["Tải thất bại: "] + ex.Message);
+        }
+    }
+    public async Task InsertDataToDatabase()
+    {
+        Stt_rec = GetStt_rec();
+        CurPh.Stt_rec = Stt_rec;
+        LoadVoucher();
+
+        if (dataImport == null || dataImport.Tables["DataExcel"] == null ||
+            dataImport.Tables["StrucDmhd"] == null || dataImport.Tables["StrucDmhdct"] == null)
+        {
+            myStateMN.SetNewThongbao(Lap["Lỗi khi import dữ liệu: Thiếu dữ liệu hoặc cấu trúc bảng"]);
+            return;
+        }
+
+        try
+        {
+            DataTable dataExcel = dataImport.Tables["DataExcel"];
+            DataTable structDmhd = dataImport.Tables["StrucDmhd"];
+            DataTable structDmhdct = dataImport.Tables["StrucDmhdct"];
+
+            // Chuẩn bị cột cho Dmhd
+            string columnsDmhd = "[stt_rec],[ma_ct],[status],";
+            foreach (DataRow row in structDmhd.Rows)
+            {
+                string columnName = row["column_name"].ToString();
+                if (dataExcel.Columns.Contains(columnName) && columnName != "[stt_rec]")
+                {
+                    columnsDmhd += $"[{columnName}],";
+                }
+            }
+            columnsDmhd = columnsDmhd.TrimEnd(',');
+
+            // Chuẩn bị cột cho Dmhdct
+            string columnsDmhdct = "[stt_rec],[ma_ct],[ma_hd],";
+            foreach (DataRow row in structDmhdct.Rows)
+            {
+                string columnName = row["column_name"].ToString();
+                if (dataExcel.Columns.Contains(columnName) && columnName != "[stt_rec]")
+                {
+                    columnsDmhdct += $"[{columnName}],";
+                }
+            }
+            columnsDmhdct = columnsDmhdct.TrimEnd(',');
+
+            if (string.IsNullOrEmpty(columnsDmhd) && string.IsNullOrEmpty(columnsDmhdct))
+            {
+                myStateMN.SetNewThongbao(Lap["Lỗi khi import dữ liệu: Không tìm thấy cột hợp lệ"]);
+                return;
+            }
+            int i = 0;
+            foreach (DataRow row in dataExcel.Rows)
+            {
+
+                MapDataRowToCurPh(row, structDmhd);
+
+
+                if (!string.IsNullOrEmpty(columnsDmhd))
+                {
+
+
+                    curQuyenso = GetNewSo_ct(CurPh.Ma_qs);
+                    CurPh.So_ct = string.Format(curQuyenso.Ma_qs, curQuyenso.So_ct);
+                    await InsertCTHHD(CurPh.Stt_rec, CurPh.Ma_qs, CurPh.Ma_ct, curQuyenso.So_ct);
+                    CurPh.Ma_nt = GetMant(Ma_ct);
+                    CurPh.Ma_hd = CurPh.So_ct;
+                    CurPh.User_id = curUser.User_id;
+                    CurPh.Date = DateTime.Now.Date;
+                    CurPh.Time = DateTime.Now.ToString("HH:mm:ss");
+                    CurPh.Ngay_lct = CurPh.Ngay_ct;
+                    CurPh.Status = "2";
+                    CurPh.Ma_ct = Ma_ct;
+                    CurPh.Ws_id = M_WS_ID;
+
+                    myDb.UpdateDataRowFromModel<Ph101>(DsTrans.Tables[0].Rows[0], CurPh);
+                    await myDb.UpdateRow(M_Phdbf, DsTrans.Tables[0].Rows[0], "stt_rec='" + CurPh.Stt_rec + "'", "stt_rec,row_id");
+                }
+
+                // Chèn vào Dmhdct
+                if (!string.IsNullOrEmpty(columnsDmhdct))
+                {
+                    string safeSttRec = Stt_rec.Replace("'", "''");
+                    string safeMaCt = Ma_ct.Replace("'", "''");
+                    string safeMaHd = CurPh.Ma_hd.Replace("'", "''");
+
+
+                    string valuesDmhdct = $"N'{safeSttRec}',N'{safeMaCt}',N'{safeMaHd}',";
+                    foreach (DataRow structRow in structDmhdct.Rows)
+                    {
+                        string columnName = structRow["column_name"].ToString();
+                        if (dataExcel.Columns.Contains(columnName) && columnName != "[stt_rec]")
+                        {
+                            valuesDmhdct += GetFormattedValue(row, columnName, structRow["data_type"].ToString());
+                        }
+                    }
+                    valuesDmhdct = valuesDmhdct.TrimEnd(',');
+                    if (!string.IsNullOrEmpty(valuesDmhdct))
+                    {
+                        string sqlDmhdct = $"INSERT INTO {sqlTableNameCT} ({columnsDmhdct}) VALUES ({valuesDmhdct})";
+                        await myDb.ExecuteSqlQueryAsync(sqlDmhdct);
+                    }
+                }
+            }
+
+            myStateMN.SetNewThongbao(Lap["Import dữ liệu thành công"]);
+            await OnImportCompleted.InvokeAsync();
+            await Cancel();
+        }
+        catch (Exception ex)
+        {
+            myStateMN.SetNewThongbao(Lap[$"Lỗi khi import dữ liệu: {ex.Message}"]);
+        }
+    }
+    private string GetFormattedValue(DataRow row, string columnName, string dataType)
+    {
+        if (row[columnName] == null || row[columnName] == DBNull.Value || string.IsNullOrWhiteSpace(row[columnName]?.ToString()))
+        {
+            return "NULL,";
+        }
+
+        string value = row[columnName].ToString().Trim();
+        dataType = dataType.ToLower();
+
+        if (dataType.Contains("char") || dataType.Contains("text"))
+        {
+            value = "N'" + value.Replace("'", "''") + "',";
+        }
+        else if (dataType.Contains("date") || dataType.Contains("time"))
+        {
+            if (DateTime.TryParse(value, out DateTime dateValue))
+            {
+                value = $"'{dateValue:yyyy-MM-dd HH:mm:ss}',";
+            }
+            else
+            {
+                value = "NULL,";
+            }
+        }
+        else if (dataType.Contains("int") || dataType.Contains("decimal") || dataType.Contains("float") || dataType.Contains("numeric"))
+        {
+            value = value.Replace(",", ".") + ",";
+        }
+        else
+        {
+            value = "N'" + value.Replace("'", "''") + "',";
+        }
+
+        return value;
+    }
+
+    private void MapDataRowToCurPh(DataRow row, DataTable structDmhd)
+    {
+        foreach (DataRow structRow in structDmhd.Rows)
+        {
+            string columnName = structRow["column_name"].ToString();
+            string dataType = structRow["data_type"].ToString();
+
+            if (!row.Table.Columns.Contains(columnName)) continue;
+
+            var property = CurPh.GetType().GetProperty(columnName, BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
+            if (property == null || !property.CanWrite) continue;
+
+            object value = row[columnName];
+            if (value == DBNull.Value) continue;
+
+            try
+            {
+                object convertedValue = ConvertToPropertyType(value, property.PropertyType);
+                property.SetValue(CurPh, convertedValue);
+            }
+            catch
+            {
+            }
+        }
+    }
+
+    private object ConvertToPropertyType(object value, Type targetType)
+    {
+        if (targetType == typeof(string)) return value.ToString();
+        if (targetType == typeof(int) || targetType == typeof(int?)) return Convert.ToInt32(value);
+        if (targetType == typeof(decimal) || targetType == typeof(decimal?)) return Convert.ToDecimal(value);
+        if (targetType == typeof(DateTime) || targetType == typeof(DateTime?)) return Convert.ToDateTime(value);
+        if (targetType == typeof(bool) || targetType == typeof(bool?)) return Convert.ToBoolean(value);
+        return Convert.ChangeType(value, targetType);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            //Lan.SaveDictionaryToXml(Lat, @"C:\language.xml");
+            //Lan.SaveDictionaryToXml(Lap, @"C:\language1.xml");
+            Pageobj = DotNetObjectReference.Create(this);
+            await JavacriptS.InvokeVoidAsync("SetPageObj", Pageobj);
+        }
+    }
+
+
+}

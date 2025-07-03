@@ -1,0 +1,457 @@
+[
+  {
+    "ContainingType": "SISERPSME.Controllers.SystemController",
+    "Method": "GetHostName",
+    "RelativePath": "api/system/hostname",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "CrDeleteFileLikeToFolder",
+    "RelativePath": "api/Upload/CrDeleteFileLikeToFolder/{myFolderTmp}/{myFolder}/{lsfile}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "myFolderTmp",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "myFolder",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "lsfile",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "CrDeleteFileToFolder",
+    "RelativePath": "api/Upload/CrDeleteFileToFolder/{myFolderTmp}/{myFolder}/{lsfile}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "myFolderTmp",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "myFolder",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "lsfile",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "CrDeleteFolderTemp",
+    "RelativePath": "api/Upload/CrDeleteFolderTemp/{myFolderTmp}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "myFolderTmp",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "CrDeleteFolderTemp",
+    "RelativePath": "api/Upload/CrDeleteFolderTemp/{myFolderTmp}/{tenfile}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "myFolderTmp",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "tenfile",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "CrSaveFileGuidToFolder",
+    "RelativePath": "api/Upload/CrSaveFileGuidToFolder/{myFolderTmp}/{myFolder}/{lsfile}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "myFolderTmp",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "myFolder",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "lsfile",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "CrSaveFileToFolder",
+    "RelativePath": "api/Upload/CrSaveFileToFolder/{myFolderTmp}/{myFolder}/{lsfile}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "myFolderTmp",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "myFolder",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "lsfile",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "CrUploadFileToFolder",
+    "RelativePath": "api/Upload/CrUploadFileToFolder",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "myFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "CrUploadFileToFolder",
+    "RelativePath": "api/Upload/CrUploadFileToFolder/{myFolder}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "myFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "myFolder",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "DeleteFiles",
+    "RelativePath": "api/Upload/DeleteFile/{lsfile}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lsfile",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "SaveFile",
+    "RelativePath": "api/Upload/SaveFile/{lsfile}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lsfile",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "SaveFiles",
+    "RelativePath": "api/Upload/SaveFiles/{lsfile}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lsfile",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "SaveFiles",
+    "RelativePath": "api/Upload/SaveFiles/{subfolder}/{lsfile}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subfolder",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "lsfile",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "SaveImagesFile",
+    "RelativePath": "api/Upload/SaveImagesFile/{lsfile}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lsfile",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "SaveImagesFiles",
+    "RelativePath": "api/Upload/SaveImagesFiles/{lsfile}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lsfile",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "SaveImagesFiles",
+    "RelativePath": "api/Upload/SaveImagesFiles/{subfolder}/{lsfile}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subfolder",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "lsfile",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "SaveReportFiles",
+    "RelativePath": "api/Upload/SaveReportFiles/{lsfile}/{folder0}/{folder1}/{folder2}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lsfile",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "folder0",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "folder1",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "folder2",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "UploadChunkFile",
+    "RelativePath": "api/Upload/UploadChunkFile",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "myFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "chunkMetadata",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "UploadFile",
+    "RelativePath": "api/Upload/UploadFile",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "myFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "UploadFiles",
+    "RelativePath": "api/Upload/UploadFiles/{file_guid}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "myFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "file_guid",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SISERPSME.Controllers.UploadController",
+    "Method": "UploadImg",
+    "RelativePath": "api/Upload/UploadImg",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "myFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

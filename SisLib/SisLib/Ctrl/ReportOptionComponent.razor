@@ -1,0 +1,591 @@
+﻿@inject ILocalStorageService Localstore
+@inject Statemanagerment myStatemanagerment
+@inject NavigationManager navigation
+@inject IDbManager myDb
+@inject IOptionsManager OptionsManager
+@inject IDxWindowService Modal
+@using DevExpress.Blazor
+@using DevExpress.Blazor.Reporting
+@using DevExpress.XtraReports.UI
+@using Newtonsoft.Json
+@using DevExpress.DataAccess.Json
+
+@inject IWebHostEnvironment _webhost
+@inject IStringLocalizer<App> Lap
+@typeparam TItem
+@implements IDisposable
+<style>
+    .khungin {
+        color: black;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .btn {
+        background-color: #1072B9;
+        color: #ffff;
+        border-radius: 10px;
+    }
+</style>
+
+<div class="row khungin justify-content-around ms-2">
+    <EditForm Model="Moptions">
+        <div class="row">
+            <div class="col-md-8 col-sm-12">
+                @(Lap["Template"] + " :")               
+                <InputSelect ValueExpression="@(()=>Moptions.Mau_in)" style="outline: none;border:none;border-radius: 10px; font-size: 12px; color: #1072B9; font-weight: bold; padding: 5px;"
+                             ValueChanged="@((string value)=> { OnMau_invaluechanged(value); })">
+                    <option value="VN"> @Lap["Vietnamese"]</option>
+                    <option value="EN">@Lap["English"]</option>
+                    <option value="B">@Lap["Bilingual"]</option>
+                </InputSelect>
+                <InputSelect ValueExpression="@(()=>Moptions.Ma_nt)" style="outline: none;border:none;border-radius: 10px; font-size: 12px; color: #1072B9; font-weight: bold; padding: 5px;"
+                             ValueChanged="@((string value)=> { OnMa_ntvaluechanged(value); })">
+                    <option value="VND">VNĐ</option>
+                    <option value="NT">NT</option>
+                </InputSelect>
+
+                @if (DSBC != null && DSBC.Count > 0)
+                {
+                    <InputSelect ValueExpression="@(()=>Moptions.Rp_file)" style="outline: none;border:none;border-radius: 10px; font-size: 12px; color: #1072B9; font-weight: bold; padding: 5px;"
+                    ValueChanged="@((string value)=> { OnRpFilevaluechanged(value); })">
+                        @foreach (Dmbc bc in DSBC)
+                        {
+                            <option value="@bc.Report"> @(IsLangEn ? bc.Caption2 : bc.Caption)</option>
+                        }
+                    </InputSelect>
+                }
+            </div>
+            <div class="col-md-4 col-sm-12">
+                @if (AllowEditTemplate)
+                {
+                    <DxButton CssClass="oi oi-pencil text-center h-80 mt-1" Text="@Lap["Edit template"]" Click="@(()=> EditReport())" RenderStyleMode="@ButtonRenderStyleMode.Contained"></DxButton>
+                }
+                @if (AllowEditTitle)
+                {
+                    <DxButton CssClass="oi oi-pencil text-center h-80 mt-1" Text="@Lap["Config"]" Click="@(()=> Edittitle())" RenderStyleMode="@ButtonRenderStyleMode.Contained"></DxButton>
+                }
+                @if (ShowBackButton)
+                {
+                    <DxButton CssClass="oi oi-eject text-center h-80 mt-1" Text="@Lap["Back"]" Click="@(()=> Back())" RenderStyleMode="@ButtonRenderStyleMode.Contained"></DxButton>
+                }
+            </div>
+        </div>
+    </EditForm>
+</div>
+<DxReportViewer Report="@Report" CssClass="vh-100"></DxReportViewer>
+<div class="row">
+
+    <DxWindow @ref=windowRef
+    AllowResize="false"
+    ShowCloseButton="true"
+    CloseOnEscape="true"
+    Closed="ClosedForm"
+    @bind-Visible=windowVisible
+    HeaderText="@Lap["Config"]"
+    ShowFooter=true
+    Width="500px">
+        <BodyTemplate Context="Context">
+            <div style="padding: 20px">
+                <DxFormLayout>
+                    <DxFormLayoutItem Caption="Caption" ColSpanMd="12">
+                        <Template>
+                            <DxTextBox @bind-Text="@Rptitle1" />
+                        </Template>
+                    </DxFormLayoutItem>
+
+                    <DxFormLayoutItem Caption="Caption 2" ColSpanMd="12">
+                        <Template>
+                            <DxTextBox @bind-Text="@Rptitle2" />
+                        </Template>
+                    </DxFormLayoutItem>
+
+                    <DxFormLayoutItem Caption="Report name" ColSpanMd="12">
+                        <Template>
+                            <DxTextBox @bind-Text="@Rpreport" />
+                        </Template>
+                    </DxFormLayoutItem>
+
+                    <DxFormLayoutItem Caption="Ma file" ColSpanMd="12">
+                        <Template>
+                            <DxTextBox @bind-Text="@Rprpfile" Enabled="false" />
+                        </Template>
+                    </DxFormLayoutItem>
+
+                    <DxFormLayoutItem ColSpanMd="12">
+                        <Template>
+                            <UploadReportComponent Mau="@Moptions.Ma_nt" Lang="@Moptions.Mau_in"></UploadReportComponent>
+                        </Template>
+                    </DxFormLayoutItem>
+                </DxFormLayout>
+                <div class="row" style="height:10px;"></div>
+            </div>
+        </BodyTemplate>
+        <FooterTextTemplate>
+            <DxButton RenderStyle="ButtonRenderStyle.Primary" Text="@(IsLangEn ? "Save" : "Lưu")" Click="@BtnLuu" />
+            <DxButton RenderStyle="ButtonRenderStyle.Secondary" Text="@(IsLangEn ? "Cancel" : "Hủy")" Click="@BtnCancel" />
+        </FooterTextTemplate>
+    </DxWindow>
+
+</div>
+@code
+{
+    [Parameter]
+    public string Parent_url { get; set; }
+    DxReportViewer Viewer { get; set; }
+    private Optionsvalue Moptions { get; set; }
+    private string userLang { get; set; }
+    private bool IsLangEn = false;
+    [Parameter]
+    public string Menu_id { get; set; }
+    [Parameter]
+    public List<TItem> LSItems { get; set; }
+    [Parameter]
+	public JsonDataSource jsonDS { get; set; }
+    [Parameter] public EventCallback OnBack { get; set; }
+    [Parameter] public DxWindowModel DxWindowmodel { get; set; }
+
+    private string messagetoast { get; set; }
+    XtraReport Report { get; set; }
+    private string Reportname { get; set; }
+    private List<Dmbc> DSBC;
+    private Dmbc CurDMBC;
+    private Users CurUser;
+    bool ShowBackButton = true;
+    bool AllowEditTemplate = false;
+    bool AllowEditTitle = false;
+    private string Ten_ktt;
+    private string Ten_gd;
+    private string Ma_so_thue;
+    private string RPpath = "";
+    private string ten_baocao = string.Empty;
+    private string M_TEN_TCTY = string.Empty;
+    private string M_TEN_CTY = string.Empty;
+    private string M_MST_CTY = string.Empty;
+    private string M_DIA_CHI = string.Empty;
+    private string M_MSDV = string.Empty;
+    private string M_Logo = string.Empty;
+    DxPopup Titlepop { get; set; }
+    DxWindow windowRef;
+    bool windowVisible = false;
+    string Rptitle1 = string.Empty;
+    string Rptitle2 = string.Empty;
+    string Rpreport = string.Empty;
+    string Rprpfile = string.Empty;
+    async Task ClosedForm()
+    {
+        windowVisible = false;
+        await windowRef.CloseAsync();
+    }
+    async Task BtnLuu()
+    {
+        if (!string.IsNullOrEmpty(Rptitle1))
+        {
+            string sql = String.Format("Update dmbc set caption = N'{0}', caption2 = N'{1}', report = '{2}' where ma_file = '{3}' and report = '{4}'", Rptitle1, Rptitle2, Rpreport, CurDMBC.Ma_file.Trim(), CurDMBC.Report.Trim());
+            await myDb.ExecuteSqlQueryAsync(sql);
+            windowVisible = false;
+            await windowRef.CloseAsync();
+            messagetoast = IsLangEn ? "Success fully" : "Sửa tiêu đề thành công.";
+            LoadDmbc();
+            await InvokeAsync(StateHasChanged);
+            myStatemanagerment.SetNewThongbao(messagetoast);
+        }
+        else
+        {
+            messagetoast = IsLangEn ? "The title field is required." : "Chưa vào tiêu đề báo cáo.";
+            myStatemanagerment.SetNewThongbao(messagetoast);
+        }
+    }
+    private async Task BtnCancel()
+    {
+        windowVisible = false;
+        await windowRef.CloseAsync();
+    }
+
+    private void Edittitle()
+    {
+        if (CurDMBC != null)
+        {
+            Rptitle1 = CurDMBC.Caption;
+            Rptitle2 = CurDMBC.Caption2;
+            Rpreport = string.IsNullOrEmpty(CurDMBC.Report) ? "" : CurDMBC.Report.Trim();
+            Rprpfile = CurDMBC.Ma_file;
+        }
+        windowVisible = true;
+        StateHasChanged();
+    }
+    private void EditReport()
+    {
+        if (!string.IsNullOrEmpty(ten_baocao))
+        {
+            if (DxWindowmodel != null)
+            {
+                Modal.CloseModal(DxWindowmodel);
+            }
+            navigation.NavigateTo("editreport/" + ten_baocao + "/" + Parent_url);
+        }
+        else
+        {
+            messagetoast = "No report";
+            myStatemanagerment.SetNewThongbao(messagetoast);
+            return;
+        }
+    }
+    void Back()
+    {
+        if (DxWindowmodel != null)
+        {
+            Modal.CloseModal(DxWindowmodel);
+        }
+        if (OnBack.HasDelegate)
+        {
+            OnBack.InvokeAsync();
+        }
+        else if (!string.IsNullOrEmpty(Parent_url))
+            navigation.NavigateTo(Parent_url);       
+    }
+    private async void ViewReport()
+    {
+        if (string.IsNullOrEmpty(Moptions.Rp_file))
+        {
+            messagetoast = Lap["No report"];
+            myStatemanagerment.SetNewThongbao(messagetoast);
+            return;
+        }
+        else
+        {
+            await ShowReport(Moptions.Rp_file);
+        }
+    }
+    private Task OnRpFilevaluechanged(string value)
+    {
+        Moptions.Rp_file = value.Trim();
+        CurDMBC = DSBC.Where(a => a.Report.Trim().Equals(value.Trim())).FirstOrDefault();
+        ViewReport();
+        return Task.CompletedTask;
+    }
+    private Task OnMau_invaluechanged(string value)
+    {
+        Moptions.Mau_in = value;
+        OptionsManager.AddOptions(new Options { Name = "M_MAU_IN", Value = Moptions.Mau_in });
+        LoadDmbc();
+        return Task.CompletedTask;
+    }
+    private Task OnMa_ntvaluechanged(string value)
+    {
+        Moptions.Ma_nt = value;
+        OptionsManager.AddOptions(new Options { Name = "M_MAU_IN_NT", Value = Moptions.Ma_nt });
+        LoadDmbc();
+        return Task.CompletedTask;
+    }
+    protected override void OnInitialized()
+    {
+        Parent_url =String.IsNullOrEmpty(Parent_url) ? "" : Parent_url;
+        CurUser = myStatemanagerment.GetCurUser();
+        if (CurUser != null)
+        {
+            AllowEditTemplate = CurUser.Is_admin.Equals(1) ? true : false;
+            AllowEditTitle = CurUser.Is_admin.Equals(1) ? true : false;
+        }
+
+        if (!String.IsNullOrEmpty(Parent_url))
+            myStatemanagerment.SetToolBar(new MyToolbar("toolbar", false));
+
+        Moptions = new Optionsvalue();
+        Moptions.Mau_in = OptionsManager.GetOptionsValue("M_MAU_IN").Trim();
+        Moptions.Ma_nt = OptionsManager.GetOptionsValue("M_MAU_IN_NT").Trim();
+        Moptions.Mau_in = String.IsNullOrEmpty(Moptions.Mau_in) ? "VN" : Moptions.Mau_in;
+        Moptions.Ma_nt = String.IsNullOrEmpty(Moptions.Ma_nt) ? "VND" : Moptions.Ma_nt;
+
+        myStatemanagerment.OnLangguaChanged += OnLangguachange;
+        Ten_ktt = OptionsManager.GetOptionsValue("M_TEN_KTT");
+        Ten_gd = OptionsManager.GetOptionsValue("M_TEN_GD");
+        Ma_so_thue = OptionsManager.GetOptionsValue("M_MA_THUE");
+        M_TEN_TCTY = OptionsManager.GetOptionsValue("M_TEN_TCTY");
+        M_TEN_CTY = OptionsManager.GetOptionsValue("M_TEN_CTY");
+        M_MST_CTY = OptionsManager.GetOptionsValue("M_MST_CTY");
+        M_MSDV = OptionsManager.GetOptionsValue("M_MSDV");
+        M_DIA_CHI = OptionsManager.GetOptionsValue("M_DIA_CHI");
+        M_Logo = OptionsManager.GetOptionsValue("M_MENU_LOGO");
+        LoadDmbc();
+        if (navigation.Uri.ToString().EndsWith(Parent_url) && !String.IsNullOrEmpty(Parent_url))
+        {
+            ShowBackButton = false;
+        }
+    }
+    public async void LoadDmbc()
+    {
+        string strmau = " AND lan = " + (Moptions.Mau_in == "VN" ? "0" : Moptions.Mau_in == "EN" ? "1" : "2");
+        strmau = strmau + " AND mau = " + (Moptions.Ma_nt == "VND" ? "0" : "1");
+        string sql = @"select dmbc.ma_file, dmbc.report,dmbc.mau,dmbc.lan,dmbc.caption,dmbc.caption2,dmbc.title from command left join dmbc on command.rep_file = dmbc.ma_file " +
+                "where command.menu_id = '" + Menu_id + "'" + strmau + " order by dmbc.stt asc";
+        DataSet ds = await myDb.LoadDataset(sql);
+        DSBC = myDb.ConvertDataTable<Dmbc>(ds.Tables[0]);
+        if (DSBC != null && DSBC.Count > 0)
+        {
+            CurDMBC = DSBC[0];
+            if (!string.IsNullOrEmpty(CurDMBC.Report))
+                Moptions.Rp_file = CurDMBC.Report.Trim().ToLower();            
+        }
+        else
+        {
+            DSBC.Add(new Dmbc { Caption = Lap["No report"], Caption2 = Lap["No report"], Report = "" });
+            CurDMBC = null;
+            messagetoast = Lap["No report"];
+            myStatemanagerment.SetNewThongbao(messagetoast);            
+        }
+        ViewReport();
+        StateHasChanged();
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+            await Language();
+
+    }
+
+    private void Loadparrams()
+    {
+        XRControl lbl;
+        XRPictureBox pblogo;
+        try
+        {
+            if (CurDMBC != null)
+            {
+                ReplaceText(Report, "lbltitle", CurDMBC.Caption.ToUpper());
+                ReplaceText(Report, "lbltitle1", CurDMBC.Caption.ToUpper());
+                ReplaceText(Report, "M_TITLE", CurDMBC.Caption.ToUpper());
+                ReplaceText(Report, "lbltitleen", CurDMBC.Caption2.ToUpper());
+                ReplaceText(Report, "lbltitleen1", CurDMBC.Caption2.ToUpper());
+            }
+            ReplaceText(Report, "lbl_diachi", M_DIA_CHI);
+            ReplaceText(Report, "M_DIA_CHI", M_DIA_CHI);
+            ReplaceText(Report, "lbl_tencty", M_TEN_CTY);
+            ReplaceText(Report, "M_TEN_CTY", M_TEN_CTY);
+            ReplaceText(Report, "lbl_tentcty", M_TEN_TCTY);
+            ReplaceText(Report, "M_TEN_TCTY", M_TEN_TCTY);
+            ReplaceText(Report, "lbl_mstcty", Ma_so_thue);
+            ReplaceText(Report, "M_MA_THUE", Ma_so_thue);
+            
+            lbl = Report.FindControl("lbl_mst", true);
+            if (lbl != null)
+                lbl.Text = M_MST_CTY;
+
+            lbl = Report.FindControl("lbl_msdv", true);
+            if (lbl != null)
+                lbl.Text = M_MSDV;
+
+            pblogo = (XRPictureBox)Report.FindControl("pblogo", true);
+            if (pblogo != null)
+            {
+                string _logopath = Path.Combine(_webhost.WebRootPath, "Images", M_Logo);
+                pblogo.ImageUrl = _logopath;
+            }
+            pblogo = (XRPictureBox)Report.FindControl("M_LOGO", true);
+            if (pblogo != null)
+            {
+                string _logopath = Path.Combine(_webhost.WebRootPath, "Images", M_Logo);
+                pblogo.ImageUrl = _logopath;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+    public void ReplaceText(XtraReport report, string controlName, string newText)
+    {
+        XRControl control = report.FindControl(controlName, true);
+        if (control != null && control is XRLabel label)
+        {
+            label.Text = newText;
+        }        
+    }
+    public async Task ShowReport(string ReportName)
+    {
+        try{
+            if (Moptions.Mau_in.Equals("VN"))
+            {
+                if (Moptions.Ma_nt.Equals("VND"))
+                {
+                    RPpath = Path.Combine(_webhost.WebRootPath, "Reports", "VND", "VN", (ReportName + ".repx"));
+                    ten_baocao = "VND-VN-" + ReportName;
+                    if (!File.Exists(RPpath))
+                    {
+                        ten_baocao = string.Empty;
+                        messagetoast = String.Format(Lap["Report file not found: {0}"], ReportName) + "!";
+                        myStatemanagerment.SetNewThongbao(messagetoast);
+
+                        Report = new XtraReport();                        
+                        Loadparrams();
+                        Report.ShowPrintMarginsWarning = false;
+                        Report.DataSource = LSItems;
+                        Report.CreateDocument();
+                        return;
+                    }
+                }
+                else
+                {
+                    RPpath = Path.Combine(_webhost.WebRootPath, "Reports", "NT", "VN", (ReportName + ".repx"));
+                    ten_baocao = "NT-VN-" + ReportName;
+                    if (!File.Exists(RPpath))
+                    {
+                        ten_baocao = string.Empty;
+                        messagetoast = String.Format(Lap["Report file not found: {0}"], ReportName) + "!";
+                        myStatemanagerment.SetNewThongbao(messagetoast);
+
+                        Report = new XtraReport();
+                        Loadparrams();
+                        Report.ShowPrintMarginsWarning = false;
+                        Report.DataSource = LSItems;
+                        Report.CreateDocument();
+                        return;
+                    }
+                }
+            }
+            else if (Moptions.Mau_in.Equals("B"))
+            {
+                if (Moptions.Ma_nt.Equals("VND"))
+                {
+                    RPpath = Path.Combine(_webhost.WebRootPath, "Reports", "VND", "B", (ReportName + ".repx"));
+                    ten_baocao = "VND-B-" + ReportName;
+                    if (!File.Exists(RPpath))
+                    {
+                        ten_baocao = string.Empty;
+                        messagetoast = String.Format(Lap["Report file not found: {0}"], ReportName) + "!";
+                        myStatemanagerment.SetNewThongbao(messagetoast);
+
+                        Report = new XtraReport();
+                        Loadparrams();
+                        Report.ShowPrintMarginsWarning = false;
+                        Report.DataSource = LSItems;
+                        Report.CreateDocument();
+                        return;
+                    }
+                }
+                else
+                {
+                    RPpath = Path.Combine(_webhost.WebRootPath, "Reports", "NT", "B", (ReportName + ".repx"));
+                    ten_baocao = "NT-B-" + ReportName;
+                    if (!File.Exists(RPpath))
+                    {
+                        ten_baocao = string.Empty;
+                        messagetoast = String.Format(Lap["Report file not found: {0}"], ReportName) + "!";
+                        myStatemanagerment.SetNewThongbao(messagetoast);
+
+                        Report = new XtraReport();
+                        Loadparrams();
+                        Report.ShowPrintMarginsWarning = false;
+                        Report.DataSource = LSItems;
+                        Report.CreateDocument();
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                if (Moptions.Ma_nt.Equals("VND"))
+                {
+                    RPpath = Path.Combine(_webhost.WebRootPath, "Reports", "VND", "EN", (ReportName + ".repx"));
+                    ten_baocao = "VND-EN-" + ReportName;
+                    if (!File.Exists(RPpath))
+                    {
+                        ten_baocao = string.Empty;
+                        messagetoast = String.Format(Lap["Report file not found: {0}"], ReportName) + "!";
+                        myStatemanagerment.SetNewThongbao(messagetoast);
+
+                        Report = new XtraReport();
+                        Loadparrams();
+                        Report.ShowPrintMarginsWarning = false;
+                        Report.DataSource = LSItems;
+                        Report.CreateDocument();
+                        return;
+                    }
+                }
+                else
+                {
+                    RPpath = Path.Combine(_webhost.WebRootPath, "Reports", "NT", "EN", (ReportName + ".repx"));
+                    ten_baocao = "NT-VN-" + ReportName;
+                    if (!File.Exists(RPpath))
+                    {
+                        ten_baocao = string.Empty;
+                        messagetoast = String.Format(Lap["Report file not found: {0}"], ReportName) + "!";
+                        myStatemanagerment.SetNewThongbao(messagetoast);
+
+                        Report = new XtraReport();
+                        Loadparrams();
+                        Report.ShowPrintMarginsWarning = false;
+                        Report.DataSource = LSItems;
+                        Report.CreateDocument();
+                        return;
+                    }
+                }
+            }
+            string BaseDirectory = System.AppContext.BaseDirectory;
+            Report = new XtraReport(); //RPpath = Path.Combine(_webhost.WebRootPath, "Reports", "VND", "VN", (ReportName + ".repx"));
+            byte[] reportBytes = File.ReadAllBytes(RPpath);
+            using (MemoryStream ms = new MemoryStream(reportBytes))
+                Report = XtraReport.FromXmlStream(ms);
+            //Report.LoadLayout(RPpath);
+            Loadparrams();
+            Report.ShowPrintMarginsWarning = false;
+            Report.DataSource = LSItems;
+            Report.CreateDocument();
+            }
+            catch (Exception ex)
+            {
+                myStatemanagerment.SetNewThongbao(Lap["Report file error"] +" !");
+                WLog(ex.Message.Trim());
+            }
+    }
+    public static void WLog(string logMessage)
+    {
+        using (StreamWriter w = File.AppendText(@"..\Rpterr.txt"))
+        {
+            Log(logMessage.Trim(), w);
+        }
+    }
+
+    //---------------------------------------------------
+    public static void Log(string logMessage, TextWriter w)
+    {
+        w.WriteLine("{0} {1}", DateTime.Now.ToLongTimeString(),
+            DateTime.Now.ToLongDateString());
+        w.WriteLine("{0}", logMessage);
+        w.WriteLine("-------------------------------");
+    }
+
+    private async void OnLangguachange(MyLang lang)
+    {
+        if (lang.IsnewLang)
+        {
+            await Language();
+        }
+    }
+
+    async Task Language()
+    {
+        try
+        {
+            IsLangEn = false;
+            userLang = await Localstore.GetItemAsync<string>("userlang");
+            if (!string.IsNullOrEmpty(userLang))
+            {
+                if (userLang.Equals("En"))
+                {
+                    IsLangEn = true;
+                }
+            }
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    public void Dispose()
+    {
+        myStatemanagerment.OnLangguaChanged -= OnLangguachange;
+    }
+}

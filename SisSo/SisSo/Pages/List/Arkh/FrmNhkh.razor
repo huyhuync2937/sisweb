@@ -1,0 +1,77 @@
+﻿@page "/frmnhkh"
+@page "/frmnhkh/{menu_id}"
+@page "/frmnhkh/{menu_id}/{ma_nh}"
+@inject Statemanagerment myStatemanagerment
+@inject NavigationManager navigation
+@inject IDbManager myDb
+@inject IStringLocalizer<ArkhComponent> Lat
+
+<DxPopup @bind-Visible="@PopVisible"
+         ShowFooter="false" ShowHeader="false"
+         CloseOnEscape="false"
+         CloseOnOutsideClick="false"
+         ShowCloseButton="false"
+         Scrollable="true"
+         Width="auto"
+         MinWidth="300px"
+         MinHeight="200px"
+         MaxHeight="98vh"
+         AllowResize="true"
+         AllowDrag="true"
+         AllowDragByHeaderOnly="true">
+    <BodyTemplate>
+        <div class="row">
+            <EditNhkh Ma_ma="@ma_nh" Menu_id="@menu_id" curActionTask="@curActionTask" ShowAdd="@ShowAdd" OnClose="@ClickHandler"></EditNhkh>
+        </div>
+    </BodyTemplate>
+</DxPopup>
+
+@code {
+    [Parameter] public EventCallback OnClose { get; set; }
+    [Parameter]
+    public string menu_id { get; set; }
+    [Parameter]
+    public string ma_nh { get; set; }
+
+    public bool PopVisible { get; set; } = true;
+
+    [Parameter]
+    public ActionTask curActionTask { get; set; } = ActionTask.None;
+    [Parameter]
+    public bool? ShowAdd { get; set; }
+   
+    private string Pagetitle = "Danh mục nhóm khách hàng";
+    protected override void OnInitialized()
+    {
+        if (curActionTask == ActionTask.None)
+            curActionTask = myStatemanagerment.GetCurrentActionTask();
+        switch (curActionTask)
+        {
+            case ActionTask.View:
+                {
+                    Pagetitle = Lat["View customer group information"];
+                    break;
+                }
+            case ActionTask.Edit:
+                {
+                    Pagetitle = Lat["Edit customer group information"];
+                    break;
+                }
+            case ActionTask.New:
+                {
+                    Pagetitle = Lat["Add a new customer group"];
+                    break;
+                }
+            default:
+                {
+                    Pagetitle = Lat["View customer group information"];
+                    break;
+                }
+        }
+    }
+    private void ClickHandler()
+    {
+        PopVisible = false;
+        OnClose.InvokeAsync();
+    }
+}

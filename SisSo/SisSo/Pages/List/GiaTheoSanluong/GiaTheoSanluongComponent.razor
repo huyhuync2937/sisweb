@@ -1,0 +1,264 @@
+﻿@page "/kmgsl"
+@page "/kmgsl/{menu_id}"
+@inject IDbManager myDb
+@inject NavigationManager navigation
+@inject Statemanagerment myStatemanagerment
+@inject ICommandManager Commands
+@implements IDisposable
+@inject ILocalStorageService Localstore
+@inject IJSRuntime JavacriptS
+@inject IStringLocalizer<GiaTheoSanluongComponent> Lap
+@inject IStringLocalizer<App> Lat
+
+@attribute [Authorize(Roles = "admin,kmgsl")]
+<h3>@_page_title</h3>
+
+<FrmBrowseComponent @ref="oBrowse" CssClass="grid-frm-height" TblData="@TblData" Fbrowse="@fbrowse" SelectItem="CurItem" FunctionButtonClick="CTKMFuction"  IsLangEn="@IsLangEn"></FrmBrowseComponent>
+
+<XacnhanComponent Content="@Deletemessage" Xacnhanxoa="Dongyxoa"></XacnhanComponent>
+<XacnhanComponent Content="@Xacnhanmessage" Xacnhanxoa="XacnhanCTKM"></XacnhanComponent>
+@code {
+    [Parameter]
+    public string menu_id { get; set; }
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationState { get; set; }
+    ClaimsPrincipal userCliams;
+    private string fbrowse = "";
+    private string Deletemessage { get; set; }
+    private DataTable TblData { get; set; }
+    object SelectedDataItem { get; set; }
+    FrmBrowseComponent oBrowse;
+    private string mPage = "kmgsl";
+    private string editPage = "frmkmgsl";
+    private Command curCommand = new Command();
+    private Dmdm CurDmdm = new Dmdm();
+    private string ToastMessage { get; set; } = "";
+    private string ToastId = "kmgslID";
+    private static string sqlTableName = "ph101web";
+    private static string sqlTableView = "v_ph101web";
+    private static string SqlTableKey = "ma_ma";
+    private static string SqlTableKeyValue = "";
+ 
+    private int pageSize = 10;
+    private string userLang { get; set; } = "";
+    private bool IsLangEn = false;
+    private string _page_title = "";
+    private string store_proc = "";
+    private string Ma_dvcs = "";
+    string _status = "1";
+    private string Xacnhanmessage { get; set; }
+    void CTKMFuction(string value)
+    {
+        string[] data = value.Split('|');
+        SqlTableKeyValue = data[0];
+
+        if (data.Length > 1)
+            _status = data[1];
+
+        Xacnhanmessage = string.Format("Có phải bạn muốn dừng CTKM: {0}?", SqlTableKeyValue);
+        StateHasChanged();
+    }
+    private async Task XacnhanCTKM(bool status)
+    {
+        if (status)
+        {
+            string sql = String.Format("Update {0} set status = {3} where {1} = '{2}';", sqlTableName, SqlTableKey, SqlTableKeyValue, _status);
+            await myDb.ExecuteSqlQueryAsync(sql);
+            await Loaddata();
+            ToastMessage = String.Format("Đã dừng CTKM: {0}", SqlTableKeyValue);
+            myStatemanagerment.SetNewThongbao(ToastMessage);
+        }
+        SqlTableKeyValue = "";
+        Xacnhanmessage = "";
+    }
+    void CurItem(object obj)
+    {
+        SelectedDataItem = obj;
+    }
+    protected override void OnInitialized()
+    {
+        if (String.IsNullOrEmpty(menu_id))
+            menu_id = "we_bl_08";
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            userCliams = (await authenticationState).User;
+            if (userCliams.IsInRole("admin") || userCliams.IsInRole(mPage.ToUpper()) || userCliams.IsInRole(mPage.ToLower()))
+            {
+                myStatemanagerment.SetToolBar(new MyToolbar("toolbar", true));
+                myStatemanagerment.SetToolBar(new MyToolbar("New", true));
+                myStatemanagerment.SetToolBar(new MyToolbar("Edit", true));
+                myStatemanagerment.SetToolBar(new MyToolbar("Delete", true));
+                myStatemanagerment.SetToolBar(new MyToolbar("View", true));
+                myStatemanagerment.SetToolBar(new MyToolbar("Export", true));
+            }
+            else
+            {
+                myStatemanagerment.SetToolBar(new MyToolbar("toolbar", false));
+            }
+            curCommand = await Commands.GetSubMenuBymenuId(menu_id.Replace('_', '.'));
+            Ma_dvcs = myStatemanagerment.GetMa_Dvcs();
+            if (curCommand != null)
+            {
+                store_proc = curCommand.Store_proc;
+                _page_title = IsLangEn ? curCommand.Bar2 : curCommand.Bar;
+                string _brorwse = IsLangEn ? curCommand.Ebrowse1 : curCommand.Vbrowse1;
+                if (!string.IsNullOrEmpty(_brorwse))
+                {
+                    fbrowse = _brorwse;
+                }
+            }
+            myStatemanagerment.OnDvcsChanged += OnDvcschanged;
+            myStatemanagerment.OnActionTaskChanged += OnActionTaskchanged;
+            myStatemanagerment.OnLangguaChanged += OnLangguachange;           
+            await Loaddata();
+            await Language();
+        }
+    }
+    async void OnDvcschanged(string _ma_dvcs)
+    {
+        Ma_dvcs = _ma_dvcs;
+        await Loaddata();
+    }
+    private async void OnLangguachange(MyLang lang)
+    {
+        if (lang.IsnewLang)
+            await Language();
+    }
+    async Task Language()
+    {
+        try
+        {
+            IsLangEn = false;
+            userLang = await Localstore.GetItemAsync<string>("userlang");
+            if (!string.IsNullOrEmpty(userLang))
+            {
+                if (userLang.Equals("En"))
+                {
+                    IsLangEn = true;
+                }
+            }
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+    private void Deleteitems()
+    {
+        DataRowView rview = (DataRowView)SelectedDataItem;
+        if (rview == null)
+        {
+            myStatemanagerment.SetNewThongbao(Lat["No active record"]);
+            return;
+        }
+        if (string.IsNullOrEmpty(rview[SqlTableKey].ToString()))
+        {
+            myStatemanagerment.SetNewThongbao(Lat["No active record"]);
+            return;
+        }
+       
+        SqlTableKeyValue = rview[SqlTableKey].ToString();
+        Deletemessage = String.Format("{0}: {1}", Lap["Do you want to delete"].ToString(), SqlTableKeyValue);
+        StateHasChanged();
+    }
+    private async Task Dongyxoa(bool status)
+    {
+        if (status)
+        {
+            string sql = string.Format("Delete {0} where {1} = '{2}' ", sqlTableName, SqlTableKey, SqlTableKeyValue);
+            await myDb.ExecuteSqlQueryAsync(sql);
+            await Loaddata();
+            ToastMessage = String.Format(Lap["Delete successfully: {0}"], SqlTableKeyValue);
+            myStatemanagerment.SetNewThongbao(ToastMessage);           
+        }
+        Deletemessage = "";
+    }
+   
+    async Task Loaddata()
+    {
+        string _condition = Ma_dvcs.ToUpper().Trim().Equals("ALL") ? "1=1" : string.Format("ma_dvcs = '{0}'", Ma_dvcs);
+        string sql = string.Format("Select * from {0} where {1}", sqlTableView, _condition);
+        DataSet ds = await myDb.LoadDataset(sql);
+        TblData = ds.Tables[0];
+        if (TblData.DefaultView.Count > 0)
+            oBrowse.SetSelectRow(0);
+        StateHasChanged();
+    }
+    private void OnActionTaskchanged(ActionTask ac)
+    {
+        switch (ac)
+        {
+            case ActionTask.New:
+                myStatemanagerment.SetCurrentActionTask(ActionTask.New);
+                Newitems();
+                break;
+            case ActionTask.Edit:
+                myStatemanagerment.SetCurrentActionTask(ActionTask.Edit);
+                Edititems();
+                break;
+            case ActionTask.View:
+                myStatemanagerment.SetCurrentActionTask(ActionTask.View);
+                Viewitems();
+                break;
+            case ActionTask.Delete:
+                Deleteitems();
+                break;
+            case ActionTask.Export:
+                ExportData(1); // 1 => .xlsx,2 => .xls, 3 => .csv
+                break;
+        }
+    }
+
+    void ExportData(int type)
+    {
+        oBrowse.ExPortGrid(type);
+        ToastMessage = Lap["Export successfully"];
+        myStatemanagerment.SetNewThongbao(ToastMessage);
+    }
+    public void Dispose()
+    {
+        myStatemanagerment.OnDvcsChanged -= OnDvcschanged;
+        myStatemanagerment.OnActionTaskChanged -= OnActionTaskchanged;
+        myStatemanagerment.OnLangguaChanged -= OnLangguachange;
+    }
+    void Newitems()
+    {
+        navigation.NavigateTo("/" + editPage + "/" + menu_id);
+    }
+    void Edititems()
+    {
+        DataRowView rview = (DataRowView)SelectedDataItem;
+        if (rview == null)
+        {
+            myStatemanagerment.SetNewThongbao(Lat["No active record"]);
+            return;
+        }
+        if (string.IsNullOrEmpty(rview[SqlTableKey].ToString()))
+        {
+            myStatemanagerment.SetNewThongbao(Lat["No active record"]);
+            return;
+        }  
+        navigation.NavigateTo("/" + editPage + "/" + menu_id + "/" + rview[SqlTableKey].ToString().Trim());
+    }
+
+    void Viewitems()
+    {
+        DataRowView rview = (DataRowView)SelectedDataItem;
+        if (rview == null)
+        {
+            myStatemanagerment.SetNewThongbao(Lat["No active record"]);
+            return;
+        }
+        if (string.IsNullOrEmpty(rview[SqlTableKey].ToString()))
+        {
+            myStatemanagerment.SetNewThongbao(Lat["No active record"]);
+            return;
+        }     
+        navigation.NavigateTo("/" + editPage + "/" + menu_id + "/" + rview[SqlTableKey].ToString());
+    }
+}

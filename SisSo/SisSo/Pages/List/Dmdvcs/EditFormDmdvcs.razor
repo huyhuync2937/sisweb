@@ -1,0 +1,410 @@
+﻿@inject IDbManager myDb
+@using System.Data
+@using System.Security.Claims
+@using Blazored.LocalStorage;
+@inject ILocalStorageService Localstore
+@inject Statemanagerment myStatemanagerment
+@inject NavigationManager navigation
+@inject ICommandManager Commands
+@inject IStringLocalizer<App> Lap
+@implements IDisposable
+<style type="text/css">
+    .uppercase {
+        text-transform: uppercase;       
+    }
+</style>
+<div class="container pt-1">
+    <EditForm Model="@CurDmdvcs">
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+            <div class="row">
+                <div class="row pb-2">
+                    <label class="col-4" for="Ma_bp">Mã Đơn vị(*): </label>
+                <DxTextBox CssClass="col" Id="Ma_bp" @bind-Text="@CurDmdvcs.Ma_dvcs" InputCssClass="uppercase" maxlength="@MaxlengthMa" Enabled="@AllowEditMode" />
+                </div>
+
+            <div class="row pb-2">
+                <label class="col-4" for="ten_bp">Tên Đơn vị(*): </label>
+                <DxTextBox CssClass="col" Id="ten_bp" @bind-Text="@CurDmdvcs.Ten_dvcs" maxlength="@MaxlengthTen" Enabled="@AllowEditMode" />
+            </div>
+
+            <div class="row pb-2">
+                <label class="col-4" for="ten_bp2">Tên 2: </label>
+                <DxTextBox CssClass="col" Id="ten_bp2" @bind-Text="@CurDmdvcs.Ten_dvcs2" maxlength="@MaxlengthTen2" Enabled="@AllowEditMode" />
+             </div>
+            <div class="row pb-2">
+                <label class="col-4" for="ten_bp2">Danh sách NSD: </label>
+                <DxTextBox Enabled="false" @bind-Text="@CurDmdvcs.User_right" CssClass="col-6"></DxTextBox>
+                <DxButton CssClass="col-2" Text="..." Enabled="@AllowEditMode" Click="@ChonUser" RenderStyle="ButtonRenderStyle.Info"></DxButton>
+             </div>
+           
+                <div class="row">
+                <label class="col-4" for="Status">Trạng thái(*): </label>
+                <DxComboBox Id="Status" Enabled="@AllowEditMode"
+                                CssClass="col"
+                                ClearButtonDisplayMode="DataEditorClearButtonDisplayMode.Auto"
+                                Data="LSStatus"
+                                TextFieldName="Ten"
+                                ValueFieldName="Ma"
+                            @bind-Value="@CurDmdvcs.Status" />
+                </div>
+            </div>
+        </EditForm>
+    <div class="row justify-content-end align-content-end mt-2">
+        <button type="button" class="btn btn-primary col-2 m-1" @onclick="SaveDM">Lưu</button>
+        <button type="button" class="btn btn-danger col-2 m-1" @onclick="HideVoucher">Hủy</button>
+    </div>
+</div>
+@if (PopupVisible)
+{
+    <DxPopup @ref="@PopUp"
+             @bind-Visible="@PopupVisible"
+             ShowFooter="true"
+             CloseOnEscape="false"
+             ShowCloseButton="false"
+             AllowResize="true"
+             HeaderText="@Lap["Choose Employees"].ToString()"
+             MinWidth="600px">
+        <BodyTemplate>
+            <div class="m-2">
+                <MultiChooseGridComponent TblData="@Tbldmns" SelectCol="selected" Fbrowse="@fnsbrowse" IsLangEn="@IsLangEn"></MultiChooseGridComponent>
+            </div>
+        </BodyTemplate>
+        <FooterTemplate>
+            <div class="row m-2 p-0 justify-content-end">
+                <div class="row col-4 m-0 p-0 justify-content-end">
+                    <DxButton CssClass="col" Click="@OkFrmChonfl" Text="@Lap["Save"].ToString()" RenderStyle="ButtonRenderStyle.Primary" RenderStyleMode="ButtonRenderStyleMode.Outline" />
+                    <DxButton CssClass="col" Click="@CloseFrmChonfl" Text="@Lap["Cancel"].ToString()" RenderStyle="ButtonRenderStyle.Danger" RenderStyleMode="ButtonRenderStyleMode.Outline" />
+                </div>
+            </div>
+        </FooterTemplate>
+    </DxPopup>
+}
+
+<MessageComponent Content="@Toastmessage" HideMessage="Hidemessage"></MessageComponent>
+
+@code {
+
+    [CascadingParameter(Name = "Ma_dvcs")]
+    public string Ma_ma { get; set; }  
+
+    [CascadingParameter(Name = "Menu_id")]
+    public string Menu_id { get; set; }
+
+    List<Dmtk> LSStatus = new List<Dmtk>() {
+        new Dmtk() {Ma= "1",Ten= "1. Sử dụng" },
+        new Dmtk() {Ma= "0",Ten= "2. Không" },
+    };
+    Dmtk SelectDmbpns = new Dmtk();
+    DataTable Tbldmns;
+    private Dmdvcs CurDmdvcs = new Dmdvcs();
+    private ActionTask curActionTask { get; set; }
+    private static string sqlTableName = "dmdvcs";
+    private static string SqlTableKey = "ma_dvcs";
+    private static string SqlTableKeyValue = "";
+    private string ParentPage = "dmdvcs";
+    private bool AllowEditMode;
+    private Command curCommand = new Command();
+    private Dmdm CurDmdm = new Dmdm();
+
+    private string _transform = "";
+    private string UserLang = "";
+    private string OldMa = "";
+    private bool IsLangEn = false;
+    private Users _curUser;
+    private string Toastmessage = "";
+    ColumnLength columnLength = new ColumnLength();
+    private int MaxlengthMa = 0;
+    private int MaxlengthTen = 0;
+    private int MaxlengthTen2 = 0;
+    DxPopup PopUp { get; set; }
+    private bool PopupVisible { get; set; } = false;
+    string fnsbrowse = @"user_id:100:h=Mã nhân viên;user_name:200:h=Tên nhân viên";
+
+    private void Hidemessage(bool state)
+    {
+        if (state)
+        {
+            Toastmessage = "";
+            StateHasChanged();
+        }
+    }
+    void HideVoucher()
+    {
+        navigation.NavigateTo(ParentPage + "/" + Menu_id);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Language();
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        CurDmdvcs = new Dmdvcs();
+        await PageLoad();
+        myStatemanagerment.OnLangguaChanged += OnLangguachange;
+        curActionTask = myStatemanagerment.GetCurrentActionTask();
+        _curUser = myStatemanagerment.GetCurUser();
+        switch (curActionTask)
+        {
+            case ActionTask.View:
+                {
+                    if (!string.IsNullOrEmpty(Ma_ma))
+                        ViewDM(Ma_ma);                   
+                    break;
+                }
+            case ActionTask.Edit:
+                {
+                    if (!string.IsNullOrEmpty(Ma_ma))
+                        EditDM(Ma_ma);
+                    break;
+                }
+            case ActionTask.New:
+                {
+                    CreateNewDM();
+                    break;
+                }
+            default:
+                {
+                    if (!string.IsNullOrEmpty(Ma_ma))
+                        ViewDM(Ma_ma);
+                    break;
+                }
+        }
+        columnLength = await myDb.GetColumnLength(SqlTableKey, sqlTableName);
+        MaxlengthMa = columnLength.max_length;
+        columnLength = await myDb.GetColumnLength("ten_dvcs", sqlTableName);
+        MaxlengthTen = columnLength.max_length;
+        columnLength = await myDb.GetColumnLength("ten_dvcs2", sqlTableName);
+        MaxlengthTen2 = columnLength.max_length;
+    }
+    void ViewDM(string SqlTableKeyValue)
+    {      
+        AllowEditMode = false;
+        LoadData(SqlTableKeyValue);
+    }
+    void EditDM(string SqlTableKeyValue)
+    {       
+        AllowEditMode = true;
+        LoadData(SqlTableKeyValue);
+    }
+    async Task SaveDM()
+    {
+        if (!CheckValid())
+            return;
+
+        CurDmdvcs.Ma_dvcs = CurDmdvcs.Ma_dvcs.ToUpper().Trim();
+        SqlTableKeyValue = CurDmdvcs.Ma_dvcs;
+        if (curActionTask == ActionTask.New)
+        {
+            CurDmdvcs.Date = DateTime.Now.Date;
+            CurDmdvcs.Date0 = DateTime.Now.Date;
+            CurDmdvcs.Time = DateTime.Now.ToString("HH:mm:ss");
+            CurDmdvcs.Time0 = DateTime.Now.ToString("HH:mm:ss");
+            if (_curUser != null)
+            {
+                CurDmdvcs.User_id = _curUser.User_id;
+                CurDmdvcs.User_id0 = _curUser.User_id;
+                CurDmdvcs.User_name = _curUser.User_name;
+                CurDmdvcs.User_name0 = _curUser.User_name;
+            }     
+            string check = "Select " + SqlTableKey + " from " + sqlTableName + " where " + SqlTableKey + " = '" + SqlTableKeyValue + "'";
+            DataSet ds = await myDb.LoadDataset(check);
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                Toastmessage = "Đã có " + SqlTableKeyValue + " rồi. Vui lòng nhập mã khác";
+                StateHasChanged();
+            }
+            else
+            {
+                await myDb.InsertOneRow<Dmdvcs>(CurDmdvcs, sqlTableName);
+                myStatemanagerment.SetNewThongbao("Thêm thành công: " + SqlTableKeyValue);
+                navigation.NavigateTo(ParentPage + "/" + Menu_id);
+            }
+        }
+        else if (curActionTask == ActionTask.Edit)
+        {
+            CurDmdvcs.Date = DateTime.Now.Date;
+            CurDmdvcs.Time = DateTime.Now.ToString("HH:mm:ss");
+            if (_curUser != null)
+            {
+                CurDmdvcs.User_id = _curUser.User_id;
+                CurDmdvcs.User_name = _curUser.User_name;
+            }
+            string conditon = SqlTableKey +"='" +OldMa + "'";
+            await myDb.UpdateOneRow1<Dmdvcs>(CurDmdvcs, sqlTableName, "", conditon);
+            myStatemanagerment.SetNewThongbao("Sửa thành công: " + SqlTableKeyValue);
+            navigation.NavigateTo(ParentPage + "/" + Menu_id);
+        }        
+    }
+    bool CheckValid()
+    {
+        if (string.IsNullOrEmpty(CurDmdvcs.Ma_dvcs))
+        {
+            Toastmessage = "Chưa vào mã đvcs";
+            StateHasChanged();
+            return false;
+        }
+        if (string.IsNullOrEmpty(CurDmdvcs.Ten_dvcs))
+        {
+            Toastmessage = "Chưa vào tên đvcs";
+            StateHasChanged();
+            return false;
+        }
+        return true;
+
+    }
+    async void LoadData(string SqlTableKeyValue)
+    {
+        string sql = "Select * from " + sqlTableName + " where " + SqlTableKey + " = '" + SqlTableKeyValue + "'";
+        DataSet DsTrans = await myDb.LoadDataset(sql);
+        if (DsTrans != null && DsTrans.Tables[0].Rows.Count > 0)
+        {
+            List<Dmdvcs> lsdata = myDb.ConvertDataTable<Dmdvcs>(DsTrans.Tables[0]);
+            if (lsdata != null && lsdata.Count > 0)
+            {
+                CurDmdvcs = lsdata[0];
+                OldMa = lsdata[0].Ma_dvcs.Trim();
+            } 
+        }
+        StateHasChanged();
+    }
+   
+    async void CreateNewDM()
+    {
+        SelectDmbpns = new Dmtk();
+        CurDmdvcs = new Dmdvcs();
+        CurDmdvcs.Status = "1";       
+        CurDmdvcs.Ma_dvcs = await GetNewSttDM();
+        AllowEditMode = true;
+        StateHasChanged();
+    }
+    async Task PageLoad()
+    {
+        curCommand = await Commands.GetSubMenuBymenuId(Menu_id.Replace('_','.'));
+        if (curCommand != null)
+        {
+            string sql = "select * from dmdm where ma_dm = '" + curCommand.Mobile_page + "'";
+            DataSet ds = await myDb.LoadDataset(sql);
+            List<Dmdm> lsdm = myDb.ConvertDataTable<Dmdm>(ds.Tables[0]);
+            if (lsdm != null && lsdm.Count > 0)
+            {
+                CurDmdm = lsdm[0];
+                if (CurDmdm != null)
+                {
+                    sqlTableName = CurDmdm.Table_name.Trim();
+                    SqlTableKey = CurDmdm.Key.Trim();
+                    if (!string.IsNullOrEmpty(CurDmdm.Transform))
+                        _transform = CurDmdm.Transform;
+                }
+            }
+        }
+    }
+    async Task<string> GetNewSttDM()
+    {
+        if (string.IsNullOrEmpty(_transform))
+            _transform = "DVCS{0:0000}";
+        string stt = "";
+        string sql = "Select max(" + SqlTableKey + ") " + SqlTableKey + " from " + sqlTableName;
+        DataSet _data = await myDb.LoadDataset(sql);
+        int curIndex = -1;
+        int curNum = 0;
+        if (_data == null || _data.Tables[0].Rows.Count == 0)
+        {
+            stt = string.Format(_transform, 1);
+        }
+        else
+        {
+            string curSothe = _data.Tables[0].Rows[0][SqlTableKey].ToString();
+            if (!string.IsNullOrEmpty(curSothe))
+            {
+                curSothe = curSothe.Trim();
+                for (int x = curSothe.Length - 1; x >= 0; x--)
+                {
+                    char c = curSothe[x];
+                    int result = -1;
+                    try
+                    {
+                        result = int.Parse(c.ToString());
+                    }
+                    catch
+                    {
+                        curIndex = x;
+                        break;
+                    }
+                }
+                string tmp = curSothe.Substring(curIndex + 1);
+                int.TryParse(tmp, out curNum);
+                curNum += 1;
+                stt = string.Format(_transform, curNum);               
+            }
+            else
+            {
+                stt = string.Format(_transform, 1);
+            }
+        }
+        return stt;
+    }
+    public void Dispose()
+    {
+        myStatemanagerment.OnLangguaChanged -= OnLangguachange;
+    }
+    private async void OnLangguachange(MyLang lang)
+    {
+        if (lang.IsnewLang)
+        {
+            await Language();
+        }
+    }
+    async Task Language()
+    {
+        try
+        {
+            IsLangEn = false;
+            UserLang = await Localstore.GetItemAsync<string>("userlang");
+            if (!string.IsNullOrEmpty(UserLang))
+            {
+                if (UserLang.Equals("En"))
+                {
+                    IsLangEn = true;
+                }
+            }
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+    async void ChonUser()
+    {
+        string strsql = "Select Case when Charindex((RTRIM(user_name) + ';'),'" + (String.IsNullOrEmpty(CurDmdvcs.User_right) ? "" : CurDmdvcs.User_right.Trim()) + ";')>0 then  '1' else '0' END as selected, user_id,user_name,Rtrim(user_name) as ma_nss from userinfo order by user_id";
+        DataSet ds = myDb.LoadDataSet(strsql);
+        if (ds != null && ds.Tables.Count > 0)
+        {
+            Tbldmns = ds.Tables[0];
+            Tbldmns.Columns["selected"].ReadOnly = false;
+            PopupVisible = true;
+            StateHasChanged();
+        }
+    }
+    void OkFrmChonfl()
+    {
+        CurDmdvcs.User_right = "";
+        foreach (DataRow row in Tbldmns.Rows)
+        {
+            if (row["selected"].ToString().Trim() == "1")
+                CurDmdvcs.User_right += row["user_name"].ToString().Trim() + ";";
+        }
+        PopupVisible = false;
+        PopUp.CloseAsync();
+    }
+    void CloseFrmChonfl()
+    {
+        PopupVisible = false;
+        PopUp.CloseAsync();
+    }
+}

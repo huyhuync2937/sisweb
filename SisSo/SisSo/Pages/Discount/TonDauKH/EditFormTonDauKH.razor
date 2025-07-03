@@ -1,0 +1,289 @@
+﻿@using Microsoft.AspNetCore.Components.Forms
+@inject IDbManager myDb
+@inject ILocalStorageService Localstore
+@inject Statemanagerment myStatemanagerment
+@inject NavigationManager navigation
+@inject ICommandManager Commands
+@inject IStringLocalizer<App> Lap
+@inject IStringLocalizer<EditFormTonDauKH> Lat
+@implements IDisposable
+
+<div class="container pt-1">
+    <EditForm Context="ContextEdit" Model="@CurDmdtkh" onkeydown="ModifyEnterKeyPressAsTab(event);">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <DxFormLayout CssClass="w-100">
+            @if (AllowNewMode)
+            {
+                <DxFormLayoutItem Caption="@Lat["Customer"].ToString()" ColSpanMd="12">
+                    <Template>
+                        <AutocompleteComponent Ma_dm="dmkh" @bind-Value="@CurDmdtkh.Ma_kh" SelectChanged="OnAutoCompleteKhachhangChanged" IsEnable="@AllowNewMode"></AutocompleteComponent>
+                    </Template>
+                </DxFormLayoutItem>
+            }
+            else
+            {
+                <DxFormLayoutItem Caption="@Lat["Customer"].ToString()" ColSpanMd="12">
+                    <Template>
+                        <label class="col mt-2">@CurDmdtkh.Ma_kh</label>
+                    </Template>
+                </DxFormLayoutItem>
+            }
+            <DxFormLayoutItem Caption="@Lat["Customer name"].ToString()" ColSpanMd="12">
+                <Template>
+                    <label class="col mt-2">@CurDmdtkh.Ten_kh</label>
+                </Template>
+            </DxFormLayoutItem>
+
+            <DxFormLayoutItem Caption="@Lat["Year"]" ColSpanMd="12">
+                <Template>
+                    <DxSpinEdit CssClass="col" Id="SNam" @bind-Value="@CurDmdtkh.SNam" Enabled="@AllowEditMode" />
+                </Template>
+            </DxFormLayoutItem>
+
+            <DxFormLayoutItem Caption="@Lat["Ton dau"]" ColSpanMd="12">
+                <Template>
+                    <DxMaskedInput @bind-Value="@CurDmdtkh.Ton00"
+                                   CssClass="col"
+                                   Mask="@NumericMask.WholeNumber" Enabled="@AllowEditMode" />
+                </Template>
+            </DxFormLayoutItem>
+
+        </DxFormLayout>
+    </EditForm>
+    <div class="row justify-content-end align-content-end mt-2">
+        <DxButton CssClass="col-3 m-1" Click="@SaveDM" Text="@Lap["Save"].ToString()" RenderStyle="ButtonRenderStyle.Primary" />
+        <DxButton CssClass="col-3 m-1" Click="@HideVoucher" Text="@Lap["Cancel"].ToString()" RenderStyle="ButtonRenderStyle.Danger" />
+    </div>
+</div>
+@code {
+    [Parameter]
+    public string Menu_id { get; set; }
+    [Parameter]
+    public string ma_kh { get; set; }
+    [Parameter]
+    public string nam { get; set; }
+    [Parameter]
+    public ActionTask curActionTask { get; set; } = ActionTask.None;
+    [Parameter]
+    public bool? ShowAdd { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+    Dmdtkh CurDmdtkh { get; set; } = new Dmdtkh();
+    private string sqlTableName = "dmdtkh";
+    private string sqlTableView = "v_dmdtkh";
+    private string SqlTableKey = "ma_kh;nam";
+    private string SqlTableKeyValue = "";
+    private string ParentPage = "tondaukh";
+    private bool AllowEditMode;
+    private bool AllowNewMode;
+    private Command curCommand = new Command();
+    private string UserLang = "";
+    private bool IsLangEn = false;
+    private Users _curUser;
+    private string Toastmessage = "";
+
+    async void OnAutoCompleteKhachhangChanged(ExpandoObject value)
+    {
+        CurDmdtkh.Ten_kh = value.Where(a => a.Key.Equals("ten_kh")).FirstOrDefault().Value.ToString();
+        StateHasChanged();
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+            await Language();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (String.IsNullOrEmpty(Menu_id))
+            Menu_id = "we_bl_10";
+
+        curCommand = await Commands.GetSubMenuBymenuId(Menu_id.Replace('_', '.'));
+        myStatemanagerment.OnLangguaChanged += OnLangguachange;
+
+        if (curActionTask == ActionTask.None)
+            curActionTask = myStatemanagerment.GetCurrentActionTask();
+
+        _curUser = myStatemanagerment.GetCurUser();
+        switch (curActionTask)
+        {
+            case ActionTask.View:
+                {
+                    if (!string.IsNullOrEmpty(ma_kh))
+                        ViewDM(ma_kh, nam);
+                    break;
+                }
+            case ActionTask.Edit:
+                {
+                    if (!string.IsNullOrEmpty(ma_kh))
+                        EditDM(ma_kh, nam);
+                    break;
+                }
+            case ActionTask.New:
+                {
+                    CreateNewDM();
+                    break;
+                }
+            default:
+                {
+                    if (!string.IsNullOrEmpty(ma_kh))
+                        ViewDM(ma_kh, nam);
+                    break;
+                }
+        }
+    }
+    void CreateNewDM()
+    {
+        CurDmdtkh = new Dmdtkh();
+        CurDmdtkh.SNam = DateTime.Now.Year;
+        CurDmdtkh.Status = "1";
+        AllowEditMode = true;
+        AllowNewMode = true;
+        StateHasChanged();
+    }
+    void ViewDM(string ma_kh, string nam)
+    {
+        CurDmdtkh = new Dmdtkh();
+        AllowEditMode = false;
+        LoadData(ma_kh, nam);
+    }
+    void EditDM(string ma_kh, string nam)
+    {
+        CurDmdtkh = new Dmdtkh();
+        AllowEditMode = true;
+        LoadData(ma_kh, nam);
+    }
+    async Task SaveDM()
+    {
+        if (!CheckValid())
+            return;
+
+        CurDmdtkh.Nam = CurDmdtkh.SNam.ToString();
+        if (curActionTask == ActionTask.New)
+        {
+            CurDmdtkh.Date = DateTime.Now.Date;
+            CurDmdtkh.Date0 = DateTime.Now.Date;
+            CurDmdtkh.Time = DateTime.Now.ToString("HH:mm:ss");
+            CurDmdtkh.Time0 = DateTime.Now.ToString("HH:mm:ss");
+            if (_curUser != null)
+            {
+                CurDmdtkh.User_id = _curUser.User_id;
+                CurDmdtkh.User_id0 = _curUser.User_id;
+            }
+            string _value = CurDmdtkh.Ma_kh + ";" + CurDmdtkh.Nam;
+            string _condition = myDb.SqlJoinKeyValue(SqlTableKey, _value);
+            string check = string.Format("Select 1 from {0} where {1};", sqlTableName, _condition);
+            DataSet ds = await myDb.LoadDataset(check);
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                Toastmessage = String.Format(Lap["Code {0} already exists !"], CurDmdtkh.Ma_kh);
+                myStatemanagerment.SetNewAlertMessage(Toastmessage);
+            }
+            else
+            {
+                await myDb.InsertOneRow<Dmdtkh>(CurDmdtkh, sqlTableName);
+                myStatemanagerment.SetNewThongbao(String.Format(Lap["Successfully added: {0}"].ToString(), CurDmdtkh.Ma_kh));
+                if (ShowAdd == true)
+                {
+                    await OnClose.InvokeAsync();
+                }
+                else
+                    navigation.NavigateTo("/" + curCommand.Mobile_page.Trim() + @"/" + Menu_id);
+            }
+        }
+        else if (curActionTask == ActionTask.Edit)
+        {
+            CurDmdtkh.Date0 = DateTime.Now.Date;
+            CurDmdtkh.Time0 = DateTime.Now.ToString("HH:mm:ss");
+            if (_curUser != null)
+            {
+                CurDmdtkh.User_id0 = _curUser.User_id;
+            }
+            string _value = CurDmdtkh.Ma_kh + ";" + CurDmdtkh.Nam;
+            string _condition = myDb.SqlJoinKeyValue(SqlTableKey, _value);
+            await myDb.UpdateOneRow1<Dmdtkh>(CurDmdtkh, sqlTableName, "", _condition);
+            myStatemanagerment.SetNewThongbao(String.Format(Lap["Edit successfully: {0}"], CurDmdtkh.Ma_kh));
+            navigation.NavigateTo("/" + curCommand.Mobile_page.Trim() + @"/" + Menu_id);
+        }
+    }
+    bool CheckValid()
+    {
+        if (string.IsNullOrEmpty(CurDmdtkh.Ma_kh))
+        {
+            myStatemanagerment.SetNewAlertMessage("Không được để trống mã.");
+            return false;
+        }
+        if (CurDmdtkh.SNam < 1900 || CurDmdtkh.SNam > DateTime.MaxValue.Year)
+        {
+            myStatemanagerment.SetNewAlertMessage("Năm không hợp lệ.");
+            return false;
+        }
+        return true;
+
+    }
+    async void LoadData(string ma_kh, string nam)
+    {
+        string _value = ma_kh + ";" + nam;
+        string _condition = myDb.SqlJoinKeyValue(SqlTableKey, _value);
+        string sql = string.Format("Select * from {0} where {1};", sqlTableView, _condition);
+        DataSet DsTrans = await myDb.LoadDataset(sql);
+        if (DsTrans != null && DsTrans.Tables[0].Rows.Count > 0)
+        {
+            List<Dmdtkh> lsdata = myDb.ConvertDataTable<Dmdtkh>(DsTrans.Tables[0]);
+            if (lsdata != null && lsdata.Count > 0)
+            {
+                CurDmdtkh = lsdata[0];
+                CurDmdtkh.SNam = int.Parse(CurDmdtkh.Nam);
+            }
+        }
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        myStatemanagerment.OnLangguaChanged -= OnLangguachange;
+    }
+    private async void OnLangguachange(MyLang lang)
+    {
+        if (lang.IsnewLang)
+        {
+            await Language();
+        }
+    }
+    async Task Language()
+    {
+        try
+        {
+            IsLangEn = false;
+            UserLang = await Localstore.GetItemAsync<string>("userlang");
+            if (!string.IsNullOrEmpty(UserLang))
+            {
+                if (UserLang.Equals("En"))
+                {
+                    IsLangEn = true;
+                }
+            }
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+    private void Hidemessage(bool state)
+    {
+        if (state)
+        {
+            Toastmessage = "";
+            StateHasChanged();
+        }
+    }
+    void HideVoucher()
+    {
+        if (ShowAdd == true)
+        {
+            OnClose.InvokeAsync();
+        }
+        else
+            navigation.NavigateTo("/" + curCommand.Mobile_page.Trim() + @"/" + Menu_id);
+    }
+}

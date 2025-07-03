@@ -1,0 +1,1739 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="23.2.3.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v23.2, Version=23.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="tsvhrpvn" Landscape="true" Margins="100, 98, 100, 41.66667" PaperKind="A4" PageWidth="1169" PageHeight="827" Version="23.2" DataMember="LSPh" DataSource="#Ref-0" Font="Arial, 9.75pt">
+  <Bands>
+    <Item1 Ref="2" ControlType="TopMarginBand" Name="TopMargin">
+      <Controls>
+        <Item1 Ref="3" ControlType="XRLabel" Name="xrLabel7" TextFormatString="{0:dd-MM-yyyy}" Multiline="true" SizeF="96.08331,23" LocationFloat="526.0417,58.37499" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="4" EventName="BeforePrint" PropertyName="Text" Expression="[Ngay_ct]" />
+          </ExpressionBindings>
+        </Item1>
+        <Item2 Ref="5" ControlType="XRLabel" Name="xrLabel6" Multiline="true" Text="Ngày:" SizeF="48.95831,23" LocationFloat="477.0834,58.37499" Font="Arial, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="6" UseFont="false" />
+        </Item2>
+        <Item3 Ref="7" ControlType="XRPictureBox" Name="pblogo" Sizing="ZoomImage" SizeF="100,100" LocationFloat="0,0" />
+        <Item4 Ref="8" ControlType="XRLabel" Name="lbltitle" Multiline="true" Text="lbltitle" TextAlignment="TopCenter" SizeF="869,25.08334" LocationFloat="100,33.29166" Font="Arial, 14pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="9" UseFont="false" UseTextAlignment="false" />
+        </Item4>
+      </Controls>
+    </Item1>
+    <Item2 Ref="10" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="41.66667" />
+    <Item3 Ref="11" ControlType="DetailBand" Name="Detail" HeightF="932.2917">
+      <Controls>
+        <Item1 Ref="12" ControlType="XRTable" Name="xrTable1" TextAlignment="MiddleCenter" SizeF="969,925" LocationFloat="0,0" Font="Arial, 9.75pt" Padding="2,2,0,0,96" BorderColor="Silver" Borders="All">
+          <Rows>
+            <Item1 Ref="13" ControlType="XRTableRow" Name="xrTableRow1" Weight="1">
+              <Cells>
+                <Item1 Ref="14" ControlType="XRTableCell" Name="xrTableCell1" Weight="0.43885451278450327" Multiline="true" Text="Stt" Font="Arial, 9.75pt, style=Bold" BackColor="255,224,242,224">
+                  <StylePriority Ref="15" UseFont="false" UseBackColor="false" />
+                </Item1>
+                <Item2 Ref="16" ControlType="XRTableCell" Name="xrTableCell2" Weight="1.9191176706792399" Multiline="true" Text="Chỉ tiêu kiểm tra" Font="Arial, 9.75pt, style=Bold" BackColor="255,224,242,224">
+                  <StylePriority Ref="17" UseFont="false" UseBackColor="false" />
+                </Item2>
+                <Item3 Ref="18" ControlType="XRTableCell" Name="xrTableCell3" Weight="0.77747661484284292" Multiline="true" Text="Chuẩn&#xD;&#xA;(cài đặt)" Font="Arial, 9.75pt, style=Bold" BackColor="255,224,242,224">
+                  <StylePriority Ref="19" UseFont="false" UseBackColor="false" />
+                </Item3>
+                <Item4 Ref="20" ControlType="XRTableCell" Name="xrTableCell4" Weight="0.771671755764137" Multiline="true" Text="Sai số" Font="Arial, 9.75pt, style=Bold" BackColor="255,224,242,224">
+                  <StylePriority Ref="21" UseFont="false" UseBackColor="false" />
+                </Item4>
+                <Item5 Ref="22" ControlType="XRTableCell" Name="xrTableCell9" Weight="5.0928794459292765" Multiline="true" Text="Kiểm tra thực tế" Font="Arial, 9.75pt, style=Bold" BackColor="255,224,242,224">
+                  <StylePriority Ref="23" UseFont="false" UseBackColor="false" />
+                </Item5>
+              </Cells>
+            </Item1>
+            <Item2 Ref="24" ControlType="XRTableRow" Name="xrTableRow37" Weight="1">
+              <Cells>
+                <Item1 Ref="25" ControlType="XRTableCell" Name="xrTableCell321" Weight="0.43885451278450327" Multiline="true" BackColor="255,224,242,224">
+                  <StylePriority Ref="26" UseBackColor="false" />
+                </Item1>
+                <Item2 Ref="27" ControlType="XRTableCell" Name="xrTableCell322" Weight="1.9191176706792399" Multiline="true" BackColor="255,224,242,224">
+                  <StylePriority Ref="28" UseBackColor="false" />
+                </Item2>
+                <Item3 Ref="29" ControlType="XRTableCell" Name="xrTableCell323" Weight="0.77747661484284292" Multiline="true" BackColor="255,224,242,224">
+                  <StylePriority Ref="30" UseBackColor="false" />
+                </Item3>
+                <Item4 Ref="31" ControlType="XRTableCell" Name="xrTableCell324" Weight="0.77167222817246761" Multiline="true" BackColor="255,224,242,224">
+                  <StylePriority Ref="32" UseBackColor="false" />
+                </Item4>
+                <Item5 Ref="33" ControlType="XRTableCell" Name="xrTableCell325" Weight="1.0928789735209463" Multiline="true" Text="xrTableCell325" Font="Arial, 9.75pt, style=Bold" BackColor="255,224,242,224">
+                  <ExpressionBindings>
+                    <Item1 Ref="34" EventName="BeforePrint" PropertyName="Text" Expression="[So_lsx1]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="35" UseFont="false" UseBackColor="false" />
+                </Item5>
+                <Item6 Ref="36" ControlType="XRTableCell" Name="xrTableCell326" Weight="1" Multiline="true" Text="xrTableCell326" Font="Arial, 9.75pt, style=Bold" BackColor="255,224,242,224">
+                  <ExpressionBindings>
+                    <Item1 Ref="37" EventName="BeforePrint" PropertyName="Text" Expression="[So_lsx2]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="38" UseFont="false" UseBackColor="false" />
+                </Item6>
+                <Item7 Ref="39" ControlType="XRTableCell" Name="xrTableCell327" Weight="1" Multiline="true" Text="xrTableCell327" Font="Arial, 9.75pt, style=Bold" BackColor="255,224,242,224">
+                  <ExpressionBindings>
+                    <Item1 Ref="40" EventName="BeforePrint" PropertyName="Text" Expression="[So_lsx3]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="41" UseFont="false" UseBackColor="false" />
+                </Item7>
+                <Item8 Ref="42" ControlType="XRTableCell" Name="xrTableCell328" Weight="1" Multiline="true" Text="xrTableCell328" Font="Arial, 9.75pt, style=Bold" BackColor="255,224,242,224">
+                  <ExpressionBindings>
+                    <Item1 Ref="43" EventName="BeforePrint" PropertyName="Text" Expression="[So_lsx4]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="44" UseFont="false" UseBackColor="false" />
+                </Item8>
+                <Item9 Ref="45" ControlType="XRTableCell" Name="xrTableCell329" Weight="1" Multiline="true" Text="xrTableCell329" Font="Arial, 9.75pt, style=Bold" BackColor="255,224,242,224">
+                  <ExpressionBindings>
+                    <Item1 Ref="46" EventName="BeforePrint" PropertyName="Text" Expression="[So_lsx5]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="47" UseFont="false" UseBackColor="false" />
+                </Item9>
+              </Cells>
+            </Item2>
+            <Item3 Ref="48" ControlType="XRTableRow" Name="xrTableRow2" Weight="1">
+              <Cells>
+                <Item1 Ref="49" ControlType="XRTableCell" Name="xrTableCell10" Weight="0.43885451278450327" Multiline="true" BackColor="255,224,242,224">
+                  <StylePriority Ref="50" UseBackColor="false" />
+                </Item1>
+                <Item2 Ref="51" ControlType="XRTableCell" Name="xrTableCell11" Weight="1.9191176706792399" Multiline="true" BackColor="255,224,242,224">
+                  <StylePriority Ref="52" UseBackColor="false" />
+                </Item2>
+                <Item3 Ref="53" ControlType="XRTableCell" Name="xrTableCell12" Weight="0.77747661484284292" Multiline="true" BackColor="255,224,242,224">
+                  <StylePriority Ref="54" UseBackColor="false" />
+                </Item3>
+                <Item4 Ref="55" ControlType="XRTableCell" Name="xrTableCell13" Weight="0.77167222817246761" Multiline="true" BackColor="255,224,242,224">
+                  <StylePriority Ref="56" UseBackColor="false" />
+                </Item4>
+                <Item5 Ref="57" ControlType="XRTableCell" Name="xrTableCell14" Weight="1.0928789735209463" Multiline="true" Font="Arial, 9.75pt, style=Bold" BackColor="255,224,242,224">
+                  <ExpressionBindings>
+                    <Item1 Ref="58" EventName="BeforePrint" PropertyName="Text" Expression="[Thoi_gian1]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="59" UseFont="false" UseBackColor="false" />
+                </Item5>
+                <Item6 Ref="60" ControlType="XRTableCell" Name="xrTableCell15" Weight="1" Multiline="true" Font="Arial, 9.75pt, style=Bold" BackColor="255,224,242,224">
+                  <ExpressionBindings>
+                    <Item1 Ref="61" EventName="BeforePrint" PropertyName="Text" Expression="[Thoi_gian2]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="62" UseFont="false" UseBackColor="false" />
+                </Item6>
+                <Item7 Ref="63" ControlType="XRTableCell" Name="xrTableCell16" Weight="1" Multiline="true" Font="Arial, 9.75pt, style=Bold" BackColor="255,224,242,224">
+                  <ExpressionBindings>
+                    <Item1 Ref="64" EventName="BeforePrint" PropertyName="Text" Expression="[Thoi_gian3]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="65" UseFont="false" UseBackColor="false" />
+                </Item7>
+                <Item8 Ref="66" ControlType="XRTableCell" Name="xrTableCell17" Weight="1" Multiline="true" Font="Arial, 9.75pt, style=Bold" BackColor="255,224,242,224">
+                  <ExpressionBindings>
+                    <Item1 Ref="67" EventName="BeforePrint" PropertyName="Text" Expression="[Thoi_gian4]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="68" UseFont="false" UseBackColor="false" />
+                </Item8>
+                <Item9 Ref="69" ControlType="XRTableCell" Name="xrTableCell18" Weight="1" Multiline="true" Font="Arial, 9.75pt, style=Bold" BackColor="255,224,242,224">
+                  <ExpressionBindings>
+                    <Item1 Ref="70" EventName="BeforePrint" PropertyName="Text" Expression="[Thoi_gian5]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="71" UseFont="false" UseBackColor="false" />
+                </Item9>
+              </Cells>
+            </Item3>
+            <Item4 Ref="72" ControlType="XRTableRow" Name="xrTableRow3" Weight="1">
+              <Cells>
+                <Item1 Ref="73" ControlType="XRTableCell" Name="xrTableCell5" Weight="0.43885451278450327" Multiline="true" Text="1" Borders="Left, Top, Right">
+                  <StylePriority Ref="74" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="75" ControlType="XRTableCell" Name="xrTableCell6" Weight="1.9191176706792399" Multiline="true" Text="Nhiệt độ liệu sau trộn" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="76" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="77" ControlType="XRTableCell" Name="xrTableCell7" Weight="0.77747661484284292" Multiline="true" Text="xrTableCell7">
+                  <ExpressionBindings>
+                    <Item1 Ref="78" EventName="BeforePrint" PropertyName="Text" Expression="[Ndlst_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="79" ControlType="XRTableCell" Name="xrTableCell8" Weight="0.77167222817246761" Multiline="true" Text="xrTableCell8">
+                  <ExpressionBindings>
+                    <Item1 Ref="80" EventName="BeforePrint" PropertyName="Text" Expression="[Ndlst_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="81" ControlType="XRTableCell" Name="xrTableCell19" Weight="1.0928789735209463" Multiline="true" Text="xrTableCell19">
+                  <ExpressionBindings>
+                    <Item1 Ref="82" EventName="BeforePrint" PropertyName="Text" Expression="[Ndlst_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="83" ControlType="XRTableCell" Name="xrTableCell20" Weight="1" Multiline="true" Text="xrTableCell20">
+                  <ExpressionBindings>
+                    <Item1 Ref="84" EventName="BeforePrint" PropertyName="Text" Expression="[Ndlst_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="85" ControlType="XRTableCell" Name="xrTableCell21" Weight="1" Multiline="true" Text="xrTableCell21">
+                  <ExpressionBindings>
+                    <Item1 Ref="86" EventName="BeforePrint" PropertyName="Text" Expression="[Ndlst_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="87" ControlType="XRTableCell" Name="xrTableCell22" Weight="1" Multiline="true" Text="xrTableCell22">
+                  <ExpressionBindings>
+                    <Item1 Ref="88" EventName="BeforePrint" PropertyName="Text" Expression="[Ndlst_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="89" ControlType="XRTableCell" Name="xrTableCell23" Weight="1" Multiline="true" Text="xrTableCell23">
+                  <ExpressionBindings>
+                    <Item1 Ref="90" EventName="BeforePrint" PropertyName="Text" Expression="[Ndlst_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item4>
+            <Item5 Ref="91" ControlType="XRTableRow" Name="xrTableRow4" Weight="1">
+              <Cells>
+                <Item1 Ref="92" ControlType="XRTableCell" Name="xrTableCell24" Weight="0.43885451278450327" Multiline="true" Text="Trộn" Borders="Left, Top, Right">
+                  <StylePriority Ref="93" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="94" ControlType="XRTableCell" Name="xrTableCell25" Weight="1.9191176706792399" Multiline="true" Text="Dòng trộn đạt được" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="95" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="96" ControlType="XRTableCell" Name="xrTableCell26" Weight="0.77747661484284292" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="97" EventName="BeforePrint" PropertyName="Text" Expression="[Dtdd_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="98" ControlType="XRTableCell" Name="xrTableCell27" Weight="0.77167222817246761" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="99" EventName="BeforePrint" PropertyName="Text" Expression="[Dtdd_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="100" ControlType="XRTableCell" Name="xrTableCell28" Weight="1.0928789735209463" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="101" EventName="BeforePrint" PropertyName="Text" Expression="[Dtdd_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="102" ControlType="XRTableCell" Name="xrTableCell29" Weight="1" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="103" EventName="BeforePrint" PropertyName="Text" Expression="[Dtdd_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="104" ControlType="XRTableCell" Name="xrTableCell30" Weight="1" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="105" EventName="BeforePrint" PropertyName="Text" Expression="[Dtdd_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="106" ControlType="XRTableCell" Name="xrTableCell31" Weight="1" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="107" EventName="BeforePrint" PropertyName="Text" Expression="[Dtdd_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="108" ControlType="XRTableCell" Name="xrTableCell32" Weight="1" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="109" EventName="BeforePrint" PropertyName="Text" Expression="[Dtdd_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item5>
+            <Item6 Ref="110" ControlType="XRTableRow" Name="xrTableRow5" Weight="1">
+              <Cells>
+                <Item1 Ref="111" ControlType="XRTableCell" Name="xrTableCell33" Weight="0.43885451278450327" Multiline="true" Text="liệu" Borders="Left, Top, Right">
+                  <StylePriority Ref="112" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="113" ControlType="XRTableCell" Name="xrTableCell34" Weight="1.9191176706792399" Multiline="true" Text="Thời gian trộn" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="114" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="115" ControlType="XRTableCell" Name="xrTableCell35" Weight="0.77747661484284292" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="116" EventName="BeforePrint" PropertyName="Text" Expression="[Tgt_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="117" ControlType="XRTableCell" Name="xrTableCell36" Weight="0.77167222817246761" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="118" EventName="BeforePrint" PropertyName="Text" Expression="[Tgt_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="119" ControlType="XRTableCell" Name="xrTableCell37" Weight="1.0928789735209463" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="120" EventName="BeforePrint" PropertyName="Text" Expression="[Tgt_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="121" ControlType="XRTableCell" Name="xrTableCell38" Weight="1" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="122" EventName="BeforePrint" PropertyName="Text" Expression="[Tgt_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="123" ControlType="XRTableCell" Name="xrTableCell39" Weight="1" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="124" EventName="BeforePrint" PropertyName="Text" Expression="[Tgt_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="125" ControlType="XRTableCell" Name="xrTableCell40" Weight="1" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="126" EventName="BeforePrint" PropertyName="Text" Expression="[Tgt_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="127" ControlType="XRTableCell" Name="xrTableCell41" Weight="1" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="128" EventName="BeforePrint" PropertyName="Text" Expression="[Tgt_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item6>
+            <Item7 Ref="129" ControlType="XRTableRow" Name="xrTableRow6" Weight="1">
+              <Cells>
+                <Item1 Ref="130" ControlType="XRTableCell" Name="xrTableCell42" Weight="0.43885451278450327" Multiline="true" />
+                <Item2 Ref="131" ControlType="XRTableCell" Name="xrTableCell43" Weight="1.9191176706792399" Multiline="true" Text="Số bao thành phẩm" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="132" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="133" ControlType="XRTableCell" Name="xrTableCell44" Weight="0.77747661484284292" Multiline="true" />
+                <Item4 Ref="134" ControlType="XRTableCell" Name="xrTableCell45" Weight="0.77167222817246761" Multiline="true" />
+                <Item5 Ref="135" ControlType="XRTableCell" Name="xrTableCell46" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="136" EventName="BeforePrint" PropertyName="Text" Expression="[Sb_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="137" ControlType="XRTableCell" Name="xrTableCell47" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="138" EventName="BeforePrint" PropertyName="Text" Expression="[Sb_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="139" ControlType="XRTableCell" Name="xrTableCell48" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="140" EventName="BeforePrint" PropertyName="Text" Expression="[Sb_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="141" ControlType="XRTableCell" Name="xrTableCell49" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="142" EventName="BeforePrint" PropertyName="Text" Expression="[Sb_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="143" ControlType="XRTableCell" Name="xrTableCell50" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="144" EventName="BeforePrint" PropertyName="Text" Expression="[Sb_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item7>
+            <Item8 Ref="145" ControlType="XRTableRow" Name="xrTableRow7" Weight="1">
+              <Cells>
+                <Item1 Ref="146" ControlType="XRTableCell" Name="xrTableCell51" Weight="0.43885451278450327" Multiline="true" Borders="Left, Top, Right">
+                  <StylePriority Ref="147" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="148" ControlType="XRTableCell" Name="xrTableCell52" Weight="1.9191176706792399" Multiline="true" Text="T1" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="149" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="150" ControlType="XRTableCell" Name="xrTableCell53" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true" Text="xrTableCell53">
+                  <ExpressionBindings>
+                    <Item1 Ref="151" EventName="BeforePrint" PropertyName="Text" Expression="[T1_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="152" ControlType="XRTableCell" Name="xrTableCell54" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true" Text="xrTableCell54">
+                  <ExpressionBindings>
+                    <Item1 Ref="153" EventName="BeforePrint" PropertyName="Text" Expression="[T1_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="154" ControlType="XRTableCell" Name="xrTableCell55" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true" Text="xrTableCell55">
+                  <ExpressionBindings>
+                    <Item1 Ref="155" EventName="BeforePrint" PropertyName="Text" Expression="[T1_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="156" ControlType="XRTableCell" Name="xrTableCell56" Weight="1" TextFormatString="{0:N0}" Multiline="true" Text="xrTableCell56">
+                  <ExpressionBindings>
+                    <Item1 Ref="157" EventName="BeforePrint" PropertyName="Text" Expression="[T1_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="158" ControlType="XRTableCell" Name="xrTableCell57" Weight="1" TextFormatString="{0:N0}" Multiline="true" Text="xrTableCell57">
+                  <ExpressionBindings>
+                    <Item1 Ref="159" EventName="BeforePrint" PropertyName="Text" Expression="[T1_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="160" ControlType="XRTableCell" Name="xrTableCell58" Weight="1" TextFormatString="{0:N0}" Multiline="true" Text="xrTableCell58">
+                  <ExpressionBindings>
+                    <Item1 Ref="161" EventName="BeforePrint" PropertyName="Text" Expression="[T1_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="162" ControlType="XRTableCell" Name="xrTableCell59" Weight="1" TextFormatString="{0:N0}" Multiline="true" Text="xrTableCell59">
+                  <ExpressionBindings>
+                    <Item1 Ref="163" EventName="BeforePrint" PropertyName="Text" Expression="[T1_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item8>
+            <Item9 Ref="164" ControlType="XRTableRow" Name="xrTableRow8" Weight="1">
+              <Cells>
+                <Item1 Ref="165" ControlType="XRTableCell" Name="xrTableCell60" Weight="0.43885451278450327" Multiline="true" Borders="Left, Top, Right">
+                  <StylePriority Ref="166" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="167" ControlType="XRTableCell" Name="xrTableCell61" Weight="1.9191176706792399" Multiline="true" Text="T2" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="168" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="169" ControlType="XRTableCell" Name="xrTableCell62" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="170" EventName="BeforePrint" PropertyName="Text" Expression="[T2_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="171" ControlType="XRTableCell" Name="xrTableCell63" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="172" EventName="BeforePrint" PropertyName="Text" Expression="[T2_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="173" ControlType="XRTableCell" Name="xrTableCell64" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="174" EventName="BeforePrint" PropertyName="Text" Expression="[T2_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="175" ControlType="XRTableCell" Name="xrTableCell65" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="176" EventName="BeforePrint" PropertyName="Text" Expression="[T2_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="177" ControlType="XRTableCell" Name="xrTableCell66" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="178" EventName="BeforePrint" PropertyName="Text" Expression="[T2_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="179" ControlType="XRTableCell" Name="xrTableCell67" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="180" EventName="BeforePrint" PropertyName="Text" Expression="[T2_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="181" ControlType="XRTableCell" Name="xrTableCell68" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="182" EventName="BeforePrint" PropertyName="Text" Expression="[T2_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item9>
+            <Item10 Ref="183" ControlType="XRTableRow" Name="xrTableRow9" Weight="1">
+              <Cells>
+                <Item1 Ref="184" ControlType="XRTableCell" Name="xrTableCell69" Weight="0.43885451278450327" Multiline="true" Borders="Left, Top, Right">
+                  <StylePriority Ref="185" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="186" ControlType="XRTableCell" Name="xrTableCell70" Weight="1.9191176706792399" Multiline="true" Text="T3" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="187" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="188" ControlType="XRTableCell" Name="xrTableCell71" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="189" EventName="BeforePrint" PropertyName="Text" Expression="[T3_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="190" ControlType="XRTableCell" Name="xrTableCell72" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="191" EventName="BeforePrint" PropertyName="Text" Expression="[T3_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="192" ControlType="XRTableCell" Name="xrTableCell73" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="193" EventName="BeforePrint" PropertyName="Text" Expression="[T3_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="194" ControlType="XRTableCell" Name="xrTableCell74" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="195" EventName="BeforePrint" PropertyName="Text" Expression="[T3_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="196" ControlType="XRTableCell" Name="xrTableCell75" Weight="1" TextFormatString="{0:N0}" Multiline="true" Text="xrTableCell75">
+                  <ExpressionBindings>
+                    <Item1 Ref="197" EventName="BeforePrint" PropertyName="Text" Expression="[T3_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="198" ControlType="XRTableCell" Name="xrTableCell76" Weight="1" TextFormatString="{0:N0}" Multiline="true" Text="xrTableCell76">
+                  <ExpressionBindings>
+                    <Item1 Ref="199" EventName="BeforePrint" PropertyName="Text" Expression="[T3_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="200" ControlType="XRTableCell" Name="xrTableCell77" Weight="1" TextFormatString="{0:N0}" Multiline="true" Text="xrTableCell77">
+                  <ExpressionBindings>
+                    <Item1 Ref="201" EventName="BeforePrint" PropertyName="Text" Expression="[T3_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item10>
+            <Item11 Ref="202" ControlType="XRTableRow" Name="xrTableRow10" Weight="1">
+              <Cells>
+                <Item1 Ref="203" ControlType="XRTableCell" Name="xrTableCell78" Weight="0.43885451278450327" Multiline="true" Borders="Left, Top, Right">
+                  <StylePriority Ref="204" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="205" ControlType="XRTableCell" Name="xrTableCell79" Weight="1.9191176706792399" Multiline="true" Text="T4" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="206" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="207" ControlType="XRTableCell" Name="xrTableCell80" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="208" EventName="BeforePrint" PropertyName="Text" Expression="[T4_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="209" ControlType="XRTableCell" Name="xrTableCell81" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="210" EventName="BeforePrint" PropertyName="Text" Expression="[T4_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="211" ControlType="XRTableCell" Name="xrTableCell82" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="212" EventName="BeforePrint" PropertyName="Text" Expression="[T4_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="213" ControlType="XRTableCell" Name="xrTableCell83" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="214" EventName="BeforePrint" PropertyName="Text" Expression="[T4_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="215" ControlType="XRTableCell" Name="xrTableCell84" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="216" EventName="BeforePrint" PropertyName="Text" Expression="[T4_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="217" ControlType="XRTableCell" Name="xrTableCell85" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="218" EventName="BeforePrint" PropertyName="Text" Expression="[T4_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="219" ControlType="XRTableCell" Name="xrTableCell86" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="220" EventName="BeforePrint" PropertyName="Text" Expression="[T4_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item11>
+            <Item12 Ref="221" ControlType="XRTableRow" Name="xrTableRow11" Weight="1">
+              <Cells>
+                <Item1 Ref="222" ControlType="XRTableCell" Name="xrTableCell87" Weight="0.43885451278450327" Multiline="true" Borders="Left, Top, Right">
+                  <StylePriority Ref="223" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="224" ControlType="XRTableCell" Name="xrTableCell88" Weight="1.9191176706792399" Multiline="true" Text="T5" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="225" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="226" ControlType="XRTableCell" Name="xrTableCell89" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="227" EventName="BeforePrint" PropertyName="Text" Expression="[T5_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="228" ControlType="XRTableCell" Name="xrTableCell90" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="229" EventName="BeforePrint" PropertyName="Text" Expression="[T5_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="230" ControlType="XRTableCell" Name="xrTableCell91" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="231" EventName="BeforePrint" PropertyName="Text" Expression="[T5_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="232" ControlType="XRTableCell" Name="xrTableCell92" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="233" EventName="BeforePrint" PropertyName="Text" Expression="[T5_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="234" ControlType="XRTableCell" Name="xrTableCell93" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="235" EventName="BeforePrint" PropertyName="Text" Expression="[T5_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="236" ControlType="XRTableCell" Name="xrTableCell94" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="237" EventName="BeforePrint" PropertyName="Text" Expression="[T5_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="238" ControlType="XRTableCell" Name="xrTableCell95" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="239" EventName="BeforePrint" PropertyName="Text" Expression="[T5_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item12>
+            <Item13 Ref="240" ControlType="XRTableRow" Name="xrTableRow12" Weight="1">
+              <Cells>
+                <Item1 Ref="241" ControlType="XRTableCell" Name="xrTableCell96" Weight="0.43885451278450327" Multiline="true" Borders="Left, Top, Right">
+                  <StylePriority Ref="242" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="243" ControlType="XRTableCell" Name="xrTableCell97" Weight="1.9191176706792399" Multiline="true" Text="T6" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="244" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="245" ControlType="XRTableCell" Name="xrTableCell98" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="246" EventName="BeforePrint" PropertyName="Text" Expression="[T6_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="247" ControlType="XRTableCell" Name="xrTableCell99" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="248" EventName="BeforePrint" PropertyName="Text" Expression="[T6_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="249" ControlType="XRTableCell" Name="xrTableCell100" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="250" EventName="BeforePrint" PropertyName="Text" Expression="[T6_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="251" ControlType="XRTableCell" Name="xrTableCell101" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="252" EventName="BeforePrint" PropertyName="Text" Expression="[T6_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="253" ControlType="XRTableCell" Name="xrTableCell102" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="254" EventName="BeforePrint" PropertyName="Text" Expression="[T6_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="255" ControlType="XRTableCell" Name="xrTableCell103" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="256" EventName="BeforePrint" PropertyName="Text" Expression="[T6_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="257" ControlType="XRTableCell" Name="xrTableCell104" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="258" EventName="BeforePrint" PropertyName="Text" Expression="[T6_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item13>
+            <Item14 Ref="259" ControlType="XRTableRow" Name="xrTableRow13" Weight="1">
+              <Cells>
+                <Item1 Ref="260" ControlType="XRTableCell" Name="xrTableCell105" Weight="0.43885451278450327" Multiline="true" Text="2" Borders="Left, Top, Right">
+                  <StylePriority Ref="261" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="262" ControlType="XRTableCell" Name="xrTableCell106" Weight="1.9191176706792399" Multiline="true" Text="T7" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="263" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="264" ControlType="XRTableCell" Name="xrTableCell107" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="265" EventName="BeforePrint" PropertyName="Text" Expression="[T7_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="266" ControlType="XRTableCell" Name="xrTableCell108" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="267" EventName="BeforePrint" PropertyName="Text" Expression="[T7_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="268" ControlType="XRTableCell" Name="xrTableCell109" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="269" EventName="BeforePrint" PropertyName="Text" Expression="[T7_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="270" ControlType="XRTableCell" Name="xrTableCell110" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="271" EventName="BeforePrint" PropertyName="Text" Expression="[T7_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="272" ControlType="XRTableCell" Name="xrTableCell111" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="273" EventName="BeforePrint" PropertyName="Text" Expression="[T7_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="274" ControlType="XRTableCell" Name="xrTableCell112" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="275" EventName="BeforePrint" PropertyName="Text" Expression="[T7_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="276" ControlType="XRTableCell" Name="xrTableCell113" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="277" EventName="BeforePrint" PropertyName="Text" Expression="[T7_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item14>
+            <Item15 Ref="278" ControlType="XRTableRow" Name="xrTableRow14" Weight="1">
+              <Cells>
+                <Item1 Ref="279" ControlType="XRTableCell" Name="xrTableCell114" Weight="0.43885451278450327" Multiline="true" Text="Nhiệt" Borders="Left, Top, Right">
+                  <StylePriority Ref="280" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="281" ControlType="XRTableCell" Name="xrTableCell115" Weight="1.9191176706792399" Multiline="true" Text="T8" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="282" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="283" ControlType="XRTableCell" Name="xrTableCell116" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="284" EventName="BeforePrint" PropertyName="Text" Expression="[T8_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="285" ControlType="XRTableCell" Name="xrTableCell117" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="286" EventName="BeforePrint" PropertyName="Text" Expression="[T8_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="287" ControlType="XRTableCell" Name="xrTableCell118" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="288" EventName="BeforePrint" PropertyName="Text" Expression="[T8_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="289" ControlType="XRTableCell" Name="xrTableCell119" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="290" EventName="BeforePrint" PropertyName="Text" Expression="[T8_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="291" ControlType="XRTableCell" Name="xrTableCell120" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="292" EventName="BeforePrint" PropertyName="Text" Expression="[T8_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="293" ControlType="XRTableCell" Name="xrTableCell121" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="294" EventName="BeforePrint" PropertyName="Text" Expression="[T8_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="295" ControlType="XRTableCell" Name="xrTableCell122" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="296" EventName="BeforePrint" PropertyName="Text" Expression="[T8_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item15>
+            <Item16 Ref="297" ControlType="XRTableRow" Name="xrTableRow15" Weight="1">
+              <Cells>
+                <Item1 Ref="298" ControlType="XRTableCell" Name="xrTableCell123" Weight="0.43885451278450327" Multiline="true" Text="độ" Borders="Left, Top, Right">
+                  <StylePriority Ref="299" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="300" ControlType="XRTableCell" Name="xrTableCell124" Weight="1.9191176706792399" Multiline="true" Text="T9" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="301" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="302" ControlType="XRTableCell" Name="xrTableCell125" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="303" EventName="BeforePrint" PropertyName="Text" Expression="[T9_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="304" ControlType="XRTableCell" Name="xrTableCell126" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="305" EventName="BeforePrint" PropertyName="Text" Expression="[T9_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="306" ControlType="XRTableCell" Name="xrTableCell127" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="307" EventName="BeforePrint" PropertyName="Text" Expression="[T9_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="308" ControlType="XRTableCell" Name="xrTableCell128" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="309" EventName="BeforePrint" PropertyName="Text" Expression="[T9_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="310" ControlType="XRTableCell" Name="xrTableCell129" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="311" EventName="BeforePrint" PropertyName="Text" Expression="[T9_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="312" ControlType="XRTableCell" Name="xrTableCell130" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="313" EventName="BeforePrint" PropertyName="Text" Expression="[T9_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="314" ControlType="XRTableCell" Name="xrTableCell131" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="315" EventName="BeforePrint" PropertyName="Text" Expression="[T9_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item16>
+            <Item17 Ref="316" ControlType="XRTableRow" Name="xrTableRow16" Weight="1">
+              <Cells>
+                <Item1 Ref="317" ControlType="XRTableCell" Name="xrTableCell132" Weight="0.43885451278450327" Multiline="true" Borders="Left, Top, Right">
+                  <StylePriority Ref="318" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="319" ControlType="XRTableCell" Name="xrTableCell133" Weight="1.9191176706792399" Multiline="true" Text="T10" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="320" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="321" ControlType="XRTableCell" Name="xrTableCell134" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="322" EventName="BeforePrint" PropertyName="Text" Expression="[T10_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="323" ControlType="XRTableCell" Name="xrTableCell135" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="324" EventName="BeforePrint" PropertyName="Text" Expression="[T10_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="325" ControlType="XRTableCell" Name="xrTableCell136" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="326" EventName="BeforePrint" PropertyName="Text" Expression="[T10_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="327" ControlType="XRTableCell" Name="xrTableCell137" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="328" EventName="BeforePrint" PropertyName="Text" Expression="[T10_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="329" ControlType="XRTableCell" Name="xrTableCell138" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="330" EventName="BeforePrint" PropertyName="Text" Expression="[T10_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="331" ControlType="XRTableCell" Name="xrTableCell139" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="332" EventName="BeforePrint" PropertyName="Text" Expression="[T10_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="333" ControlType="XRTableCell" Name="xrTableCell140" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="334" EventName="BeforePrint" PropertyName="Text" Expression="[T10_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item17>
+            <Item18 Ref="335" ControlType="XRTableRow" Name="xrTableRow17" Weight="1">
+              <Cells>
+                <Item1 Ref="336" ControlType="XRTableCell" Name="xrTableCell141" Weight="0.43885451278450327" Multiline="true" Borders="Left, Top, Right">
+                  <StylePriority Ref="337" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="338" ControlType="XRTableCell" Name="xrTableCell142" Weight="1.9191176706792399" Multiline="true" Text="T11" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="339" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="340" ControlType="XRTableCell" Name="xrTableCell143" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="341" EventName="BeforePrint" PropertyName="Text" Expression="[T11_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="342" ControlType="XRTableCell" Name="xrTableCell144" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="343" EventName="BeforePrint" PropertyName="Text" Expression="[T11_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="344" ControlType="XRTableCell" Name="xrTableCell145" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="345" EventName="BeforePrint" PropertyName="Text" Expression="[T11_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="346" ControlType="XRTableCell" Name="xrTableCell146" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="347" EventName="BeforePrint" PropertyName="Text" Expression="[T11_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="348" ControlType="XRTableCell" Name="xrTableCell147" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="349" EventName="BeforePrint" PropertyName="Text" Expression="[T11_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="350" ControlType="XRTableCell" Name="xrTableCell148" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="351" EventName="BeforePrint" PropertyName="Text" Expression="[T11_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="352" ControlType="XRTableCell" Name="xrTableCell149" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="353" EventName="BeforePrint" PropertyName="Text" Expression="[T11_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item18>
+            <Item19 Ref="354" ControlType="XRTableRow" Name="xrTableRow18" Weight="1">
+              <Cells>
+                <Item1 Ref="355" ControlType="XRTableCell" Name="xrTableCell150" Weight="0.43885451278450327" Multiline="true" Borders="Left, Top, Right">
+                  <StylePriority Ref="356" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="357" ControlType="XRTableCell" Name="xrTableCell151" Weight="1.9191176706792399" Multiline="true" Text="T12" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="358" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="359" ControlType="XRTableCell" Name="xrTableCell152" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="360" EventName="BeforePrint" PropertyName="Text" Expression="[T12_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="361" ControlType="XRTableCell" Name="xrTableCell153" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="362" EventName="BeforePrint" PropertyName="Text" Expression="[T12_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="363" ControlType="XRTableCell" Name="xrTableCell154" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="364" EventName="BeforePrint" PropertyName="Text" Expression="[T12_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="365" ControlType="XRTableCell" Name="xrTableCell155" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="366" EventName="BeforePrint" PropertyName="Text" Expression="[T12_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="367" ControlType="XRTableCell" Name="xrTableCell156" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="368" EventName="BeforePrint" PropertyName="Text" Expression="[T12_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="369" ControlType="XRTableCell" Name="xrTableCell157" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="370" EventName="BeforePrint" PropertyName="Text" Expression="[T12_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="371" ControlType="XRTableCell" Name="xrTableCell158" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="372" EventName="BeforePrint" PropertyName="Text" Expression="[T12_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item19>
+            <Item20 Ref="373" ControlType="XRTableRow" Name="xrTableRow19" Weight="1">
+              <Cells>
+                <Item1 Ref="374" ControlType="XRTableCell" Name="xrTableCell159" Weight="0.43885451278450327" Multiline="true" Borders="Left, Top, Right">
+                  <StylePriority Ref="375" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="376" ControlType="XRTableCell" Name="xrTableCell160" Weight="1.9191176706792399" Multiline="true" Text="T13" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="377" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="378" ControlType="XRTableCell" Name="xrTableCell161" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="379" EventName="BeforePrint" PropertyName="Text" Expression="[T13_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="380" ControlType="XRTableCell" Name="xrTableCell162" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="381" EventName="BeforePrint" PropertyName="Text" Expression="[T13_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="382" ControlType="XRTableCell" Name="xrTableCell163" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="383" EventName="BeforePrint" PropertyName="Text" Expression="[T13_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="384" ControlType="XRTableCell" Name="xrTableCell164" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="385" EventName="BeforePrint" PropertyName="Text" Expression="[T13_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="386" ControlType="XRTableCell" Name="xrTableCell165" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="387" EventName="BeforePrint" PropertyName="Text" Expression="[T13_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="388" ControlType="XRTableCell" Name="xrTableCell166" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="389" EventName="BeforePrint" PropertyName="Text" Expression="[T13_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="390" ControlType="XRTableCell" Name="xrTableCell167" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="391" EventName="BeforePrint" PropertyName="Text" Expression="[T13_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item20>
+            <Item21 Ref="392" ControlType="XRTableRow" Name="xrTableRow20" Weight="1">
+              <Cells>
+                <Item1 Ref="393" ControlType="XRTableCell" Name="xrTableCell168" Weight="0.43885451278450327" Multiline="true" Borders="Left, Top, Right">
+                  <StylePriority Ref="394" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="395" ControlType="XRTableCell" Name="xrTableCell169" Weight="1.9191176706792399" Multiline="true" Text="ST" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="396" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="397" ControlType="XRTableCell" Name="xrTableCell170" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="398" EventName="BeforePrint" PropertyName="Text" Expression="[St_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="399" ControlType="XRTableCell" Name="xrTableCell171" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="400" EventName="BeforePrint" PropertyName="Text" Expression="[St_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="401" ControlType="XRTableCell" Name="xrTableCell172" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="402" EventName="BeforePrint" PropertyName="Text" Expression="[St_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="403" ControlType="XRTableCell" Name="xrTableCell173" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="404" EventName="BeforePrint" PropertyName="Text" Expression="[St_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="405" ControlType="XRTableCell" Name="xrTableCell174" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="406" EventName="BeforePrint" PropertyName="Text" Expression="[St_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="407" ControlType="XRTableCell" Name="xrTableCell175" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="408" EventName="BeforePrint" PropertyName="Text" Expression="[St_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="409" ControlType="XRTableCell" Name="xrTableCell176" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="410" EventName="BeforePrint" PropertyName="Text" Expression="[St_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item21>
+            <Item22 Ref="411" ControlType="XRTableRow" Name="xrTableRow21" Weight="1">
+              <Cells>
+                <Item1 Ref="412" ControlType="XRTableCell" Name="xrTableCell177" Weight="0.43885451278450327" Multiline="true" Borders="Left, Top, Right">
+                  <StylePriority Ref="413" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="414" ControlType="XRTableCell" Name="xrTableCell178" Weight="1.9191176706792399" Multiline="true" Text="DH" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="415" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="416" ControlType="XRTableCell" Name="xrTableCell179" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="417" EventName="BeforePrint" PropertyName="Text" Expression="[Dh_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="418" ControlType="XRTableCell" Name="xrTableCell180" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="419" EventName="BeforePrint" PropertyName="Text" Expression="[Dh_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="420" ControlType="XRTableCell" Name="xrTableCell181" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="421" EventName="BeforePrint" PropertyName="Text" Expression="[Dh_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="422" ControlType="XRTableCell" Name="xrTableCell182" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="423" EventName="BeforePrint" PropertyName="Text" Expression="[Dh_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="424" ControlType="XRTableCell" Name="xrTableCell183" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="425" EventName="BeforePrint" PropertyName="Text" Expression="[Dh_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="426" ControlType="XRTableCell" Name="xrTableCell184" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="427" EventName="BeforePrint" PropertyName="Text" Expression="[Dh_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="428" ControlType="XRTableCell" Name="xrTableCell185" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="429" EventName="BeforePrint" PropertyName="Text" Expression="[Dh_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item22>
+            <Item23 Ref="430" ControlType="XRTableRow" Name="xrTableRow22" Weight="1">
+              <Cells>
+                <Item1 Ref="431" ControlType="XRTableCell" Name="xrTableCell186" Weight="0.43885451278450327" Multiline="true" />
+                <Item2 Ref="432" ControlType="XRTableCell" Name="xrTableCell187" Weight="1.9191176706792399" Multiline="true" Text="MT" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="433" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="434" ControlType="XRTableCell" Name="xrTableCell188" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="435" EventName="BeforePrint" PropertyName="Text" Expression="[Mt_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="436" ControlType="XRTableCell" Name="xrTableCell189" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="437" EventName="BeforePrint" PropertyName="Text" Expression="[Mt_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="438" ControlType="XRTableCell" Name="xrTableCell190" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="439" EventName="BeforePrint" PropertyName="Text" Expression="[Mt_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="440" ControlType="XRTableCell" Name="xrTableCell191" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="441" EventName="BeforePrint" PropertyName="Text" Expression="[Mt_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="442" ControlType="XRTableCell" Name="xrTableCell192" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="443" EventName="BeforePrint" PropertyName="Text" Expression="[Mt_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="444" ControlType="XRTableCell" Name="xrTableCell193" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="445" EventName="BeforePrint" PropertyName="Text" Expression="[Mt_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="446" ControlType="XRTableCell" Name="xrTableCell194" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="447" EventName="BeforePrint" PropertyName="Text" Expression="[Mt_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item23>
+            <Item24 Ref="448" ControlType="XRTableRow" Name="xrTableRow23" Weight="1">
+              <Cells>
+                <Item1 Ref="449" ControlType="XRTableCell" Name="xrTableCell195" Weight="0.43885451278450327" Multiline="true" Text="3" />
+                <Item2 Ref="450" ControlType="XRTableCell" Name="xrTableCell196" Weight="1.9191176706792399" Multiline="true" Text="Nhiệt độ nước làm mát" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="451" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="452" ControlType="XRTableCell" Name="xrTableCell197" Weight="0.77747661484284292" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="453" EventName="BeforePrint" PropertyName="Text" Expression="[Ndnlm_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="454" ControlType="XRTableCell" Name="xrTableCell198" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="455" EventName="BeforePrint" PropertyName="Text" Expression="[Ndnlm_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="456" ControlType="XRTableCell" Name="xrTableCell199" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="457" EventName="BeforePrint" PropertyName="Text" Expression="[Ndnlm_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="458" ControlType="XRTableCell" Name="xrTableCell200" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="459" EventName="BeforePrint" PropertyName="Text" Expression="[Ndnlm_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="460" ControlType="XRTableCell" Name="xrTableCell201" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="461" EventName="BeforePrint" PropertyName="Text" Expression="[Ndnlm_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="462" ControlType="XRTableCell" Name="xrTableCell202" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="463" EventName="BeforePrint" PropertyName="Text" Expression="[Ndnlm_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="464" ControlType="XRTableCell" Name="xrTableCell203" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="465" EventName="BeforePrint" PropertyName="Text" Expression="[Ndnlm_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item24>
+            <Item25 Ref="466" ControlType="XRTableRow" Name="xrTableRow24" Weight="1">
+              <Cells>
+                <Item1 Ref="467" ControlType="XRTableCell" Name="xrTableCell204" Weight="0.43885451278450327" Multiline="true" Text="4" />
+                <Item2 Ref="468" ControlType="XRTableCell" Name="xrTableCell205" Weight="1.9191176706792399" Multiline="true" Text="Tốc độ cấp liệu" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="469" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="470" ControlType="XRTableCell" Name="xrTableCell206" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="471" EventName="BeforePrint" PropertyName="Text" Expression="[Tdcl_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="472" ControlType="XRTableCell" Name="xrTableCell207" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="473" EventName="BeforePrint" PropertyName="Text" Expression="[Tdcl_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="474" ControlType="XRTableCell" Name="xrTableCell208" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="475" EventName="BeforePrint" PropertyName="Text" Expression="[Tdcl_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="476" ControlType="XRTableCell" Name="xrTableCell209" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="477" EventName="BeforePrint" PropertyName="Text" Expression="[Tdcl_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="478" ControlType="XRTableCell" Name="xrTableCell210" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="479" EventName="BeforePrint" PropertyName="Text" Expression="[Tdcl_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="480" ControlType="XRTableCell" Name="xrTableCell211" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="481" EventName="BeforePrint" PropertyName="Text" Expression="[Tdcl_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="482" ControlType="XRTableCell" Name="xrTableCell212" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="483" EventName="BeforePrint" PropertyName="Text" Expression="[Tdcl_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item25>
+            <Item26 Ref="484" ControlType="XRTableRow" Name="xrTableRow25" Weight="1">
+              <Cells>
+                <Item1 Ref="485" ControlType="XRTableCell" Name="xrTableCell213" Weight="0.43885451278450327" Multiline="true" Text="5" />
+                <Item2 Ref="486" ControlType="XRTableCell" Name="xrTableCell214" Weight="1.9191176706792399" Multiline="true" Text="Tốc độ đùn" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="487" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="488" ControlType="XRTableCell" Name="xrTableCell215" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="489" EventName="BeforePrint" PropertyName="Text" Expression="[Tdd_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="490" ControlType="XRTableCell" Name="xrTableCell216" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="491" EventName="BeforePrint" PropertyName="Text" Expression="[Tdd_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="492" ControlType="XRTableCell" Name="xrTableCell217" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="493" EventName="BeforePrint" PropertyName="Text" Expression="[Tdd_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="494" ControlType="XRTableCell" Name="xrTableCell218" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="495" EventName="BeforePrint" PropertyName="Text" Expression="[Tdd_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="496" ControlType="XRTableCell" Name="xrTableCell219" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="497" EventName="BeforePrint" PropertyName="Text" Expression="[Tdd_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="498" ControlType="XRTableCell" Name="xrTableCell220" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="499" EventName="BeforePrint" PropertyName="Text" Expression="[Tdd_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="500" ControlType="XRTableCell" Name="xrTableCell221" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="501" EventName="BeforePrint" PropertyName="Text" Expression="[Tdd_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item26>
+            <Item27 Ref="502" ControlType="XRTableRow" Name="xrTableRow26" Weight="1">
+              <Cells>
+                <Item1 Ref="503" ControlType="XRTableCell" Name="xrTableCell222" Weight="0.43885451278450327" Multiline="true" Text="6" />
+                <Item2 Ref="504" ControlType="XRTableCell" Name="xrTableCell223" Weight="1.9191176706792399" Multiline="true" Text="Tốc độc cắt tạo hạt" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="505" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="506" ControlType="XRTableCell" Name="xrTableCell224" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="507" EventName="BeforePrint" PropertyName="Text" Expression="[Tdcth_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="508" ControlType="XRTableCell" Name="xrTableCell225" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="509" EventName="BeforePrint" PropertyName="Text" Expression="[Tdcth_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="510" ControlType="XRTableCell" Name="xrTableCell226" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="511" EventName="BeforePrint" PropertyName="Text" Expression="[Tdcth_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="512" ControlType="XRTableCell" Name="xrTableCell227" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="513" EventName="BeforePrint" PropertyName="Text" Expression="[Tdcth_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="514" ControlType="XRTableCell" Name="xrTableCell228" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="515" EventName="BeforePrint" PropertyName="Text" Expression="[Tdcth_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="516" ControlType="XRTableCell" Name="xrTableCell229" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="517" EventName="BeforePrint" PropertyName="Text" Expression="[Tdcth_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="518" ControlType="XRTableCell" Name="xrTableCell230" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="519" EventName="BeforePrint" PropertyName="Text" Expression="[Tdcth_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item27>
+            <Item28 Ref="520" ControlType="XRTableRow" Name="xrTableRow27" Weight="1">
+              <Cells>
+                <Item1 Ref="521" ControlType="XRTableCell" Name="xrTableCell231" Weight="0.43885451278450327" Multiline="true" Text="7" />
+                <Item2 Ref="522" ControlType="XRTableCell" Name="xrTableCell232" Weight="1.9191176706792399" Multiline="true" Text="Áp suất đùn nhỏ nhât" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="523" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="524" ControlType="XRTableCell" Name="xrTableCell233" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="525" EventName="BeforePrint" PropertyName="Text" Expression="[Asdnn_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="526" ControlType="XRTableCell" Name="xrTableCell234" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="527" EventName="BeforePrint" PropertyName="Text" Expression="[Asdnn_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="528" ControlType="XRTableCell" Name="xrTableCell235" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="529" EventName="BeforePrint" PropertyName="Text" Expression="[Asdnn_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="530" ControlType="XRTableCell" Name="xrTableCell236" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="531" EventName="BeforePrint" PropertyName="Text" Expression="[Asdnn_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="532" ControlType="XRTableCell" Name="xrTableCell237" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="533" EventName="BeforePrint" PropertyName="Text" Expression="[Asdnn_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="534" ControlType="XRTableCell" Name="xrTableCell238" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="535" EventName="BeforePrint" PropertyName="Text" Expression="[Asdnn_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="536" ControlType="XRTableCell" Name="xrTableCell239" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="537" EventName="BeforePrint" PropertyName="Text" Expression="[Asdnn_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item28>
+            <Item29 Ref="538" ControlType="XRTableRow" Name="xrTableRow28" Weight="1">
+              <Cells>
+                <Item1 Ref="539" ControlType="XRTableCell" Name="xrTableCell240" Weight="0.43885451278450327" Multiline="true" Text="8" />
+                <Item2 Ref="540" ControlType="XRTableCell" Name="xrTableCell241" Weight="1.9191176706792399" Multiline="true" Text="Áp suất đùn lớn nhât" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="541" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="542" ControlType="XRTableCell" Name="xrTableCell242" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="543" EventName="BeforePrint" PropertyName="Text" Expression="[Asdln_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="544" ControlType="XRTableCell" Name="xrTableCell243" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="545" EventName="BeforePrint" PropertyName="Text" Expression="[Asdln_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="546" ControlType="XRTableCell" Name="xrTableCell244" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="547" EventName="BeforePrint" PropertyName="Text" Expression="[Asdln_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="548" ControlType="XRTableCell" Name="xrTableCell245" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="549" EventName="BeforePrint" PropertyName="Text" Expression="[Asdln_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="550" ControlType="XRTableCell" Name="xrTableCell246" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="551" EventName="BeforePrint" PropertyName="Text" Expression="[Asdln_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="552" ControlType="XRTableCell" Name="xrTableCell247" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="553" EventName="BeforePrint" PropertyName="Text" Expression="[Asdln_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="554" ControlType="XRTableCell" Name="xrTableCell248" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="555" EventName="BeforePrint" PropertyName="Text" Expression="[Asdln_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item29>
+            <Item30 Ref="556" ControlType="XRTableRow" Name="xrTableRow29" Weight="1">
+              <Cells>
+                <Item1 Ref="557" ControlType="XRTableCell" Name="xrTableCell249" Weight="0.43885451278450327" Multiline="true" Text="9" />
+                <Item2 Ref="558" ControlType="XRTableCell" Name="xrTableCell250" Weight="1.9191176706792399" Multiline="true" Text="C.độ dòng điện nhỏ nhất" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="559" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="560" ControlType="XRTableCell" Name="xrTableCell251" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="561" EventName="BeforePrint" PropertyName="Text" Expression="[Cdddnn_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="562" ControlType="XRTableCell" Name="xrTableCell252" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="563" EventName="BeforePrint" PropertyName="Text" Expression="[Cdddnn_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="564" ControlType="XRTableCell" Name="xrTableCell253" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="565" EventName="BeforePrint" PropertyName="Text" Expression="[Cdddnn_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="566" ControlType="XRTableCell" Name="xrTableCell254" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="567" EventName="BeforePrint" PropertyName="Text" Expression="[Cdddnn_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="568" ControlType="XRTableCell" Name="xrTableCell255" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="569" EventName="BeforePrint" PropertyName="Text" Expression="[Cdddnn_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="570" ControlType="XRTableCell" Name="xrTableCell256" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="571" EventName="BeforePrint" PropertyName="Text" Expression="[Cdddnn_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="572" ControlType="XRTableCell" Name="xrTableCell257" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="573" EventName="BeforePrint" PropertyName="Text" Expression="[Cdddnn_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item30>
+            <Item31 Ref="574" ControlType="XRTableRow" Name="xrTableRow30" Weight="1">
+              <Cells>
+                <Item1 Ref="575" ControlType="XRTableCell" Name="xrTableCell258" Weight="0.43885451278450327" Multiline="true" Text="10" />
+                <Item2 Ref="576" ControlType="XRTableCell" Name="xrTableCell259" Weight="1.9191176706792399" Multiline="true" Text="C.độ dòng điện lớn nhất" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="577" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="578" ControlType="XRTableCell" Name="xrTableCell260" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="579" EventName="BeforePrint" PropertyName="Text" Expression="[Cdddln_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="580" ControlType="XRTableCell" Name="xrTableCell261" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="581" EventName="BeforePrint" PropertyName="Text" Expression="[Cdddln_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="582" ControlType="XRTableCell" Name="xrTableCell262" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="583" EventName="BeforePrint" PropertyName="Text" Expression="[Cdddln_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="584" ControlType="XRTableCell" Name="xrTableCell263" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="585" EventName="BeforePrint" PropertyName="Text" Expression="[Cdddln_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="586" ControlType="XRTableCell" Name="xrTableCell264" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="587" EventName="BeforePrint" PropertyName="Text" Expression="[Cdddln_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="588" ControlType="XRTableCell" Name="xrTableCell265" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="589" EventName="BeforePrint" PropertyName="Text" Expression="[Cdddln_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="590" ControlType="XRTableCell" Name="xrTableCell266" Weight="1" TextFormatString="{0:N0}" Multiline="true">
+                  <ExpressionBindings>
+                    <Item1 Ref="591" EventName="BeforePrint" PropertyName="Text" Expression="[Cdddln_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item31>
+            <Item32 Ref="592" ControlType="XRTableRow" Name="xrTableRow31" Weight="1">
+              <Cells>
+                <Item1 Ref="593" ControlType="XRTableCell" Name="xrTableCell267" Weight="0.43885451278450327" Multiline="true" Text="11" />
+                <Item2 Ref="594" ControlType="XRTableCell" Name="xrTableCell268" Weight="1.9191176706792399" Multiline="true" Text="Áp suất chân không" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="595" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="596" ControlType="XRTableCell" Name="xrTableCell269" Weight="0.77747661484284292" TextFormatString="{0:N0}" Multiline="true" Text="xrTableCell269">
+                  <ExpressionBindings>
+                    <Item1 Ref="597" EventName="BeforePrint" PropertyName="Text" Expression="[Asck_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="598" ControlType="XRTableCell" Name="xrTableCell270" Weight="0.77167222817246761" TextFormatString="{0:N0}" Multiline="true" Text="xrTableCell270">
+                  <ExpressionBindings>
+                    <Item1 Ref="599" EventName="BeforePrint" PropertyName="Text" Expression="[Asck_ss]" />
+                  </ExpressionBindings>
+                </Item4>
+                <Item5 Ref="600" ControlType="XRTableCell" Name="xrTableCell271" Weight="1.0928789735209463" TextFormatString="{0:N0}" Multiline="true" Text="xrTableCell271">
+                  <ExpressionBindings>
+                    <Item1 Ref="601" EventName="BeforePrint" PropertyName="Text" Expression="[Asck_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="602" ControlType="XRTableCell" Name="xrTableCell272" Weight="1" TextFormatString="{0:N0}" Multiline="true" Text="xrTableCell272">
+                  <ExpressionBindings>
+                    <Item1 Ref="603" EventName="BeforePrint" PropertyName="Text" Expression="[Asck_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="604" ControlType="XRTableCell" Name="xrTableCell273" Weight="1" TextFormatString="{0:N0}" Multiline="true" Text="xrTableCell273">
+                  <ExpressionBindings>
+                    <Item1 Ref="605" EventName="BeforePrint" PropertyName="Text" Expression="[Asck_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="606" ControlType="XRTableCell" Name="xrTableCell274" Weight="1" TextFormatString="{0:N0}" Multiline="true" Text="xrTableCell274">
+                  <ExpressionBindings>
+                    <Item1 Ref="607" EventName="BeforePrint" PropertyName="Text" Expression="[Asck_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="608" ControlType="XRTableCell" Name="xrTableCell275" Weight="1" TextFormatString="{0:N0}" Multiline="true" Text="xrTableCell275">
+                  <ExpressionBindings>
+                    <Item1 Ref="609" EventName="BeforePrint" PropertyName="Text" Expression="[Asck_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item32>
+            <Item33 Ref="610" ControlType="XRTableRow" Name="xrTableRow32" Weight="1">
+              <Cells>
+                <Item1 Ref="611" ControlType="XRTableCell" Name="xrTableCell276" Weight="0.43885451278450327" Multiline="true" Text="12" />
+                <Item2 Ref="612" ControlType="XRTableCell" Name="xrTableCell277" Weight="1.9191176706792399" Multiline="true" Text="thay lưới (&lt;=3 giờ/lần)" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="613" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="614" ControlType="XRTableCell" Name="xrTableCell278" Weight="0.77747661484284292" Multiline="true" Text="xrTableCell278">
+                  <ExpressionBindings>
+                    <Item1 Ref="615" EventName="BeforePrint" PropertyName="Text" Expression="[Tl_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="616" ControlType="XRTableCell" Name="xrTableCell279" Weight="0.77167222817246761" Multiline="true" />
+                <Item5 Ref="617" ControlType="XRTableCell" Name="xrTableCell280" Weight="1.0928789735209463" Multiline="true" Text="xrTableCell280">
+                  <ExpressionBindings>
+                    <Item1 Ref="618" EventName="BeforePrint" PropertyName="Text" Expression="[Tl_tg1]" />
+                  </ExpressionBindings>
+                </Item5>
+                <Item6 Ref="619" ControlType="XRTableCell" Name="xrTableCell281" Weight="1" Multiline="true" Text="xrTableCell281">
+                  <ExpressionBindings>
+                    <Item1 Ref="620" EventName="BeforePrint" PropertyName="Text" Expression="[Tl_tg2]" />
+                  </ExpressionBindings>
+                </Item6>
+                <Item7 Ref="621" ControlType="XRTableCell" Name="xrTableCell282" Weight="1" Multiline="true" Text="xrTableCell282">
+                  <ExpressionBindings>
+                    <Item1 Ref="622" EventName="BeforePrint" PropertyName="Text" Expression="[Tl_tg3]" />
+                  </ExpressionBindings>
+                </Item7>
+                <Item8 Ref="623" ControlType="XRTableCell" Name="xrTableCell283" Weight="1" Multiline="true" Text="xrTableCell283">
+                  <ExpressionBindings>
+                    <Item1 Ref="624" EventName="BeforePrint" PropertyName="Text" Expression="[Tl_tg4]" />
+                  </ExpressionBindings>
+                </Item8>
+                <Item9 Ref="625" ControlType="XRTableCell" Name="xrTableCell284" Weight="1" Multiline="true" Text="xrTableCell284">
+                  <ExpressionBindings>
+                    <Item1 Ref="626" EventName="BeforePrint" PropertyName="Text" Expression="[Tl_tg5]" />
+                  </ExpressionBindings>
+                </Item9>
+              </Cells>
+            </Item33>
+            <Item34 Ref="627" ControlType="XRTableRow" Name="xrTableRow33" Weight="1">
+              <Cells>
+                <Item1 Ref="628" ControlType="XRTableCell" Name="xrTableCell285" Weight="0.43885451278450327" Multiline="true" Text="13" />
+                <Item2 Ref="629" ControlType="XRTableCell" Name="xrTableCell286" Weight="1.9191176706792399" Multiline="true" Text="Tình trạng van sumix" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="630" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="631" ControlType="XRTableCell" Name="xrTableCell287" Weight="0.77747661484284292" Multiline="true" Text="xrTableCell287">
+                  <ExpressionBindings>
+                    <Item1 Ref="632" EventName="BeforePrint" PropertyName="Text" Expression="[Ttv_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="633" ControlType="XRTableCell" Name="xrTableCell288" Weight="0.77167222817246761" Multiline="true" />
+                <Item5 Ref="634" ControlType="XRTableCell" Name="xrTableCell289" Weight="1.0928789735209463" Multiline="true" Text="xrTableCell289">
+                  <Controls>
+                    <Item1 Ref="635" ControlType="XRCheckBox" Name="xrCheckBox1" SizeF="117.6666,22.99994" LocationFloat="3.051758E-05,2" Padding="2,2,0,0,96">
+                      <ExpressionBindings>
+                        <Item1 Ref="636" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Ttv_tg1]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item5>
+                <Item6 Ref="637" ControlType="XRTableCell" Name="xrTableCell290" Weight="1" Multiline="true" Text="xrTableCell290">
+                  <Controls>
+                    <Item1 Ref="638" ControlType="XRCheckBox" Name="xrCheckBox2" SizeF="107.6667,23" LocationFloat="0,2" Padding="2,2,0,0,96">
+                      <ExpressionBindings>
+                        <Item1 Ref="639" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Ttv_tg2]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item6>
+                <Item7 Ref="640" ControlType="XRTableCell" Name="xrTableCell291" Weight="1" Multiline="true" Text="xrTableCell291">
+                  <Controls>
+                    <Item1 Ref="641" ControlType="XRCheckBox" Name="xrCheckBox3" SizeF="107.6665,23" LocationFloat="6.103516E-05,0" Padding="2,2,0,0,96">
+                      <ExpressionBindings>
+                        <Item1 Ref="642" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Ttv_tg3]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item7>
+                <Item8 Ref="643" ControlType="XRTableCell" Name="xrTableCell292" Weight="1" Multiline="true" Text="xrTableCell292">
+                  <Controls>
+                    <Item1 Ref="644" ControlType="XRCheckBox" Name="xrCheckBox4" SizeF="107.6668,23" LocationFloat="0,1.999939" Padding="2,2,0,0,96">
+                      <ExpressionBindings>
+                        <Item1 Ref="645" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Ttv_tg4]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item8>
+                <Item9 Ref="646" ControlType="XRTableCell" Name="xrTableCell293" Weight="1" Multiline="true" Text="xrTableCell293">
+                  <Controls>
+                    <Item1 Ref="647" ControlType="XRCheckBox" Name="xrCheckBox5" SizeF="107.6665,23" LocationFloat="6.103516E-05,1.999939" Padding="2,2,0,0,96">
+                      <ExpressionBindings>
+                        <Item1 Ref="648" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Ttv_tg5]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item9>
+              </Cells>
+            </Item34>
+            <Item35 Ref="649" ControlType="XRTableRow" Name="xrTableRow34" Weight="1">
+              <Cells>
+                <Item1 Ref="650" ControlType="XRTableCell" Name="xrTableCell294" Weight="0.43885451278450327" Multiline="true" Text="14" />
+                <Item2 Ref="651" ControlType="XRTableCell" Name="xrTableCell295" Weight="1.9191176706792399" Multiline="true" Text="Tình trạng đục đùn" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="652" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="653" ControlType="XRTableCell" Name="xrTableCell296" Weight="0.77747661484284292" Multiline="true" Text="xrTableCell296">
+                  <ExpressionBindings>
+                    <Item1 Ref="654" EventName="BeforePrint" PropertyName="Text" Expression="[Ttdd_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="655" ControlType="XRTableCell" Name="xrTableCell297" Weight="0.77167222817246761" Multiline="true" />
+                <Item5 Ref="656" ControlType="XRTableCell" Name="xrTableCell298" Weight="1.0928789735209463" Multiline="true">
+                  <Controls>
+                    <Item1 Ref="657" ControlType="XRCheckBox" Name="xrCheckBox6" SizeF="117.6666,22.99994" LocationFloat="7.629395E-06,2" Padding="2,2,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="658" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Ttdd_tg1]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item5>
+                <Item6 Ref="659" ControlType="XRTableCell" Name="xrTableCell299" Weight="1" Multiline="true">
+                  <Controls>
+                    <Item1 Ref="660" ControlType="XRCheckBox" Name="xrCheckBox7" SizeF="107.6667,23" LocationFloat="0,2" Padding="2,2,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="661" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Ttdd_tg2]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item6>
+                <Item7 Ref="662" ControlType="XRTableCell" Name="xrTableCell300" Weight="1" Multiline="true">
+                  <Controls>
+                    <Item1 Ref="663" ControlType="XRCheckBox" Name="xrCheckBox12" SizeF="107.6665,23" LocationFloat="6.103516E-05,0" Padding="2,2,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="664" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Ttdd_tg3]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item7>
+                <Item8 Ref="665" ControlType="XRTableCell" Name="xrTableCell301" Weight="1" Multiline="true">
+                  <Controls>
+                    <Item1 Ref="666" ControlType="XRCheckBox" Name="xrCheckBox15" SizeF="107.6668,23" LocationFloat="0,1.999939" Padding="2,2,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="667" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Ttdd_tg4]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item8>
+                <Item9 Ref="668" ControlType="XRTableCell" Name="xrTableCell302" Weight="1" Multiline="true">
+                  <Controls>
+                    <Item1 Ref="669" ControlType="XRCheckBox" Name="xrCheckBox18" SizeF="107.6665,23" LocationFloat="6.103516E-05,1.999939" Padding="2,2,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="670" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Ttdd_tg5]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item9>
+              </Cells>
+            </Item35>
+            <Item36 Ref="671" ControlType="XRTableRow" Name="xrTableRow35" Weight="1">
+              <Cells>
+                <Item1 Ref="672" ControlType="XRTableCell" Name="xrTableCell303" Weight="0.43885451278450327" Multiline="true" Text="15" />
+                <Item2 Ref="673" ControlType="XRTableCell" Name="xrTableCell304" Weight="1.9191176706792399" Multiline="true" Text="Độ trắng sáng hạt" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="674" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="675" ControlType="XRTableCell" Name="xrTableCell305" Weight="0.77747661484284292" Multiline="true" Text="xrTableCell305">
+                  <ExpressionBindings>
+                    <Item1 Ref="676" EventName="BeforePrint" PropertyName="Text" Expression="[Dth_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="677" ControlType="XRTableCell" Name="xrTableCell306" Weight="0.77167222817246761" Multiline="true" />
+                <Item5 Ref="678" ControlType="XRTableCell" Name="xrTableCell307" Weight="1.0928789735209463" Multiline="true">
+                  <Controls>
+                    <Item1 Ref="679" ControlType="XRCheckBox" Name="xrCheckBox9" SizeF="117.6666,22.99994" LocationFloat="7.629395E-06,2" Padding="2,2,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="680" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Dth_tg1]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item5>
+                <Item6 Ref="681" ControlType="XRTableCell" Name="xrTableCell308" Weight="1" Multiline="true">
+                  <Controls>
+                    <Item1 Ref="682" ControlType="XRCheckBox" Name="xrCheckBox10" SizeF="107.6667,23" LocationFloat="0,2" Padding="2,2,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="683" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Dth_tg2]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item6>
+                <Item7 Ref="684" ControlType="XRTableCell" Name="xrTableCell309" Weight="1" Multiline="true">
+                  <Controls>
+                    <Item1 Ref="685" ControlType="XRCheckBox" Name="xrCheckBox13" SizeF="107.6665,23" LocationFloat="6.103516E-05,0" Padding="2,2,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="686" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Dth_tg3]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item7>
+                <Item8 Ref="687" ControlType="XRTableCell" Name="xrTableCell310" Weight="1" Multiline="true">
+                  <Controls>
+                    <Item1 Ref="688" ControlType="XRCheckBox" Name="xrCheckBox16" SizeF="107.6668,23" LocationFloat="0,1.999939" Padding="2,2,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="689" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Dth_tg4]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item8>
+                <Item9 Ref="690" ControlType="XRTableCell" Name="xrTableCell311" Weight="1" Multiline="true">
+                  <Controls>
+                    <Item1 Ref="691" ControlType="XRCheckBox" Name="xrCheckBox19" SizeF="107.6665,23" LocationFloat="6.103516E-05,1.999939" Padding="2,2,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="692" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Dth_tg5]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item9>
+              </Cells>
+            </Item36>
+            <Item37 Ref="693" ControlType="XRTableRow" Name="xrTableRow36" Weight="1">
+              <Cells>
+                <Item1 Ref="694" ControlType="XRTableCell" Name="xrTableCell312" Weight="0.43885451278450327" Multiline="true" Text="16" />
+                <Item2 Ref="695" ControlType="XRTableCell" Name="xrTableCell313" Weight="1.9191176706792399" Multiline="true" Text="Kích thước hạt" TextAlignment="MiddleLeft">
+                  <StylePriority Ref="696" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="697" ControlType="XRTableCell" Name="xrTableCell314" Weight="0.77747661484284292" Multiline="true" Text="xrTableCell314">
+                  <ExpressionBindings>
+                    <Item1 Ref="698" EventName="BeforePrint" PropertyName="Text" Expression="[Kth_c]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="699" ControlType="XRTableCell" Name="xrTableCell315" Weight="0.77167222817246761" Multiline="true" />
+                <Item5 Ref="700" ControlType="XRTableCell" Name="xrTableCell316" Weight="1.0928789735209463" Multiline="true">
+                  <Controls>
+                    <Item1 Ref="701" ControlType="XRCheckBox" Name="xrCheckBox8" SizeF="117.6666,22.99994" LocationFloat="7.629395E-06,2" Padding="2,2,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="702" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Kth_tg1]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item5>
+                <Item6 Ref="703" ControlType="XRTableCell" Name="xrTableCell317" Weight="1" Multiline="true">
+                  <Controls>
+                    <Item1 Ref="704" ControlType="XRCheckBox" Name="xrCheckBox11" SizeF="107.6667,23" LocationFloat="0,2" Padding="2,2,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="705" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Kth_tg2]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item6>
+                <Item7 Ref="706" ControlType="XRTableCell" Name="xrTableCell318" Weight="1" Multiline="true">
+                  <Controls>
+                    <Item1 Ref="707" ControlType="XRCheckBox" Name="xrCheckBox14" SizeF="107.6665,23" LocationFloat="6.103516E-05,0" Padding="2,2,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="708" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Kth_tg3]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item7>
+                <Item8 Ref="709" ControlType="XRTableCell" Name="xrTableCell319" Weight="1" Multiline="true">
+                  <Controls>
+                    <Item1 Ref="710" ControlType="XRCheckBox" Name="xrCheckBox17" SizeF="107.6668,23" LocationFloat="0,1.999939" Padding="2,2,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="711" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Kth_tg4]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item8>
+                <Item9 Ref="712" ControlType="XRTableCell" Name="xrTableCell320" Weight="1" Multiline="true">
+                  <Controls>
+                    <Item1 Ref="713" ControlType="XRCheckBox" Name="xrCheckBox20" SizeF="107.6665,23" LocationFloat="6.103516E-05,1.999939" Padding="2,2,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="714" EventName="BeforePrint" PropertyName="CheckBoxState" Expression="[Kth_tg5]" />
+                      </ExpressionBindings>
+                    </Item1>
+                  </Controls>
+                </Item9>
+              </Cells>
+            </Item37>
+          </Rows>
+          <StylePriority Ref="715" UseFont="false" UseBorderColor="false" UseBorders="false" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item3>
+    <Item4 Ref="716" ControlType="PageHeaderBand" Name="PageHeader" HeightF="24.29867">
+      <Controls>
+        <Item1 Ref="717" ControlType="XRLabel" Name="xrLabel8" TextFormatString="{0:dd-MM-yyyy}" Multiline="true" Text="xrLabel8" SizeF="100,23" LocationFloat="868.9999,0" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="718" EventName="BeforePrint" PropertyName="Text" Expression="[Ngay_clv]" />
+          </ExpressionBindings>
+        </Item1>
+        <Item2 Ref="719" ControlType="XRLabel" Name="xrLabel1" Multiline="true" Text="Ngày ca:" SizeF="66.6665,23" LocationFloat="802.3334,0" Font="Arial, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="720" UseFont="false" />
+        </Item2>
+        <Item3 Ref="721" ControlType="XRLabel" Name="xrLabel12" Multiline="true" Text="xrLabel12" SizeF="156.3334,23" LocationFloat="646,0" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="722" EventName="BeforePrint" PropertyName="Text" Expression="[Ds_vh]" />
+          </ExpressionBindings>
+        </Item3>
+        <Item4 Ref="723" ControlType="XRLabel" Name="xrLabel11" Multiline="true" Text="Vận hành:" SizeF="83.74988,23" LocationFloat="562.2501,0" Font="Arial, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="724" UseFont="false" />
+        </Item4>
+        <Item5 Ref="725" ControlType="XRLabel" Name="xrLabel10" Multiline="true" Text="xrLabel10" SizeF="141.5835,23" LocationFloat="420.6666,0" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="726" EventName="BeforePrint" PropertyName="Text" Expression="[Ten_tc]" />
+          </ExpressionBindings>
+        </Item5>
+        <Item6 Ref="727" ControlType="XRLabel" Name="xrLabel9" Multiline="true" Text="Trưởng ca:" SizeF="83.08334,23" LocationFloat="337.5833,0" Font="Arial, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="728" UseFont="false" />
+        </Item6>
+        <Item7 Ref="729" ControlType="XRLabel" Name="xrLabel3" Multiline="true" Text="xrLabel3" SizeF="120.9166,23" LocationFloat="216.6667,0" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="730" EventName="BeforePrint" PropertyName="Text" Expression="[Ma_msx]" />
+          </ExpressionBindings>
+        </Item7>
+        <Item8 Ref="731" ControlType="XRLabel" Name="xrLabel5" Multiline="true" Text="Máy SX:" SizeF="65.625,23" LocationFloat="151.0417,0" Font="Arial, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="732" UseFont="false" />
+        </Item8>
+        <Item9 Ref="733" ControlType="XRLabel" Name="xrLabel4" Multiline="true" Text="Ca SX:" SizeF="51.04169,23" LocationFloat="0,0" Font="Arial, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="734" UseFont="false" />
+        </Item9>
+        <Item10 Ref="735" ControlType="XRLabel" Name="xrLabel2" Multiline="true" Text="xrLabel2" SizeF="99.99995,23" LocationFloat="51.04173,0" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="736" EventName="BeforePrint" PropertyName="Text" Expression="[Ma_ca]" />
+          </ExpressionBindings>
+        </Item10>
+      </Controls>
+    </Item4>
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v23.2" Name="objectDataSource1" Base64="PE9iamVjdERhdGFTb3VyY2UgTmFtZT0ib2JqZWN0RGF0YVNvdXJjZTEiPjxEYXRhU291cmNlIFR5cGU9IlNJU0VSUFNNRS5QYWdlcy5NZWdhLlJlcG9ydHMuVFNWSE1vZGVsLCBTSVNFUlBTTUUsIFZlcnNpb249MS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsIiAvPjwvT2JqZWN0RGF0YVNvdXJjZT4=" />
+  </ComponentStorage>
+</XtraReportsLayoutSerializer>

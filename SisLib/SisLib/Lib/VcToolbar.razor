@@ -1,0 +1,311 @@
+﻿@inject IDbManager myDb
+@inject Statemanagerment myStatemanagerment
+@inject IStringLocalizer<SisCom.App> Lap
+
+<div class="row d-flex justify-content-between">
+    <div class="col mx-2 mt-2 fw-bold align-items-center" style="color:#005FFF;">
+        @Title
+    </div>
+    <div class="col d-flex justify-content-end ms-2">
+
+        @if (OnNew.HasDelegate && curUser.CheckRight(Menu_id, "ADD"))
+        {
+            <DxButton CssClass="btncmdgroup m-1" IconCssClass="btn-icon-new" RenderStyleMode="ButtonRenderStyleMode.Outline" Enabled="@EnableNew"
+            IconPosition="ButtonIconPosition.BeforeText" Text="@Lap["Add"]" RenderStyle="ButtonRenderStyle.Secondary" @onclick="cmdNew"></DxButton>
+        }
+        @if (OnNew.HasDelegate && curUser.CheckRight(Menu_id,"ADD"))
+        {
+            <DxButton CssClass="btncmdgroup m-1" IconCssClass="btn-icon-copy" RenderStyleMode="ButtonRenderStyleMode.Outline" Enabled="@EnableNew"
+            IconPosition="ButtonIconPosition.BeforeText" Text="@Lap["Copy"]" RenderStyle="ButtonRenderStyle.Secondary" @onclick="cmdCopy"></DxButton>
+        }
+        @if (OnEdit.HasDelegate && curUser.CheckRight(Menu_id, "EDIT"))
+        {
+            <DxButton CssClass="btncmdgroup m-1" IconCssClass="btn-icon-edit" RenderStyleMode="ButtonRenderStyleMode.Outline" Enabled="@EnableEdit"
+            IconPosition="ButtonIconPosition.BeforeText" Text="@Lap["Edit"]" RenderStyle="ButtonRenderStyle.Secondary" @onclick="cmdEdit"></DxButton>
+        }
+        @if (OnSave.HasDelegate)
+        {
+            <DxButton CssClass="btncmdgroup m-1" IconCssClass="btn-icon-save" RenderStyleMode="ButtonRenderStyleMode.Outline" Enabled="@EnableSave"
+            IconPosition="ButtonIconPosition.BeforeText" RenderStyle="ButtonRenderStyle.Secondary" @onclick="cmdSave" Text="@Lap["Save"]"></DxButton>
+        }
+        @if (OnPrint.HasDelegate)
+        {
+            <DxButton CssClass="btncmdgroup m-1" IconCssClass="btn-icon-print" RenderStyleMode="ButtonRenderStyleMode.Outline" Enabled="@EnablePrint"
+            IconPosition="ButtonIconPosition.BeforeText" RenderStyle="ButtonRenderStyle.Secondary" @onclick="OnPrint" Text="@Lap["Print"]"></DxButton>
+        }
+        @if (OnCancel.HasDelegate)
+        {
+            <DxButton CssClass="btncmdgroup m-1 text-danger" IconCssClass="btn-icon-close" RenderStyleMode="ButtonRenderStyleMode.Outline"
+            IconPosition="ButtonIconPosition.BeforeText" RenderStyle="ButtonRenderStyle.Secondary" @onclick="cmdCancel" Text="@Lap["Cancel"]"></DxButton>
+        }
+        <div style="width:4vw;"></div> 
+        <DxDropDownButton RenderStyle="ButtonRenderStyle.Secondary" Enabled="@EnablePrint"
+        Text="&nbsp;i"
+        CssClass="btncmdopt rounded-circle m-1"
+        ItemClick="@OnOpt">
+            <Items>
+                <DxDropDownButtonItem Id="cmdInfo" Text="@Lap["See the updated information"]" CssClass="mnucmdgroup" IconCssClass="btn-icon-print menu-icon me-2"/>
+                <DxDropDownButtonItem Id="cmdViewSC" Tooltip="01.10.02" Text="@Lap["View general ledger"]" CssClass="mnucmdgroup" IconCssClass="btn-icon-print menu-icon me-2" />
+                <DxDropDownButtonItem Id="cmdViewSK" Tooltip="01.10.04" Text="@Lap["View stock book"]" IconCssClass="btn-icon-print menu-icon me-2" />
+                <DxDropDownButtonItem Id="cmdViewCTGT30" Tooltip="01.10.06" Text="@Lap["View input tax"]" IconCssClass="btn-icon-print menu-icon me-2" />
+                <DxDropDownButtonItem Id="cmdViewCTGT20" Tooltip="01.10.08" Text="@Lap["View output tax"]" IconCssClass="btn-icon-print menu-icon me-2" />
+                <DxDropDownButtonItem Id="cmdViewCTTT30" Tooltip="01.10.10" Text="@Lap["View payable book"]" IconCssClass="btn-icon-print menu-icon me-2" />
+                <DxDropDownButtonItem Id="cmdViewCTTT20" Tooltip="01.10.12" Text="@Lap["View receivable book"]" IconCssClass="btn-icon-print menu-icon me-2" />
+                <DxDropDownButtonItem Text="-" CssClass="vh-1 bg-light" />
+                <DxDropDownButtonItem Id="cmdVcIn" Text="@Lap["Print general voucher"]" IconCssClass="btn-icon-print menu-icon" />                
+            </Items>
+        </DxDropDownButton>
+    </div>
+</div>
+<DxWindow @ref="@OptwRef" SizeMode="SizeMode.Small"          
+ShowFooter="false"
+ShowHeader="true"
+@bind-Visible="@OptVisible"
+CloseOnEscape="true"
+ShowCloseButton="false"
+Width="@OptWidth"        
+Height="@OptHeight"
+Context="windowContext"
+AllowResize="true"
+AllowDrag="true"
+AllowDragByHeaderOnly="true"
+HeaderText="@optTitle">
+    <HeaderContentTemplate>
+        <div class="row d-flex justify-content-around w-100">
+            <div class="col mx-2 mt-2 fw-bold align-items-center" style="color:#005FFF;">
+				@optTitle
+			</div>
+            <div class="col d-flex justify-content-end ms-2">
+                <DxButton CssClass="btncmdgroup m-1 text-danger" IconCssClass="btn-icon-close" RenderStyleMode="ButtonRenderStyleMode.Outline"
+                IconPosition="ButtonIconPosition.BeforeText" RenderStyle="ButtonRenderStyle.Secondary" @onclick="OnOptCancel" Text="@Lap["Cancel"]"></DxButton>
+            </div>
+        </div>
+    </HeaderContentTemplate>
+    <BodyTemplate>
+        <div class="row">
+            <FrmBrowseComponent @ref="@OptBrowse" TblData="@tblOpt" CssClass="h-90 mt-4" Fbrowse="@strOpt" IsLangEn="@IsLangEn" IsPageSize="false" IsFilter="false"></FrmBrowseComponent>
+        </div>
+    </BodyTemplate>
+</DxWindow>
+<style>
+
+</style>
+
+@code {
+    [Parameter] public string Title { get; set; }
+    [Parameter] public ActionTask curActionTask { get; set; }
+    [Parameter] public Users curUser { get; set; }
+    [Parameter] public EventCallback<ActionTask> curActionTaskChanged { get; set; }
+    [Parameter] public string Stt_rec { get; set; }
+    [Parameter] public string Ma_ct { get; set; }
+    [Parameter] public string Menu_id { get; set; }
+    [Parameter] public string Phdbf { get; set; }
+
+    [Parameter] public EventCallback OnSave { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+    [Parameter] public EventCallback OnPrint { get; set; }
+    [Parameter] public EventCallback OnCopy { get; set; }
+    [Parameter] public EventCallback OnNew { get; set; }
+    [Parameter] public EventCallback OnEdit { get; set; }
+    [Parameter] public bool IsLangEn { get; set; }
+
+    FrmBrowseComponent OptBrowse;
+    DxWindow OptwRef;
+    bool OptVisible = false;
+    string OptWidth = "600px";
+    string OptHeight = "500px";
+    string strOpt = "";
+    string optTitle = "";
+    DataTable tblOpt;
+
+    public bool EnableNew { get; set; } = true;
+    public bool EnableSave { get; set; } = true;
+    public bool EnableEdit { get; set; } = true;    
+    public bool EnablePrint { get; set; } = true;
+
+    protected async override Task OnInitializedAsync()
+    {
+        IsLangEn = (IsLangEn==null?false:IsLangEn);
+        if (curUser== null)
+            curUser = myStatemanagerment.GetCurUser();
+        OnChangeAction();
+    }   
+    protected override void OnParametersSet()
+    {
+        OnChangeAction();
+    }
+    private async void OnOpt(DropDownButtonItemClickEventArgs args)
+    {       
+        optTitle = args.ItemInfo.Text.Trim();
+        if (args.ItemInfo.Id == "cmdInfo")
+        {
+            ShowInfo();
+            return;
+        }
+        if (args.ItemInfo.Id.StartsWith("cmdView") && !String.IsNullOrEmpty(args.ItemInfo.Tooltip.Trim()))
+        {
+            ShowSC(args.ItemInfo.Tooltip.Trim());
+            return;
+        }
+        myStatemanagerment.SetNewThongbao(args.ItemInfo.Text + "-" + Stt_rec);
+    }
+
+    private async void ShowInfo()
+    {        
+        if (String.IsNullOrEmpty(Stt_rec))
+        {
+            myStatemanagerment.SetNewThongbao(Lap["No data"]);
+            return;
+        }
+        tblOpt = new DataTable();
+        tblOpt.Columns.Add("stt", typeof(int));
+        tblOpt.Columns.Add("info");
+        tblOpt.Columns.Add("descript");
+        Users curUsser = myStatemanagerment.GetCurUser();
+        tblOpt.Rows.Add((object)1, (object)Lap["Người sử dụng hiện thời"], (object)(curUsser.User_id.ToString().Trim() + "-" + curUsser.User_name.Trim() + "-" + curUsser.Comment.Trim()));
+
+        string strsql = "Select ph.user_id,ph.user_id0,us1.user_name,us1.comment,us0.user_name as user_name0,us0.comment as comment0,convert(char,ph.date0,105) as date0,ph.time0,convert(char,ph.date,105) as date,ph.time,ph.ma_dvcs,dv.ten_dvcs,dv.ten_dvcs2" +
+                        " from "+Phdbf.Trim()+" ph left outer join userinfo us1 ON us1.user_id = ph.user_id " +
+                        "left outer join userinfo us0 ON us0.user_id = ph.user_id0  " +
+                        "left join dmdvcs dv ON ph.ma_dvcs = dv.ma_dvcs where ph.stt_rec ='" + Stt_rec.Trim() + "'";
+        DataSet dsIn = myDb.LoadDataSet(strsql);
+        if (dsIn.Tables.Count >0)
+        {
+            if (dsIn.Tables[0].Rows.Count > 0)
+            {
+                DataRow dr = dsIn.Tables[0].Rows[0];
+                tblOpt.Rows.Add((object)2, (object)Lap["Người tạo"], (object)(dr["user_id0"].ToString().Trim() + "-" + dr["user_name0"].ToString().Trim() + "-" + dr["comment0"].ToString().Trim()));
+                tblOpt.Rows.Add((object)3, (object)Lap["Ngày tạo"], (object)(dr["date0"].ToString().Trim() + " " + dr["time0"].ToString().Trim()));
+                tblOpt.Rows.Add((object)4, (object)Lap["Người sửa"], (object)(dr["user_id"].ToString().Trim() + "-" + dr["user_name"].ToString().Trim() + "-" + dr["comment"].ToString().Trim()));                
+                tblOpt.Rows.Add((object)5, (object)Lap["Ngày sửa"], (object)(dr["date"].ToString().Trim() + " " + dr["time"].ToString().Trim()));
+                tblOpt.Rows.Add((object)6, (object)Lap["Đơn vị cơ sở"], (object)(dr["ma_dvcs"].ToString().Trim() + "-" + (IsLangEn? dr["ten_dvcs2"].ToString().Trim():dr["ten_dvcs"].ToString().Trim())));
+            }
+        }
+        strOpt = "stt:30:h=Stt;info:150:h=" + Lap["Infor"] + ";descript:250:h=" + Lap["Content"];
+        OptWidth = "600px";
+        OptVisible = true;
+
+        StateHasChanged();
+    }
+
+    private async void ShowSC(string pmenu_id)
+    {
+        if (String.IsNullOrEmpty(Stt_rec) || String.IsNullOrEmpty(pmenu_id))
+        {
+            myStatemanagerment.SetNewThongbao(Lap["No data"]);
+            return;
+        }
+
+        string strsql = "Select store_proc ,ebrowse1,vbrowse1 from command where menu_id ='" + pmenu_id.Trim() + "'";
+        DataSet dscm = myDb.LoadDataSet(strsql);
+        if (dscm.Tables.Count > 0)
+        {
+            if (dscm.Tables[0].Rows.Count > 0)
+            {
+                DataRow dr = dscm.Tables[0].Rows[0];
+                string store_proc = dr["store_proc"].ToString().Trim();
+                string ebrowse1 = dr["ebrowse1"].ToString().Trim();
+                string vbrowse1 = dr["vbrowse1"].ToString().Trim();
+                if (String.IsNullOrEmpty(store_proc))
+                {
+                    myStatemanagerment.SetNewThongbao(Lap["No data"]);
+                    return;
+                }
+                strsql = "exec " + store_proc.Trim() + " '" + Stt_rec.Trim() + "'";
+                DataSet dsIn = myDb.LoadDataSet(strsql);
+                if (dsIn.Tables.Count > 0)
+                {
+                    // if (dsIn.Tables[0].Rows.Count > 0)
+                    // {
+                    OptWidth = "70vw";
+                    OptHeight = "70vh";
+                    tblOpt = dsIn.Tables[0];
+                    strOpt = IsLangEn?ebrowse1.Trim() : vbrowse1.Trim();
+                    OptVisible = true;
+                    StateHasChanged();
+                    // }
+                }
+            }
+        }
+    }
+
+    private async void OnOptCancel()
+    {
+        OptVisible = false;
+        StateHasChanged();
+    }
+    private async Task cmdSave()
+    {
+        if(OnSave.HasDelegate) 
+            await OnSave.InvokeAsync(); 
+    }
+    private async Task cmdNew()
+    {      
+        if (!curUser.CheckRight(Menu_id, "ADD"))
+        {
+            myStatemanagerment.SetNewAlertMessage(Lap["You do not have permission to perform this function"] + " !");
+            return;
+        }
+
+        if (OnNew.HasDelegate)
+            await OnNew.InvokeAsync();
+        curActionTask = ActionTask.New;        
+    }
+    private async Task cmdCopy()
+    {
+        if (!curUser.CheckRight(Menu_id, "ADD"))
+        {
+            myStatemanagerment.SetNewAlertMessage(Lap["You do not have permission to perform this function"] + " !");
+            return;
+        }
+        if (OnCopy.HasDelegate)
+            await OnCopy.InvokeAsync();
+        curActionTask = ActionTask.New;
+        OnChangeAction();
+        StateHasChanged();
+    }
+    private async Task cmdEdit()
+    {
+        if (!curUser.CheckRight(Menu_id, "EDIT"))
+        {
+            myStatemanagerment.SetNewAlertMessage(Lap["You do not have permission to perform this function"] + " !");
+            return;
+        }
+        
+        if (OnEdit.HasDelegate)
+            await OnEdit.InvokeAsync();
+    }
+    private async Task cmdCancel()
+    {
+        curActionTask = ActionTask.Quit;
+
+        // Xác nhận thoát
+        if (OnCancel.HasDelegate)
+            await OnCancel.InvokeAsync();
+        
+    }
+    private async void OnChangeAction()
+    {
+        if (curActionTask == ActionTask.View || curActionTask == ActionTask.None)
+        {
+            EnableSave = false;
+            EnableNew = true;
+            EnableEdit = true;            
+            EnablePrint = true;
+        }
+        else if (curActionTask == ActionTask.New || curActionTask == ActionTask.Edit)
+        {
+            EnableSave = true;
+            EnableNew = false;
+            EnableEdit = false;            
+            EnablePrint = false;
+        }
+        else
+        {
+            EnableSave = false;
+            EnableNew = false;
+            EnableEdit = false;            
+            EnablePrint = false;
+        }
+    }
+}

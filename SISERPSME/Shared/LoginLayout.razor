@@ -1,0 +1,24 @@
+﻿@inherits LayoutComponentBase
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager navigation
+@inject Statemanagerment myStatemanagerment
+@using Blazored.LocalStorage;
+@inject ILocalStorageService Localstore
+@inject IDbManager myDb
+<PageTitle>Công ty cổ phần S.I.S Việt Nam</PageTitle>
+
+<div class="page">
+    <main>     
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+@code
+{
+    private Users user;
+    private Users Curuser;
+     protected override async Task OnAfterRenderAsync(bool firstRender)
+    {       
+    }
+}

@@ -1,0 +1,289 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = SisSo
+build_property.RootNamespace = SisSo
+build_property.ProjectDir = D:\SIS\SISWEBERP2025_DEV\SisSo\SisSo\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\SIS\SISWEBERP2025_DEV\SisSo\SisSo
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/App.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Discount/DxRichEdt.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlzY291bnRcRHhSaWNoRWR0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Discount/KMHD/KMHDComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlzY291bnRcS01IRFxLTUhEQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Discount/KMHH/KMHHComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlzY291bnRcS01ISFxLTUhIQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Discount/KMHTH/KMHTHComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlzY291bnRcS01IVEhcS01IVEhDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Discount/TonDauKH/EditFormTonDauKH.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlzY291bnRcVG9uRGF1S0hcRWRpdEZvcm1Ub25EYXVLSC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Discount/TonDauKH/FrmKetchuyen.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlzY291bnRcVG9uRGF1S0hcRnJtS2V0Y2h1eWVuLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Discount/TonDauKH/FrmTonDauKH.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlzY291bnRcVG9uRGF1S0hcRnJtVG9uRGF1S0gucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Discount/TonDauKH/TonDauKHComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlzY291bnRcVG9uRGF1S0hcVG9uRGF1S0hDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Input/Cactbc1/Cactbc1Component.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5wdXRcQ2FjdGJjMVxDYWN0YmMxQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Input/Cactbc1/FrmCactbc1.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5wdXRcQ2FjdGJjMVxGcm1DYWN0YmMxLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Input/Cactbc1/ImportBC1.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5wdXRcQ2FjdGJjMVxJbXBvcnRCQzEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Input/Cactpt1/Cactpt1Component.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5wdXRcQ2FjdHB0MVxDYWN0cHQxQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Input/Cactpt1/FrmCactpt1.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5wdXRcQ2FjdHB0MVxGcm1DYWN0cHQxLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Input/Cactpt1/ImportPt1.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5wdXRcQ2FjdHB0MVxJbXBvcnRQdDEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Input/HDBanle/HDBanleComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5wdXRcSERCYW5sZVxIREJhbmxlQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Input/Sobg1/FrmSobg1.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5wdXRcU29iZzFcRnJtU29iZzEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Input/Sobg1/ImportBg1.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5wdXRcU29iZzFcSW1wb3J0QmcxLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Input/Sobg1/Sobg1Component.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5wdXRcU29iZzFcU29iZzFDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Input/Socthda/SocthdaComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5wdXRcU29jdGhkYVxTb2N0aGRhQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Input/Sodmhdb/FrmSodmhdb.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5wdXRcU29kbWhkYlxGcm1Tb2RtaGRiLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Input/Sodmhdb/ImportDmhdb.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5wdXRcU29kbWhkYlxJbXBvcnREbWhkYi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Input/Sodmhdb/SodmhdbComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5wdXRcU29kbWhkYlxTb2RtaGRiQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Arkh/ArkhComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxBcmtoXEFya2hDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Arkh/ArnhkhComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxBcmtoXEFybmhraENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Arkh/EditArkh.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxBcmtoXEVkaXRBcmtoLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Arkh/EditNhkh.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxBcmtoXEVkaXROaGtoLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Arkh/FrmArkh.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxBcmtoXEZybUFya2gucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Arkh/FrmNhkh.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxBcmtoXEZybU5oa2gucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Arkh/ImportArkh.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxBcmtoXEltcG9ydEFya2gucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Arthue/ArnhthueComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxBcnRodWVcQXJuaHRodWVDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Arthue/ArthueComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxBcnRodWVcQXJ0aHVlQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Arthue/EditArnhthue.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxBcnRodWVcRWRpdEFybmh0aHVlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Arthue/EditArthue.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxBcnRodWVcRWRpdEFydGh1ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Dmdiemqd/DiemquydoiComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxEbWRpZW1xZFxEaWVtcXV5ZG9pQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Dmdiemqd/EditFormDiemquydoi.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxEbWRpZW1xZFxFZGl0Rm9ybURpZW1xdXlkb2kucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Dmdiemqd/FrmDiemquydoi.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxEbWRpZW1xZFxGcm1EaWVtcXV5ZG9pLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Dmdvcs/DmdvcsComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxEbWR2Y3NcRG1kdmNzQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Dmdvcs/EditFormDmdvcs.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxEbWR2Y3NcRWRpdEZvcm1EbWR2Y3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Dmdvcs/FrmDmdvcs.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxEbWR2Y3NcRnJtRG1kdmNzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Giabanle/EditFormGiabanle.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxHaWFiYW5sZVxFZGl0Rm9ybUdpYWJhbmxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Giabanle/FrmGiabanle.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxHaWFiYW5sZVxGcm1HaWFiYW5sZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Giabanle/GiabanleComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxHaWFiYW5sZVxHaWFiYW5sZUNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/GiaTheoSanluong/EditFormGiaTheoSanluong.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxHaWFUaGVvU2FubHVvbmdcRWRpdEZvcm1HaWFUaGVvU2FubHVvbmcucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/GiaTheoSanluong/FrmGiaTheoSanluong.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxHaWFUaGVvU2FubHVvbmdcRnJtR2lhVGhlb1Nhbmx1b25nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/GiaTheoSanluong/GiaTheoSanluongComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxHaWFUaGVvU2FubHVvbmdcR2lhVGhlb1Nhbmx1b25nQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Inkho/EditInkho.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxJbmtob1xFZGl0SW5raG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Inkho/InkhoComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxJbmtob1xJbmtob0NvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Invt/EditInvt.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxJbnZ0XEVkaXRJbnZ0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Invt/EditNhvt.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxJbnZ0XEVkaXROaHZ0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Invt/ImportInvt.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxJbnZ0XEltcG9ydEludnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Invt/InnhvtComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxJbnZ0XElubmh2dENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/List/Invt/InvtComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdFxJbnZ0XEludnRDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Reports/HDBanlePrintComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVwb3J0c1xIREJhbmxlUHJpbnRDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/SaleRepo/Arctbh1/Arctbh1Cpn.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2FsZVJlcG9cQXJjdGJoMVxBcmN0YmgxQ3BuLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/SaleRepo/Soth1/Soth1Cpn.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2FsZVJlcG9cU290aDFcU290aDFDcG4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/SaleRepo/Soth2/Soth2Cpn.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2FsZVJlcG9cU290aDJcU290aDJDcG4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Discount/KMHD/FrmKMHD.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlzY291bnRcS01IRFxGcm1LTUhELnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-22a5cj53bp
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Discount/KMHH/FrmKMHH.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlzY291bnRcS01ISFxGcm1LTUhILnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-ylm77dmlbk
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Discount/KMHTH/FrmChitieu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlzY291bnRcS01IVEhcRnJtQ2hpdGlldS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-o9dwv5m6ob
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Discount/KMHTH/FrmKMHTH.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlzY291bnRcS01IVEhcRnJtS01IVEgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-das42oeu2d
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Input/HDBanle/FrmSOCTHDL.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5wdXRcSERCYW5sZVxGcm1TT0NUSERMLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-ueoe7kt3jf
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Input/HDBanle/FrmSOCTHDL1.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5wdXRcSERCYW5sZVxGcm1TT0NUSERMMS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-3u84rxqpe6
+
+[D:/SIS/SISWEBERP2025_DEV/SisSo/SisSo/Pages/Input/Socthda/FrmSocthda.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5wdXRcU29jdGhkYVxGcm1Tb2N0aGRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-ipeio5s2x7

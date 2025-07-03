@@ -1,0 +1,149 @@
+﻿@inject IDbManager myDb
+@inject Statemanagerment myStatemanagerment
+@inject XmlStringLocalizer Lap
+
+<div class="popup-container">
+    <div class="popup-foooter text-bg-light mx-0 my-0">
+        <div class="row d-flex justify-content-between">
+            <div class="col mx-2 mt-1 fw-bold align-items-center" style="color:#005FFF;">
+                @Title
+            </div>
+            <div class="col d-flex justify-content-end ms-2">
+
+                @if (OnNew.HasDelegate)
+                {
+                    <DxButton CssClass="btncmdgroup m-1" IconCssClass="btn-icon-new" RenderStyleMode="ButtonRenderStyleMode.Outline" Enabled="@EnableNew"
+                              IconPosition="ButtonIconPosition.BeforeText" Text="@Lap["Add"]" RenderStyle="ButtonRenderStyle.Secondary" @onclick="cmdNew"></DxButton>
+                }
+                @if (OnCopy.HasDelegate)
+                {
+                    <DxButton CssClass="btncmdgroup m-1" IconCssClass="btn-icon-copy" RenderStyleMode="ButtonRenderStyleMode.Outline" Enabled="@EnableNew"
+                              IconPosition="ButtonIconPosition.BeforeText" Text="@Lap["Copy"]" RenderStyle="ButtonRenderStyle.Secondary" @onclick="cmdCopy"></DxButton>
+                }
+                @if (OnEdit.HasDelegate)
+                {
+                    <DxButton CssClass="btncmdgroup m-1" IconCssClass="btn-icon-edit" RenderStyleMode="ButtonRenderStyleMode.Outline" Enabled="@EnableEdit"
+                              IconPosition="ButtonIconPosition.BeforeText" Text="@Lap["Edit"]" RenderStyle="ButtonRenderStyle.Secondary" @onclick="cmdEdit"></DxButton>
+                }
+                @if (OnSave.HasDelegate)
+                {
+                    <DxButton CssClass="btncmdgroup m-1" IconCssClass="btn-icon-save" RenderStyleMode="ButtonRenderStyleMode.Outline" Enabled="@EnableSave"
+                              IconPosition="ButtonIconPosition.BeforeText" RenderStyle="ButtonRenderStyle.Secondary" @onclick="cmdSave" Text="@Lap["Save"]"></DxButton>
+                }               
+                @if (OnCancel.HasDelegate)
+                {
+                    <DxButton CssClass="btncmdgroup m-1 text-danger" IconCssClass="btn-icon-close" RenderStyleMode="ButtonRenderStyleMode.Outline"
+                              IconPosition="ButtonIconPosition.BeforeText" RenderStyle="ButtonRenderStyle.Secondary" @onclick="cmdCancel" Text="@Lap["Cancel"]"></DxButton>
+                }                
+            </div>
+        </div>
+    </div>
+    <hr style="height:1px;background-color:dimgrey;margin-top:5px;margin-bottom:5px;padding:0px;">
+    <div class="popup-body">
+        @ChildContent
+    </div>    
+</div>
+
+@code {
+    [Parameter] public string Title { get; set; }
+    [Parameter]
+    public ActionTask curActionTask
+    {
+        get => _ActionTask;
+        set
+        {
+            if (_ActionTask == value) 
+            return;
+
+            _ActionTask = value;
+            if (curActionTaskChanged.HasDelegate)
+                curActionTaskChanged.InvokeAsync(value);            
+        }
+    }
+    [Parameter] public EventCallback<ActionTask> curActionTaskChanged { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public EventCallback OnSave { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+    [Parameter] public EventCallback OnCopy { get; set; }
+    [Parameter] public EventCallback OnNew { get; set; }
+    [Parameter] public EventCallback OnEdit { get; set; }
+    [Parameter] public EventCallback OnPrint { get; set; }
+    [Parameter] public bool IsLangEn { get; set; }
+
+    private ActionTask _ActionTask;
+    public bool EnableNew { get; set; } = true;
+    public bool EnableSave { get; set; } = true;
+    public bool EnableEdit { get; set; } = true;
+    public bool EnablePrint { get; set; } = true;
+
+    protected async override Task OnInitializedAsync()
+    {
+        IsLangEn = (IsLangEn == null ? false : IsLangEn);
+        OnChangeAction();
+    }
+
+    private async Task cmdSave()
+    {
+        if (OnSave.HasDelegate)
+            await OnSave.InvokeAsync();
+        OnChangeAction();
+        StateHasChanged();
+    }
+    private async Task cmdNew()
+    {
+        if (OnNew.HasDelegate)
+            await OnNew.InvokeAsync();
+        curActionTask = ActionTask.New;
+        OnChangeAction();
+        StateHasChanged();
+    }
+    private async Task cmdCopy()
+    {
+        if (OnCopy.HasDelegate)
+            await OnCopy.InvokeAsync();
+        curActionTask = ActionTask.New;
+        OnChangeAction();
+        StateHasChanged();
+    }
+    private async Task cmdEdit()
+    {
+        if (OnEdit.HasDelegate)
+            await OnEdit.InvokeAsync();
+        curActionTask = ActionTask.Edit;
+        OnChangeAction();
+        StateHasChanged();
+    }
+    private async Task cmdCancel()
+    {
+        curActionTask = ActionTask.Quit;
+
+        // Xác nhận thoát
+        if (OnCancel.HasDelegate)
+            await OnCancel.InvokeAsync();
+
+    }
+    private async void OnChangeAction()
+    {
+        if (curActionTask == ActionTask.View || curActionTask == ActionTask.None)
+        {
+            EnableSave = false;
+            EnableNew = true;
+            EnableEdit = true;
+            EnablePrint = true;
+        }
+        else if (curActionTask == ActionTask.New || curActionTask == ActionTask.Edit || curActionTask == ActionTask.Copy)
+        {
+            EnableSave = true;
+            EnableNew = false;
+            EnableEdit = false;
+            EnablePrint = false;
+        }
+        else
+        {
+            EnableSave = false;
+            EnableNew = false;
+            EnableEdit = false;
+            EnablePrint = false;
+        }
+    }
+}

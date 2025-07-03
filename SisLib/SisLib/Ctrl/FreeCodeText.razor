@@ -1,0 +1,24 @@
+﻿@using System.Reflection
+
+@if (Target != null && !string.IsNullOrEmpty(FieldName))
+{
+    <DxTextBox Text="@CurrentValue" TextChanged="@OnValueChanged" />
+}
+
+@code {
+    [Parameter] public object Target { get; set; } // Model
+    [Parameter] public string FieldName { get; set; } // Tên field cần binding
+    [Parameter] public EventCallback<String> ValueChanged { get; set; }
+    private PropertyInfo Property => Target?.GetType().GetProperty(FieldName);
+
+    private string CurrentValue => Property?.GetValue(Target)?.ToString();
+
+    private void OnValueChanged(string newValue)
+    {
+        if (Property != null && Property.CanWrite)
+        {
+            Property.SetValue(Target, newValue);
+			ValueChanged.InvokeAsync(newValue);
+        }
+    }
+}

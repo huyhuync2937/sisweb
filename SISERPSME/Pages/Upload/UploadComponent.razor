@@ -1,0 +1,82 @@
+﻿@page "/UploadImg"
+@inject HttpClient Http
+@inject NavigationManager navigation
+@inject IOptionsManager Options
+@using Blazored.LocalStorage;
+@inject ILocalStorageService Localstore
+@inject Statemanagerment myStatemanagerment
+
+<div class="row mt-2">
+	<div id="overviewDemoDropZone" class="card custom-drop-zone bg-light rounded-3 w-100 m-0">
+		<div class="row">
+			<span class="drop-file-icon col-2"></span>
+			<span class="col-3">Kéo và thả tệp vào đây. <b class="m-2">hoặc</b>  </span>
+			<button id="overviewDemoSelectButton" class="btn border-primary btn-primary m-1 col">Chọn tệp</button>
+		</div>
+	</div>
+	<DxUpload Name="myFile" ExternalSelectButtonCssSelector="#overviewDemoSelectButton" AllowedFileExtensions="@(new List<string> { ".jpg", ".jpeg", ".gif", ".png", ".svg" })"
+			  ExternalDropZoneCssSelector="#overviewDemoDropZone" Visible ="false"
+			  AllowMultiFileUpload="false" MaxFileSize="5242880" ExternalDropZoneDragOverCssClass="bg-light border-secondary text-dark"
+			  UploadUrl="@GetUploadUrl()" CssClass="w-100">
+	</DxUpload>
+</div>
+
+@code {
+		string message = "InputFile";
+		bool isDisabled = false;
+	private Users CurUser;
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		if (firstRender)
+		{
+			if (CurUser == null)
+			{
+				CurUser = myStatemanagerment.GetCurUser(); 
+			}
+			if (string.IsNullOrEmpty(CurUser.User_name))
+			{
+				try
+				{
+					CurUser = await Localstore.GetItemAsync<Users>("user");
+				}
+				catch
+				{
+
+				}
+			}
+
+			string usr = CurUser.User_name.Trim().ToUpper();
+			Options.AddOptions(new SisData.Model.Options { Name = "M_USER_NAME", Value = usr });
+			
+		}
+	}
+
+	public UploadComponent()
+    {
+    }
+
+    protected void SelectedFilesChanged(IEnumerable<UploadFileInfo> files)
+    {
+		isDisabled = files.ToList().Count > 0;
+		string strUploadfile = "";
+		foreach (UploadFileInfo f in files)
+		{
+			strUploadfile += f.Name + ";";			
+		}
+		if (!string.IsNullOrEmpty(strUploadfile))
+		{
+			strUploadfile = strUploadfile.Substring(0, strUploadfile.Length - 1);
+		}
+		InvokeAsync(StateHasChanged);
+	}
+
+	protected string GetUploadUrl()
+	{
+		//Task<Users> task = Localstore.GetItemAsync<Users>("user");
+		//task.Wait();
+		//Users CurUser = await Localstore.GetItemAsync<Users>("user");
+		
+		return navigation.ToAbsoluteUri(@"api/Upload/UploadImg/").AbsoluteUri;
+	}
+}

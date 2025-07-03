@@ -1,0 +1,64 @@
+﻿@page "/arthue"
+@page "/arthue/{Menu_id}"
+@inherits ListBaseComponent
+
+@using SisLib.List
+@using Microsoft.Extensions.Localization
+@using DevExpress.Blazor
+@inject IStringLocalizer<SisSo.Pages.App> Lat
+@attribute [Authorize(Roles = "admin,arthue")]
+
+<div class="row mt-1">
+    <FrmBrowseComponent @ref="oBrowse" TblData="@TblData" Fbrowse="@fbrowse" Page_size="@Page_size" SelectItem="CurItem" OnRowDbClick="@OnRDBClick" IsLangEn="@IsLangEn"></FrmBrowseComponent>
+</div>
+@if (IsShowFrm && FrmType != null)
+{
+    <DxWindow @bind-Visible="@IsShowFrm"
+              CloseOnEscape="true" Width="60vw"
+              MinWidth="700px"
+              Scrollable="true"
+              MaxHeight="98vh"
+              AllowResize="true"
+              AllowDrag="true"
+              AllowDragByHeaderOnly="true"
+              ShowFooter="false">
+        <BodyTemplate>
+            <DynamicComponent Type="@FrmType" Parameters="@Par" />
+        </BodyTemplate>
+    </DxWindow>
+}
+@if (IDVisible)
+{
+    <DxPopup @ref="@OptwRef"
+             ShowFooter="false"
+             ShowHeader="false"
+             MinWidth="50vw"
+             @bind-Visible="@IDVisible"
+             CloseOnEscape="true"
+             ShowCloseButton="false"
+             AllowResize="true"
+             AllowDrag="true"
+             AllowDragByHeaderOnly="true">
+        <BodyContentTemplate>
+            <div class="row">
+                <FrmChangeListID @bind-Visible="@IDVisible" List_ID="@sqlTableName" Ma_ma="@SqlTableKeyValue" Title="@Lat["Change Item code"]" Ten_item="@Ten_item" OnOK="@ChangeOK" />
+            </div>
+        </BodyContentTemplate>
+    </DxPopup>
+}
+
+@code {
+    protected override void OnInitialized()
+    {
+        mPage = "Arthue";
+        IsShowCopy = true;
+        IsShowImport = true;
+
+        //editPage = "frmInkho";
+        FrmType = typeof(List.Arthue.EditArthue);
+        if (String.IsNullOrEmpty(Menu_id))
+            Menu_id = "ws_dm_08";
+
+        base.OnInitialized();
+    }
+}

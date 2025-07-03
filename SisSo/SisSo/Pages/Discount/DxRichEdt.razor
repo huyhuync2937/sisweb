@@ -1,0 +1,17 @@
+﻿@page "/dxredt"
+@using DevExpress.Blazor.RichEdit
+@using DevExpress.Blazor.Office
+@inject IDocumentProvider DocumentProvider
+<div Class="w-100 v-90">
+    <DxRichEdit @bind-DocumentContent="@DocumentContent" BarMode=BarMode.Toolbar CssClass="w-100 ch-720" />
+</div>
+
+@code {
+    byte[] DocumentContent;
+    protected override async Task OnInitializedAsync()
+    {
+		DocumentContent = await DocumentProvider.GetDocumentAsync("09.HDKT-PL.docx");
+        //DocumentContent = await File.ReadAllBytesAsync(Path.Combine(AppContext.BaseDirectory, Path.Combine("wwwroot", "09.HDKT-PL.docx")), default(CancellationToken));
+        await base.OnInitializedAsync();
+    }
+}

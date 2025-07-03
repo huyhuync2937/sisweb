@@ -1,0 +1,110 @@
+﻿namespace SisSo.Model
+{
+    public class Ph83
+    {
+        public string Stt_rec { get; set; }
+        public string Ma_ct { get; set; }
+        public string So_ct { get; set; }
+        public string Ma_qs { get; set; }
+        public DateTime Ngay_ct { get; set; }
+        public DateTime Ngay_lct { get; set; }
+        public string Dien_giai { get; set; }
+        public string Ma_gd { get; set; }
+        public string So_seri { get; set; }
+        public string So_lo { get; set; }     
+        public string Ws_id { get; set; }
+        public string So_dh { get; set; }
+        public string Ma_kh { get; set; }
+        public string Ten_kh { get; set; }
+        public string Ten_kh2 { get; set; }
+        public string Ma_kh2 { get; set; }
+        public string Nh_kh2 { get; set; }
+        public string Nh_kh3 { get; set; }
+        public string Tk_nh { get; set; }
+        public string Dia_chi { get; set; }
+        public string Ma_so_thue { get; set; }
+        public string Ong_ba { get; set; }
+        public string Ma_bp { get; set; }
+        public string So_the { get; set; }
+        public string Ma_bpht { get; set; }
+        public string PartNo { get; set; }
+        public string Ht_tt { get; set; }
+        public string Loai_ct { get; set; }
+        public string Ma_hd { get; set; }
+        public string Ma_nx { get; set; }
+        public string Ma_ms { get; set; }
+        public string Mau_so { get; set; }
+        public string Ma_px { get; set; }
+        public string Px_gia_dd { get; set; }
+        public string Ma_nt { get; set; }
+        public string Ma_thue { get; set; }
+        public string Dc_gh { get; set; }
+        public string Khe_uoc { get; set; }
+        public string Ma_dvcs_bl { get; set; }
+        public string Ma_nv_cd { get; set; }
+        public string Ma_ctkm { get; set; }
+    
+        public Decimal Tien_km { get; set; }
+        public Decimal Tien_km_nt { get; set; }
+        public Decimal Diem_tl { get; set; }
+        public Decimal Tien_diem_tl { get; set; }
+        public Decimal Diem_tl_sd { get; set; }
+        public Decimal T_so_luong { get; set; }
+        public Decimal Ty_gia { get; set; }
+        public Decimal Ty_giaf { get; set; }
+        public Decimal T_tien_nt { get; set; }
+        public Decimal T_tien { get; set; }
+        public Decimal Thue_suat { get; set; }
+        public Decimal T_thue_nt { get; set; }
+        public Decimal T_thue { get; set; }
+
+        public Decimal T_tien_nt2 { get; set; }
+        public Decimal T_tien2 { get; set; }
+        public Decimal Tinh_ck { get; set; }
+        public Decimal T_tt_nt { get; set; }
+        public Decimal T_tt { get; set; }
+
+        public string Stt_rec_pt { get; set; }
+        public string Ma_ct_pt { get; set; }
+        public string So_ct_pt { get; set; }
+        public string Ma_qs_pt { get; set; }
+
+        public Decimal Diem_ton { get; set; }
+        public string Stt_rec_px { get; set; }
+        public string Ma_ct_px { get; set; }
+        public string So_ct_px { get; set; }
+        public string Ma_qs_px { get; set; }
+        public string Stt_rec_pnd { get; set; }
+        public string Ma_ct_pnd { get; set; }
+        public string So_ct_pnd { get; set; }
+        public string Ma_qs_pnd { get; set; }
+        public Decimal T_tien_sau_ck { get; set; }
+        public Decimal T_tien_sau_ck_nt { get; set; }
+        public Decimal T_ck_nt { get; set; }
+        public Decimal T_ck { get; set; }
+        public Decimal T_sl_km { get; set; }
+        public Decimal T_tien_km_nt { get; set; }
+        public Decimal T_thue_km { get; set; }
+        public Decimal T_thue_km_nt { get; set; }
+        public Decimal Tien_tc { get; set; }
+        public Decimal Tien_tc_nt { get; set; }
+        public Decimal T_tt_km { get; set; }
+        public Decimal T_tt_km_nt { get; set; }
+        public Decimal T_tien_km { get; set; }
+        public Decimal T_tra_nt { get; set; }
+        public Decimal T_tra { get; set; }
+        public Decimal T_thua_nt { get; set; }
+        public Decimal T_thua { get; set; }
+        public int Loai_xnvl { get; set; }
+        public int Co_km { get; set; }
+        public Decimal Sua_thue { get; set; }
+        public string Ma_dvcs { get; set; }
+        public string Status { get; set; }
+        public int User_id { get; set; }
+        public int User_id0 { get; set; }
+        public string Time { get; set; }
+        public string Time0 { get; set; }
+        public DateTime Date { get; set; }
+        public DateTime Date0 { get; set; }
+    }
+}

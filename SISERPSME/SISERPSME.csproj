@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+       <TargetFramework>net8.0</TargetFramework>
+	  <EnvironmentName>Production</EnvironmentName>
+	  <Nullable>disable</Nullable><ImplicitUsings>enable</ImplicitUsings>
+	  <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
+	  <RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
+	  <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Pages\KeHoachBaoduong\**" />
+    <Compile Remove="Pages\PhieumuonThietbi\**" />
+    <Compile Remove="Pages\Quanlytaisan\**" />
+    <Compile Remove="Pages\Reports\**" />
+    <Content Remove="Pages\KeHoachBaoduong\**" />
+    <Content Remove="Pages\PhieumuonThietbi\**" />
+    <Content Remove="Pages\Quanlytaisan\**" />
+    <Content Remove="Pages\Reports\**" />
+    <EmbeddedResource Remove="Pages\KeHoachBaoduong\**" />
+    <EmbeddedResource Remove="Pages\PhieumuonThietbi\**" />
+    <EmbeddedResource Remove="Pages\Quanlytaisan\**" />
+    <None Remove="Pages\KeHoachBaoduong\**" />
+    <None Remove="Pages\PhieumuonThietbi\**" />
+    <None Remove="Pages\Quanlytaisan\**" />
+    <None Remove="Pages\Reports\**" />
+    <None Remove="Reports\**" />
+    <None Remove="wwwroot\Reports\**" />
+  </ItemGroup>  
+  
+  <ItemGroup>
+    <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
+    <PackageReference Include="Dapper" Version="2.1.35" />
+    <PackageReference Include="DevExpress.Blazor" Version="24.2.3" />
+    <PackageReference Include="DevExpress.Blazor.Reporting.JSBasedControls" Version="24.2.3" />
+    <PackageReference Include="DevExpress.AspNetCore.Reporting" Version="24.2.3" />
+    <PackageReference Include="DevExpress.Blazor.Reporting.Viewer" Version="24.2.3" />	  
+    <PackageReference Include="DevExpress.Blazor.RichEdit" Version="24.2.3" />
+    <PackageReference Include="DevExpress.RichEdit.Core" Version="24.2.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.15" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Data.Odbc" Version="7.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\Document_Temp\" />
+    <Folder Include="wwwroot\Doc\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\css\open-iconic\FONT-LICENSE" />
+    <None Include="wwwroot\css\open-iconic\font\fonts\open-iconic.svg" />
+    <None Include="wwwroot\css\open-iconic\ICON-LICENSE" />
+    <None Include="wwwroot\css\open-iconic\README.md" />
+    <None Include="wwwroot\css\open.iconic\font\fonts\open-iconic.svg" />
+    <None Include="wwwroot\css\open.iconic\README.md" />
+    <None Include="wwwroot\Doc_Template\HCNS01-QD-Tiepnhan-HocViec.docx" />
+    <None Include="wwwroot\Doc_Template\HCNS02-QD-Tiepnhan-ThuViec.docx" />
+    <None Include="wwwroot\Doc_Template\HCNS03-QD-Tiepnhan-Chinhthuc.docx" />
+    <None Include="wwwroot\Doc_Template\HCNS04-QD-TangLuong.docx" />
+    <None Include="wwwroot\Doc_Template\HCNS05-QD-DieuchuyenNS.docx" />
+    <None Include="wwwroot\Doc_Template\HCNS06-QD-BonhiemNS.docx" />
+    <None Include="wwwroot\Doc_Template\HCNS07-QD-Thuong.docx" />
+    <None Include="wwwroot\Doc_Template\HCNS08-QD-ThoiViec.docx" />
+    <None Include="wwwroot\Doc_Template\HCNS10-HopdpngBaoMatTT.docx" />
+    <None Include="wwwroot\Doc_Template\HCNS11-HopdongLaodong.docx" />
+    <None Include="wwwroot\Doc_Template\HCNS12-HopdongThuekhoanCTV.docx" />
+    <None Include="wwwroot\Doc_Template\HCNS13-ThongBaothatdoiNS.docx" />
+    <None Include="wwwroot\Doc_Template\HCNS14-QD-GiaoViec.docx" />
+    <None Include="wwwroot\dx-head-manager.js" />
+    <None Include="wwwroot\EX_mau\chamcong.xlsx" />
+    <None Include="wwwroot\EX_mau\dangkylamthem.xlsx" />
+    <None Include="wwwroot\EX_mau\phieuguixe.xlsx" />
+    <None Include="wwwroot\html5-qrcode.min.js" />
+    <None Include="wwwroot\Images\Cancel.svg" />
+    <None Include="wwwroot\Images\erpAlert.svg" />
+    <None Include="wwwroot\Images\erpBG.svg" />
+    <None Include="wwwroot\Images\erpEmail.svg" />
+    <None Include="wwwroot\Images\erpHelp.svg" />
+    <None Include="wwwroot\Images\erpInfo.svg" />
+    <None Include="wwwroot\Images\erpLangEN.svg" />
+    <None Include="wwwroot\Images\erpLangVi.svg" />
+    <None Include="wwwroot\Images\erpUser.svg" />
+    <None Include="wwwroot\Images\erpWeb.svg" />
+    <None Include="wwwroot\Images\excelicon.PNG" />
+    <None Include="wwwroot\Images\fileicon.PNG" />
+    <None Include="wwwroot\Images\Frame.svg" />
+    <None Include="wwwroot\Images\Home.svg" />
+    <None Include="wwwroot\Images\IAdd.svg" />
+    <None Include="wwwroot\Images\Icon quan_ly_mua_hang.svg" />
+    <None Include="wwwroot\Images\Icon_avt.svg" />
+    <None Include="wwwroot\Images\Icon_cai_dat.svg" />
+    <None Include="wwwroot\Images\Icon_chua_tha_xuong.svg" />
+    <None Include="wwwroot\Images\Icon_Chuc_nang_uu_thich.svg" />
+    <None Include="wwwroot\Images\Icon_EN.svg" />
+    <None Include="wwwroot\Images\Icon_he_thong.svg" />
+    <None Include="wwwroot\Images\Icon_ho_tro.svg" />
+    <None Include="wwwroot\Images\Icon_in.svg" />
+    <None Include="wwwroot\Images\Icon_lich.svg" />
+    <None Include="wwwroot\Images\Icon_noi_thong_bao.svg" />
+    <None Include="wwwroot\Images\Icon_quan_ly_khach_hang.svg" />
+    <None Include="wwwroot\Images\Icon_quan_ly_nhan_su.svg" />
+    <None Include="wwwroot\Images\Icon_quan_ly_san_xuat.svg" />
+    <None Include="wwwroot\Images\Icon_quan_ly_tai_san.svg" />
+    <None Include="wwwroot\Images\Icon_sua.svg" />
+    <None Include="wwwroot\Images\Icon_tha_xuong.svg" />
+    <None Include="wwwroot\Images\Icon_them_moi.svg" />
+    <None Include="wwwroot\Images\Icon_thong_bao.svg" />
+    <None Include="wwwroot\Images\Icon_thong_tin.svg" />
+    <None Include="wwwroot\Images\Icon_tin_nhan.svg" />
+    <None Include="wwwroot\Images\Icon_trang_cuoi_cung.svg" />
+    <None Include="wwwroot\Images\Icon_trang_tiep_theo.svg" />
+    <None Include="wwwroot\Images\Icon_tro_ve_trang_dau.svg" />
+    <None Include="wwwroot\Images\Icon_tro_ve_trang_truoc.svg" />
+    <None Include="wwwroot\Images\Icon_user.svg" />
+    <None Include="wwwroot\Images\Icon_VN.svg" />
+    <None Include="wwwroot\Images\Icon_web.svg" />
+    <None Include="wwwroot\Images\Icon_xem.svg" />
+    <None Include="wwwroot\Images\Icon_xoa.svg" />
+    <None Include="wwwroot\Images\IUser.svg" />
+    <None Include="wwwroot\Images\khung.png" />
+    <None Include="wwwroot\Images\menu.svg" />
+    <None Include="wwwroot\Images\Mesa.svg" />
+    <None Include="wwwroot\Images\New.svg" />
+    <None Include="wwwroot\Images\pass.svg" />
+    <None Include="wwwroot\Images\pdficon.PNG" />
+    <None Include="wwwroot\Images\Print.svg" />
+    <None Include="wwwroot\Images\Save.svg" />
+    <None Include="wwwroot\Images\Search.svg" />
+    <None Include="wwwroot\Images\See.svg" />
+    <None Include="wwwroot\Images\SISLogo.png" />
+    <None Include="wwwroot\Images\smallicon.svg" />
+    <None Include="wwwroot\Images\User.svg" />
+    <None Include="wwwroot\lib\demo-resizer.js" />
+    <None Include="wwwroot\lib\page-feedback.js" />
+    <None Include="wwwroot\lib\page-helper.js" />
+    <None Include="wwwroot\lib\page-nav.js" />
+    <None Include="wwwroot\lib\page-section-helper.js" />
+    <None Include="wwwroot\lib\reporting.js" />
+    <None Include="wwwroot\lib\scroll-view.config.js" />
+    <None Include="wwwroot\lib\scroll-view.debug.js" />
+    <None Include="wwwroot\lib\scroll-view.js" />
+    <None Include="wwwroot\lib\scrollable.js" />
+    <None Include="wwwroot\Script.js" />
+    <None Include="wwwroot\uploads\Danh_muc_bpns.xls" />
+    <None Include="wwwroot\uploads\Danh_muc_chuc_vu.xls" />
+    <None Include="wwwroot\uploads\Danh_muc_kml.xls" />
+    <None Include="wwwroot\uploads\Danh_muc_nhan_su.xls" />
+    <None Include="wwwroot\uploads\Ngaynghi_lydonghi.xls" />
+    <None Include="wwwroot\upload_tmp\17. DANH MUC CHUC VU.xls" />
+    <None Include="wwwroot\upload_tmp\19.DANH MUC NHAN SU.xls" />
+    <None Include="wwwroot\upload_tmp\1deb7d3d-d51d-4e2a-9175-40c9100dd86c_Danh_muc_bpns.xls" />
+    <None Include="wwwroot\upload_tmp\Danh_muc_bpns - Copy.xls" />
+    <None Include="wwwroot\upload_tmp\Danh_muc_kml - Copy.xls" />
+    <None Include="wwwroot\upload_tmp\Danh_muc_kml.xls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="SisCa">
+      <HintPath>..\Dll\Debug\net8.0\SisCa.dll</HintPath>
+    </Reference>
+    <Reference Include="SisCom">
+      <HintPath>..\Dll\Debug\net8.0\SisCom.dll</HintPath>
+    </Reference>
+    <Reference Include="SisCrm">
+      <HintPath>..\Dll\Debug\net8.0\SisCrm.dll</HintPath>
+    </Reference>
+    <Reference Include="SisCtv">
+      <HintPath>..\Dll\Debug\net8.0\SisCtv.dll</HintPath>
+    </Reference>
+    <Reference Include="SisData">
+      <HintPath>..\Dll\Debug\net8.0\SisData.dll</HintPath>
+    </Reference>
+    <Reference Include="SisFa">
+      <HintPath>..\Dll\Debug\net8.0\SisFa.dll</HintPath>
+    </Reference>
+    <Reference Include="SisFunc">
+      <HintPath>..\Dll\Debug\net8.0\SisFunc.dll</HintPath>
+    </Reference>
+    <Reference Include="SisHr">
+      <HintPath>..\Dll\Debug\net8.0\SisHr.dll</HintPath>
+    </Reference>
+    <Reference Include="SisLib">
+      <HintPath>..\Dll\Debug\net8.0\SisLib.dll</HintPath>
+    </Reference>
+    <Reference Include="SisMg">
+      <HintPath>..\Dll\Debug\net8.0\SisMg.dll</HintPath>
+    </Reference>
+    <Reference Include="SisSm">
+      <HintPath>..\Dll\Debug\net8.0\SisSm.dll</HintPath>
+    </Reference>
+    <Reference Include="SisSo">
+      <HintPath>..\Dll\Debug\net8.0\SisSo.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="wwwroot\css\sis.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\css\site.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Images\Back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Images\Icon_MG.svg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Script.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>  
+  <ItemGroup>
+    <EmbeddedResource Update="Lang\App.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

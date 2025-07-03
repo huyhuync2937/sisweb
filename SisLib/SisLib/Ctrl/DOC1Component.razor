@@ -1,0 +1,206 @@
+﻿@using DevExpress.XtraRichEdit
+@using DevExpress.XtraRichEdit.API.Native
+@using System.Drawing
+@using Rich = DevExpress.XtraRichEdit
+@using DevExpress.Blazor.Office
+@using DevExpress.Blazor.RichEdit
+@using System.Threading;
+@using System.Threading.Tasks;
+@inject IDbManager myDb
+@inject NavigationManager navigation
+@inject IWebHostEnvironment hostingEnvironment
+@inject Statemanagerment myStatemanagerment
+@implements IDisposable
+@inject IJSRuntime JavacriptS
+<DevExpress.Blazor.RichEdit.DxRichEdit @bind-DocumentContent="@previewDocumentContent" CustomizeToolbar="@OnCustomizeToolbar" BarMode="@BarMode.Toolbar" CssClass="w-100 h-100">
+</DevExpress.Blazor.RichEdit.DxRichEdit>
+<style>
+    .dx-office-bar-combobox-middle:not(.dxbl-toolbar-dropdown-item) .dxbl-text-edit {
+    width: 300px;
+    }
+
+    .dxbl-toolbar-edit > .dxbl-toolbar-item-tmpl > div > .dxbl-text-edit:not(:focus-within):not(.dxbl-focused):not(.dxbl-text-display-view) {
+    border-color: gray !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    }
+</style>
+@code {
+    [Parameter]
+    public string ma_ns { get; set; } = "";
+    string _doc_key = "";
+    string[] ColsToFind { get; set; } = new string[] { };
+    string[] ColsToReplace { get; set; } = new string[] { };
+    RichEditDocumentServer documentServer = new();
+    byte[] previewDocumentContent = new byte[0];
+    string _file_Url = "";
+    string convert_file_path = "";
+    string Template_file = "";
+    private string ToastMessage { get; set; } = "";
+    private string ToastId = "DocumentID";
+    [Parameter]
+    public DataTable TableMau { get; set; } = new DataTable();
+    DataTable TableData { get; set; } = new DataTable();
+    async Task ReplaceAll(string textToFind, string replaceText)
+    {
+        await Task.Run(() =>
+        {
+            DocumentRange[] ranges = documentServer.Document.FindAll(textToFind, SearchOptions.None, documentServer.Document.Range);
+            for (int i = 0; i < ranges.Length; i++)
+            {
+                documentServer.Document.Replace(ranges[i], replaceText);
+                DevExpress.XtraRichEdit.API.Native.CharacterProperties cp = documentServer.Document.BeginUpdateCharacters(ranges[i]);
+                // cp.BackColor = Color.FromArgb(180, 201, 233);
+                documentServer.Document.EndUpdateCharacters(cp);
+            };
+        });
+    }
+    async Task FindAll(string textToFind)
+    {
+        await Task.Run(() =>
+        {
+            DocumentRange[] ranges = documentServer.Document.FindAll(textToFind, SearchOptions.None, documentServer.Document.Range);
+            for (int i = 0; i < ranges.Length; i++)
+            {
+                DevExpress.XtraRichEdit.API.Native.CharacterProperties cp = documentServer.Document.BeginUpdateCharacters(ranges[i]);
+                // cp.BackColor = Color.FromArgb(180, 201, 233);
+                documentServer.Document.EndUpdateCharacters(cp);
+            };
+        });
+    }
+    async Task SaveDocument(string doc_key)
+    {        
+        //
+        string _data = "";
+        DataRow row = TableMau.Select("doc_key = '" + doc_key + "'").FirstOrDefault();
+        string _table_name = row["table_view"].ToString();
+        _file_Url = Path.Combine(hostingEnvironment.WebRootPath, "Doc_Template", row["ten_file"].ToString().Trim());
+        ColsToFind = string.IsNullOrEmpty(row["col_name"].ToString()) ? new string[] { } : row["col_name"].ToString().Split(';');
+        Template_file = row["ten_file"].ToString().Trim();       
+        _file_Url = Path.Combine(hostingEnvironment.WebRootPath, "Doc_Template", Template_file);     
+
+        if (!string.IsNullOrEmpty(_table_name))
+        {
+            string _sql = string.Format("Select {0} from {1} where ma_ns = '{2}'", string.Join(", ", ColsToFind), _table_name, ma_ns);
+            DataSet _ds = myDb.LoadDataSet(_sql);
+            TableData = _ds.Tables[0];
+            if (TableData != null && TableData.Rows.Count > 0)
+            {
+                if (File.Exists(_file_Url))
+                {
+                    documentServer.Options.Export.Html.EmbedImages = true;
+                    await Task.Run(() =>
+                    {
+                        documentServer.LoadDocument(_file_Url);
+                    });
+                }
+
+                foreach (string _col in ColsToFind)
+                {
+                    string _col_name = _col.Substring(1, _col.Length - 2).ToLower();
+                    foreach (DataColumn cols in TableData.Columns)
+                    {
+                        if (_col_name.Equals(cols.ToString().ToLower()))
+                        {
+                            _data += string.IsNullOrEmpty(TableData.Rows[0][cols.ToString().ToLower()].ToString()) ? ";" : TableData.Rows[0][cols.ToString().ToLower()].ToString().Trim() + ";";
+                            break;
+                        }
+                    }
+                }
+                if (!string.IsNullOrEmpty(_data))
+                {
+                    ColsToReplace = _data.Substring(0, _data.Length - 1).Split(';').ToArray();
+                }           
+                if (ColsToFind.Length > 0 && ColsToReplace.Length > 0 && ColsToFind.Length == ColsToReplace.Length)
+                {
+                    for (int x = 0; x < ColsToFind.Length; x++)
+                    {
+                        await ReplaceAll(ColsToFind[x], ColsToReplace[x]);
+                    }
+                    await Task.Run(async () =>
+                     {
+                         using MemoryStream outputStream = new MemoryStream();
+                         documentServer.SaveDocument(outputStream, Rich.DocumentFormat.OpenXml);
+                         previewDocumentContent = outputStream.ToArray();
+                         await InvokeAsync(StateHasChanged);
+                     });
+                }
+            }
+            else
+            {
+                ToastMessage = string.Format("Không tìm thấy thông thông tin nhân viên: {0}", ma_ns);
+                myStatemanagerment.SetNewThongbao(ToastMessage);               
+            }
+        }       
+    }
+    async void OnCustomizeToolbar(IToolbar toolbar)
+    {
+        toolbar.Groups.Clear();
+        toolbar.Groups.Add(0, RichEditToolbarGroupNames.File);
+        IBarGroup firstGroup = toolbar.Groups[0];
+        firstGroup.Items.Clear();
+        IBarItem barItem = firstGroup.Items.Add(0, RichEditBarItemNames.PrintDocument);
+        barItem.CssClass = "fw-bold";
+        IBarItem barItem1 = firstGroup.Items.Add(1, RichEditBarItemNames.DownloadMenu);
+        barItem1.CssClass = "fw-bold";
+        IBarButton barButton1 = firstGroup.Items.AddCustomButton("Quay lại", OnButtonBackClick);
+        barButton1.CssClass = "fw-bold";
+        // Adds a custom combo box
+        IBarComboBox documentFormatComboBox = firstGroup.Items.AddCustomComboBox(0,
+            () => _doc_key,
+            (value) => Task.FromResult(_doc_key = (string)value.ToString())
+        );
+        if (TableMau != null && TableMau.Rows.Count > 0)
+        {
+            _doc_key = TableMau.Rows[0]["doc_key"].ToString().Trim();
+            foreach (DataRow row in TableMau.Rows)
+            {
+                documentFormatComboBox.Items.Add(row["dien_giai"].ToString().Trim(), row["doc_key"].ToString().Trim());
+            }
+        }
+        documentFormatComboBox.AllowUserInput = false;
+        documentFormatComboBox.CssClass = "document-format-combobox";
+        documentFormatComboBox.Tooltip = "Chọn mẫu in.";
+        documentFormatComboBox.Text = "Chọn mẫu in.";
+        documentFormatComboBox.ValueChanged = (value) => Task.FromResult(OnButtonChangeDocClick(value.ToString()));
+
+        IBarButton barButton = firstGroup.Items.AddCustomButton(0, "Chọn mẫu", null);
+        barButton.CssClass = "fw-bold";
+
+        if (!string.IsNullOrEmpty(_doc_key))       
+            await SaveDocument(_doc_key);
+    }   
+    async Task OnButtonChangeDocClick(string values)
+    {
+        _doc_key = values.ToString();
+        await SaveDocument(_doc_key);
+    }  
+    void OnCustomizeRibbon(IRibbon ribbon)
+    {
+        ribbon.Tabs.Clear();
+        ribbon.Tabs.Add(0, RichEditRibbonTabNames.File);
+
+        IRibbonTab fileTab = ribbon.Tabs[RichEditRibbonTabNames.File];
+        IBarGroup fontGroup = fileTab.Groups[RichEditRibbonGroupNames.FileCommon];
+
+        fontGroup.Items.Clear();
+        fontGroup.Items.Add(0, RichEditBarItemNames.PrintDocument);
+        fontGroup.Items.Add(1, RichEditBarItemNames.DownloadMenu);
+        fontGroup.Items.AddCustomButton("Quay lại", OnButtonBackClick);
+        IBarItem downloadMenu = fontGroup.Items[RichEditBarItemNames.DownloadMenu];
+    }
+    Task OnButtonBackClick()
+    {
+        ParentPages _curPage = myStatemanagerment.GetParentPage();
+        if (_curPage != null)
+        {
+            navigation.NavigateTo(_curPage.CurPage);
+        }
+        return Task.CompletedTask;
+    }
+
+    public void Dispose()
+    {
+        documentServer.Dispose();
+    }
+}

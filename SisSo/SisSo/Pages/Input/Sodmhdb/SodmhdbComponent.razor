@@ -1,0 +1,188 @@
+﻿@page "/Sodmhdb"
+@page "/Sodmhdb/{Menu_id}"
+@inherits CustomTransBaseComponent
+@attribute [Authorize(Roles = "admin,Sodmhdb")]
+
+@if (ShowLoaddingVoucher)
+{
+    <DxLoadingPanel IndicatorAnimationType="WaitIndicatorAnimationType.Pulse"
+                    CssClass="w-100"
+                    IndicatorVisible="true"
+                    IndicatorAreaVisible="true"
+                    Visible="true"
+                    Text="Processing..."
+                    TextAlignment="LoadingPanelTextAlignment.Right">
+        <div style="min-height: 250px;"></div>
+    </DxLoadingPanel>
+}
+else if (TblPH != null)
+{
+    <div class="row m-0 p-0">
+        <FrmBrowseComponent @ref="@oBrowsePH" TblData="@TblPH" Page_size="@pageSize" IsPageSize="@IsPageSize" CssClass="grid-frm-height" Fbrowse="@FbrowsePH" SelectItem="CurItem" OnRowDbClick="@OnRDBClick" IsLangEn="@IsLangEn"></FrmBrowseComponent>
+    </div>
+    <hr style="height:1px;background-color:dimgrey;margin:1px;padding:0px;">
+    <div class="row my-1 mx-0 p-0">
+        <h8 class="fw-bold bg-light text-warning rounded-pill mb-1"> @Lap["Detail"] </h8>
+        <FrmBrowseComponent @ref="@oBrowseCT" TblData="@TblCT" CssClass="grid-frmct-height" Fbrowse="@FbrowseCT" IsLangEn="@IsLangEn"></FrmBrowseComponent>
+    </div>
+}
+
+<DxPopup @ref="popFilter" CloseOnOutsideClick="false" CssClass="dxPopup"
+         @bind-Visible="@popFilterVisible"
+         Width="500px"
+         ShowFooter="true" Context="windowContext"
+         HeaderText="@Lap["Filter"]">
+    <BodyTemplate>
+        @if (ShowLoadding)
+        {
+            <div class="row m-0 p-0 justify-content-center">
+                <div class="spinner-border text-primary" role="status" style="width: 5rem; height:5rem;border-width:3px;">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="container pt-1">
+                <DxFormLayout CssClass="w-100">
+                    <DxFormLayoutItem ColSpanMd="12" Caption="@Lap["From date"]">
+                        <DxDateEdit CssClass="col" @bind-Date="@Ngay_ct1" NullText="" ClearButtonDisplayMode="DataEditorClearButtonDisplayMode.Auto"
+                                    InputId="idTu_ngay" />
+                    </DxFormLayoutItem>
+                    <DxFormLayoutItem ColSpanMd="12" Caption="@Lap["To date"]">
+                        <DxDateEdit CssClass="col" @bind-Date="@Ngay_ct2" NullText="" ClearButtonDisplayMode="DataEditorClearButtonDisplayMode.Auto"
+                                    InputId="idDen_ngay" />
+                    </DxFormLayoutItem>
+
+                    <DxFormLayoutItem ColSpanMd="12" Caption="@Lap["ID"]">
+                        <DxTextBox CssClass="col" @bind-Text="@Ma_kh" NullText="" ClearButtonDisplayMode="DataEditorClearButtonDisplayMode.Auto"
+                                   InputId="idMa_kh" />
+                    </DxFormLayoutItem>
+                    <DxFormLayoutItem ColSpanMd="12" Caption="@Lap["Book code"]">
+                        <DxTextBox CssClass="col" @bind-Text="@Ma_qs" NullText="" ClearButtonDisplayMode="DataEditorClearButtonDisplayMode.Auto"
+                                   InputId="idMa_qs" />
+                    </DxFormLayoutItem>
+                </DxFormLayout>
+            </div>
+        }
+
+    </BodyTemplate>
+
+    <FooterTemplate>
+        @if (!ShowLoadding)
+        {
+            <div class="row justify-content-end align-content-end m-2">
+                <DxButton CssClass="col mx-4" RenderStyle="ButtonRenderStyle.Success" Text="@Lap["OK"]" Click="@BtnFilterOK" />
+                <DxButton CssClass="col " RenderStyle="ButtonRenderStyle.Danger" Text="@Lap["Cancel"]" Click="@BtnFilterCancel" />
+            </div>
+        }
+    </FooterTemplate>
+</DxPopup>
+@if (IsShowFrm && FrmType != null)
+{
+    <DxWindow @bind-Visible="@IsShowFrm" CloseOnEscape="true" Width="70vw"
+              MinWidth="700px"
+              MinHeight="500px" Scrollable="true"
+              MaxHeight="98vh"
+              AllowResize="true"
+              AllowDrag="true"
+              AllowDragByHeaderOnly="true"
+              ShowFooter="false">
+        <BodyTemplate>
+            <DynamicComponent Type="@FrmType" Parameters="@Par" />
+        </BodyTemplate>
+    </DxWindow>
+}
+@if (IsImportPopupVisible)
+{
+  
+    <DxPopup @ref="@OptwRef"
+             ShowFooter="false"
+             ShowHeader="false"
+             MinWidth="50vw"
+             @bind-Visible="@IsImportPopupVisible"
+             CloseOnEscape="true"
+             ShowCloseButton="false"
+             AllowResize="true"
+             AllowDrag="true"
+             AllowDragByHeaderOnly="true">
+        <BodyContentTemplate>
+            <div class="row">
+                <ImportDmhdb @bind-IsImportPopupVisible="@IsImportPopupVisible" OnImportCompleted="@ImportOK" />
+            </div>
+        </BodyContentTemplate>
+    </DxPopup>
+}
+<style>
+    .grid-frm-height {
+        height: 55vh;
+    }
+
+    .grid-frmct-height {
+        height: 30vh;
+    }
+</style>
+
+@code {
+    public string Ma_kh = "";
+    public string Ma_qs = "";
+    protected override void OnInitialized()
+    {
+        Menu_id = (String.IsNullOrEmpty(Menu_id) ? "ws.ct.06" : Menu_id);
+        FrmType = typeof(Input.Sodmhdb.FrmSodmhdb);
+        IsShowImport = true;
+        LanguageID = "";
+        base.OnInitialized();
+    }
+
+    private async void BtnFilterOK()
+    {
+        ShowLoadding = true;
+
+        myStateMN.SetStartDate((DateTime)Ngay_ct1);
+        myStateMN.SetEndDate((DateTime)Ngay_ct2);
+        phFilter = "1=1";
+        if (Ngay_ct1 != null)
+        {
+            phFilter = phFilter + " AND ngay_ct >= ''" + Ngay_ct1.ToString("yyyyMMdd") + "''";
+        }
+        if (Ngay_ct2 != null)
+        {
+            phFilter = phFilter + " AND ngay_ct <= ''" + Ngay_ct2.ToString("yyyyMMdd") + "''";
+        }
+        if (!String.IsNullOrEmpty(Ma_kh))
+        {
+            phFilter = phFilter + " AND ma_kh LIKE ''" + Ma_kh.Trim() + "%''";
+        }
+        if (!String.IsNullOrEmpty(Ma_qs))
+        {
+            phFilter = phFilter + " AND ma_qs LIKE ''" + Ma_qs.Trim() + "%''";
+        }
+
+        await Loaddata(false);
+
+        ShowLoadding = false;
+        popFilterVisible = false;
+        InvokeAsync(StateHasChanged);
+    }
+    public override async void V_In()
+    {
+        DataRowView rview = (DataRowView)SelectedItem;
+        if (rview == null)
+        {
+            myStateMN.SetNewThongbao(Lap["No data selected"]);
+            return;
+        }
+
+        DataSet DataSource = CopyVoucherToDataSet(SqlTableKeyValue);
+        if (DataSource != null && DataSource.Tables.Count > 0)
+        {
+            LSData = new List<HDBModel>();
+            HDBModel _curModel = new HDBModel();
+            _curModel.LSPh = myDb.ConvertDataTable<Dmhd>(DataSource.Tables[0]);
+            _curModel.LSCt = myDb.ConvertDataTable<Dmhdct>(DataSource.Tables[1]);
+            LSData.Add(_curModel);
+        }
+        ShowReport(LSData, typeof(HDBModel));
+    }
+}

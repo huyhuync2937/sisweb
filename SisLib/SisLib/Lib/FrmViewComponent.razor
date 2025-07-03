@@ -1,0 +1,130 @@
+﻿@inject XmlStringLocalizer Lap
+@inject ICommandManager Commands
+@inject IDbManager myDb
+
+<DxWindow @ref="@windowRef"
+          ShowFooter="true"
+          Visible="true"
+          CloseOnEscape="false"
+          ShowCloseButton="false"
+          AllowResize="false"
+          Width="1024px"
+          MinHeight="800px"
+          Context="windowContext"
+          HeaderText="@Pagetitle">
+    <BodyTemplate>
+        <div class="row">
+            @if (TblPh != null)
+            {
+                <div class="row">
+                    <FrmBrowseComponent @ref="@_PHFrmBrowse" TblData="@TblPh" Page_size="@pageSize" CssClass="grid-frm-height" Fbrowse="@Phbrowse" SelectItem="CurrenSelectItem" IsLangEn="@IsLangEn"></FrmBrowseComponent>
+                </div>
+                <div class="row">
+                    <h4 class="row mx-2 p-2" style="font-size:1rem; background-color:cornflowerblue;"> @Lap["Details"] </h4>
+                    <FrmBrowseComponent @ref="@_CTFrmBrowse" TblData="@TblCt" CssClass="grid-frm-height" Fbrowse="@Ctbrowse" IsLangEn="@IsLangEn" IsFilter="@isFilterct" IsPageSize="@isFilterct"></FrmBrowseComponent>
+                </div>
+            }
+        </div>
+    </BodyTemplate>
+    <FooterTemplate>
+        <div class="row m-2 justify-content-end">
+            <div class="row col-4 justify-content-end">
+                <DxButton CssClass="btnokcancel col" RenderStyle="ButtonRenderStyle.Danger" Text="@Lap["Cancel"].ToString()" Click="@HideForm" />
+            </div>
+        </div>
+    </FooterTemplate>
+</DxWindow>
+<style>
+    .grid-frm-height {
+        height: 40vh;
+    }
+</style>
+@code {
+    DxWindow windowRef;
+    [Parameter]
+    public EventCallback<bool> Closeform { get; set; }
+
+    [Parameter]
+    public string Pagetitle { get; set; }
+    [Parameter]
+    public string Menu_id { get; set; }
+    [Parameter]
+    public string Ma_ct { get; set; }
+    [Parameter]
+    public string Stt_rec { get; set; }
+    [Parameter]
+    public string sqlTableKey { get; set; }
+    [Parameter]
+    public bool IsLangEn { get; set; }
+
+    DataRow DmctInfo = (DataRow)null;
+    DataTable TblPh { get; set; }   
+    DataTable TblCt { get; set; }  
+    private Command curCommand = new Command();
+    string Phbrowse { get; set; }
+    string Ctbrowse { get; set; }
+   
+    FrmBrowseComponent _PHFrmBrowse;
+    FrmBrowseComponent _CTFrmBrowse;
+    object SelectedDataItem { get; set; }
+    private int pageSize = 22;
+    bool isFilterct { get; set; } = false;
+    private string SqlTableKeyValue = "";  
+    void HideForm()
+    {
+        windowRef.CloseAsync();
+        Closeform.InvokeAsync(false);
+    }
+    void CurrenSelectItem(object obj)
+    {
+        if (obj != null)
+        {
+            SelectedDataItem = obj;
+            DataRowView rview = (DataRowView)SelectedDataItem;
+            SqlTableKeyValue = rview[sqlTableKey].ToString().Trim();
+            TblCt.DefaultView.RowFilter = sqlTableKey + "='" + SqlTableKeyValue + "'";
+        }
+        else
+        {
+            TblCt.DefaultView.RowFilter = sqlTableKey + "=''";
+        }
+    }
+    protected async override Task OnInitializedAsync()
+    {
+        await Lap.LoadLocalizationAsync(String.Format("{0}",IsLangEn?"en":"vi"));
+        curCommand = await myDb.GetSubMenucommand(Menu_id.Replace('_', '.'));
+        if (curCommand != null)
+        {
+            string[] _brorwse = IsLangEn ? curCommand.Ebrowse2.Split('|') : curCommand.Vbrowse2.Split('|');
+            if (_brorwse != null)
+            {
+                Phbrowse = _brorwse[0];
+                Ctbrowse = _brorwse[1];
+            }
+            string strsql = "Select * from dmct where ma_ct = '" + Ma_ct + "'";
+            DataSet dsdmct = await myDb.LoadDataset(strsql);
+            DmctInfo = dsdmct.Tables[0].Rows[0];           
+        }
+        if (DmctInfo != null)
+        {
+            await PageLoad();
+            StateHasChanged();
+        }
+    }
+    async Task PageLoad()
+    {
+        string[] Process_Store = DmctInfo["process_Store"].ToString().Trim().Split('|');
+        string phFilter = string.Format("{0} = ''{1}''", sqlTableKey, Stt_rec);
+        string ctFilter = string.Format("{0} = ''{1}''", sqlTableKey, Stt_rec);
+        string strsql = "Exec " + Process_Store[0].Trim() + " @ma_ct='" + Ma_ct + "',@sPhFilter ='" + phFilter + "',@sCtFilter='" + ctFilter + "',@sGtFilter='1=1'";
+        DataSet _ds = await myDb.LoadDataset(strsql);
+        TblPh = _ds.Tables[0];
+        TblPh.DefaultView.Sort = "ngay_ct desc, so_ct desc";
+        TblCt = _ds.Tables[1];      
+        if (TblCt.DefaultView.Count > 0)
+        {
+            TblCt.DefaultView.RowFilter = sqlTableKey + "='" + TblPh.DefaultView[0][sqlTableKey].ToString().Trim() + "'";
+        }        
+        TblCt.DefaultView.Sort = "stt_rec0 asc";       
+    }
+}

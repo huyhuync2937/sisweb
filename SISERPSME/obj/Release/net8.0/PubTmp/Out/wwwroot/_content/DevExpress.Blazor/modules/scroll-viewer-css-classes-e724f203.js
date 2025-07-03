@@ -1,0 +1,1 @@
+import{C as a}from"./css-classes-c63af734.js";class s{}s.ClassName=a.Prefix+"-scroll-viewer",s.ContentContainerClassName=s.ClassName+"-content",s.VerticalScrollBarClassName=s.ClassName+"-vert-scroll-bar",s.HorizontalScrollBarClassName=s.ClassName+"-hor-scroll-bar",s.ScrollBarThumbClassName=s.ClassName+"-scroll-thumb",s.ScrollBarActiveClassName=a.Active;export{s as S};

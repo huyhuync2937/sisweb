@@ -1,0 +1,770 @@
+@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+
+html, body, Headers {
+    font-family: "SVN-Gilroy",'Helvetica Neue', Roboto, Helvetica,  Arial, sans-serif;
+    font-size: 0.88rem;    
+}
+.sis-form .dx-field-caption {
+    font-weight: bold; 
+    font-size: 16px;
+}
+.CollapseButtonIconCssClass {
+    background-image: url('.\\Images\\erpse.png');
+    background-repeat: no-repeat;
+    width: 10px;
+    height: 18px;
+    margin-top: 10px;
+}
+
+.ExpandButtonIconCssClass {
+    background-image: url('.\\Images\\erpcolapse.png');
+    background-repeat: no-repeat;
+    width: 10px;
+    height: 18px;
+    margin-top: 10px;
+}
+
+   
+.dxbl-treeview-item-content img {
+    width: 24px;
+    height: 24px;
+    margin-left: 0px;
+    margin-right: 4px;
+    padding: 0px;
+}
+
+.dxbl-treeview-item-content {
+    color: #1072B9;
+    cursor: pointer;
+    font-size: 0.88rem;
+    vertical-align: middle;
+    padding: 8px 4px;
+    height: 40px;
+    font-weight: bold;
+}
+   .treeview-items span{       
+        font-weight: bold;
+    } 
+.dxbl-treeview-item-container:hover {
+    color: #fff !important;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(210,243,255,1) 0%, dodgerblue 15%, dodgerblue 85%, rgba(230, 242, 255,1) 100%);
+}
+
+/*.dxbl-treeview-item-text {
+    color: #1072B9;
+}
+
+.dxbl-treeview-item-text:hover {
+        color: #fff;
+}*/
+
+
+.favourite-menu {
+    width: fit-content;
+    background-color: transparent;
+}
+
+.setting-icon {
+    background-image: url('..\\Images\\Settings.png');
+    background-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    background-position: center center;
+    background-color: transparent;
+    background-repeat: no-repeat;
+}
+.m-toggler-icon {
+    background-image: url('..\\Images\\menu24.png');    
+    width: 1.5em;
+    height: 1.8em;
+    color: black;
+    display: block;
+    --dxbl-image-margin-y: 0;
+}
+.m-menu-icon {
+    background-image: url('..\\Images\\erpcolapse.png');    
+    width: 10px;
+    height: 10px;
+    background-repeat: no-repeat;
+}
+.m-menu-item {
+    height:18px;
+    color: #1072B9; 
+    text-align:start;
+    font-size:5pt;
+    font-style:italic;
+    margin:0px;
+    padding:0px;   
+}
+.m-menu-item-fav {
+    color: white;
+    text-align: center;
+    background-color: #1072B9;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.treeview-searchbox
+{
+    padding-top:3px;
+}
+
+.maincontain {
+    overflow-y: scroll;
+    background-color: aliceblue;
+}
+.FrmBrowseGrid {
+    height: 80vh;
+    margin-bottom:10px;
+}
+
+a, .btn-link {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.main {
+    flex: 1;
+    background-image: url('..\\Images\\BG.svg');  
+}
+
+.btndimiss {
+    background-color: transparent;
+    margin-left: 50px;
+    border: none;
+    font-size: 1rem;
+}
+
+app {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.font-bold {
+    font-weight:bold;
+}
+
+.top-row {
+    height: auto;
+    display: flex;
+    background-color: #1072B9;
+}
+
+.sub-menu {
+    display: flex;
+    background-color: transparent;
+    height: 2rem;
+}
+
+table {
+    width: 100%;
+    overflow: scroll;
+    white-space: nowrap;
+}
+
+table, th, td {
+    border-collapse: collapse;
+    border-spacing: 0;
+    text-align: left;
+    font-size: 0.8rem;
+}
+
+tr:nth-child(even) {
+}
+
+td {
+    max-width: 200px;
+    font-size: 0.8rem;
+}
+
+#checkboxgroup {
+    height: 30px;
+    margin: 0 0 15px 0;
+}
+
+.checkboxitem {
+    font-size: 0.5rem;
+    color: #1072B9;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.btn-menu {
+    padding: 0,2px;
+    min-width: 100px;
+    border: none;
+    border-color: transparent;
+    background-color: #1072B9;
+    color: white;
+    border-radius: 5px;
+    font-size: 0.7rem;
+}
+
+
+ul > li {
+    display: inline;
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.main .top-row {
+    background-color: #FFF;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+}
+
+    .main .top-row > a, .main .top-row .btn-link {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+    }
+
+    .main .top-row a:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+.sidebar .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .sidebar .oi {
+        width: 1.5rem;
+        font-size: 1rem;
+        vertical-align: text-top;
+        top: -2px;
+    }
+
+    .sidebar .nav-item {
+        font-size: 0.9rem;
+        padding-bottom: 0.5rem;
+    }
+
+  .sidebar .nav-item:first-of-type {
+            padding-top: 1rem;
+        }
+
+.sidebar .nav-item:last-of-type {
+            padding-bottom: 1rem;
+        }
+
+ .sidebar .nav-item a {
+            color: #FBAA32;
+            border-radius: 4px;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            line-height: 3rem;
+        }
+
+ .sidebar .nav-item a.active {
+                /*  background-color: rgba(255,255,255,0.25);*/
+                color: #1072B9;
+            }
+
+.sidebar .nav-item a:hover {
+                /* background-color: rgba(255,255,255,0.1);*/
+                color: #1072B9;
+            }
+
+.content {   
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    border-radius: 5px;
+    margin: 2px 1px 1px 4px;
+}
+
+.topAlert {
+    box-shadow: 0 0 3px rgba(0,0,0,0.3);
+    transition: 0.3s;
+    border-radius: 5px;
+    height: 2.5rem;
+}
+.navbar-toggler {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.valid.modified:not([type=checkbox]) {
+    outline: 1px solid #26b050;
+}
+
+.invalid {
+    outline: 1px solid red;
+}
+
+.validation-message {
+    color: red;
+}
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+#langEN, #langVI {
+    font-size: 0.8rem;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+
+#langEN {
+    background-color: #1072B9;
+}
+
+#langVI {
+    background-color: #FBAA32;
+    margin-left: 5px;
+}
+
+#banhang-main {
+    border-radius: 15px;
+    background-color: white;
+}
+
+.khung-main {
+    border-radius: 15px;
+    background-color: white;
+}
+
+.staff-title {
+    color: #1072B9;
+    font-size: 1rem;
+    font-weight: bold;
+    height: 30px;
+}
+
+.btn-toolbar-fucn {
+    border: none;
+    background-color: green;
+    /*#FBAA32*/
+    color: black;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+    font-size: 0.9rem;
+    font-weight: normal;
+    padding: 0 5px;
+    height: 30px;
+    border-radius: 5px;
+    color: white;
+}
+
+#username {
+    margin-left: 10px;
+    font-size: 0.7rem;
+}
+
+#loginlogout {
+    text-decoration: none;
+}
+
+#userinfo {
+    width: 100%;
+    height: 35px;
+}
+
+
+#topBar {
+    height: 40px;
+    border-radius: 15px;
+}
+
+.adminbox {
+    height: 120px;
+    border-radius: 20px;
+    width: 100%;
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.2);
+    background-color: #1072B9;
+    color: white;
+    margin-left: 10px;
+}
+
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    app {
+        flex-direction: row;
+    }
+
+    .main .top-row {
+        position: sticky;
+        top: 0;
+    }
+
+    .main > div {
+        padding: 0.2rem !important;
+       /* padding-left: 0.2rem !important;
+        padding-right: 0.2rem !important;*/
+    }
+
+    .navbar-toggler {
+        display: none;
+    }
+}
+
+body {  
+    /*
+      background: #EAF3F9;
+       background: radial-gradient(circle, rgba(240,250,255,1) 0%, rgba(140,230,255,1) 100%);   
+       background: #EAF3F9;
+       background-image: url('../Images/background.png');
+       background-image: url('../Images/SIS_BCK_01.jpg');
+   */
+}
+
+#dropdownMenuButton {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: transparent;
+    border: none;
+}
+
+
+.login_container {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.3);
+    width: auto;
+    border-radius: 20px;
+}
+
+.login_container1 {
+    background-image: url('\\Images\\login_background.png');
+    background-repeat: no-repeat;
+    /*  background-image: conic-gradient(white,#1072B9,#1072B9,white);*/
+    /*    background-image: linear-gradient(white,#1072B9);
+*/
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.3);
+    height: 250px;
+    width: auto;
+    border-radius: 20px;
+}
+
+
+
+tr.spaceUnder > td {
+    padding-bottom: 1rem;
+}
+
+.spaceUnder input {
+    padding-left: 15px;
+    margin-top: 10px;
+    border: medium;
+    border-radius: 15px;
+    width: 100%;
+    font-size: 1.1rem;
+    font-family: fontOpenSans;
+    height: 40px;
+}
+
+#space {
+    width: 100%;
+    height: 50px;
+}
+
+#space10 {
+    width: 100%;
+    height: 2px;
+}
+
+#borderyelow {
+    width: 100%;
+    height: 1px;
+    background-color: orange;
+}
+
+#version {
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    text-align: center;
+    color: #1861ac;
+    font-weight: bold;
+    font-style: italic;
+    font-family: Sylfaen;
+    font-size: 14pt;
+}
+
+#inputtext {
+    font-size: 18pt;
+    font-weight: bold;
+    color: #1861ac;
+}
+
+.productName {
+    padding-left: 10pt;
+    vertical-align: central;
+    text-align: left;
+    font-weight: bolder;
+    color: #1072B9;
+    font-size: 1.5rem;
+}
+
+#blueLine {
+    height: 1pt;
+    background-color: #1072B9;
+}
+
+select:focus {
+    border: none;
+    outline-offset: 0px;
+    outline: none;
+    font-size: 0.7rem;
+}
+
+input:focus {
+    border: none;
+    outline-offset: 0px;
+    outline: none;
+}
+
+
+input {
+    height: 22px;
+    border: none;
+    font-family: fontOpenSans;
+    border-radius: 15px;
+    width: auto;
+}
+
+
+footer {
+    width: 100%;
+    height: 50px;
+    background-color:darkblue;
+}
+
+
+.drop-target {
+    background-color: silver;
+    border: 1px dashed #ebebeb;
+    display: block;
+    height: 30px;
+    border: solid;
+    border-width: 1px;
+    border-color: silver;
+}
+
+/*#EAF3F9*/
+#toolbarspace {
+    height: 10px;
+}
+
+.barspace {
+    height: 50px;
+}
+
+
+#btnfilterdongy {
+    width: 100px;
+    background-color: #FBAA32;
+    color: white;
+}
+
+#btnfilterhuy {
+    width: 100px;
+    background-color: #1072B9;
+    color: white;
+}
+
+
+.dxheader {
+    height: auto;
+    background-image: linear-gradient( 135deg, #ffffff 10%,#EBF5FB 80%, #EBF5FB 20%);
+    border: 0.5px solid #AEB6BF;
+    box-shadow: 2px 3px 2px #F4F6F6;
+}
+
+.dxheadem {
+    height: auto;
+    background-image: linear-gradient( 135deg, #ffffff 10%,#EBF5FB 80%, #EBF5FB 20%);
+    /* background-image: linear-gradient( 135deg, #ffffff 10%,#FFEF00 80%, #FFD700 20%);*/
+    border: 0.5px solid #AEB6BF;
+    box-shadow: 2px 3px 2px #F4F6F6;
+}
+
+.dxPopup {
+    background-color: white;
+}
+
+.khung_login {
+    background-image: url("../Images/login_background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 362px;
+    width: 320px;
+    margin-top: 15px;
+    border-radius: 15px;
+    position: center;
+    margin-left: 10%;
+}
+
+.fixed-row-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#btnlogin {
+    background-color: #FBAA32;
+    margin-top: 25px;
+    border-radius: 25px;
+    font-size: 1rem;
+    color: white;
+}
+
+.txtin {
+    font-size: 0.8rem;
+    color: #1861ac;
+    text-align: center
+}
+.btnokcancel {
+    width: 8vw;
+    height: 3vh;
+    min-height:30px;
+    min-width:70px;
+}
+
+.editor-icon-add1 {
+    -webkit-mask-image: url('.\\Images\\AddI.svg');
+    mask-image: url('.\\Images\\AddI.svg');
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.qltl-icon {
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    background-position: center center;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-image: url('.\\Images\\Icon_quan_ly_tien_luong.svg');
+}
+
+
+.login_container2 {
+    /* background-image: url("../Images/Frame.svg");
+    background-repeat: no-repeat;*/
+    /*box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.3);*/
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    min-width: 350px;
+    width: 350px;
+    height: 460px;
+    min-height: 460px;  
+    margin-left:20px;
+    /*border-radius: 20px;
+        margin: -9px 0 0 -26px;*/
+}
+
+.login-form {  
+    width: 100%;
+    height: 100%;
+    vertical-align:middle;
+    justify-content: center;   
+}
+.login-formv {
+    padding: 2% 10%;
+    vertical-align: middle;
+    justify-content: center;
+}
+.inputWithIcon input {
+    padding: 3px 40px;   
+}
+
+.inputWithIcon {
+    position: relative;
+    padding: 0px;
+    height:45px;
+}
+
+.inputWithIcon i {
+    position: absolute;
+    left: 0;
+    top: 18px;
+    padding: 9px 16px;
+    color: dodgerBlue;
+    transition: 0.3s;
+}
+
+.inputWithIcon img {
+    position: absolute;
+    right: 18px;
+    top: 25px;
+    height: 16px;
+    width: 16px;
+}
+
+    .inputWithIcon input:focus + i {
+        color: dodgerBlue;
+    }
+
+    .inputWithIcon.inputIconBg i {
+        background-color: dodgerBlue;
+        color: dodgerBlue;
+        padding: 16px 4px;
+        border-radius: 4px 0 0 4px;
+    }
+
+    .inputWithIcon.inputIconBg input:focus + i {
+        color: dodgerBlue;
+        background-color: dodgerBlue;
+    }
+
+#btnlogin {
+    background-color: #0d6efd;
+    margin-top: 25px;
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+    font-size: 1rem;
+    color: white;
+}
+
+.container_swap {
+    margin-top:4%;
+    text-align: center;
+    text-align: center;
+}
+
+.grid-icon {
+    background-color: transparent;
+}
+
+.grid-icon-delete {
+    width: 10px;
+    height: 10px;    
+    background-image: url('.\\Images\\delete.svg');    
+}
+
+.grid-icon-add {
+    width: 10px;
+    height: 10px;
+    background-image: url('.\\Images\\Add.svg');
+}

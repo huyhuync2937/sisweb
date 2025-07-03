@@ -1,0 +1,113 @@
+﻿<Router AppAssembly="@typeof(Program).Assembly" AdditionalAssemblies="@ExtraAsse">
+    <Found Context="routeData">
+        <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+            <NotAuthorized>
+                <div class="container" style="height:89vh;min-height:80vh;align-content:center">
+                    <h1 class="text-center" style="color:orange;">@Options.GetOptionsValue("M_TEN_CTY")</h1>
+                    <h4 class="text-center flash-text" style="color:#6495ED;">
+                        @Options.GetOptionsValue("M_DIA_CHI")
+                    </h4>
+                    <h4 class="text-center flash-text" style="color:#6495ED;">
+                        @Options.GetOptionsValue("M_MA_THUE")
+                    </h4>
+                </div>
+            </NotAuthorized>
+        </AuthorizeRouteView>        
+    </Found>
+    <NotFound>
+        <LayoutView Layout="@typeof(MainLayout)">
+            <p>Xin lỗi, Web đang bảo trì!</p>
+        </LayoutView>
+    </NotFound>
+</Router>
+
+@code
+{
+    @inject IOptionsManager Options
+    @inject ISisTypeManager SisTypes
+    @inject Statemanagerment statement
+    @inject IDbManager dbManager
+    @inject ISysVarManager SysVar
+    @inject ICommandManager Commands
+    @inject NavigationManager navigation
+    @inject ILocalStorageService Localstore    
+    @inject IJSRuntime JSRuntime    
+	
+    private static List<System.Reflection.Assembly> _extraAsse;    
+    public List<System.Reflection.Assembly> ExtraAsse
+    {
+        get
+        {
+            if (_extraAsse == null)
+            {
+                _extraAsse = new List<System.Reflection.Assembly>();
+                System.Reflection.Assembly as0 = typeof(SisCrm._discovery).Assembly;
+                System.Reflection.Assembly as1 = typeof(SisHr._discovery).Assembly;
+                System.Reflection.Assembly as2 = typeof(SisMg._discovery).Assembly;                
+                System.Reflection.Assembly as4 = typeof(SisCom.Func).Assembly;
+                System.Reflection.Assembly as5 = typeof(SisCtv._discovery).Assembly;
+                System.Reflection.Assembly as6 = typeof(SisSo._discovery).Assembly;
+                System.Reflection.Assembly as7 = typeof(SisFa._discovery).Assembly;
+                System.Reflection.Assembly as8 = typeof(SisSm._discovery).Assembly;
+                DevExpress.Utils.DeserializationSettings.RegisterTrustedAssembly(as6);
+                _extraAsse.Add(as0);
+                _extraAsse.Add(as1);
+                _extraAsse.Add(as2);                
+                _extraAsse.Add(as4);
+                _extraAsse.Add(as5);
+                _extraAsse.Add(as6);
+                _extraAsse.Add(as7);
+                _extraAsse.Add(as8);
+            }
+            return _extraAsse;           
+        }
+    }    
+
+    private DotNetObjectReference<App> Pageobj;
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {            
+            DevExpress.Utils.DeserializationSettings.RegisterTrustedAssembly("CustomAssembly, Version=x.x.x.x, Culture=neutral, PublicKeyToken=xxxxxxxxxxxxxxxx");
+            DevExpress.Utils.DeserializationSettings.RegisterTrustedAssembly(typeof(App).Assembly);
+            DevExpress.Utils.DeserializationSettings.RegisterTrustedAssembly(typeof(SisHr._discovery).Assembly);          
+            DevExpress.Utils.DeserializationSettings.RegisterTrustedAssembly(typeof(SisCrm._discovery).Assembly);
+
+            List<SisData.Model.SisType> sistype = SisCom.Func.GetAllComponent(ExtraAsse);            
+            SysVar.LoadData();
+            Commands.LoadData();
+            SisTypes.LoadData(sistype);
+            statement.SetLcStore(Localstore);
+            statement.SetDbManager(dbManager);            
+            statement.SetSysvar(SysVar);
+            statement.SetCommand(Commands);
+            statement.SetSisTypes(SisTypes);
+        }
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Pageobj = DotNetObjectReference.Create(this);
+            await JSRuntime.InvokeVoidAsync("SetPageObj", Pageobj);
+            string ma_dvcs = await Localstore.GetItemAsync<string>("ma_dvcs");            
+            if (!String.IsNullOrEmpty(ma_dvcs))
+            {
+                statement.SetDvcs(ma_dvcs, ma_dvcs);
+            }
+            string session_guid = await Localstore.GetItemAsync<string>("session_guid");
+            if (!String.IsNullOrEmpty(session_guid))
+            {
+                statement.SetSSID(session_guid);
+            }
+            Users _usr = await Localstore.GetItemAsync<Users>("user");
+            Dvcs _dvcs = statement.GetDvcs();
+            if (_usr != null && _usr.User_id != 0)
+                Options.LoadData(_usr.User_id, (_dvcs == null ? "" : _dvcs.Ma_dvcs));
+            else
+                Options.LoadData();
+            statement.SetOptions(Options);
+            
+        }
+    }
+}

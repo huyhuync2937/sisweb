@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SisSo.bundle.scp.css",
+      "PackagePath": "staticwebassets\\SisSo.nwvuv44q4q.bundle.scp.css"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SisSo.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SisSo.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.SisSo.props",
+      "PackagePath": "build\\SisSo.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.SisSo.props",
+      "PackagePath": "buildMultiTargeting\\SisSo.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.SisSo.props",
+      "PackagePath": "buildTransitive\\SisSo.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

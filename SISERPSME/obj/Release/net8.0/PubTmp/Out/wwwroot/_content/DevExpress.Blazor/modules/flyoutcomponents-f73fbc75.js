@@ -1,0 +1,13 @@
+import{dxFlyoutTagName as t}from"./flyout-dc598dc3.js";import{D as e}from"./popupportal-fe8de4f3.js";import{d as o}from"./events-interseptor-a522582a.js";import{a as r,b as s,G as i,H as p}from"./popup-72173b03.js";import{_ as m}from"./tslib.es6-d65164b3.js";import{n as a}from"./property-4ec0b52d.js";import{e as c}from"./custom-element-267f9a21.js";import{s as n,i as d,x as l}from"./lit-element-462e7ad3.js";import"./point-e4ec110e.js";import"./layouthelper-b10d5065.js";import"./constants-7c047c0d.js";import"./query-44b9267f.js";import"./rafaction-bba7928b.js";import"./screenhelper-c6dce9b0.js";import"./transformhelper-ebad0156.js";import"./positiontracker-83785493.js";import"./branch-aebd078a.js";import"./eventhelper-8bcec49f.js";import"./logicaltreehelper-39bf56ef.js";import"./portal-b3727c25.js";import"./data-qa-utils-8be7c726.js";import"./constants-a4904a3f.js";import"./const-90026e45.js";import"./dx-html-element-pointer-events-helper-3a1681ea.js";import"./dom-554d0cc7.js";import"./_commonjsHelpers-41cdd1e7.js";import"./common-48ec40e2.js";import"./browser-3fc721b7.js";import"./devices-17b9ba08.js";import"./dx-ui-element-38985cf5.js";import"./lit-element-base-be4d2d51.js";import"./dx-license-7b9121f4.js";import"./capture-manager-2bbac3a3.js";import"./focushelper-3e91fef2.js";import"./nameof-factory-64d95f5b.js";import"./custom-events-helper-e7f279d3.js";import"./focustrap-f9759d02.js";import"./tabbable-7d32c528.js";import"./key-ffa272aa.js";import"./keyboard-navigation-strategy-5d0ea026.js";import"./dom-utils-d057dcaa.js";import"./css-classes-c63af734.js";import"./focus-utils-d076e44c.js";import"./touch-6a322081.js";import"./disposable-d2c2d283.js";const j="dxbl-flyout-root";let f=class extends n{constructor(){super(...arguments),this.dropOpposite=!1,this.dropDirection=r.Near,this.dropAlignment=s.bottom}static get styles(){return d`
+            :host {
+                display: flex;
+                flex: 1 1 auto;
+                flex-direction: column;
+                align-items: stretch;
+                justify-items: stretch;
+                min-height: 0;
+            }
+        }`}render(){return l`
+            <slot></slot>
+            <slot name="arrow"/>
+        `}};m([a({type:Object,attribute:"drop-opposite"})],f.prototype,"dropOpposite",void 0),m([a({type:String,attribute:"drop-direction"})],f.prototype,"dropDirection",void 0),m([a({type:String,attribute:"drop-alignment"})],f.prototype,"dropAlignment",void 0),f=m([c(j)],f);function b(t){if(!t)throw new Error("failed");return t}const u={getReference:b,registeredComponents:[t,i,j,e,o,p]};export{u as default,b as getReference};

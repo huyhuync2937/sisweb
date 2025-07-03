@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Soth1Model" nillable="true" type="Soth1Model" />
+  <xs:complexType name="Soth1Model">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="Ngay_ct1" type="xs:dateTime" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Ngay_ct2" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Ma_ma" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="LoaiBoCT" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LsData" type="ArrayOfSoth1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfSoth1">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Soth1" nillable="true" type="Soth1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Soth1">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="Stt" type="xs:long" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Ma_vt" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Ma_vt_ten_vt" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Ma_vt_dvt" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="So_luong" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Gia2" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Tien2" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Ck" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Tien_sau_ck" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Thue" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Pt" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Gia" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Tien" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Sl_hbtl" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Tien_hbtl" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Tien_ck_tl" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Tien_thue_tl" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Tien_von_tl" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Tien_giam_gia" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Tien_thue_giam_gia" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Sl_thuan" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Dt_thuan" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Tien_thue_thuan" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Tien_von_thuan" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Lai" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Ty_le2" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Ty_le" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Ma_vt_nh_vt1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Ma_vt_nh_vt2" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Ma_vt_nh_vt3" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Ten_vt" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Ten_vt2" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Dvt" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Tien_thue_thuan_nt" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Pt_not_ck_nt" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Dt_thuan_nt" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Tien_nt" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Lai_nt" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Tien_von_thuan_nt" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Tien_von_tl_nt" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

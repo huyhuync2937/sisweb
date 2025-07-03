@@ -1,0 +1,317 @@
+﻿@using Microsoft.AspNetCore.Components.Forms
+@inject IDbManager myDb
+@inject ILocalStorageService Localstore
+@inject Statemanagerment myStatemanagerment
+@inject NavigationManager navigation
+@inject ICommandManager Commands
+@inject IOptionsManager Options
+@inject IStringLocalizer<App> Lap
+@inject IStringLocalizer<EditFormGiaTheoSanluong> Lat
+
+@implements IDisposable
+<div class="container pt-1">
+    <EditForm Context="ContextEdit" Model="@CurPh101web" onkeydown="ModifyEnterKeyPressAsTab(event);">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <DxFormLayout CssClass="w-100">
+
+            <DxFormLayoutItem Caption="@Lat["Name"]" ColSpanMd="12">
+                <Template>
+                    <DxTextBox CssClass="col" @bind-Text="CurPh101web.ten_km" Enabled="@AllowEditMode" maxlength="@MaxlengthTen" />
+                </Template>
+            </DxFormLayoutItem>
+
+            <DxFormLayoutItem Caption="@Lat["Dvcs"]" ColSpanMd="6">
+                <Template>
+                    <AutocompleteComponent Ma_dm="dmdvcs" @bind-Value="@CurPh101web.ma_dvcs" SelectChanged="OnAutoCompleteDVCSChanged" IsEnable="@AllowEditMode" IsLangEn="@IsLangEn"></AutocompleteComponent>
+                </Template>
+            </DxFormLayoutItem>
+
+            <DxFormLayoutItem Caption="@Lat["Group"]" ColSpanMd="6">
+                <Template>
+                    <AutocompleteComponent Ma_dm="dmnhkh4" @bind-Value="@CurPh101web.ma_nh" SelectChanged="OnAutoCompleteNHKHChanged" IsEnable="@AllowEditMode" IsLangEn="@IsLangEn"></AutocompleteComponent>
+                </Template>
+            </DxFormLayoutItem>
+
+            <DxFormLayoutItem Caption="@Lat["Items"]" ColSpanMd="12">
+                <Template>
+                    <AutocompleteComponent Ma_dm="dmvt" @bind-Value="@CurPh101web.ma_vt" SelectChanged="OnAutoCompleteDMVTChanged" IsEnable="@AllowEditMode" IsLangEn="@IsLangEn"></AutocompleteComponent>
+                </Template>
+            </DxFormLayoutItem>
+
+            <DxFormLayoutItem Caption="@Lat["From Date"]" ColSpanMd="6">
+                <Template>
+                    <DxDateEdit CssClass="col" Id="ngay_bd" @bind-Date="@CurPh101web.ngay_bd" Enabled="@AllowEditMode" DisplayFormat="dd-MM-yyyy" Format="dd-MM-yyyy" />
+                </Template>
+            </DxFormLayoutItem>
+
+            <DxFormLayoutItem Caption="@Lat["To Date"]" ColSpanMd="6">
+                <Template>
+                    <DxDateEdit CssClass="col" Id="ngay_kt" @bind-Date="@CurPh101web.ngay_kt" Enabled="@AllowEditMode" DisplayFormat="dd-MM-yyyy" Format="dd-MM-yyyy" />
+                </Template>
+            </DxFormLayoutItem>
+
+            <DxFormLayoutItem Caption="@Lat["Quantity"]" ColSpanMd="12">
+                <Template>
+                    <DxSpinEdit CssClass="col" @bind-Value="@CurPh101web.so_luong" Mask="@NumericMask.WholeNumber" Id="So_luong" Enabled="@AllowEditMode"></DxSpinEdit>
+                </Template>
+            </DxFormLayoutItem>
+
+            <DxFormLayoutItem Caption="@Lat["Price"]" ColSpanMd="12">
+                <Template>
+                    <DxMaskedInput @bind-Value="@CurPh101web.gia2"
+                                   CssClass="col"
+                                   Mask="@NumericMask.Currency" Enabled="@AllowEditMode" />
+                </Template>
+            </DxFormLayoutItem>
+
+        </DxFormLayout>
+    </EditForm>
+    <div class="row justify-content-end align-content-end mt-2">
+        <DxButton CssClass="col-3 m-1" Click="@SaveDM" Text="@Lap["Save"].ToString()" RenderStyle="ButtonRenderStyle.Primary" />
+        <DxButton CssClass="col-3 m-1" Click="@HideVoucher" Text="@Lap["Cancel"].ToString()" RenderStyle="ButtonRenderStyle.Danger" />
+    </div>
+</div>
+@code {
+    [Parameter]
+    public string Menu_id { get; set; }
+    [Parameter]
+    public string ma_ma { get; set; }
+    [Parameter]
+    public string ma_dvcs { get; set; }
+    [Parameter]
+    public ActionTask curActionTask { get; set; } = ActionTask.None;
+    [Parameter]
+    public bool? ShowAdd { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+    Ph101web CurPh101web { get; set; }
+    private static string sqlTableName = "ph101web";
+    private static string SqlTableKey = "ma_ma";
+    private string OldTableKeyValue = "";
+    private static string SqlTableKeyValue = "";
+    private string ParentPage = "kmgsl";
+    private bool AllowEditMode;
+    private Command curCommand = new Command();
+    private Dmdm CurDmdm = new Dmdm();
+    private string Ma_dvcs = "";
+    private string UserLang = "";
+    private bool IsLangEn = false;
+    private Users _curUser;
+    private string Toastmessage = "";
+    ColumnLength columnLength = new ColumnLength();
+    private int MaxlengthTen = 0;
+    void OnAutoCompleteDVCSChanged(ExpandoObject value)
+    {
+        CurPh101web.ten_dvcs = value.Where(a => a.Key.Equals("ten_dvcs")).FirstOrDefault().Value.ToString();
+        CurPh101web.ten_dvcs2 = value.Where(a => a.Key.Equals("ten_dvcs2")).FirstOrDefault().Value.ToString();
+        StateHasChanged();
+    }
+
+    void OnAutoCompleteDMVTChanged(ExpandoObject value)
+    {
+        CurPh101web.ten_vt = value.Where(a => a.Key.Equals("ten_vt")).FirstOrDefault().Value.ToString();
+        CurPh101web.ten_vt2 = value.Where(a => a.Key.Equals("ten_vt2")).FirstOrDefault().Value.ToString();
+        StateHasChanged();
+    }
+    void OnAutoCompleteNHKHChanged(ExpandoObject value)
+    {
+        CurPh101web.ten_nh = value.Where(a => a.Key.Equals("ten_nh")).FirstOrDefault().Value.ToString();
+        CurPh101web.ten_nh2 = value.Where(a => a.Key.Equals("ten_nh2")).FirstOrDefault().Value.ToString();
+        StateHasChanged();
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+            await Language();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (String.IsNullOrEmpty(Menu_id))
+            Menu_id = "we_bl_08";
+
+        curCommand = await Commands.GetSubMenuBymenuId(Menu_id.Replace('_', '.'));
+        myStatemanagerment.OnLangguaChanged += OnLangguachange;
+        _curUser = myStatemanagerment.GetCurUser();
+        Ma_dvcs = myStatemanagerment.GetMa_Dvcs();
+        columnLength = await myDb.GetColumnLength(SqlTableKey, sqlTableName);
+        MaxlengthTen = columnLength.max_length;
+        switch (curActionTask)
+        {
+            case ActionTask.View:
+                {
+                    if (!string.IsNullOrEmpty(ma_ma))
+                        ViewDM();
+                    break;
+                }
+            case ActionTask.Edit:
+                {
+                    if (!string.IsNullOrEmpty(ma_ma))
+                        EditDM();
+                    break;
+                }
+            case ActionTask.New:
+                {
+                    CreateNewDM();
+                    break;
+                }
+            default:
+                {
+                    if (!string.IsNullOrEmpty(ma_ma))
+                        ViewDM();
+                    break;
+                }
+        }
+    }
+    void ViewDM()
+    {
+        SqlTableKeyValue = ma_ma;
+        CurPh101web = new Ph101web();
+        AllowEditMode = false;
+        LoadData();
+    }
+    void EditDM()
+    {
+        SqlTableKeyValue = ma_ma;
+        CurPh101web = new Ph101web();
+        AllowEditMode = true;
+        LoadData();
+    }
+    async Task SaveDM()
+    {
+        if (!CheckValid())
+            return;
+
+        CurPh101web.ngay_bd = CurPh101web.ngay_bd.Date;
+        CurPh101web.ngay_kt = CurPh101web.ngay_kt.Date;
+        if (curActionTask == ActionTask.New)
+        {
+            CurPh101web.Date = DateTime.Now.Date;
+            CurPh101web.Date0 = DateTime.Now.Date;
+            CurPh101web.Time = DateTime.Now.ToString("HH:mm:ss");
+            CurPh101web.Time0 = DateTime.Now.ToString("HH:mm:ss");
+            if (_curUser != null)
+            {
+                CurPh101web.User_id = _curUser.User_id;
+                CurPh101web.User_id0 = _curUser.User_id;
+            }
+            await myDb.InsertOneRow<Ph101web>(CurPh101web, sqlTableName);
+            myStatemanagerment.SetNewThongbao(String.Format(Lap["Successfully added: {0}"].ToString(), SqlTableKeyValue));
+            if (ShowAdd == true)
+            {
+                await OnClose.InvokeAsync();
+            }
+            else
+                navigation.NavigateTo("/" + curCommand.Mobile_page.Trim() + @"/" + Menu_id);
+        }
+        else if (curActionTask == ActionTask.Edit)
+        {
+            CurPh101web.Date0 = DateTime.Now.Date;
+            CurPh101web.Time0 = DateTime.Now.ToString("HH:mm:ss");
+            if (_curUser != null)
+            {
+                CurPh101web.User_id0 = _curUser.User_id;
+            }
+            await myDb.UpdateOneRow<Ph101web>(CurPh101web, sqlTableName, SqlTableKey, SqlTableKeyValue);
+            myStatemanagerment.SetNewThongbao(String.Format(Lap["Edit successfully: {0}"], SqlTableKeyValue));
+            navigation.NavigateTo("/" + curCommand.Mobile_page.Trim() + @"/" + Menu_id);
+        }
+    }
+    bool CheckValid()
+    {
+        if (string.IsNullOrEmpty(CurPh101web.ten_km))
+        {
+            Toastmessage = "Chưa nhập tên CTKM";
+            myStatemanagerment.SetNewAlertMessage(Toastmessage);
+            return false;
+        }
+        if (string.IsNullOrEmpty(CurPh101web.ma_vt))
+        {
+            Toastmessage = "Chưa nhập mã vật tư";
+            myStatemanagerment.SetNewAlertMessage(Toastmessage);
+            return false;
+        }       
+
+        return true;
+
+    }
+    async void LoadData()
+    {
+        SqlTableKeyValue = ma_ma;
+        string sql = string.Format("Select * from {0} where {1} = '{2}' ", sqlTableName, SqlTableKey, SqlTableKeyValue);
+        DataSet DsTrans = await myDb.LoadDataset(sql);
+        if (DsTrans != null && DsTrans.Tables[0].Rows.Count > 0)
+        {
+            List<Ph101web> lsdata = myDb.ConvertDataTable<Ph101web>(DsTrans.Tables[0]);
+            if (lsdata != null && lsdata.Count > 0)
+                CurPh101web = lsdata[0];
+        }
+        StateHasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        CurPh101web = new Ph101web();
+    }
+    void CreateNewDM()
+    {
+        CurPh101web = new Ph101web();
+        CurPh101web.ma_ma = Guid.NewGuid().ToString();
+        CurPh101web.ngay_ct = CurPh101web.ngay_bd = CurPh101web.ngay_kt = DateTime.Now.Date;
+        CurPh101web.Status = "1";
+        CurPh101web.ma_dvcs = Ma_dvcs;
+        CurPh101web.so_luong = 0;
+        CurPh101web.gia2 = 0;
+        CurPh101web.Status = "1";
+        AllowEditMode = true;
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        myStatemanagerment.OnLangguaChanged -= OnLangguachange;
+    }
+    private async void OnLangguachange(MyLang lang)
+    {
+        if (lang.IsnewLang)
+        {
+            await Language();
+        }
+    }
+    async Task Language()
+    {
+        try
+        {
+            IsLangEn = false;
+            UserLang = await Localstore.GetItemAsync<string>("userlang");
+            if (!string.IsNullOrEmpty(UserLang))
+            {
+                if (UserLang.Equals("En"))
+                {
+                    IsLangEn = true;
+                }
+            }
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+    private void Hidemessage(bool state)
+    {
+        if (state)
+        {
+            Toastmessage = "";
+            StateHasChanged();
+        }
+    }
+    void HideVoucher()
+    {
+        if (ShowAdd == true)
+        {
+            OnClose.InvokeAsync();
+        }
+        else
+            navigation.NavigateTo("/" + curCommand.Mobile_page.Trim() + @"/" + Menu_id);
+    }
+}

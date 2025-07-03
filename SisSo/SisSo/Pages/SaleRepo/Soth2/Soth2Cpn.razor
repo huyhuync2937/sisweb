@@ -1,0 +1,149 @@
+﻿@page "/Soth2"
+@page "/Soth2/{menu_id}"
+@inherits RepoBaseComponent
+@inject IStringLocalizer<App> Lat
+@inject IWebHostEnvironment webhost
+@attribute [Authorize(Roles = "admin,soth2")]
+@using System.Xml.Serialization
+@using System.IO
+@using System.Text
+@using System.Xml.Schema
+
+<div class="row">
+    <FrmBrowseComponent @ref="@oBrowse" TblData="@TblData" SelectItem="@SelectedItem" Fbrowse="@FbrowsePH" IsLangEn="@IsLangEn"></FrmBrowseComponent>
+</div>
+
+<DxPopup @ref="popFilter" CloseOnOutsideClick="false" CssClass="dxPopup"
+         @bind-Visible="@PopupVisible"
+         Width="500px"
+         ShowFooter="true" Context="windowContext"
+         HeaderText="@Lap["Filter"]">
+    <BodyTemplate>
+        @if (ShowLoadding)
+        {
+            <div class="row m-0 p-0 justify-content-center">
+                <div class="spinner-border text-primary" role="status" style="width: 5rem; height:5rem;border-width:3px;">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="container pt-1">
+                <DxFormLayout CssClass="w-100">
+                    <DxFormLayoutItem ColSpanMd="12" Caption="@Lap["From date"]">
+                        <DxDateEdit CssClass="col" @bind-Date="@Ngay_ct1" NullText="" ClearButtonDisplayMode="DataEditorClearButtonDisplayMode.Auto"
+                                    InputId="idTu_ngay" />
+                    </DxFormLayoutItem>
+                    <DxFormLayoutItem ColSpanMd="12" Caption="@Lap["To date"]">
+                        <DxDateEdit CssClass="col" @bind-Date="@Ngay_ct2" NullText="" ClearButtonDisplayMode="DataEditorClearButtonDisplayMode.Auto"
+                                    InputId="idDen_ngay" />
+                    </DxFormLayoutItem>
+                    
+                    <DxFormLayoutItem ColSpanMd="12" Caption="@Lap["ID"]">
+                        <DxTextBox CssClass="col" @bind-Text="@Ma_kh" NullText="" ClearButtonDisplayMode="DataEditorClearButtonDisplayMode.Auto"
+                                    InputId="idMa_kh" />
+                    </DxFormLayoutItem>
+                </DxFormLayout>
+            </div>
+        }
+        
+    </BodyTemplate>
+
+    <FooterTemplate>
+        @if (!ShowLoadding)
+        {            
+             <div class="row justify-content-end align-content-end m-2">
+                <DxButton CssClass="col mx-4" RenderStyle="ButtonRenderStyle.Success" Text="@Lap["OK"]" Click="@BtnSave" />
+                <DxButton CssClass="col " RenderStyle="ButtonRenderStyle.Danger" Text="@Lap["Cancel"]" Click="@BtnCancel" />
+            </div>            
+        }
+    </FooterTemplate>
+</DxPopup>
+@if(ShowPrint)
+{
+    <DxPopup @ref="popPrint" CloseOnOutsideClick="false" CssClass="dxPopup"
+             @bind-Visible="@ShowPrint"
+             Width="80%" Height="90%"
+             ShowFooter="false"
+             HeaderText="@Lap["Printer"]">
+        <BodyTemplate>
+            <ReportOptionComponent LSItems="@LsData" Menu_id="@Menu_id.Replace('_','.')" OnBack="()=>{ShowPrint=false;}"></ReportOptionComponent>
+        </BodyTemplate>    
+    </DxPopup>
+}
+
+@code {
+    public List<Soth2> LstData;
+    public List<Soth2Model> LsData;
+    public DataTable TblDataCT;
+    public string FbrowsePH = "";    
+
+    protected override void OnInitialized()
+    {
+        //Itype = typeof(Soth1);
+        base.OnInitialized();
+    }    
+    
+    #region "Tim kiem"
+    private string Ma_kh = "";
+    public string stradv = "";
+    private async void BtnSave()
+    {
+        ShowLoadding = true;
+        myStateMN.SetStartDate((DateTime)Ngay_ct1);
+        myStateMN.SetEndDate((DateTime)Ngay_ct2);
+
+        await Loaddata();
+
+        ShowLoadding = false;
+        PopupVisible = false;
+        InvokeAsync(StateHasChanged);
+    }
+    private void BtnCancel()
+    {
+        PopupVisible = false;
+        StateHasChanged();
+    }
+    public override async Task Loaddata()
+    {
+        if (Ngay_ct1 == null || Ngay_ct2 == null || Ngay_ct1 > Ngay_ct2)
+        {
+            myStateMN.SetNewThongbao(Lap["Incorrect date declaration"] + " !");
+            return;
+        }
+
+        ShowLoadding = true;
+        string parram_name = "ngay_ct1;ngay_ct2;giam_tru;advance;Select;Join";
+        string parram_value = "";        
+        parram_value = ((DateTime)Ngay_ct1).ToString("yyyyMMdd");
+        parram_value += ";" + ((DateTime)Ngay_ct2).ToString("yyyyMMdd");
+        string str = "ma_kh LIKE '" + Ma_kh.Trim() + "%' AND ma_dvcs like '"+ Ma_kh.Trim() + "%'";
+        stradv = "a.stt, a.ma_vt, dmvt_ma_vt.ten_vt as ma_vt_ten_vt, dmvt_ma_vt.dvt as ma_vt_dvt, a.so_luong, a.gia2, a.tien2, a.ck, a.tien_sau_ck, a.thue, a.pt, a.gia, a.tien, a.sl_hbtl, a.tien_hbtl, a.tien_ck_tl, a.tien_thue_tl, a.tien_von_tl, a.tien_giam_gia, a.tien_thue_giam_gia, a.sl_thuan, a.dt_thuan, a.tien_thue_thuan, a.tien_von_thuan, a.lai, a.ty_le2, a.ty_le, dmvt_ma_vt.nh_vt1 as ma_vt_nh_vt1, dmvt_ma_vt.nh_vt2 as ma_vt_nh_vt2, dmvt_ma_vt.nh_vt3 as ma_vt_nh_vt3";
+        string strjoin = " LEFT JOIN dmvt dmvt_ma_vt ON dmvt_ma_vt.ma_vt = a.ma_vt";
+        parram_value += ";0;" + str + ";" + stradv + ";" + strjoin;
+        DataSet ds = await myDb.LoadStoreProcedure(Store_proc, parram_name, parram_value);
+
+        TblData = ds.Tables[1].Copy();      
+        // string modelstr = SisFunc.Converts.DataTable2Model(TblData, "Soth1");
+        FbrowsePH = Fbrowse.Split("|")[0];
+        ShowLoadding = false;
+        StateHasChanged();
+    }
+
+    public override void Print()
+    {
+        LsData = new List<Soth2Model>();
+        Soth2Model Data = new Soth2Model();
+        Data.Ngay_ct1 = (DateTime)Ngay_ct1;
+        Data.Ngay_ct2 = (DateTime)Ngay_ct2;
+        LstData = myDb.ConvertDataTable<Soth2>(TblData);
+        Data.LsData = LstData;
+        LsData.Add(Data);
+        
+        ShowReport(LsData, typeof(Soth2Model));
+
+        //ShowPrint = true;        
+    }
+    #endregion
+}

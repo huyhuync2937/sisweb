@@ -1,0 +1,60 @@
+﻿@page "/arkh"
+@page "/arkh/{Menu_id}"
+@inherits CustomListBaseComponent
+@using SisLib.List
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<ArkhComponent> Lat
+@attribute [Authorize(Roles = "admin,arkh")]
+
+<div class="row mt-1">
+    <FrmBrowseComponent @ref="oBrowse" TblData="@TblData" Fbrowse="@fbrowse" Page_size="@Page_size" SelectItem="CurItem" OnRowDbClick="@OnRDBClick" IsLangEn="@IsLangEn"></FrmBrowseComponent>
+</div>
+<DxPopup @ref="@OptwRef"
+          ShowFooter="false"
+          ShowHeader="false"
+          @bind-Visible="@IDVisible"
+          MinWidth="50vw"
+          CloseOnEscape="true"
+          ShowCloseButton="false"          
+          AllowResize="true"
+          AllowDrag="true"
+          AllowDragByHeaderOnly="true">    
+    <BodyContentTemplate>
+        <div class="row">
+            <FrmChangeListID @bind-Visible="@IDVisible" List_ID="@sqlTableName" Ma_ma="@SqlTableKeyValue" Title="@Lat["Change customer code"]" Ten_item="@Ten_item" OnOK="@ChangeOK" />
+        </div>
+    </BodyContentTemplate>
+</DxPopup>
+@if (IsImportPopupVisible)
+{
+
+    <DxPopup @ref="@OptwRef"
+    ShowFooter="false"
+    ShowHeader="false"
+    MinWidth="50vw"
+    @bind-Visible="@IsImportPopupVisible"
+    CloseOnEscape="true"
+    ShowCloseButton="false"
+    AllowResize="true"
+    AllowDrag="true"
+    AllowDragByHeaderOnly="true">
+        <BodyContentTemplate>
+            <div class="row">
+                <ImportArkh @bind-IsImportPopupVisible="@IsImportPopupVisible" OnImportCompleted="@ImportOK" />
+            </div>
+        </BodyContentTemplate>
+    </DxPopup>
+}
+@code {
+    protected override void OnInitialized()
+    {
+        mPage = "arkh";
+        IsShowImport = true;
+        editPage = "frmArkh";
+        IsShowCopy = true;
+        if (String.IsNullOrEmpty(Menu_id))
+            Menu_id = "ws_dm_01";
+
+        base.OnInitialized();
+    }
+}

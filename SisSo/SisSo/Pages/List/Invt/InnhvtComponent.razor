@@ -1,0 +1,52 @@
+﻿@page "/innhvt"
+@page "/innhvt/{Menu_id}"
+@inherits ListBaseComponent
+@inject IStringLocalizer<SisSo.Pages.App> Lat
+@attribute [Authorize(Roles = "admin,innhvt")]
+
+<FrmBrowseComponent @ref="oBrowse" Page_size="@Page_size" TblData="@TblData" Fbrowse="@fbrowse" SelectItem="@CurItem" OnRowDbClick="@OnRDBClick" IsLangEn="@IsLangEn"></FrmBrowseComponent>
+@if (IsShowFrm && FrmType != null)
+{
+    <DxWindow @bind-Visible="@IsShowFrm" CloseOnEscape="true" Width="40vw"
+              MinWidth="400px"
+              Scrollable="true"
+              MaxHeight="98vh"
+              AllowResize="true"
+              AllowDrag="true"
+              AllowDragByHeaderOnly="true"
+              ShowFooter="false">
+        <BodyTemplate>
+            <DynamicComponent Type="@FrmType" Parameters="@Par" />
+        </BodyTemplate>
+    </DxWindow>
+}
+@if (IDVisible)
+{
+    <DxPopup @ref="@OptwRef"
+             ShowFooter="false"
+             ShowHeader="false"
+             @bind-Visible="@IDVisible"
+             MinWidth="50vw"
+             CloseOnEscape="true"
+             ShowCloseButton="false"
+             AllowResize="true"
+             AllowDrag="true"
+             AllowDragByHeaderOnly="true">
+        <BodyContentTemplate>
+            <div class="row">
+                <FrmChangeListID @bind-Visible="@IDVisible" List_ID="@sqlTableName" Ma_ma="@SqlTableKeyValue" Title="@Lat["Change Item code"]" Ten_item="@Ten_item" OnOK="@ChangeOK" />
+            </div>
+        </BodyContentTemplate>
+    </DxPopup>
+}
+@code {    
+    protected override void OnInitialized()
+    {
+        if (String.IsNullOrEmpty(Menu_id))
+            Menu_id = "ws_dm_04";
+        mPage = "innhvt";//editPage = "frmNhvt";
+        FrmType = typeof(List.Invt.EditNhvt);
+        
+        base.OnInitialized();
+    }
+}

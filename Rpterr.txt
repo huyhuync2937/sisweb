@@ -1,0 +1,138 @@
+15:30:59 Thứ Tư, 4 tháng 6, 2025
+Data at the root level is invalid. Line 1, position 1.
+-------------------------------
+15:31:17 Thứ Tư, 4 tháng 6, 2025
+Data at the root level is invalid. Line 1, position 1.
+-------------------------------
+15:31:26 Thứ Tư, 4 tháng 6, 2025
+Data at the root level is invalid. Line 1, position 1.
+-------------------------------
+15:17:10 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+15:17:25 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+15:18:21 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+15:19:42 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+15:21:20 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+15:21:42 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+15:21:48 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+15:21:52 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+15:22:38 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+15:23:12 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+15:24:45 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+15:31:52 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+15:32:11 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+15:42:55 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+15:43:09 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+15:54:39 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+15:54:52 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+16:50:30 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+16:50:45 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+17:02:58 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+17:03:41 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+17:21:09 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+17:21:27 Thứ Năm, 5 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+08:26:02 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+08:34:56 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+08:35:08 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+09:24:50 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+09:56:27 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+09:56:40 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+09:56:49 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+10:28:21 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+10:29:29 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+10:45:59 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+10:47:00 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+11:19:54 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+11:48:58 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+11:57:52 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+11:59:16 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+11:59:54 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+14:23:11 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+14:23:37 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+14:23:45 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------
+14:47:42 Thứ Sáu, 6 tháng 6, 2025
+The SisSo.Pages.SaleRepo.Arctbh1.Arctbh1Model, SisSo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null type is not in the list of trusted types and therefore is not deserialized due to security reasons. See the https://go.devexpress.com/Jan2019_Deserialization_Issue.aspx article for additional information.
+-------------------------------

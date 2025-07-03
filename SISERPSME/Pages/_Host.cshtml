@@ -1,0 +1,13 @@
+﻿@page "/"
+@namespace SISERPSME.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+
+<component type="typeof(App)" render-mode="Server" />
+<script>
+    window.SetFocusToElement = (element) => {
+        element.focus();
+    };
+</script>
