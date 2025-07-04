@@ -11,7 +11,7 @@
         public DateTime Ngay_lct { get; set; }
         public String So_ct { get; set; }
         public String So_lo { get; set; }
-        public DateTime Ngay_lo { get; set; }
+        public DateTime? Ngay_lo { get; set; }
         public String Ma_kh { get; set; }
         public String Dia_chi { get; set; }
         public String Ong_ba { get; set; }
@@ -29,10 +29,10 @@
         public Decimal T_tt_nt { get; set; }
         public Decimal T_tt { get; set; }
         public String So_ct_tt { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
         public String Time { get; set; }
         public Int32 User_id { get; set; }
-        public DateTime Date0 { get; set; }
+        public DateTime? Date0 { get; set; }
         public String Time0 { get; set; }
         public Int32 User_id0 { get; set; }
         public String Status { get; set; }
@@ -44,9 +44,9 @@
         public String Ma_td1 { get; set; }
         public String Ma_td2 { get; set; }
         public String Ma_td3 { get; set; }
-        public DateTime Ngay_td1 { get; set; }
-        public DateTime Ngay_td2 { get; set; }
-        public DateTime Ngay_td3 { get; set; }
+        public DateTime? Ngay_td1 { get; set; }
+        public DateTime? Ngay_td2 { get; set; }
+        public DateTime? Ngay_td3 { get; set; }
         public Decimal Sl_td1 { get; set; }
         public Decimal Sl_td2 { get; set; }
         public Decimal Sl_td3 { get; set; }
@@ -56,8 +56,8 @@
         public String Ma_hd { get; set; }
         public Decimal Sua_tt_ck { get; set; }
         public Decimal Sua_tien { get; set; }
-        public DateTime Ngay_s1 { get; set; }
-        public DateTime Ngay_s2 { get; set; }
+        public DateTime? Ngay_s1 { get; set; }
+        public DateTime? Ngay_s2 { get; set; }
         public String Gc_s1 { get; set; }
         public String Gc_s2 { get; set; }
         public Decimal Sl_s1 { get; set; }

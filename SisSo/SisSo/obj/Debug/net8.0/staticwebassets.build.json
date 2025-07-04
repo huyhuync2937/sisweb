@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YPAhuQezKUKWy9/L/7RTnDMRtAinJJQiE4qbczu9ZAg=",
+  "Hash": "9EOpOZLfHvA47TWMVXO3/4RoIq0lsuc8s25KiXOPa+A=",
   "Source": "SisSo",
   "BasePath": "_content/SisSo",
   "Mode": "Default",
@@ -5868,10 +5868,10 @@
       "OriginalItemSpec": "C:\\Users\\ADMIN\\.nuget\\packages\\devexpress.blazor\\24.2.3\\staticwebassets\\modules\\window-resize-helper-8b32f302.js"
     },
     {
-      "Identity": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SisSo.styles.css",
+      "Identity": "D:\\SIS\\sisweb\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SisSo.styles.css",
       "SourceId": "SisSo",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\SIS\\sisweb\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/SisSo",
       "RelativePath": "SisSo#[.{fingerprint}]?.styles.css",
       "AssetKind": "All",
@@ -5886,13 +5886,13 @@
       "Integrity": "+TMqoEkBLdTtMzTJZ1hFD1coOfp+SA3jObadlDe5Uh0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SisSo.styles.css"
+      "OriginalItemSpec": "D:\\SIS\\sisweb\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SisSo.styles.css"
     },
     {
-      "Identity": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SisSo.bundle.scp.css",
+      "Identity": "D:\\SIS\\sisweb\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SisSo.bundle.scp.css",
       "SourceId": "SisSo",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\SIS\\sisweb\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/SisSo",
       "RelativePath": "SisSo#[.{fingerprint}]!.bundle.scp.css",
       "AssetKind": "All",
@@ -5907,7 +5907,7 @@
       "Integrity": "+TMqoEkBLdTtMzTJZ1hFD1coOfp+SA3jObadlDe5Uh0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SisSo.bundle.scp.css"
+      "OriginalItemSpec": "D:\\SIS\\sisweb\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SisSo.bundle.scp.css"
     }
   ],
   "Endpoints": [
@@ -16236,7 +16236,7 @@
     },
     {
       "Route": "SisSo.bundle.scp.css",
-      "AssetFile": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SisSo.bundle.scp.css",
+      "AssetFile": "D:\\SIS\\sisweb\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SisSo.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16257,7 +16257,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 03 Jul 2025 04:23:37 GMT"
+          "Value": "Fri, 04 Jul 2025 02:04:05 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -16273,7 +16273,7 @@
     },
     {
       "Route": "SisSo.nwvuv44q4q.bundle.scp.css",
-      "AssetFile": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SisSo.bundle.scp.css",
+      "AssetFile": "D:\\SIS\\sisweb\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SisSo.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16294,7 +16294,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 03 Jul 2025 04:23:37 GMT"
+          "Value": "Fri, 04 Jul 2025 02:04:05 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -16318,7 +16318,7 @@
     },
     {
       "Route": "SisSo.nwvuv44q4q.styles.css",
-      "AssetFile": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SisSo.styles.css",
+      "AssetFile": "D:\\SIS\\sisweb\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SisSo.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16339,7 +16339,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 03 Jul 2025 04:23:37 GMT"
+          "Value": "Fri, 04 Jul 2025 02:04:05 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -16363,7 +16363,7 @@
     },
     {
       "Route": "SisSo.styles.css",
-      "AssetFile": "D:\\SIS\\SISWEBERP2025_DEV\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SisSo.styles.css",
+      "AssetFile": "D:\\SIS\\sisweb\\SisSo\\SisSo\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SisSo.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16384,7 +16384,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 03 Jul 2025 04:23:37 GMT"
+          "Value": "Fri, 04 Jul 2025 02:04:05 GMT"
         },
         {
           "Name": "Cache-Control",

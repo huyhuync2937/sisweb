@@ -303,7 +303,7 @@
                                                 </CellEditTemplate>
                                             </DxGridDataColumn>
 
-                                            <DxGridDataColumn FieldName="Ma_vv_i" Caption="@Lap["Project"].ToString()" Width="150pt" CaptionAlignment="GridTextAlignment.Center" Visible="@IsVisibleGridColumn("Ma_vv_i")" VisibleIndex="@CtOrder.GetKey("16")">
+                                            <DxGridDataColumn FieldName="Ma_vv_i" Caption="@Lap["Project"].ToString()" Width="150pt" CaptionAlignment="GridTextAlignment.Center"  VisibleIndex="@CtOrder.GetKey("16")">
                                                 <CellEditTemplate Context="GrdContext">
                                                     @{
                                                         var _Ct51 = (Ct51)GrdContext.EditModel;
@@ -312,7 +312,7 @@
                                                 </CellEditTemplate>
                                             </DxGridDataColumn>
 
-                                            <DxGridDataColumn FieldName="Ma_ku_i" Caption="@Lap["Contract"].ToString()" Width="150pt" CaptionAlignment="GridTextAlignment.Center" Visible="@IsVisibleGridColumn("Ma_ku_i")" VisibleIndex="@CtOrder.GetKey("17")">
+                                            <DxGridDataColumn FieldName="Ma_ku_i" Caption="@Lap["Contract"].ToString()" Width="150pt" CaptionAlignment="GridTextAlignment.Center"  VisibleIndex="@CtOrder.GetKey("17")">
                                                 <CellEditTemplate Context="GrdContext">
                                                     @{
                                                         var _Ct51 = (Ct51)GrdContext.EditModel;

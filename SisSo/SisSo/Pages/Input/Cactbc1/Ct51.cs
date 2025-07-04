@@ -24,12 +24,12 @@
         public Decimal Thue_nt { get; set; }
         public Decimal Tt { get; set; }
         public Decimal Tt_nt { get; set; }
-        public DateTime Ngay_ct0 { get; set; }
+        public DateTime? Ngay_ct0 { get; set; }
         public String So_seri0 { get; set; }
         public String So_ct0 { get; set; }
         public String Ma_td2_i { get; set; }
         public String Ma_td3_i { get; set; }
-        public DateTime Ngay_td1_i { get; set; }
+        public DateTime? Ngay_td1_i { get; set; }
         public Decimal Sl_td1_i { get; set; }
         public Decimal Sl_td2_i { get; set; }
         public Decimal Sl_td3_i { get; set; }
@@ -46,8 +46,8 @@
         public String Ma_ku_i { get; set; }
         public Decimal Ty_gia_ht2 { get; set; }
         public Decimal Tien_tt { get; set; }
-        public DateTime Ngay_s1_i { get; set; }
-        public DateTime Ngay_s2_i { get; set; }
+        public DateTime? Ngay_s1_i { get; set; }
+        public DateTime? Ngay_s2_i { get; set; }
         public String Gc_s1_i { get; set; }
         public String Gc_s2_i { get; set; }
         public Decimal Sl_s1_i { get; set; }
@@ -59,10 +59,10 @@
         public String Ma_tb_i { get; set; }
         public String Ma_hdm_i { get; set; }
         public String So_ct_tc { get; set; }
-        public DateTime Ngay_ct_tc { get; set; }
+        public DateTime? Ngay_ct_tc { get; set; }
         public String Ma_nvhh { get; set; }
         public String Lot_nbr { get; set; }
-        public DateTime Han_sd_lot { get; set; }
+        public DateTime? Han_sd_lot { get; set; }
         public String Loc_id { get; set; }
         public String Dvt2 { get; set; }
         public Decimal So_luong2 { get; set; }

@@ -1,46 +1,31 @@
 wwwroot\css\bootstrap\bootstrap.css
 wwwroot\css\bootstrap\bootstrap.min.css
+wwwroot\css\dx-demo.css
 wwwroot\css\dx-demo-pages.css
 wwwroot\css\dx-demo-reporting-pages.css
 wwwroot\css\dx-demo-richedit-pages.css
-wwwroot\css\dx-demo.css
-wwwroot\css\open-iconic\FONT-LICENSE
-wwwroot\css\open-iconic\font\css\open-iconic-bootstrap.min.css
-wwwroot\css\open-iconic\font\fonts\open-iconic.eot
-wwwroot\css\open-iconic\font\fonts\open-iconic.otf
-wwwroot\css\open-iconic\font\fonts\open-iconic.svg
-wwwroot\css\open-iconic\font\fonts\open-iconic.ttf
-wwwroot\css\open-iconic\font\fonts\open-iconic.woff
-wwwroot\css\open-iconic\ICON-LICENSE
-wwwroot\css\open-iconic\README.md
-wwwroot\css\open.iconic\FONT-LICENSE.txt
 wwwroot\css\open.iconic\font\css\open-iconic-bootstrap.min.css
 wwwroot\css\open.iconic\font\fonts\open-iconic.eot
 wwwroot\css\open.iconic\font\fonts\open-iconic.otf
 wwwroot\css\open.iconic\font\fonts\open-iconic.svg
 wwwroot\css\open.iconic\font\fonts\open-iconic.ttf
 wwwroot\css\open.iconic\font\fonts\open-iconic.woff
+wwwroot\css\open.iconic\FONT-LICENSE.txt
 wwwroot\css\open.iconic\ICON-LICENSE.txt
 wwwroot\css\open.iconic\README.md
+wwwroot\css\open-iconic\font\css\open-iconic-bootstrap.min.css
+wwwroot\css\open-iconic\font\fonts\open-iconic.eot
+wwwroot\css\open-iconic\font\fonts\open-iconic.otf
+wwwroot\css\open-iconic\font\fonts\open-iconic.svg
+wwwroot\css\open-iconic\font\fonts\open-iconic.ttf
+wwwroot\css\open-iconic\font\fonts\open-iconic.woff
+wwwroot\css\open-iconic\FONT-LICENSE
+wwwroot\css\open-iconic\ICON-LICENSE
+wwwroot\css\open-iconic\README.md
 wwwroot\css\scroll-view.css
 wwwroot\css\sis.css
 wwwroot\css\site.css
 wwwroot\css\site.css.bak
-wwwroot\Document\0000000001\BG-SISVN_HD-SISVN200225-0001.Pdf
-wwwroot\Document\0000000001\BG-SISVN_HD-SISVN200225-0002.Pdf
-wwwroot\Document\0000000001\BG-SISVN_HD-SISVN200225.docx
-wwwroot\Document\0000000001\BG-SISVN_HD-SISVN200227.docx
-wwwroot\Document\0000000001\BG-SISVN_HD-SISVN240225.docx
-wwwroot\Document\0000000001\SISVN_HD-SISVN21022028.docx
-wwwroot\Document\0000000001\SISVN_HD-SISVN260225.docx
-wwwroot\Document\0000000001\SISVN_HD-SISVN270225.docx
-wwwroot\Document\0101218690\SISVN_HD-SISVN260225.docx
-wwwroot\Document\0101218690\SISVN_HD-SISVN270225.docx
-wwwroot\Document\0200664488\SISVN_PL-STATEWAY040325.docx
-wwwroot\Document\2300280111\SISVN_BT-KTSC2025.docx
-wwwroot\Document\2700622899\SISVN_BTDNB_PTC2024.docx
-wwwroot\Document\3001778944\SISVN_BT-DLHG2025.docx
-wwwroot\Document\4600403368\SISVN_BT-MTVTM2025.docx
 wwwroot\Doc_Template\Doc_Template\HCNS01-QD-Tiepnhan-HocViec.docx
 wwwroot\Doc_Template\Doc_Template\HCNS02-QD-Tiepnhan-ThuViec.docx
 wwwroot\Doc_Template\Doc_Template\HCNS03-QD-Tiepnhan-Chinhthuc.docx
@@ -70,6 +55,21 @@ wwwroot\Doc_Template\HCNS11-HopdongLaodong.docx
 wwwroot\Doc_Template\HCNS12-HopdongThuekhoanCTV.docx
 wwwroot\Doc_Template\HCNS13-ThongBaothatdoiNS.docx
 wwwroot\Doc_Template\HCNS14-QD-GiaoViec.docx
+wwwroot\Document\0000000001\BG-SISVN_HD-SISVN200225.docx
+wwwroot\Document\0000000001\BG-SISVN_HD-SISVN200225-0001.Pdf
+wwwroot\Document\0000000001\BG-SISVN_HD-SISVN200225-0002.Pdf
+wwwroot\Document\0000000001\BG-SISVN_HD-SISVN200227.docx
+wwwroot\Document\0000000001\BG-SISVN_HD-SISVN240225.docx
+wwwroot\Document\0000000001\SISVN_HD-SISVN21022028.docx
+wwwroot\Document\0000000001\SISVN_HD-SISVN260225.docx
+wwwroot\Document\0000000001\SISVN_HD-SISVN270225.docx
+wwwroot\Document\0101218690\SISVN_HD-SISVN260225.docx
+wwwroot\Document\0101218690\SISVN_HD-SISVN270225.docx
+wwwroot\Document\0200664488\SISVN_PL-STATEWAY040325.docx
+wwwroot\Document\2300280111\SISVN_BT-KTSC2025.docx
+wwwroot\Document\2700622899\SISVN_BTDNB_PTC2024.docx
+wwwroot\Document\3001778944\SISVN_BT-DLHG2025.docx
+wwwroot\Document\4600403368\SISVN_BT-MTVTM2025.docx
 wwwroot\dx-head-manager.js
 wwwroot\EX_mau\DMKHIMEX.xls
 wwwroot\EX_mau\DMVTIMEX.xls
@@ -115,9 +115,6 @@ wwwroot\Images\hethong.png
 wwwroot\Images\Home.svg
 wwwroot\Images\IAdd.svg
 wwwroot\Images\Icon quan_ly_mua_hang.svg
-wwwroot\Images\icons\close.svg
-wwwroot\Images\icons\copy.svg
-wwwroot\Images\icons\info.svg
 wwwroot\Images\Icon_avt.svg
 wwwroot\Images\Icon_bang_theo_doi_gui_xe.svg
 wwwroot\Images\Icon_bao_cao_nhan_su.svg
@@ -175,8 +172,8 @@ wwwroot\Images\Icon_tha_xuong.svg
 wwwroot\Images\Icon_them_moi.svg
 wwwroot\Images\Icon_thong_bao.svg
 wwwroot\Images\Icon_thong_tin.svg
-wwwroot\Images\Icon_tinh_hinh_nghi_phep.svg
 wwwroot\Images\Icon_tin_nhan.svg
+wwwroot\Images\Icon_tinh_hinh_nghi_phep.svg
 wwwroot\Images\Icon_trang_cuoi_cung.svg
 wwwroot\Images\Icon_trang_tiep_theo.svg
 wwwroot\Images\Icon_tro_ve_trang_dau.svg
@@ -186,6 +183,9 @@ wwwroot\Images\Icon_VN.svg
 wwwroot\Images\Icon_web.svg
 wwwroot\Images\Icon_xem.svg
 wwwroot\Images\Icon_xoa.svg
+wwwroot\Images\icons\close.svg
+wwwroot\Images\icons\copy.svg
+wwwroot\Images\icons\info.svg
 wwwroot\Images\import.png
 wwwroot\Images\IUser.svg
 wwwroot\Images\khung.png
@@ -199,8 +199,8 @@ wwwroot\Images\New.svg
 wwwroot\Images\pass.svg
 wwwroot\Images\pdficon.PNG
 wwwroot\Images\Print.svg
-wwwroot\Images\Printer.png
 wwwroot\Images\print_logo.png
+wwwroot\Images\Printer.png
 wwwroot\Images\Save.png
 wwwroot\Images\Save.svg
 wwwroot\Images\sbot_icon.jpg
@@ -230,10 +230,10 @@ wwwroot\lib\page-helper.js
 wwwroot\lib\page-nav.js
 wwwroot\lib\page-section-helper.js
 wwwroot\lib\reporting.js
+wwwroot\lib\scrollable.js
 wwwroot\lib\scroll-view.config.js
 wwwroot\lib\scroll-view.debug.js
 wwwroot\lib\scroll-view.js
-wwwroot\lib\scrollable.js
 wwwroot\Pict\00001.PNG
 wwwroot\Pict\00002.PNG
 wwwroot\Pict\00003.PNG
@@ -287,6 +287,7 @@ wwwroot\Reports\VND\VN\bcvanhanhtb.repx
 wwwroot\Reports\VND\VN\bienbangiaonhan.repx
 wwwroot\Reports\VND\VN\CACTPT1A.repx
 wwwroot\Reports\VND\VN\CACTPT1B.repx
+wwwroot\Reports\VND\VN\CACTPT1C_nb.repx
 wwwroot\Reports\VND\VN\CACTPT1C_Nua_A4_TT200.repx
 wwwroot\Reports\VND\VN\CACTPT1C_TT200.repx
 wwwroot\Reports\VND\VN\cmthietbi.repx
@@ -316,12 +317,23 @@ wwwroot\Script.js
 wwwroot\upload_tmp\IMEXBG1.xls
 wwwroot\upload_tmp\IMEXHDB.xls
 wwwroot\upload_tmp\IMEXPT1.Xls
+wwwroot\Word_Template\~$.BBNT HDKT_MAU.DOCX
+wwwroot\Word_Template\~$.BG_SISMAC.DOCX
+wwwroot\Word_Template\~$.BG-ERP-Tieng Viet.docx
+wwwroot\Word_Template\~$.HDKT-BH01.DOCX
+wwwroot\Word_Template\~$.HDTPM-FSC01.docx
+wwwroot\Word_Template\~$.HDTPM-ONL01.DOCX
+wwwroot\Word_Template\~$.MauDNTT-KH-HDBT.DOCX
+wwwroot\Word_Template\~$.MauDNTT-KH-HDKT.DOCX
+wwwroot\Word_Template\~$.PLHD-DT01.docx
+wwwroot\Word_Template\~$.PLHD-DT02.DOCX
+wwwroot\Word_Template\~$_03_MauBBNT.DOCX
 wwwroot\Word_Template\01.HDBT (song ngu).docx
 wwwroot\Word_Template\02. HDBT-BH01TT.DOCX
 wwwroot\Word_Template\02.HDBT-BH01TL.DOCX
 wwwroot\Word_Template\03. HDBT-BH01TT.DOCX
-wwwroot\Word_Template\03.HDKT-BH01-DAOTAO.docx
 wwwroot\Word_Template\03.HDKT-BH01.docx
+wwwroot\Word_Template\03.HDKT-BH01-DAOTAO.docx
 wwwroot\Word_Template\04. HDBT-BH01TX.DOCX
 wwwroot\Word_Template\05.HDNC-BH01 (song ngu).docx
 wwwroot\Word_Template\06.HDNC-BH01.DOCX
@@ -354,16 +366,5 @@ wwwroot\Word_Template\27.MauDNTT-KH-HDKT.DOCX
 wwwroot\Word_Template\TK_01_MauBBXNDT.docx
 wwwroot\Word_Template\TK_02_MauBBXNCD.docx
 wwwroot\Word_Template\TK_03_MauBBNT.DOCX
-wwwroot\Word_Template\~$.BBNT HDKT_MAU.DOCX
-wwwroot\Word_Template\~$.BG-ERP-Tieng Viet.docx
-wwwroot\Word_Template\~$.BG_SISMAC.DOCX
-wwwroot\Word_Template\~$.HDKT-BH01.DOCX
-wwwroot\Word_Template\~$.HDTPM-FSC01.docx
-wwwroot\Word_Template\~$.HDTPM-ONL01.DOCX
-wwwroot\Word_Template\~$.MauDNTT-KH-HDBT.DOCX
-wwwroot\Word_Template\~$.MauDNTT-KH-HDKT.DOCX
-wwwroot\Word_Template\~$.PLHD-DT01.docx
-wwwroot\Word_Template\~$.PLHD-DT02.DOCX
-wwwroot\Word_Template\~$_03_MauBBNT.DOCX
 wwwroot\Xml\soth1.Xml
 wwwroot\Xml\soth1.Xsd
