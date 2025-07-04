@@ -1,0 +1,1509 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\obj\\Release\\net8.0\\scopedcss\\projectbundle\\SISERPSME.bundle.scp.css",
+      "PackagePath": "staticwebassets\\SISERPSME.w1ed57pund.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\Doc_Template\\HCNS01-QD-Tiepnhan-HocViec.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\Doc_Template\\HCNS01-QD-Tiepnhan-HocViec.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\Doc_Template\\HCNS02-QD-Tiepnhan-ThuViec.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\Doc_Template\\HCNS02-QD-Tiepnhan-ThuViec.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\Doc_Template\\HCNS03-QD-Tiepnhan-Chinhthuc.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\Doc_Template\\HCNS03-QD-Tiepnhan-Chinhthuc.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\Doc_Template\\HCNS04-QD-TangLuong.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\Doc_Template\\HCNS04-QD-TangLuong.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\Doc_Template\\HCNS05-QD-DieuchuyenNS.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\Doc_Template\\HCNS05-QD-DieuchuyenNS.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\Doc_Template\\HCNS06-QD-BonhiemNS.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\Doc_Template\\HCNS06-QD-BonhiemNS.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\Doc_Template\\HCNS07-QD-Thuong.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\Doc_Template\\HCNS07-QD-Thuong.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\Doc_Template\\HCNS08-QD-ThoiViec.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\Doc_Template\\HCNS08-QD-ThoiViec.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\Doc_Template\\HCNS10-HopdpngBaoMatTT.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\Doc_Template\\HCNS10-HopdpngBaoMatTT.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\Doc_Template\\HCNS11-HopdongLaodong.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\Doc_Template\\HCNS11-HopdongLaodong.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\Doc_Template\\HCNS12-Hopdongkhoangon.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\Doc_Template\\HCNS12-Hopdongkhoangon.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\Doc_Template\\HCNS13-ThongBaothatdoiNS.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\Doc_Template\\HCNS13-ThongBaothatdoiNS.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\Doc_Template\\HCNS14-QD-GiaoViec.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\Doc_Template\\HCNS14-QD-GiaoViec.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\Doc_Template\\HCNS15-PL-Hopdonglaodong.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\Doc_Template\\HCNS15-PL-Hopdonglaodong.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\Doc_Template\\HCNS16-HopdongthuengoaiCTV.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\Doc_Template\\HCNS16-HopdongthuengoaiCTV.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\Doc_Template\\HCNS17-Thoi hoc viec.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\Doc_Template\\HCNS17-Thoi hoc viec.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\HCNS01-QD-Tiepnhan-HocViec.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\HCNS01-QD-Tiepnhan-HocViec.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\HCNS02-QD-Tiepnhan-ThuViec.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\HCNS02-QD-Tiepnhan-ThuViec.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\HCNS03-QD-Tiepnhan-Chinhthuc.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\HCNS03-QD-Tiepnhan-Chinhthuc.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\HCNS04-QD-TangLuong.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\HCNS04-QD-TangLuong.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\HCNS05-QD-DieuchuyenNS.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\HCNS05-QD-DieuchuyenNS.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\HCNS06-QD-BonhiemNS.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\HCNS06-QD-BonhiemNS.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\HCNS07-QD-Thuong.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\HCNS07-QD-Thuong.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\HCNS08-QD-ThoiViec.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\HCNS08-QD-ThoiViec.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\HCNS10-HopdpngBaoMatTT.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\HCNS10-HopdpngBaoMatTT.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\HCNS11-HopdongLaodong.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\HCNS11-HopdongLaodong.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\HCNS12-HopdongThuekhoanCTV.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\HCNS12-HopdongThuekhoanCTV.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\HCNS13-ThongBaothatdoiNS.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\HCNS13-ThongBaothatdoiNS.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Doc_Template\\HCNS14-QD-GiaoViec.docx",
+      "PackagePath": "staticwebassets\\Doc_Template\\HCNS14-QD-GiaoViec.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Document\\0000000001\\BG-SISVN_HD-SISVN200225-0001.Pdf",
+      "PackagePath": "staticwebassets\\Document\\0000000001\\BG-SISVN_HD-SISVN200225-0001.Pdf"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Document\\0000000001\\BG-SISVN_HD-SISVN200225-0002.Pdf",
+      "PackagePath": "staticwebassets\\Document\\0000000001\\BG-SISVN_HD-SISVN200225-0002.Pdf"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Document\\0000000001\\BG-SISVN_HD-SISVN200225.docx",
+      "PackagePath": "staticwebassets\\Document\\0000000001\\BG-SISVN_HD-SISVN200225.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Document\\0000000001\\BG-SISVN_HD-SISVN200227.docx",
+      "PackagePath": "staticwebassets\\Document\\0000000001\\BG-SISVN_HD-SISVN200227.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Document\\0000000001\\BG-SISVN_HD-SISVN240225.docx",
+      "PackagePath": "staticwebassets\\Document\\0000000001\\BG-SISVN_HD-SISVN240225.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Document\\0000000001\\SISVN_HD-SISVN21022028.docx",
+      "PackagePath": "staticwebassets\\Document\\0000000001\\SISVN_HD-SISVN21022028.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Document\\0000000001\\SISVN_HD-SISVN260225.docx",
+      "PackagePath": "staticwebassets\\Document\\0000000001\\SISVN_HD-SISVN260225.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Document\\0000000001\\SISVN_HD-SISVN270225.docx",
+      "PackagePath": "staticwebassets\\Document\\0000000001\\SISVN_HD-SISVN270225.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Document\\0101218690\\SISVN_HD-SISVN260225.docx",
+      "PackagePath": "staticwebassets\\Document\\0101218690\\SISVN_HD-SISVN260225.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Document\\0101218690\\SISVN_HD-SISVN270225.docx",
+      "PackagePath": "staticwebassets\\Document\\0101218690\\SISVN_HD-SISVN270225.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Document\\0200664488\\SISVN_PL-STATEWAY040325.docx",
+      "PackagePath": "staticwebassets\\Document\\0200664488\\SISVN_PL-STATEWAY040325.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Document\\2300280111\\SISVN_BT-KTSC2025.docx",
+      "PackagePath": "staticwebassets\\Document\\2300280111\\SISVN_BT-KTSC2025.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Document\\2700622899\\SISVN_BTDNB_PTC2024.docx",
+      "PackagePath": "staticwebassets\\Document\\2700622899\\SISVN_BTDNB_PTC2024.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Document\\3001778944\\SISVN_BT-DLHG2025.docx",
+      "PackagePath": "staticwebassets\\Document\\3001778944\\SISVN_BT-DLHG2025.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Document\\4600403368\\SISVN_BT-MTVTM2025.docx",
+      "PackagePath": "staticwebassets\\Document\\4600403368\\SISVN_BT-MTVTM2025.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\EX_mau\\DMKHIMEX.xls",
+      "PackagePath": "staticwebassets\\EX_mau\\DMKHIMEX.xls"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\EX_mau\\DMVTIMEX.xls",
+      "PackagePath": "staticwebassets\\EX_mau\\DMVTIMEX.xls"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\EX_mau\\IMEXBC1.Xls",
+      "PackagePath": "staticwebassets\\EX_mau\\IMEXBC1.Xls"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\EX_mau\\IMEXBG1.xls",
+      "PackagePath": "staticwebassets\\EX_mau\\IMEXBG1.xls"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\EX_mau\\IMEXHDB.xls",
+      "PackagePath": "staticwebassets\\EX_mau\\IMEXHDB.xls"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\EX_mau\\IMEXPT1.Xls",
+      "PackagePath": "staticwebassets\\EX_mau\\IMEXPT1.Xls"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Add.svg",
+      "PackagePath": "staticwebassets\\Images\\Add.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Back.png",
+      "PackagePath": "staticwebassets\\Images\\Back.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Backicon.png",
+      "PackagePath": "staticwebassets\\Images\\Backicon.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Button1.png",
+      "PackagePath": "staticwebassets\\Images\\Button1.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Button2.png",
+      "PackagePath": "staticwebassets\\Images\\Button2.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Button3.png",
+      "PackagePath": "staticwebassets\\Images\\Button3.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Button4.png",
+      "PackagePath": "staticwebassets\\Images\\Button4.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Button5.png",
+      "PackagePath": "staticwebassets\\Images\\Button5.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Cancel.png",
+      "PackagePath": "staticwebassets\\Images\\Cancel.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Cancel.svg",
+      "PackagePath": "staticwebassets\\Images\\Cancel.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Change.png",
+      "PackagePath": "staticwebassets\\Images\\Change.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Enflag.png",
+      "PackagePath": "staticwebassets\\Images\\Enflag.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Export.png",
+      "PackagePath": "staticwebassets\\Images\\Export.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Frame.svg",
+      "PackagePath": "staticwebassets\\Images\\Frame.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Home.svg",
+      "PackagePath": "staticwebassets\\Images\\Home.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\IAdd.svg",
+      "PackagePath": "staticwebassets\\Images\\IAdd.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\IUser.svg",
+      "PackagePath": "staticwebassets\\Images\\IUser.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon quan_ly_mua_hang.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon quan_ly_mua_hang.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_CR.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_CR.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_Chuc_nang_uu_thich.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_Chuc_nang_uu_thich.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_DB.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_DB.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_Danh_muc_tu_dien.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_Danh_muc_tu_dien.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_EN.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_EN.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_GA.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_GA.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_HM.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_HM.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_KC_NP_sang_nam_sau.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_KC_NP_sang_nam_sau.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_MG.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_MG.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_SM.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_SM.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_SO.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_SO.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_VN.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_VN.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_avt.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_avt.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_bang_theo_doi_gui_xe.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_bang_theo_doi_gui_xe.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_bao_cao_nhan_su.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_bao_cao_nhan_su.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_bao_cao_tham_nien.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_bao_cao_tham_nien.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_bao_cao_tien_luong.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_bao_cao_tien_luong.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_bo_phan_nhan_su.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_bo_phan_nhan_su.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_cai_dat.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_cai_dat.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_cap_nhap_so_lieu.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_cap_nhap_so_lieu.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_cap_nhap_tham_so_luong.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_cap_nhap_tham_so_luong.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_cham_cong.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_cham_cong.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_cham_cong_phi_gui_xe.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_cham_cong_phi_gui_xe.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_chua_tha_xuong.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_chua_tha_xuong.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_dang_ky_lam_them.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_dang_ky_lam_them.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_danh_muc_nhan_su.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_danh_muc_nhan_su.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_danh_sach_nhan_su.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_danh_sach_nhan_su.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_dinh_muc_nghi_nam.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_dinh_muc_nghi_nam.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_gio_vao_ra_chi_tiet.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_gio_vao_ra_chi_tiet.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_he_so_luong_thang.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_he_so_luong_thang.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_he_thong.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_he_thong.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_hm_cap_nhap_so_lieu.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_hm_cap_nhap_so_lieu.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_hm_danh_muc_tu_dien.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_hm_danh_muc_tu_dien.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_ho_tro.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_ho_tro.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_hs_bao_cao_tien_luong.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_hs_bao_cao_tien_luong.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_hs_cap_nhap_so_lieu.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_hs_cap_nhap_so_lieu.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_hs_cham_cong.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_hs_cham_cong.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_hs_danh_muc_tu_dien.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_hs_danh_muc_tu_dien.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_hs_dinh_muc_nghi.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_hs_dinh_muc_nghi.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_hs_kc_np.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_hs_kc_np.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_hs_lich_nghi.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_hs_lich_nghi.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_hs_ly_do_nghi.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_hs_ly_do_nghi.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_hs_ngay_cong_chuan.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_hs_ngay_cong_chuan.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_in.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_in.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_lich.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_lich.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_ngay_nghi_ly_do_nghi.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_ngay_nghi_ly_do_nghi.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_nghi_phep_dau_nam.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_nghi_phep_dau_nam.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_noi_thong_bao.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_noi_thong_bao.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_quan_ly_khach_hang.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_quan_ly_khach_hang.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_quan_ly_nhan_su.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_quan_ly_nhan_su.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_quan_ly_san_xuat.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_quan_ly_san_xuat.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_quan_ly_tai_san.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_quan_ly_tai_san.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_quan_ly_tien_luong.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_quan_ly_tien_luong.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_sua.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_sua.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_tha_xuong.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_tha_xuong.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_them_moi.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_them_moi.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_thong_bao.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_thong_bao.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_thong_tin.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_thong_tin.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_tin_nhan.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_tin_nhan.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_tinh_hinh_nghi_phep.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_tinh_hinh_nghi_phep.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_trang_cuoi_cung.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_trang_cuoi_cung.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_trang_tiep_theo.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_trang_tiep_theo.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_tro_ve_trang_dau.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_tro_ve_trang_dau.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_tro_ve_trang_truoc.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_tro_ve_trang_truoc.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_user.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_user.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_web.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_web.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_xem.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_xem.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Icon_xoa.svg",
+      "PackagePath": "staticwebassets\\Images\\Icon_xoa.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Logo.svg",
+      "PackagePath": "staticwebassets\\Images\\Logo.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Mesa.svg",
+      "PackagePath": "staticwebassets\\Images\\Mesa.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\New.png",
+      "PackagePath": "staticwebassets\\Images\\New.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\New.svg",
+      "PackagePath": "staticwebassets\\Images\\New.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Print.svg",
+      "PackagePath": "staticwebassets\\Images\\Print.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Printer.png",
+      "PackagePath": "staticwebassets\\Images\\Printer.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\SISLogo.png",
+      "PackagePath": "staticwebassets\\Images\\SISLogo.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Save.png",
+      "PackagePath": "staticwebassets\\Images\\Save.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Save.svg",
+      "PackagePath": "staticwebassets\\Images\\Save.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Search.svg",
+      "PackagePath": "staticwebassets\\Images\\Search.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\See.svg",
+      "PackagePath": "staticwebassets\\Images\\See.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\SmalIcon.png",
+      "PackagePath": "staticwebassets\\Images\\SmalIcon.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\User.png",
+      "PackagePath": "staticwebassets\\Images\\User.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\User.svg",
+      "PackagePath": "staticwebassets\\Images\\User.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\View.png",
+      "PackagePath": "staticwebassets\\Images\\View.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\Viflag.png",
+      "PackagePath": "staticwebassets\\Images\\Viflag.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\chat_background.jpg",
+      "PackagePath": "staticwebassets\\Images\\chat_background.jpg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\delete.svg",
+      "PackagePath": "staticwebassets\\Images\\delete.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\detail.png",
+      "PackagePath": "staticwebassets\\Images\\detail.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\erpAlert.svg",
+      "PackagePath": "staticwebassets\\Images\\erpAlert.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\erpBG.svg",
+      "PackagePath": "staticwebassets\\Images\\erpBG.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\erpEmail.svg",
+      "PackagePath": "staticwebassets\\Images\\erpEmail.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\erpFav.svg",
+      "PackagePath": "staticwebassets\\Images\\erpFav.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\erpHelp.png",
+      "PackagePath": "staticwebassets\\Images\\erpHelp.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\erpHelp.svg",
+      "PackagePath": "staticwebassets\\Images\\erpHelp.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\erpInfo.svg",
+      "PackagePath": "staticwebassets\\Images\\erpInfo.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\erpLangEN.svg",
+      "PackagePath": "staticwebassets\\Images\\erpLangEN.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\erpLangVi.svg",
+      "PackagePath": "staticwebassets\\Images\\erpLangVi.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\erpSe.png",
+      "PackagePath": "staticwebassets\\Images\\erpSe.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\erpUser.svg",
+      "PackagePath": "staticwebassets\\Images\\erpUser.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\erpWeb.svg",
+      "PackagePath": "staticwebassets\\Images\\erpWeb.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\erpcolapse.png",
+      "PackagePath": "staticwebassets\\Images\\erpcolapse.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\erplogo.svg",
+      "PackagePath": "staticwebassets\\Images\\erplogo.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\excelicon.PNG",
+      "PackagePath": "staticwebassets\\Images\\excelicon.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\fileicon.PNG",
+      "PackagePath": "staticwebassets\\Images\\fileicon.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\hethong.png",
+      "PackagePath": "staticwebassets\\Images\\hethong.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\icons\\close.svg",
+      "PackagePath": "staticwebassets\\Images\\icons\\close.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\icons\\copy.svg",
+      "PackagePath": "staticwebassets\\Images\\icons\\copy.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\icons\\info.svg",
+      "PackagePath": "staticwebassets\\Images\\icons\\info.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\import.png",
+      "PackagePath": "staticwebassets\\Images\\import.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\khung.png",
+      "PackagePath": "staticwebassets\\Images\\khung.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\loginpasshow.png",
+      "PackagePath": "staticwebassets\\Images\\loginpasshow.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\menu.svg",
+      "PackagePath": "staticwebassets\\Images\\menu.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\menu24.png",
+      "PackagePath": "staticwebassets\\Images\\menu24.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\pass.svg",
+      "PackagePath": "staticwebassets\\Images\\pass.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\pdficon.PNG",
+      "PackagePath": "staticwebassets\\Images\\pdficon.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\print_logo.png",
+      "PackagePath": "staticwebassets\\Images\\print_logo.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\sbot_icon.jpg",
+      "PackagePath": "staticwebassets\\Images\\sbot_icon.jpg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\sbot_icon_hide.jpg",
+      "PackagePath": "staticwebassets\\Images\\sbot_icon_hide.jpg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\search.png",
+      "PackagePath": "staticwebassets\\Images\\search.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\send_icon.png",
+      "PackagePath": "staticwebassets\\Images\\send_icon.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\smallicon.svg",
+      "PackagePath": "staticwebassets\\Images\\smallicon.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Images\\timer.png",
+      "PackagePath": "staticwebassets\\Images\\timer.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Lang\\en.xml",
+      "PackagePath": "staticwebassets\\Lang\\en.xml"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Lang\\sm-en.xml",
+      "PackagePath": "staticwebassets\\Lang\\sm-en.xml"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Lang\\sm-vi.xml",
+      "PackagePath": "staticwebassets\\Lang\\sm-vi.xml"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Lang\\so-en.xml",
+      "PackagePath": "staticwebassets\\Lang\\so-en.xml"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Lang\\so-vi.xml",
+      "PackagePath": "staticwebassets\\Lang\\so-vi.xml"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Lang\\vi.xml",
+      "PackagePath": "staticwebassets\\Lang\\vi.xml"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Lang\\zh.CN.xml",
+      "PackagePath": "staticwebassets\\Lang\\zh.CN.xml"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\00001.PNG",
+      "PackagePath": "staticwebassets\\Pict\\00001.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\00002.PNG",
+      "PackagePath": "staticwebassets\\Pict\\00002.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\00003.PNG",
+      "PackagePath": "staticwebassets\\Pict\\00003.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\00004.PNG",
+      "PackagePath": "staticwebassets\\Pict\\00004.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\00005.PNG",
+      "PackagePath": "staticwebassets\\Pict\\00005.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\00022.PNG",
+      "PackagePath": "staticwebassets\\Pict\\00022.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\00078.PNG",
+      "PackagePath": "staticwebassets\\Pict\\00078.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\001.PNG",
+      "PackagePath": "staticwebassets\\Pict\\001.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\048.PNG",
+      "PackagePath": "staticwebassets\\Pict\\048.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\055.PNG",
+      "PackagePath": "staticwebassets\\Pict\\055.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\056.PNG",
+      "PackagePath": "staticwebassets\\Pict\\056.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\111.PNG",
+      "PackagePath": "staticwebassets\\Pict\\111.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\37813F0A-4CD6-48C9-9ED3-2F22EDEE8AB3.PNG",
+      "PackagePath": "staticwebassets\\Pict\\37813F0A-4CD6-48C9-9ED3-2F22EDEE8AB3.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\ABC.PNG",
+      "PackagePath": "staticwebassets\\Pict\\ABC.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\ADMIN.PNG",
+      "PackagePath": "staticwebassets\\Pict\\ADMIN.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\ANHBTV.PNG",
+      "PackagePath": "staticwebassets\\Pict\\ANHBTV.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\CHIEU.PNG",
+      "PackagePath": "staticwebassets\\Pict\\CHIEU.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\CNCATVAI.PNG",
+      "PackagePath": "staticwebassets\\Pict\\CNCATVAI.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\GD.PNG",
+      "PackagePath": "staticwebassets\\Pict\\GD.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\HN007.PNG",
+      "PackagePath": "staticwebassets\\Pict\\HN007.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\HN019.PNG",
+      "PackagePath": "staticwebassets\\Pict\\HN019.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\HUE.PNG",
+      "PackagePath": "staticwebassets\\Pict\\HUE.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\NVAO01.PNG",
+      "PackagePath": "staticwebassets\\Pict\\NVAO01.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\SIS.PNG",
+      "PackagePath": "staticwebassets\\Pict\\SIS.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\TUONG.PNG",
+      "PackagePath": "staticwebassets\\Pict\\TUONG.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\TUYETTT.png",
+      "PackagePath": "staticwebassets\\Pict\\TUYETTT.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\UV001.PNG",
+      "PackagePath": "staticwebassets\\Pict\\UV001.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\User.png",
+      "PackagePath": "staticwebassets\\Pict\\User.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\VUONGNV.PNG",
+      "PackagePath": "staticwebassets\\Pict\\VUONGNV.PNG"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\imgcancel.png",
+      "PackagePath": "staticwebassets\\Pict\\imgcancel.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\imgcheck.png",
+      "PackagePath": "staticwebassets\\Pict\\imgcheck.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\imgnormal.png",
+      "PackagePath": "staticwebassets\\Pict\\imgnormal.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Pict\\tuyet.png",
+      "PackagePath": "staticwebassets\\Pict\\tuyet.png"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports.zip",
+      "PackagePath": "staticwebassets\\Reports.zip"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\B\\glso2_tt200.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\B\\glso2_tt200.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\B\\hdbanle.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\B\\hdbanle.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\B\\socthda_qd15_tt200.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\B\\socthda_qd15_tt200.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\B\\socthda_tt200.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\B\\socthda_tt200.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\B\\soth1.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\B\\soth1.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\ARCTBH1.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\ARCTBH1.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\Arctbh1rpt.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\Arctbh1rpt.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\Arctbh1rptest.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\Arctbh1rptest.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\CACTPT1A.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\CACTPT1A.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\CACTPT1B.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\CACTPT1B.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\CACTPT1C_Nua_A4_TT200.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\CACTPT1C_Nua_A4_TT200.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\CACTPT1C_TT200.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\CACTPT1C_TT200.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\CACTPT1C_nb.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\CACTPT1C_nb.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\SOCTHDA.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\SOCTHDA.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\SODMHDB.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\SODMHDB.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\Sobg1.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\Sobg1.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\bangluongctrp.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\bangluongctrp.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\bckehoachbdnam.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\bckehoachbdnam.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\bckhkiemdinh.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\bckhkiemdinh.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\bcqrcode.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\bcqrcode.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\bctaisancd01.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\bctaisancd01.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\bctheodoimtb.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\bctheodoimtb.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\bctheodokkts.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\bctheodokkts.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\bcvanhanhtb.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\bcvanhanhtb.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\bienbangiaonhan.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\bienbangiaonhan.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\cmthietbi.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\cmthietbi.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\dangkysdtb.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\dangkysdtb.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\denghisuachua.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\denghisuachua.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\dmtsthekho.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\dmtsthekho.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\dncnvlrp.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\dncnvlrp.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\glso2_tt200.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\glso2_tt200.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\hdbanle.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\hdbanle.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\kkkhosxrp.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\kkkhosxrp.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\phieunhapkho.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\phieunhapkho.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\phieuxuatkho.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\phieuxuatkho.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\qtdongbaorp.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\qtdongbaorp.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\sctbrpvn.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\sctbrpvn.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\slttrp.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\slttrp.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\socthda_qd15_tt200.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\socthda_qd15_tt200.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\socthda_tt200.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\socthda_tt200.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\sosanhkiemke01.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\sosanhkiemke01.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\soth1.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\soth1.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\tktonkhovtpvn.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\tktonkhovtpvn.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\tkvtscrp.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\tkvtscrp.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Reports\\VND\\VN\\tsvhrpvn.repx",
+      "PackagePath": "staticwebassets\\Reports\\VND\\VN\\tsvhrpvn.repx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Script.js",
+      "PackagePath": "staticwebassets\\Script.js"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\01.HDBT (song ngu).docx",
+      "PackagePath": "staticwebassets\\Word_Template\\01.HDBT (song ngu).docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\02. HDBT-BH01TT.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\02. HDBT-BH01TT.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\02.HDBT-BH01TL.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\02.HDBT-BH01TL.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\03. HDBT-BH01TT.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\03. HDBT-BH01TT.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\03.HDKT-BH01-DAOTAO.docx",
+      "PackagePath": "staticwebassets\\Word_Template\\03.HDKT-BH01-DAOTAO.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\03.HDKT-BH01.docx",
+      "PackagePath": "staticwebassets\\Word_Template\\03.HDKT-BH01.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\04. HDBT-BH01TX.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\04. HDBT-BH01TX.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\05.HDNC-BH01 (song ngu).docx",
+      "PackagePath": "staticwebassets\\Word_Template\\05.HDNC-BH01 (song ngu).docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\06.HDNC-BH01.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\06.HDNC-BH01.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\07.BG_BT01.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\07.BG_BT01.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\08.BG_GTGT01.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\08.BG_GTGT01.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\09.HDKT - ERPSME.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\09.HDKT - ERPSME.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\09.HDKT-ERPSME.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\09.HDKT-ERPSME.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\09.HDKT-PL.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\09.HDKT-PL.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\10.BG_HDNC01.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\10.BG_HDNC01.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\11.BG_SIS INNOVA.docx",
+      "PackagePath": "staticwebassets\\Word_Template\\11.BG_SIS INNOVA.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\11.BG_SISMAC.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\11.BG_SISMAC.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\12.BG - HDNC (Song ngu).DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\12.BG - HDNC (Song ngu).DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\13.BG - PLHD (song ngu).docx",
+      "PackagePath": "staticwebassets\\Word_Template\\13.BG - PLHD (song ngu).docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\14.PLHD (song ngu) .docx",
+      "PackagePath": "staticwebassets\\Word_Template\\14.PLHD (song ngu) .docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\15.BG-ERP-Tieng Viet.docx",
+      "PackagePath": "staticwebassets\\Word_Template\\15.BG-ERP-Tieng Viet.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\15.BG-ERP-Tiếng Việt.docx",
+      "PackagePath": "staticwebassets\\Word_Template\\15.BG-ERP-Tiếng Việt.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\16. PLHD-DT02.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\16. PLHD-DT02.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\17. HDKT (song ngu).docx",
+      "PackagePath": "staticwebassets\\Word_Template\\17. HDKT (song ngu).docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\17. HĐKT (song ngu).docx",
+      "PackagePath": "staticwebassets\\Word_Template\\17. HĐKT (song ngu).docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\18.BBNT HDKT_MAU.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\18.BBNT HDKT_MAU.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\19.BBNT HDNC_MAU.docx",
+      "PackagePath": "staticwebassets\\Word_Template\\19.BBNT HDNC_MAU.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\20.BBNT PLHD_MAU.docx",
+      "PackagePath": "staticwebassets\\Word_Template\\20.BBNT PLHD_MAU.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\21.BBXN- CNBQ.docx",
+      "PackagePath": "staticwebassets\\Word_Template\\21.BBXN- CNBQ.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\22.BBXN - BT.docx",
+      "PackagePath": "staticwebassets\\Word_Template\\22.BBXN - BT.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\23.BBXN-BQ.docx",
+      "PackagePath": "staticwebassets\\Word_Template\\23.BBXN-BQ.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\24.MauDNTT-KH-HDBT.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\24.MauDNTT-KH-HDBT.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\25.MauDNTT-KH-PLHD.docx",
+      "PackagePath": "staticwebassets\\Word_Template\\25.MauDNTT-KH-PLHD.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\26.MauDNTT-KH-HDNC.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\26.MauDNTT-KH-HDNC.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\27.MauDNTT-KH-HDKT.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\27.MauDNTT-KH-HDKT.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\TK_01_MauBBXNDT.docx",
+      "PackagePath": "staticwebassets\\Word_Template\\TK_01_MauBBXNDT.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\TK_02_MauBBXNCD.docx",
+      "PackagePath": "staticwebassets\\Word_Template\\TK_02_MauBBXNCD.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\TK_03_MauBBNT.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\TK_03_MauBBNT.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\~$.BBNT HDKT_MAU.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\~$.BBNT HDKT_MAU.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\~$.BG-ERP-Tieng Viet.docx",
+      "PackagePath": "staticwebassets\\Word_Template\\~$.BG-ERP-Tieng Viet.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\~$.BG_SISMAC.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\~$.BG_SISMAC.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\~$.HDKT-BH01.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\~$.HDKT-BH01.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\~$.HDTPM-FSC01.docx",
+      "PackagePath": "staticwebassets\\Word_Template\\~$.HDTPM-FSC01.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\~$.HDTPM-ONL01.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\~$.HDTPM-ONL01.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\~$.MauDNTT-KH-HDBT.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\~$.MauDNTT-KH-HDBT.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\~$.MauDNTT-KH-HDKT.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\~$.MauDNTT-KH-HDKT.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\~$.PLHD-DT01.docx",
+      "PackagePath": "staticwebassets\\Word_Template\\~$.PLHD-DT01.docx"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\~$.PLHD-DT02.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\~$.PLHD-DT02.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Word_Template\\~$_03_MauBBNT.DOCX",
+      "PackagePath": "staticwebassets\\Word_Template\\~$_03_MauBBNT.DOCX"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Xml\\soth1.Xml",
+      "PackagePath": "staticwebassets\\Xml\\soth1.Xml"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\Xml\\soth1.Xsd",
+      "PackagePath": "staticwebassets\\Xml\\soth1.Xsd"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\bootstrap\\bootstrap.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\dx-demo-pages.css",
+      "PackagePath": "staticwebassets\\css\\dx-demo-pages.css"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\dx-demo-reporting-pages.css",
+      "PackagePath": "staticwebassets\\css\\dx-demo-reporting-pages.css"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\dx-demo-richedit-pages.css",
+      "PackagePath": "staticwebassets\\css\\dx-demo-richedit-pages.css"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\dx-demo.css",
+      "PackagePath": "staticwebassets\\css\\dx-demo.css"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "PackagePath": "staticwebassets\\css\\open-iconic"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "PackagePath": "staticwebassets\\css\\open-iconic"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\open-iconic\\README.md",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\README.md"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\open.iconic\\FONT-LICENSE.txt",
+      "PackagePath": "staticwebassets\\css\\open.iconic\\FONT-LICENSE.txt"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\open.iconic\\ICON-LICENSE.txt",
+      "PackagePath": "staticwebassets\\css\\open.iconic\\ICON-LICENSE.txt"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\open.iconic\\README.md",
+      "PackagePath": "staticwebassets\\css\\open.iconic\\README.md"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\open.iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\open.iconic\\font\\css\\open-iconic-bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.eot",
+      "PackagePath": "staticwebassets\\css\\open.iconic\\font\\fonts\\open-iconic.eot"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.otf",
+      "PackagePath": "staticwebassets\\css\\open.iconic\\font\\fonts\\open-iconic.otf"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.svg",
+      "PackagePath": "staticwebassets\\css\\open.iconic\\font\\fonts\\open-iconic.svg"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.ttf",
+      "PackagePath": "staticwebassets\\css\\open.iconic\\font\\fonts\\open-iconic.ttf"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.woff",
+      "PackagePath": "staticwebassets\\css\\open.iconic\\font\\fonts\\open-iconic.woff"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\scroll-view.css",
+      "PackagePath": "staticwebassets\\css\\scroll-view.css"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\sis.css",
+      "PackagePath": "staticwebassets\\css\\sis.css"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\css\\site.css.bak",
+      "PackagePath": "staticwebassets\\css\\site.css.bak"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\dx-head-manager.js",
+      "PackagePath": "staticwebassets\\dx-head-manager.js"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\html5-qrcode.min.js",
+      "PackagePath": "staticwebassets\\html5-qrcode.min.js"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\lib\\demo-resizer.js",
+      "PackagePath": "staticwebassets\\lib\\demo-resizer.js"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\lib\\page-feedback.js",
+      "PackagePath": "staticwebassets\\lib\\page-feedback.js"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\lib\\page-helper.js",
+      "PackagePath": "staticwebassets\\lib\\page-helper.js"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\lib\\page-nav.js",
+      "PackagePath": "staticwebassets\\lib\\page-nav.js"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\lib\\page-section-helper.js",
+      "PackagePath": "staticwebassets\\lib\\page-section-helper.js"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\lib\\reporting.js",
+      "PackagePath": "staticwebassets\\lib\\reporting.js"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\lib\\scroll-view.config.js",
+      "PackagePath": "staticwebassets\\lib\\scroll-view.config.js"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\lib\\scroll-view.debug.js",
+      "PackagePath": "staticwebassets\\lib\\scroll-view.debug.js"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\lib\\scroll-view.js",
+      "PackagePath": "staticwebassets\\lib\\scroll-view.js"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\lib\\scrollable.js",
+      "PackagePath": "staticwebassets\\lib\\scrollable.js"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\upload_tmp\\IMEXBG1.xls",
+      "PackagePath": "staticwebassets\\upload_tmp\\IMEXBG1.xls"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\upload_tmp\\IMEXHDB.xls",
+      "PackagePath": "staticwebassets\\upload_tmp\\IMEXHDB.xls"
+    },
+    {
+      "Id": "D:\\SIS\\sisweb\\SISERPSME\\wwwroot\\upload_tmp\\IMEXPT1.Xls",
+      "PackagePath": "staticwebassets\\upload_tmp\\IMEXPT1.Xls"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.SISERPSME.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.SISERPSME.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.build.SISERPSME.props",
+      "PackagePath": "build\\SISERPSME.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.SISERPSME.props",
+      "PackagePath": "buildMultiTargeting\\SISERPSME.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildTransitive.SISERPSME.props",
+      "PackagePath": "buildTransitive\\SISERPSME.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

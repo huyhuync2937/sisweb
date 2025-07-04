@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SISERPSME")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a477300577f653f741153b386aeede4e3b90f70")]
 [assembly: System.Reflection.AssemblyProductAttribute("SISERPSME")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SISERPSME")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

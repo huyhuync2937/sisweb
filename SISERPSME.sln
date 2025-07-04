@@ -5,6 +5,10 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SISERPSME", "SISERPSME\SISERPSME.csproj", "{6B701F33-E2AF-4CAD-8432-877A36B9FA25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisLib", "SisLib\SisLib\SisLib.csproj", "{2C3FE367-5FFE-8DBC-7F58-22986CAC432E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisSo", "SisSo\SisSo\SisSo.csproj", "{84DD72AF-978E-774E-8563-E4F7B1D13890}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{6B701F33-E2AF-4CAD-8432-877A36B9FA25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B701F33-E2AF-4CAD-8432-877A36B9FA25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B701F33-E2AF-4CAD-8432-877A36B9FA25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C3FE367-5FFE-8DBC-7F58-22986CAC432E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C3FE367-5FFE-8DBC-7F58-22986CAC432E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C3FE367-5FFE-8DBC-7F58-22986CAC432E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C3FE367-5FFE-8DBC-7F58-22986CAC432E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84DD72AF-978E-774E-8563-E4F7B1D13890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84DD72AF-978E-774E-8563-E4F7B1D13890}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84DD72AF-978E-774E-8563-E4F7B1D13890}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84DD72AF-978E-774E-8563-E4F7B1D13890}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
